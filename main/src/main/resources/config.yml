@@ -1,0 +1,43 @@
+
+language: "portuguese"  # Change to your desired language, such as "portuguese", "english", "spanish", "japanese"
+#If you enable it, most things will be automatically translated, titles and descriptions.
+language-system: false
+
+database:
+ # Tipos de bancos de dados disponíveis atualmente: MongoDB, MySQL
+ type: 'MySQL'
+ mysql:
+  # Utilizar Hikari
+  hikari: false
+  # Utilizar driver da MariaDB
+  mariadb: false
+  # Host para acessar o MySQL
+  host: 'localhost'
+  # Porta para acessar o MySQL
+  port: '3306'
+  # Nome do banco de dados no MySQL
+  name: 'server'
+  # Usuário de acesso ao MySQL
+  user: 'root'
+  # Senha de acesso ao MySQL
+  pass: ''
+ mongodb:
+   # URL de acesso ao MongoDB
+   # https://docs.mongodb.com/manual/reference/connection-string/
+   url: ''
+
+messages:
+ invite: "&a%leader% &7convidou você para a Party dele!\n&rVocê pode "
+ accept: "&aClique para aceitar o convite de Party de %leader%&r"
+ reject: "&cClique para negar o convite de Party de %leader%&r"
+ join: "&a%member% entrou na Party!&r"
+ leave: "&c%member% saiu da Party!&r"
+ transfer: "&a%member% se tornou o novo Líder da Party!&r"
+ kick: "&c%leader% te expulsou da Party!&r"
+ invite_buttons:
+  accept: "&a&lACEITAR&7"
+  reject: "&c&lNEGAR&7"
+ hover_accept: "&7Clique para aceitar o convite de Party de %leader%&r"
+ hover_reject: "&7Clique para negar o convite de Party de %leader%&r"
+ or: " &7ou&r "  # Nova chave para "ou"
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/nms-1.20.6/5.iml" filepath="$PROJECT_DIR$/nms-1.20.6/5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aCore.iml" filepath="$PROJECT_DIR$/aCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nms-1.20.6/nms-1.20.6.iml" filepath="$PROJECT_DIR$/nms-1.20.6/nms-1.20.6.iml" />
+    </modules>
+  </component>
+</project>
