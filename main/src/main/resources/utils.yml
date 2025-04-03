@@ -1,10 +1,10 @@
 # Ative isso caso deseja utilizar o cash
 cash: true
-# Ative isso caso esteja utilizando o kCore no Bungee para os comandos: party e fake
+# Ative isso caso esteja utilizando o aCore no Bungee para os comandos: party e fake
 bungeecord: false
 # Ative isso caso deseja utilizar a Fila
 queue: true
-# /fake do kCore
+# /fake do aCore
 fake:
   # Roles que podem ser utilizadas com o /fake
   # As role vão de acordo com as do servidor spigot em que o jogador está conectado.
