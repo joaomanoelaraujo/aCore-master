@@ -62,7 +62,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>dev.slickcollections.d4rkk</groupId>
+            <groupId>me.joaomanoel.d4rkk</groupId>
             <artifactId>aCore</artifactId>
             <version>1.2.2</version>
             <scope>compile</scope>

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://www.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>dev.slickcollections.d4rkk</groupId>
+    <groupId>me.joaomanoel.d4rkk</groupId>
     <artifactId>aCore-parent</artifactId>
     <version>1.6.2</version>
     <packaging>pom</packaging>
