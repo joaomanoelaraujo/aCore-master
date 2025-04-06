@@ -1,0 +1,20 @@
+scary:
+  id: 1
+  name: 'Scary'
+  rarity: EPIC
+  permission: ''
+  icon: '86 : 1'
+  cash: 25
+  messages:
+    - '{player} &eHe came in scaring everyone!'
+    - '{player} §cScared everyone in the lobby!'
+stranger:
+  id: 2
+  name: 'Stranger'
+  rarity: EPIC
+  permission: ''
+  icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjhiOGI0M2RiZDI4NTUzNmM3MWM3OWFjYWQ2Y2E1Njc3Mjk0MjQ5YTM4YTgzN2IzZTc3NjI5ODExMmZmYzAifX19'
+  cash: 25
+  messages:
+    - '§c§kAS {player} &ejoined the lobby! §d§kAS'
+    - '§b§kAS {player} §ejoined the lobby in style! §3§kAS'
