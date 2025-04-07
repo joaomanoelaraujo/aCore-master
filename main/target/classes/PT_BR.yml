@@ -1,0 +1,304 @@
+# aCore _ Created by D4RKK 
+# Version: 2.0
+already: '§cVocê já está conectado ao servidor.'
+discord:
+ link: 'https://discord.gg/aaa'
+loja:
+ link: 'www.yourserver.com'
+languages:
+ title: 'Selecionar Idioma'
+profileo:
+ menu:
+  levelInfo: 'SKULL_ITEM:3 : 1 : name>%s : desc>&7Nível: &6%s\n&7Guilda: &b%s\n&7Rank: %s'
+  socialMedia: 'SKULL_ITEM:3 : 1 : name>&aRedes Sociais : desc>&eClique para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTFiN2EwYzIxMGU2Y2RmNWEzNWZkODE5N2U2ZTI0YTAzODMxNWJiZTNiZGNkMWJjYzM2MzBiZjI2ZjU5ZWM1YyJ9fX0='
+  statistics: 'PAPER : 1 : name>&aEstatísticas : desc>&7Clique para ver as estatísticas de %s'
+  partyInvite: 'DIAMOND : 1 : name>&aConvidar para a Party : desc>&7Clique aqui para convidar %s para a party!'
+  friendInvite: '386 : 1 : name>&aAdicionar Amigo : desc>&7Clique para adicionar %s como amigo'
+  blockPlayer: 'BARRIER : 1 : name>&aBloquear : desc>&7Clique para bloquear %s'
+  guildInvite: 'SKULL_ITEM:3 : 1 : name>&aConvidar para a Guilda : desc>&7Clique para convidar %s para a guilda! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWRhZmEyZDNlNGU2ZGZmNDI5MTcxMzExYTljYzJiYWIyNjYwYjYyOTUyNzYyNzM0ZDU2OTQ1OTJhMjgwNzk4YSJ9fX0='
+  leadershipPass: 'SKULL_ITEM:3 : 1 : name>&aPassar liderança : desc>&7Clique para passar a liderança da party para %s : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJkYjc1MDY3Mjk0MTFjMzE3ODhmNDAzZDA3NjgxN2NiNGQwYTJhYmFmZDNkZjk2MGRmMmY1ZDBiNGRiYmZlOSJ9fX0='
+  close: 'ARROW : 1 : name>&cFechar'
+menuprofile:
+ color: '160:1 : 1 : name>&7'
+ color_party: '160:11 : 1 : name>&7'
+ glass: true
+profile:
+ title: 'Perfil'
+ menu:
+  preferences: 'REDSTONE_COMPARATOR : 1 : hide>all : name>&aPreferências : desc>&7No nosso servidor, você pode personalizar completamente\n&7sua experiência de jogo.\n&7Personalize várias opções exclusivas como\n&7desejar!\n \n&8As opções incluem habilitar ou desabilitar\n&8mensagens privadas, jogadores e outros.\n \n&eClique para personalizar opções!'
+  titles: 'MAP : 1 : hide>all : name>&aTítulos : desc>&7Mostre seu estilo com um título exclusivo\n&7que será exibido acima da sua cabeça\n&7para outros jogadores.\n \n&8Lembre_se de que você não verá o título,\n&8apenas outros jogadores verão.\n \n&eClique para selecionar um título!'
+  boosters: 'POTION:8232 : 1 : hide>all : name>&aMultiplicadores de Moeda : desc>&7No nosso servidor, há um sistema de\n&7&6Multiplicadores de Moeda &7que afetam\n&7a quantidade de &6Moedas &7ganhas em partidas.\n \n&8Os multiplicadores podem ser pessoais ou globais,\n&8beneficiando você e até outros jogadores.\n \n&eClique para ver seus multiplicadores!'
+  challenges: 'GOLD_INGOT : 1 : name>&aDesafios : desc>&7No nosso servidor, há um sistema de\n&7&6Desafios &7que consistem em missões únicas\n&7que concedem várias recompensas vitalícias.\n \n&8As recompensas variam de títulos, moedas,\n&8ícones de prestígio e outros cosméticos.\n \n&eClique para ver os desafios!'
+  statistics: 'PAPER : 1 : name>&aEstatísticas : desc>&7Veja suas estatísticas para\n&7cada Minigame no nosso servidor.\n \n&eClique para ver as estatísticas!'
+  cosmetics: '416 : 1 : name>&aCosméticos : desc>&7Veja seus cosméticos para\n&7cada servidor.\n \n&eClique para ver!'
+  profile: 'SKULL_ITEM:3 : 1 : name>&aInformações Pessoais : desc>&fRank: {rank}\n\n&fCash: &b{cash}\n\n&fRegistrado: &7{created}\n&fÚltimo Acesso: {last}'
+ mfriends: 'SKULL_ITEM:3 : 1 : name>&aAmigos : desc>&7Veja o perfil dos seus amigos e\n&7interaja com aqueles que estão\n&7online! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGU0ODU4ZWUyMzI2MmEzMTRhMGQwZGExN2Q4NzEzOWI5MzhlMzBlZjk2MmQwNDE3N2E4NjVhNGIwZDM4MTA2ZSJ9fX0='
+ mparty: 'SKULL_ITEM:3 : 1 : name>&aParty : desc>&7Crie uma party para jogar com\n&7outros jogadores! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJkYjc1MDY3Mjk0MTFjMzE3ODhmNDAzZDA3NjgxN2NiNGQwYTJhYmFmZDNkZjk2MGRmMmY1ZDBiNGRiYmZlOSJ9fX0='
+ apparence: '299 : 1 : name>&aPersonalizar Aparência : desc>\n&7Personalize as seguintes opções visuais\n&7para você mesmo!\n &f▪ Cor do Rank MVP+\n &f▪ Mensagens de Soco\n\n&eClique para ver! : paint>27:27:118'
+ status: '145:0 : 1 : name>&aStatus da Conta : desc>&7Verifique o status da sua conta e seu\n&7histórico de punições. \n\n&eClique para ver!'
+ language: 'SKULL_ITEM:3 : 1 : name>&aIdiomas : desc>&7Mude seu idioma\n\n&7Atualmente disponíveis: {languages} \n\n&7Mais idiomas estarão disponíveis em breve!\n\n&eClique para mudar o idioma! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjE1MWNmZmRhZjMwMzY3MzUzMWE3NjUxYjM2NjM3Y2FkOTEyYmE0ODU2NDMxNThlNTQ4ZDU5YjJlYWQ1MDExIn19fQ=='
+ langslot: 40
+ slot: 4
+ # Apparence icon slot
+ aslot: 30
+ # Status account icon slot
+ sslot: 32
+ # Friends Icon Slot
+ fslot: 5
+ # Menu Party Slot
+ pslot: 3
+ # Preferences menu slot
+ prslot2: 21
+ # Menu Title slot
+ tslot3: 33
+ cosmetics:
+  # Menu Cosmetics slot
+  slot4: 22
+ boosters:
+  # Booster slot
+  slot4: 31
+ challenges:
+  # Challenges slot
+  slot5: 23
+ statistics:
+  # Statistics slot
+  slot1: 29
+player:
+ enter: '&5&l[PARTY] &aDigite o nome de um jogador:'
+deliveries:
+ title: 'Entregas'
+cosmetics:
+ punchmessage:
+  icon:
+   perm_desc:
+    start: '&8Mensagem de soco\n\n&7Selecione a Mensagem de soco {name} para\n&7mensagens de bate-papo no jogo!\n\n&eClique direito para visualizar! \n \n{perm_desc_status}'
+   buy_desc:
+    start: '&8Mensagem de soco\n\n&7Selecione a Mensagem de soco {name} para\n&7mensagens de bate-papo no jogo!\n\n&eClique direito para visualizar! \n \n{buy_desc_status}'
+   has_desc:
+    start: '&8Mensagem de soco\n\n&7Selecione a Mensagem de soco {name} para\n&7mensagens de bate-papo no jogo!\n\n&eClique direito para visualizar! \n\n{has_desc_status}'
+ mvpcolor:
+  icon:
+   perm_desc:
+    start: '&8Cor MVP\n \n{perm_desc_status}'
+   buy_desc:
+    start: '&8Cor MVP\n \n{buy_desc_status}'
+   has_desc:
+    start: '&8Cor MVP\n \n{has_desc_status}'
+ color:
+  locked: '§c'
+  canbuy: '§e'
+  unlocked: '§a'
+  selected: '§a'
+ icon:
+  perm_desc:
+   common: '&cVocê não tem permissão.'
+   role: '&7Exclusivo para {role} &7ou superior.'
+  buy_desc:
+   enough: '&cVocê não tem saldo suficiente.'
+   click_to_buy: '&eClique para comprar!'
+  has_desc:
+   select: '&aDESBLOQUEADO!\n&eClique para selecionar!'
+   selected: '&aDESBLOQUEADO!\n&eClique para desselecionar!'
+ coloredtag:
+  icon:
+   perm_desc:
+    start: '&8Tag Colorida\n\n&7Selecione a cor {name} para\n&7mensagens no chat do jogo!\n\n&eClique com o botão direito para pré_visualizar! \n\n&7Raridade: {rarity}\n \n{perm_desc_status}'
+   buy_desc:
+    start: '&8Tag Colorida\n\n&7Selecione a cor {name} para\n&7mensagens no chat do jogo!\n\n&eClique com o botão direito para pré_visualizar! \n\n&7Raridade: {rarity}\n&7Custo: &2{cash}\n \n{buy_desc_status}'
+   has_desc:
+    start: '&8Tag Colorida\n\n&7Selecione a cor {name} para\n&7mensagens no chat do jogo!\n\n&eClique com o botão direito para pré_visualizar! \n\n&7Raridade: {rarity}\n \n{has_desc_status}'
+ joinmessage:
+  icon:
+   perm_desc:
+    start: '&8Mensagem de Entrada\n\n&7Selecione a Mensagem de Entrada {name} para\n&7mensagens no chat do jogo!\n\n&eClique com o botão direito para pré_visualizar! \n\n&7Raridade: {rarity}\n \n{perm_desc_status}'
+   buy_desc:
+    start: '&8Mensagem de Entrada\n\n&7Selecione a Mensagem de Entrada {name} para\n&7mensagens no chat do jogo!\n\n&eClique com o botão direito para pré_visualizar! \n\n&7Raridade: {rarity}\n&7Custo: &2{cash}\n \n{buy_desc_status}'
+   has_desc:
+    start: '&8Mensagem de Entrada\n\n&7Selecione a Mensagem de Entrada {name} para\n&7mensagens no chat do jogo!\n\n&eClique com o botão direito para pré_visualizar! \n\n&7Raridade: {rarity}\n \n{has_desc_status}'
+titles:
+ title: 'Título'
+kick:
+ title:
+  menu: 'Expulsar Jogador'
+party:
+ kickm: '&aVocê expulsou {member} &a da party.'
+ invite: '386 : 1 : name>&aConvidar Jogador : desc>&7Convide um jogador para sua party.'
+ kick: '166 : 1 : name>&aExpulsar Jogador : desc>&7Expulse um jogador da sua party.'
+ push: '405 : 1 : name>&aEmpurrar Party : desc>&7Teletransporte todos os membros da party para\n&7seu lobby.'
+ undo: 'TNT : 1 : name>&aDesfazer Party : desc>&7Excluir a party atual.'
+ search: 'SIGN : 1 : name>&aProcurar Jogadores'
+ create: '159:2 : 1 : name>&aCriar Party : desc>\n&eClique para convidar um\n&ejogador para sua party'
+ # Create party slot Menu Party
+ cslot: 31
+ # Invite party slot Menu Party
+ islot: 18
+ # Kick party slot Menu Party
+ kslot: 19
+ # Push party slot Menu Party
+ pslot: 20
+ # Invite party slot Menu Party
+ inviteslot: 18
+ # Undo party slot Menu Party
+ uslot: 21
+ # Search slot Menu Party
+ sslot: 26
+ online: '&aOnline'
+ offline: '&cOffline'
+ role: '&6Líder'
+ rmember: '&7Membro'
+ guild: '&bNenhum'
+ member: 'SKULL_ITEM:3 : 1 : owner>%name% : name>&a%name% : desc>&7Cargo: %role%\n&7Status: %status%\n&7Guilda: %guild%'
+ only_players: '&cSomente jogadores podem usar este comando.'
+ chat_usage: '&cUse /p [mensagem] para conversar com sua Party.'
+ not_in_party: '&cVocê não está em uma Party.'
+ chat_format: '&d[Party] {prefix}&f: {message}'
+ help_message: ' \n&6/p [mensagem] &f_ &7Converse com os membros da Party.\n&6/party open &f_ &7Deixa a Party pública.\n&6/party close &f_ &7Deixa a Party privada.\n&6/party join [jogador] &f_ &7Entrar em uma Party pública.\n&6/party accept [jogador] &f_ &7Aceitar um convite.\n&6/party help &f_ &7Exibe esta mensagem de ajuda.\n&6/party invite [jogador] &f_ &7Convidar um jogador.\n&6/party delete &f_ &7Excluir a Party.\n&6/party kick [jogador] &f_ &7Expulsar um membro.\n&6/party info &f_ &7Ver informações da sua Party.\n&6/party deny [jogador] &f_ &7Recusar um convite.\n&6/party leave &f_ &7Sair da Party.\n&6/party transfer [jogador] &f_ &7Transferir a liderança para outro membro.\n '
+ not_leader: '&cVocê não é o líder da Party.'
+ already_public: '&cSua Party já está pública.'
+ opened: '&aVocê tornou a Party pública para qualquer jogador.'
+ already_private: '&cSua Party já está privada.'
+ closed: '&cVocê tornou a Party acessível apenas para convidados.'
+ join_usage: '&cUse /party join [jogador]'
+ cant_join_own: '&cVocê não pode entrar na sua própria Party.'
+ already_in_party: '&cVocê já faz parte de uma Party.'
+ not_leader_target: '&c{player} não é o líder de uma Party.'
+ closed_party: '&cA Party de {player} está fechada apenas para convidados.'
+ full_party: '&cA Party de {player} está cheia.'
+ joined: ' \n&aVocê entrou na Party de {prefix}!\n '
+ accept_usage: '&cUse /party accept [jogador]'
+ cant_accept_own: '&cVocê não pode aceitar convites de si mesmo.'
+ no_invite: '&c{player} não te convidou para a Party.'
+ deleted_broadcast: ' \n{prefix} &aexcluiu a Party!\n '
+ deleted: '&aVocê excluiu a Party.'
+ kick_usage: '&cUse /party kick [jogador]'
+ not_party_leader: '&cVocê não é o líder da Party.'
+ cant_kick_self: '&cVocê não pode se expulsar.'
+ not_in_your_party: '&cEsse jogador não faz parte da sua Party.'
+ kicked_broadcast: ' \n{kicker} &aexpulsou {kicked} &ada Party!\n '
+ info_format: ' \n&6Líder: {leader}\n&6Pública: {public}\n&6Limite de Membros: &f{members}/{slots}\n&6Membros: {member_list}\n '
+ deny_usage: '&cUse /party deny [jogador]'
+ cant_deny_self: '&cVocê não pode recusar convites de si mesmo.'
+ denied: ' \n&aVocê recusou o convite da Party de {prefix}!\n '
+ left: '&aVocê saiu da Party!'
+ transfer_usage: '&cUse /party transfer [jogador]'
+ cant_transfer_self: '&cVocê não pode transferir a liderança da Party para si mesmo.'
+ transferred_broadcast: ' \n{old_leader} &atransferiu a liderança da Party para {new_leader}&a!\n '
+ invite_usage: '&cUse /party invite [jogador]'
+ player_not_found: '&cJogador não encontrado.'
+ cant_invite_self: '&cVocê não pode se convidar.'
+ only_leader_invite: '&cApenas o líder da Party pode convidar jogadores!'
+ already_invited: '&cVocê já enviou um convite para {player}.'
+ invited: ' \n{prefix} &afoi convidado para a Party. Ele tem 60 segundos para aceitar ou recusar este convite.\n '
+menu:
+ apparence:
+  title: 'Personalizar aparência'
+  rows: 4
+  color: '351:0 : 1 : name>&aCor do Rank MVP+ : desc>&7Jogadores &bMVP&c+&7 podem\n&7desbloquear e alterar a cor\n&7do +.\n\n&eClique para alterar!'
+  punch: '395 : 1 : name>&aSoco Mensagens : desc>&7Personalize a mensagem ao usar\n&7sua habilidade de soco!\n\n&cOs Socos nos lobbies são\n&cexclusivos para &bMVP&c+ ou para\n&caqueles que possuem o item Socar\n&camigos.\n\n&eClique para alterar!'
+  status: '421 : 1 : name>&aStatus : desc>&7Defina um status a ser exibido acima\n&7de sua cabeça nos lobbies.\n\n&eClique para alterar!'
+ ptitle: 'Party'
+ # Menu Profile and Menu Party Rows, Recommended Rows: 6
+ prows: 6
+ # Menu kick rows
+ kcrows: 5
+ back: 'ARROW : 1 : name>&cVoltar'
+ achievements:
+  title: 'Desafios'
+  thepit: 'SKULL_ITEM:3 : 1 : name>&aThe Pit : desc>&fDesafios: {color}{completed}/{max}\n \n&eClique para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNDVkNzI1NTg3Mjk4YWRhYTc5NmU3MjRkNDhlZmIyOThkNzA2YWE4MjhhN2E0YzJhZjBjYmM5YzNjMiJ9fX0='
+  bedwars: 'SKULL_ITEM:3 : 1 : name>&aBed Wars : desc>&fDesafios: {color}{completed}/{max}\n \n&eClique para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmZiMjkwYTEzZGY4ODI2N2VhNWY1ZmNmNzk2YjYxNTdmZjY0Y2NlZTVjZDM5ZDQ2OTcyNDU5MWJhYmVlZDFmNiJ9fX0='
+  skywars: 'SKULL_ITEM:3 : 1 : name>&aSky Wars : desc>&fDesafios: {color}{completed}/{max}\n \n&eClique para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MDI0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkND c4OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
+  thebridge: 'SKULL_ITEM:3 : 1 : name>&aThe Bridge : desc>&fDesafios: {color}{completed}/{max}\n \n&eClique para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhZjg1MzVjNTQ3ZTFkNjhmMmEyMGRkOGVlZTk5YzE2NTAzMTU3N2FhZTYwZWEyZTJlMmNjMTgzMDkwZjU3ZSJ9fX0='
+ preferences:
+  title: 'Preferências'
+  players: '347 : 1 : name>&aJogadores : desc>&7Ative ou desative\n&7jogadores no lobby.'
+  privateMessages: 'PAPER : 1 : name>&aMensagens Privadas : desc>&7Ative ou desative\n&7mensagens enviadas através do /tell.'
+  violence: 'REDSTONE : 1 : name>&aViolência : desc>&7Ative ou desative\n&7partículas de sangue no PvP.'
+  protectionLobby: 'NETHER_STAR : 1 : name>&aProteção no /lobby : desc>&7Ative ou desative\n&7solicitação de confirmação ao usar /lobby.'
+  chatMention: 'MAP : 1 : hide>all : name>&aMenção no Chat : desc>&7Ative ou desative menções em\n&7chat.'
+  state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&fEstado: &7{state}\n \n&eClique para modificar!'
+ boosters:
+  title: 'Multiplicadores'
+  personal: 'POTION : 1 : name>&aMultiplicadores Pessoais : desc>&7Concede um &6Multiplicador de Moedas &7apenas\n&7para &bVOCÊ &7em todos os minigames do servidor\n&7por um curto período de tempo.\n \n&eClique para ver seus multiplicadores!'
+  global: 'POTION:8232 : 1 : hide>all : name>&aMultiplicadores Globais : desc>&7Concede um &6Multiplicador de Moedas &7para\n&bTODOS &7os jogadores em apenas um minigame\n&7por um curto período de tempo.\n \n&eClique para ver seus multiplicadores!'
+  active: '&fMultiplicador Pessoal Ativo:\n {activeMultiplier}'
+  none: '&cVocê não tem nenhum multiplicador ativo.'
+  calculation: '&8• &6Multiplicador {multiplier}x &8({time})\n \n&fCálculo:\n &7Com o multiplicador ativo ao receber &650 Moedas &7o\n &7total recebido será equivalente a &6{total} Moedas&7.'
+  network: ' &8• &b{minigame}: {status}'
+  networkActive: '&6{multiplier}x &7para {player} &8({time})'
+  networkDisabled: '&cDesativado'
+  credits: 'PAPER : 1 : name>&aMultiplicadores de Crédito : desc>&7Os Multiplicadores são cumulativos. Quanto mais\n&7multiplicadores ativos, maior o bônus recebido.\n \n&fMultiplicadores Globais:\n{network}\n \n{result}'
+ statistics:
+  title: 'Estatísticas'
+  bedwars: 'SKULL_ITEM:3 : 1 : name>&aBedWars : desc>&eGeral: \n  &fVitórias: &7%aCore_BedWars_wins%\n  &fPartidas: &7%aCore_BedWars_games%\n \n&fMoedas: &6%aCore_BedWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmZiMjkwYTEzZGY4ODI2N2VhNWY1ZmNmNzk2YjYxNTdmZjY0Y2NlZTVjZDM5ZDQ2OTcyNDU5MWJhYmVlZDFmNiJ9fX0='
+  skywars: 'SKULL_ITEM:3 : 1 : name>&aSkyWars : desc>&eGeral: \n  &fVitórias: &7%aCore_SkyWars_wins%\n  &fPartidas: &7%aCore_SkyWars_games%\n  &fPontos: &7%aCore_SkyWars_rankedpoints%\n \n&fMoedas: &6%aCore_SkyWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MDI0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkNDc4YjZmZDg0OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
+  thebridge: 'SKULL_ITEM:3 : 1 : name>&aThe Bridge : desc>&e1v1:\n  &fAbates: &7%aCore_TheBridge_1v1kills%\n  &fMortes: &7%aCore_TheBridge_1v1deaths%\n  &fPontos: &7%aCore_TheBridge_1v1points%\n  &fVitórias: &7%aCore_TheBridge_1v1wins%\n  &fPartidas: &7%aCore_TheBridge_1v1games%\n&e2v2:\n  &fAbates: &7%aCore_TheBridge_2v2kills%\n  &fMortes: &7%aCore_TheBridge_2v2deaths%\n  &fPontos: &7%aCore_TheBridge_2v2points%\n  &fVitórias: &7%aCore_TheBridge_2v2wins%\n  &fPartidas: &7%aCore_TheBridge_2v2games%\n \n&eSequência de Vitórias:\n  &fDiária: &7%aCore_TheBridge_winstreak%\n \n&fMoedas: &6%aCore_TheBridge_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhZjg1MzVjNTQ3ZTFkNjhmMmEyMGRkOGVlZTk5YzE2NTAzMTU3N2FhZTYwZWEyZTJlMmNjMTgzMDkwZjU3ZSJ9fX0='
+  thepit: 'SKULL_ITEM:3 : 1 : name>&aThe Pit : desc>&eGeral: \n  &fAbates: &7%aCore_ThePit_kills%\n  &fMortes: &7%aCore_ThePit_deaths%\n  &fAssistências: &7%aCore_ThePit_assists%\n \n&fMoedas: &6%aCore_BedWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNDVkNzI1NTg3Mjk4YWRhYTc5NmU3MjRkNDhlZmIyOThkNzA2YWE4MjhhN2E0YzJhZjBjYmM5YzNjMiJ9fX0='
+ minigames:
+  contribute: 'BOOK : 1 : name>&bContribua para o servidor : desc>&7Você pode ajudar o servidor tornando_se\n&eVIP&7!\n\n&7Além de ajudar a manter o servidor,\n&7você também terá acesso a vários\n&7benefícios exclusivos!'
+  slot: 32
+  active: true
+ cosmetic_slot:
+  back: 48
+ cosmetic:
+  back: 'ARROW : 1 : name>&aVoltar'
+apparence:
+ status:
+  slot: 15
+ color:
+  slot: 11
+ punch:
+  slot: 13
+actionBar:
+ queueMessage: '&aVocê está na fila para entrar no servidor &8{server} &7(Posição #{position})'
+connection:
+ message: "§aConectando..."
+ notsucess: '§cNão foi possível conectar a este servidor no momento!'
+gamemode:
+ mode: '§cModo não encontrado.'
+ changed: '&aVocê mudou o modo de jogo de {mode} para {to}.'
+ changer: '&aSeu modo de jogo foi alterado para {type}.'
+vanish:
+ mode: '§cVocê está invisível para outros jogadores!'
+waiting:
+ timer: '§cVocê precisa esperar {more} segundos para usá-lo novamente.'
+visibility:
+ on: '&aVisibilidade dos jogadores ativada.'
+ off: '&aVisibilidade dos jogadores desativada.'
+booster:
+ type: 'Global'
+ type2: 'Pessoal'
+ list:
+  item: 'POTION{type} : 1 : hide>all : name>&aBooster {boosterType} : desc>&fMultiplicador: &6{multiplier}x\n&fDuração: &7{duration}\n \n&eClique para ativar o booster!'
+  empty: 'WEB : 1 : name>&cVocê não tem nenhum Booster!'
+ network:
+  notInMinigame: '&cVocê precisa estar em um servidor de Minigame para ativar este Booster.'
+  alreadyActive: '&cJá existe um Booster Global ativo para {minigame}.'
+  activated: ' \n {roleColor}{player} &7ativou um &6Booster Global de Moedas&7.\n &bTODOS &7os jogadores recebem um bônus de {multiplier}x &7em jogos de &6{minigame}&7.\n '
+ personal:
+  alreadyActive: '&cVocê já tem um Booster Pessoal ativo.'
+  activated: '&aVocê ativou um &6Booster de Moeda {multiplier}x &8({duration})&a.'
+language:
+ icon:
+  has_desc:
+   select: '&eClique para selecionar!'
+   selected: '&eClique para desselecionar!'
+menucosmetics:
+ join_message: '323 : 1 : name>&aMensagem de Entrada : desc>&7Ao entrar no lobby, anuncie\n&7sua entrada com estilo! \n\n&7Desbloqueados: {color}{owned}/{max} &8({percentage}%)\n&7Selecionado Atualmente: {selected} \n\n&eClique para ver!'
+ colored_tag: '38:7 : 1 : name>&aTag Colorida : desc>&7Mude a cor da tag e\n&7fique estiloso! \n\n&7Desbloqueados: {color}{owned}/{max} &8({percentage}%)\n&7Selecionado Atualmente: {selected} \n\n&eClique para ver!'
+ empty_slot: '160:7 : 1 : name>&7'
+cosmetic:
+ rank: 'Cor do Rank'
+ punch: 'Punho'
+ join_message_name: 'Mensagem de Entrada'
+ coloredtag_name: 'Tag Colorida'
+message:
+ nohaveperm: '&cVocê não tem permissão suficiente para isso.'
+ deathmessage: '\n&eMensagens que podem ser exibidas ao entrar no lobby:\n \n'
+ coloredtag: '\n&eSua tag ficará assim:\n {color} {role}\n'
+menubuycashsearch:
+ title: 'Confirmar'
+main:
+ menu_buy_cancel: '159:14 : 1 : name>&cCancelar'
+ menu_confirm_cash: '159:13 : 1 : name>&aConfirmar : desc>&7Desbloquear "{cosmetic_name}"\n&7Custo: &2{cosmetic_cash}&7.'
+ not_enough_coins: '&cVocê não tem Moedas suficientes para concluir esta transação.'
+ cosmetic_purchased: '&aVocê comprou ''{name}''!'

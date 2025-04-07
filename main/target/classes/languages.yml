@@ -1,0 +1,13 @@
+languages:
+  en_US:
+    icon: 'SKULL_ITEM:3 : 1 : name>&aEnglish : desc>&7English language\n\n{color}{select_text} : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDZjOTkyM2JlYmQ5YWQ5MGE4MGEwNzMxYzNmM2I5ZGI3MjliMDc4NTAxNWUxOGUzZWMwN2U0ZTkxMDk5YmUwNiJ9fX0='
+  pt_BR:
+    icon: 'SKULL_ITEM:3 : 1 : name>&aPortugues : desc>&7Idioma Portugues\n\n{color}{select_text} : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTY2OGExZmI2YWY4MWIyMzFiYmNjNGRlNWY3Zjk1ODAzYmJkMTk0ZjU4MjdkYTAyN2ZhNzAzMjFjZjQ3YyJ9fX0'
+  es_ES:
+    icon: 'SKULL_ITEM:3 : 1 : name>&aEspanol : desc>&7Idioma Espanol\n\n{color}{select_text} : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzJkNzMwYjZkZGExNmI1ODQ3ODNiNjNkMDgyYTgwMDQ5YjVmYTcwMjI4YWJhNGFlODg0YzJjMWZjMGMzYThiYyJ9fX0='
+  ko_KR:
+    icon: 'SKULL_ITEM:3 : 1 : name>&a한국 : desc>&7언어 한국어\n\n{color}{select_text} : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2ExMjkxM2Q3ZGY2NDBkMThiY2M3YTQ1YTgxNzJjNjhmZmEwNDc1NmU4NGM2ZjBhMmVkYTNkYTQ1ZTAwZGFkZCJ9fX0='
+  zh_CN:
+    icon: 'SKULL_ITEM:3 : 1 : name>&a中国人 : desc>&7语言 中国人 \n\n{color}{select_text} : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Y5YmMwMzVjZGM4MGYxYWI1ZTExOThmMjlmM2FkM2ZkZDJiNDJkOWE2OWFlYjY0ZGU5OTA2ODE4MDBiOThkYyJ9fX0='
+  ja_JP:
+    icon: 'SKULL_ITEM:3 : 1 : name>&a日本 : desc>&7言語 日本\n\n{color}{select_text} : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDZjMmNhNzIzODY2NmFlMWI5ZGQ5ZGFhM2Q0ZmM4MjlkYjIyNjA5ZmI1NjkzMTJkZWMxZmIwYzhkNmRkNmMxZCJ9fX0='
