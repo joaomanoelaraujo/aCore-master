@@ -33,7 +33,7 @@ import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
 import me.joaomanoel.d4rkk.dev.replay.*;
 import me.joaomanoel.d4rkk.dev.servers.ServerItem;
 import me.joaomanoel.d4rkk.dev.titles.TitleLoader;
-import me.joaomanoel.d4rkk.dev.utils.LanguageIcons;
+import me.joaomanoel.d4rkk.dev.utils.langs.LanguageManager;
 import me.joaomanoel.d4rkk.dev.utils.queue.Queue;
 import me.joaomanoel.d4rkk.dev.utils.queue.QueuePlayer;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -56,7 +56,7 @@ import java.util.logging.Level;
 public class Core extends KPlugin {
   
   public static final List<String> warnings = new ArrayList<>();
-  public static final List<String> minigames = Arrays.asList("Block Sumo", "Sky Wars", "Bed Wars", "The Bridge", "The Pit");
+  public static final List<String> minigames = Arrays.asList("Block Sumo", "Sky Wars", "Bed Wars", "The Bridge", "The Pit", "Mega Walls");
 
 
 
@@ -66,6 +66,7 @@ public class Core extends KPlugin {
   public static String minigame = "";
 
   private static Core instance;
+  private static LanguageManager languageManager;
   private static Location lobby;
   public static Metrics metrics;
   public static Location getLobby() {
@@ -193,7 +194,7 @@ public class Core extends KPlugin {
 
 
     try {
-      LanguageAPI.setupLanguages("EN_US", "PT_BR", "ES_ES", "JA_JP", "KO_KR", "ZH_CN");
+      LanguageAPI.setupLanguages("EN_US", "PT_BR");
     } catch (IOException ex) {
       getLogger().severe("Ocorreu um erro ao carregar as linguagens padrão.");
       throw new RuntimeException(ex);
@@ -234,10 +235,9 @@ public class Core extends KPlugin {
 
     Commands.setupCommands();
     Listeners.setupListeners();
-    LanguageIcons.load(this);
 
-
-
+    if (this.getConfig().getBoolean("language-system")){
+  }
 
 //    ReplayManager.register();
 //    ReplaySaver.register(new DatabaseReplaySaver());

@@ -1,4 +1,3 @@
-#Languages available: PT_BR(Portuguese), ES_ES(Spanish), EN_US(English), KO_KR(Korean), ZH_CH(Chinese), JA_JP (Japanese)
 defaultLanguage: 'PT_BR'
 
 database:

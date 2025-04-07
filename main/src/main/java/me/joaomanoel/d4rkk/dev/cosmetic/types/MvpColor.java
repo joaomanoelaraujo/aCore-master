@@ -62,14 +62,14 @@ public class MvpColor extends Cosmetic {
 
     Role role = Role.getRoleByPermission(this.getPermission());
     String color = has ?
-        (isSelected ? LanguageAPI.getConfig(profile).getString("cosmetics.color.selected") : LanguageAPI.getConfig(profile).getString("cosmetics.color.unlocked")) :
+        (isSelected ? LanguageAPI.getConfig(profile).getString("cosmetics.color.selected") : LanguageAPI.getConfig(profile).getString("cosmetics$color$unlocked")) :
         ((CashManager.CASH && cash >= this.getCash())) && canBuy ? LanguageAPI.getConfig(profile).getString("cosmetics.color.canbuy") : LanguageAPI.getConfig(profile).getString("cosmetics.color.locked");
     String desc = (has && canBuy ?
             LanguageAPI.getConfig(profile).getString("cosmetics.mvpcolor.icon.has_desc.start").replace("{has_desc_status}", isSelected ? LanguageAPI.getConfig(profile).getString("cosmetics.icon.has_desc.selected") : LanguageAPI.getConfig(profile).getString("cosmetics.icon.has_desc.select")) :
         canBuy ?
                 LanguageAPI.getConfig(profile).getString("cosmetics.mvpcolor.icon.buy_desc.start")
                 .replace("{buy_desc_status}", ((CashManager.CASH && cash >= this.getCash())) ? LanguageAPI.getConfig(profile).getString("cosmetics.icon.buy_desc.click_to_buy") : LanguageAPI.getConfig(profile).getString("cosmetics.icon.buy_desc.enough")) :
-                LanguageAPI.getConfig(profile).getString("cosmetics.mvpcolor.icon.perm_desc.start")
+                LanguageAPI.getConfig(profile).getString("cosmetics.mvpcolor.icon.perm_desc$start")
                 .replace("{perm_desc_status}", (role == null ? LanguageAPI.getConfig(profile).getString("cosmetics.icon.perm_desc.common") : LanguageAPI.getConfig(profile).getString("cosmetics.icon.perm_desc.role").replace("{role}", role.getName()))))
         .replace("{name}", this.name);
     ItemStack item = BukkitUtils.deserializeItemStack(this.icon + " : name>" + color + this.name + " : desc>" + desc);

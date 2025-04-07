@@ -49,7 +49,7 @@ public abstract class Party {
     String leader = Role.getPrefixed(this.getLeader());
     this.invitesMap.put(Manager.getName(target).toLowerCase(), System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(MINUTES_UNTIL_EXPIRE_INVITE));
 
-
+    // Obter a mensagem de convite do config.yml
     String message = Core.getInstance().getConfig().getString("messages.invite").replace("%leader%", leader);
     message = ChatColor.translateAlternateColorCodes('&', message);
 

@@ -40,8 +40,8 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
 
     this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.cosmetic.back")), LanguageAPI.getConfig(profile).getInt("menu.cosmetic_slot.back"));
 
-//    System.out.println(LanguageAPI.getConfig(profile).getString("menucosmetics.join_message"));
-//    // Configuração dos itens do menu
+    System.out.println(LanguageAPI.getConfig(profile).getString("menucosmetics.join_message"));
+    // Configuração dos itens do menu
     String color = "§a";
     StringBuilder sb1 = new StringBuilder();
     Optional<JoinMessage> selectedCosmetic8 = Cosmetic.listByType(JoinMessage.class)

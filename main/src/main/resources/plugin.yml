@@ -1,6 +1,10 @@
 author: D4RKK
 name: aCore
-version: 2.1
+version: 2.0
 depend: [ProtocolLib, PlaceholderAPI]
+commands:
+  replay:
+    description: Main Replay command
+    aliases: [rp]
 
 main: me.joaomanoel.d4rkk.dev.Core

@@ -28,6 +28,7 @@ import me.joaomanoel.d4rkk.dev.utils.PlayerIPUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import me.joaomanoel.d4rkk.dev.utils.aUpdater;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
+import me.joaomanoel.d4rkk.dev.utils.langs.LanguageMessage;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -39,6 +40,7 @@ import org.bukkit.Material;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
 import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -62,6 +64,7 @@ public class Listeners implements Listener {
   private static final Map<UUID, Long> MESSAGE_COOLDOWNS = new ConcurrentHashMap<>();
   private final Set<UUID> firstTimePlayers = Collections.newSetFromMap(new ConcurrentHashMap<>());
 
+  // Command reflection utilities
   private static final FieldAccessor<Map> COMMAND_MAP = Accessors.getField(SimpleCommandMap.class, "knownCommands", Map.class);
   private static final SimpleCommandMap SIMPLE_COMMAND_MAP = (SimpleCommandMap) Accessors.getMethod(Bukkit.getServer().getClass(), "getCommandMap").invoke(Bukkit.getServer());
   private static final FieldAccessor<WatchdogThread> RESTART_WATCHDOG = Accessors.getField(WatchdogThread.class, "instance", WatchdogThread.class);
@@ -113,8 +116,8 @@ public class Listeners implements Listener {
   private void handleFirstTimePlayer(Player player) {
     EnumSound.LEVEL_UP.play(player, 1.0F, 2.0F);
     String country = PlayerIPUtils.getPlayerCountry(player);
-    //String message = LanguageMessage.getLanguageMessage(player, country);
-   // player.sendMessage(message);
+    String message = LanguageMessage.getLanguageMessage(player, country);
+    player.sendMessage(message);
 
   }
 
@@ -138,6 +141,7 @@ public class Listeners implements Listener {
       return;
     }
 
+    // Handle MVP+ cosmetics
 
     Cosmetic.listByType(MvpColor.class).stream()
             .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))

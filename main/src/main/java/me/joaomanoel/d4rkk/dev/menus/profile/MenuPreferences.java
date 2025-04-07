@@ -44,7 +44,7 @@ public class MenuPreferences extends PlayerMenu {
     BloodAndGore bg = pc.getBloodAndGore();
     this.setItem(14, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.preferences.violence")));
     this.setItem(23, BukkitUtils.deserializeItemStack(
-            LanguageAPI.getConfig(profile).getString("menu.preferences.state")
+            LanguageAPI.getConfig(profile).getString("menu.preferences;state")
                     .replace("{inkSack}", bg.getInkSack())
                     .replace("{name}", bg.getName())
                     .replace("{state}", StringUtils.stripColors(bg.getName()))));

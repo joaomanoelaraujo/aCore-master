@@ -179,7 +179,7 @@ public class Role {
     if (!removeFake && Manager.isFake(Manager.getName(player))) {
       return Manager.getFakeRole(Manager.getName(player));
     } else {
-      Iterator<Role> var2 = ROLES.iterator();
+      Iterator var2 = ROLES.iterator();
 
       Role role;
       do {
@@ -187,7 +187,7 @@ public class Role {
           return getLastRole();
         }
 
-        role = var2.next();
+        role = (Role)var2.next();
       } while(!role.has(player));
 
       return role;

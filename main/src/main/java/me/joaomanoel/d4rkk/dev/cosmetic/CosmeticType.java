@@ -5,8 +5,8 @@ import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 public enum CosmeticType {
 
     JOIN_MESSAGE(LanguageAPI.getConfig().getString("cosmetic.join_message_name")),
-    MVPCOLOR(LanguageAPI.getConfig().getString("cosmetic.rank")),
-    PUNCH(LanguageAPI.getConfig().getString("cosmetic.punch")),
+    MVPCOLOR("Rank Color"),
+    PUNCH("Punch"),
     COLORED_TAG(LanguageAPI.getConfig().getString("cosmetic.coloredtag_name"));
 
     private final String[] names;

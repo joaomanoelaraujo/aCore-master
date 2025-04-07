@@ -22,7 +22,7 @@ public class KConfig {
   private final File file;
   private YamlConfiguration config;
   
-  protected KConfig(KPlugin plugin, String path, String name) {
+  private KConfig(KPlugin plugin, String path, String name) {
     this.plugin = plugin;
     this.file = new File(path + "/" + name + ".yml");
     if (!file.exists()) {

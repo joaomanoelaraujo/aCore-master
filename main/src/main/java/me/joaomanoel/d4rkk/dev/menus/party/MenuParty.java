@@ -1,18 +1,18 @@
 package me.joaomanoel.d4rkk.dev.menus.party;
 
 import me.joaomanoel.d4rkk.dev.Core;
+import me.joaomanoel.d4rkk.dev.languages.LangAPI;
+import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
 import me.joaomanoel.d4rkk.dev.Manager;
 import me.joaomanoel.d4rkk.dev.bukkit.BukkitParty;
 import me.joaomanoel.d4rkk.dev.bukkit.BukkitPartyManager;
 import me.joaomanoel.d4rkk.dev.bungee.Bungee;
 import me.joaomanoel.d4rkk.dev.bungee.party.BungeeParty;
 import me.joaomanoel.d4rkk.dev.bungee.party.BungeePartyManager;
-import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.UpdatablePlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
-import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
 import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import org.bukkit.Bukkit;
@@ -29,18 +29,20 @@ import org.bukkit.inventory.ItemStack;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import static me.joaomanoel.d4rkk.dev.languages.translates.EN_US.*;
+
 public class MenuParty extends UpdatablePlayerMenu {
 
   private static final SimpleDateFormat SDF = new SimpleDateFormat("d 'de' MMMM. yyyy 'às' HH:mm",
           Locale.forLanguageTag("en-US"));
 
   public MenuParty(Profile profile) {
-    super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("menu.ptitle"),
-            LanguageAPI.getConfig(profile).getInt("menu.prows"));
+    super(profile.getPlayer(), LangAPI.getTranslatedText("menu$ptitle", profile), menu$prows);
 
     this.register(Core.getInstance(), 8);
     this.open();
   }
+
 
   @EventHandler
   public void onInventoryClick(InventoryClickEvent evt) {
@@ -58,10 +60,8 @@ public class MenuParty extends UpdatablePlayerMenu {
           ItemStack item = evt.getCurrentItem();
 
           if (item != null && item.getType() != Material.AIR) {
-            KConfig config = LanguageAPI.getConfig(profile);
-
-            if (evt.getSlot() == config.getInt("party.cslot")) {
-              this.player.sendMessage(config.getString("player.enter"));
+            if (evt.getSlot() == party$cslot) {
+              this.player.sendMessage(LangAPI.getTranslatedText("player$enter", profile));
               this.player.closeInventory();
 
               Bukkit.getScheduler().runTask(Core.getInstance(), () -> {
@@ -74,7 +74,7 @@ public class MenuParty extends UpdatablePlayerMenu {
                       if (targetPlayer != null) {
                         invitePlayer(targetPlayer.getName());
                       } else {
-                        player.sendMessage(config.getString("party.player_not_found"));
+                        player.sendMessage(LangAPI.getTranslatedText("party$player_not_found", profile));
                       }
 
                       chatEvent.setCancelled(true);
@@ -84,15 +84,15 @@ public class MenuParty extends UpdatablePlayerMenu {
                 };
                 Bukkit.getPluginManager().registerEvents(chatListener, Core.getInstance());
               });
-            } else if (evt.getSlot() == config.getInt("party.uslot")) {
+            } else if (evt.getSlot() == party$uslot){
               BukkitParty party = BukkitPartyManager.getLeaderParty(player.getName());
               if (party != null) {
                 party.delete();
                 player.closeInventory();
               }
-            } else if (evt.getSlot() == config.getInt("party.pslot")) {
-              checkAndExecute(player);
-            } else if (evt.getSlot() == config.getInt("party.kslot")) {
+            } else if (evt.getSlot() == party$pslot){
+             checkAndExecute(player);
+            } else if (evt.getSlot() == party$kslot) {
               BukkitParty party = BukkitPartyManager.getLeaderParty(player.getName());
               if (party == null) {
                 return;
@@ -105,9 +105,9 @@ public class MenuParty extends UpdatablePlayerMenu {
               if (party.getLeader().equals(player.getName())) {
                 new MenuKick(profile);
               }
-            } else if (evt.getSlot() == config.getInt("profile.slot")) {
+            } else if (evt.getSlot() == profile$slot){
               new MenuProfile(profile);
-            } else if (evt.getSlot() == config.getInt("party.inviteslot")) {
+            } else if (evt.getSlot() == party$inviteslot) {
               BukkitParty party = BukkitPartyManager.getLeaderParty(player.getName());
               if (party == null) {
                 return;
@@ -118,7 +118,9 @@ public class MenuParty extends UpdatablePlayerMenu {
               }
 
               if (party.getLeader().equals(player.getName())) {
-                this.player.sendMessage(config.getString("player.enter"));
+
+
+                this.player.sendMessage(LangAPI.getTranslatedText("player$enter", profile));
                 this.player.closeInventory();
 
                 Bukkit.getScheduler().runTask(Core.getInstance(), () -> {
@@ -131,7 +133,7 @@ public class MenuParty extends UpdatablePlayerMenu {
                         if (targetPlayer != null) {
                           invitePlayer(targetPlayer.getName());
                         } else {
-                          player.sendMessage(config.getString("party.player_not_found"));
+                          player.sendMessage(LangAPI.getTranslatedText("party$player_not_found", profile));
                         }
 
                         chatEvent.setCancelled(true);
@@ -149,8 +151,13 @@ public class MenuParty extends UpdatablePlayerMenu {
     }
   }
 
+  public void cancel() {
+    HandlerList.unregisterAll(this);
+  }
+
   @Override
   public void update() {
+
     if (player == null || !player.isOnline()) {
       this.cancel();
       return;
@@ -162,80 +169,68 @@ public class MenuParty extends UpdatablePlayerMenu {
       return;
     }
 
-    KConfig config = LanguageAPI.getConfig(profile);
-
-    this.setItem(config.getInt("profile.slot"), BukkitUtils.putProfileOnSkull(this.player,
-            BukkitUtils.deserializeItemStack(config.getString("profile.menu.profile")
+    this.setItem(profile$slot, BukkitUtils.putProfileOnSkull(this.player,
+            BukkitUtils.deserializeItemStack(EN_US.profile$menu$profile
                     .replace("{rank}", Role.getRoleByName(profile.getDataContainer("aCoreProfile", "role").getAsString()).getName())
                     .replace("{cash}", StringUtils.formatNumber(profile.getStats("aCoreProfile", "cash")))
                     .replace("{created}", SDF.format(profile.getDataContainer("aCoreProfile", "created").getAsLong()))
                     .replace("{last}", SDF.format(profile.getDataContainer("aCoreProfile", "lastlogin").getAsLong()))
             )
     ));
+    this.setItem(profile$fslot, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("profile$mfriends", profile)));
 
-    this.setItem(config.getInt("profile.fslot"),
-            BukkitUtils.deserializeItemStack(config.getString("profile.mfriends")));
+    this.setItem(profile$pslot, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("profile$mparty", profile)));
 
-    this.setItem(config.getInt("profile.pslot"),
-            BukkitUtils.deserializeItemStack(config.getString("profile.mparty")));
-
-    if (config.getBoolean("menuprofile.glass")) {
+    if (menuprofile$glass) {
       for (int i = 9; i <= 17; i++) {
-        this.setItem(i, BukkitUtils.deserializeItemStack(config.getString("menuprofile.color_party")));
+        this.setItem(i, BukkitUtils.deserializeItemStack(menuprofile$color_party));
       }
     }
+
+    //todo: if party is null
 
     BukkitParty party = BukkitPartyManager.getLeaderParty(player.getName());
 
     if (party == null) {
       party = BukkitPartyManager.getMemberParty(player.getName());
       if (party == null) {
-        this.setItem(config.getInt("party.cslot"),
-                BukkitUtils.deserializeItemStack(config.getString("party.create")));
+        this.setItem(party$cslot, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("party$create", profile)));
       } else {
-        displayPartyMembers(profile);
+        displayPartyMembers();
       }
     } else if (party.getLeader().equals(player.getName())) {
-      this.setItem(config.getInt("party.islot"),
-              BukkitUtils.deserializeItemStack(config.getString("party.invite")));
-      this.setItem(config.getInt("party.kslot"),
-              BukkitUtils.deserializeItemStack(config.getString("party.kick")));
-      this.setItem(config.getInt("party.pslot"),
-              BukkitUtils.deserializeItemStack(config.getString("party.push")));
-      this.setItem(config.getInt("party.uslot"),
-              BukkitUtils.deserializeItemStack(config.getString("party.undo")));
-      this.setItem(config.getInt("party.sslot"),
-              BukkitUtils.deserializeItemStack(config.getString("party.search")));
 
-      displayPartyMembers(profile);
+      this.setItem(party$islot, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("party$invite", profile)));
+      this.setItem(party$kslot, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("party$kick", profile)));
+      this.setItem(party$pslot, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("party$push", profile)));
+      this.setItem(party$uslot, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("party$undo", profile)));
+      this.setItem(party$sslot, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("party$search", profile)));
+
+      displayPartyMembers();
     } else if (party.getMembers().contains(player.getName())) {
-      displayPartyMembers(profile);
+      displayPartyMembers();
     }
   }
 
-  public void displayPartyMembers(Profile profile) {
+  public void displayPartyMembers() {
     BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
 
     if (party == null) {
       return;
     }
 
-    KConfig config = LanguageAPI.getConfig(profile);
     int slot = party.isLeader(player.getName()) ? 27 : 18;
 
     for (String memberName : party.getMembers()) {
       Player memberPlayer = Bukkit.getPlayerExact(memberName);
 
-      String status = (memberPlayer != null && memberPlayer.isOnline()) ?
-              config.getString("party.online") : config.getString("party.offline");
-      String role = party.isLeader(memberName) ?
-              config.getString("party.role") : config.getString("party.rmember");
-      String guild = config.getString("party.guild");
-
-      String itemData = config.getString("party.member")
-              .replace("%name%", memberName)
-              .replace("%role%", role)
-              .replace("%status%", status)
+      String status = (memberPlayer != null && memberPlayer.isOnline()) ? party$online : party$offline;
+      String role = party.isLeader(memberName) ? party$role : party$rmember;
+      String guild = party$guild;
+      String itemData = party$member
+              .replace("%name%", memberName)      // Substitui %name% pelo nome do jogador
+              .replace("%role%", role) // Substitui %role% pelo prefixo do cargo
+              .replace("%status%", status)        // Substitui %status% pelo status do jogador
               .replace("%guild%", guild);
 
       this.setItem(slot, BukkitUtils.deserializeItemStack(itemData));
@@ -247,56 +242,6 @@ public class MenuParty extends UpdatablePlayerMenu {
     }
   }
 
-  private void invitePlayer(String targetName) {
-    Player target = Bukkit.getPlayerExact(targetName);
-    Profile profile = Profile.getProfile(player.getName());
-    KConfig config = LanguageAPI.getConfig(profile);
-
-    if (target == null) {
-      player.sendMessage(config.getString("party.player_not_found"));
-      return;
-    }
-
-    if (targetName.equalsIgnoreCase(player.getName())) {
-      player.sendMessage(config.getString("party.cant_invite_self"));
-      return;
-    }
-
-    BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
-    if (party == null) {
-      party = BukkitPartyManager.createParty(player);
-    }
-
-    if (!party.isLeader(player.getName())) {
-      player.sendMessage(config.getString("party.only_leader_invite"));
-      return;
-    }
-
-    if (!party.canJoin()) {
-      player.sendMessage(config.getString("party.full_party")
-              .replace("{player}", Manager.getCurrent(targetName)));
-      return;
-    }
-
-    if (party.isInvited(targetName)) {
-      player.sendMessage(config.getString("party.already_invited")
-              .replace("{player}", Manager.getCurrent(targetName)));
-      return;
-    }
-
-    if (BukkitPartyManager.getMemberParty(targetName) != null) {
-      player.sendMessage(config.getString("party.already_in_party"));
-      return;
-    }
-
-    party.invite(target);
-    player.sendMessage(config.getString("party.invited")
-            .replace("{prefix}", Role.getPrefixed(targetName)));
-  }
-
-  public void cancel() {
-    HandlerList.unregisterAll(this);
-  }
 
   @EventHandler
   public void onPlayerQuit(PlayerQuitEvent evt) {
@@ -329,4 +274,47 @@ public class MenuParty extends UpdatablePlayerMenu {
       }
     }
   }
+
+  private void invitePlayer(String targetName) {
+    Player target = Bukkit.getPlayerExact(targetName);
+    Profile profile = Profile.getProfile(player.getName());
+    if (target == null) {
+      player.sendMessage(LangAPI.getTranslatedText("party$player_not_found", profile));
+      return;
+    }
+
+    if (targetName.equalsIgnoreCase(player.getName())) {
+      player.sendMessage(LangAPI.getTranslatedText("party$cant_invite_self", profile));
+      return;
+    }
+
+    BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
+    if (party == null) {
+      party = BukkitPartyManager.createParty(player);
+    }
+
+    if (!party.isLeader(player.getName())) {
+      player.sendMessage(LangAPI.getTranslatedText("party$only_leader_invite", profile));
+      return;
+    }
+
+    if (!party.canJoin()) {
+      player.sendMessage(LangAPI.getTranslatedText("party$full_party", profile).replace("{player}", Manager.getCurrent(targetName)));
+      return;
+    }
+
+    if (party.isInvited(targetName)) {
+      player.sendMessage(LangAPI.getTranslatedText("party$already_invited", profile).replace("{player}", Manager.getCurrent(targetName)));
+      return;
+    }
+
+    if (BukkitPartyManager.getMemberParty(targetName) != null) {
+      player.sendMessage(LangAPI.getTranslatedText("party$already_in_party", profile));
+      return;
+    }
+
+    party.invite(target);
+    player.sendMessage(LangAPI.getTranslatedText("party$invited", profile).replace("{prefix}", Role.getPrefixed(targetName)));
+  }
+
 }

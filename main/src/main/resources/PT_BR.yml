@@ -1,12 +1,9 @@
 # aCore _ Created by D4RKK 
 # Version: 2.0
-already: '§cVocê já está conectado ao servidor.'
 discord:
  link: 'https://discord.gg/aaa'
 loja:
  link: 'www.yourserver.com'
-languages:
- title: 'Selecionar Idioma'
 profileo:
  menu:
   levelInfo: 'SKULL_ITEM:3 : 1 : name>%s : desc>&7Nível: &6%s\n&7Guilda: &b%s\n&7Rank: %s'
@@ -37,7 +34,6 @@ profile:
  apparence: '299 : 1 : name>&aPersonalizar Aparência : desc>\n&7Personalize as seguintes opções visuais\n&7para você mesmo!\n &f▪ Cor do Rank MVP+\n &f▪ Mensagens de Soco\n\n&eClique para ver! : paint>27:27:118'
  status: '145:0 : 1 : name>&aStatus da Conta : desc>&7Verifique o status da sua conta e seu\n&7histórico de punições. \n\n&eClique para ver!'
  language: 'SKULL_ITEM:3 : 1 : name>&aIdiomas : desc>&7Mude seu idioma\n\n&7Atualmente disponíveis: {languages} \n\n&7Mais idiomas estarão disponíveis em breve!\n\n&eClique para mudar o idioma! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjE1MWNmZmRhZjMwMzY3MzUzMWE3NjUxYjM2NjM3Y2FkOTEyYmE0ODU2NDMxNThlNTQ4ZDU5YjJlYWQ1MDExIn19fQ=='
- langslot: 40
  slot: 4
  # Apparence icon slot
  aslot: 30
@@ -71,11 +67,11 @@ cosmetics:
  punchmessage:
   icon:
    perm_desc:
-    start: '&8Mensagem de soco\n\n&7Selecione a Mensagem de soco {name} para\n&7mensagens de bate-papo no jogo!\n\n&eClique direito para visualizar! \n \n{perm_desc_status}'
+    start: '&8Punch Message\n\n&7Select the {name} Punch Message for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n \n{perm_desc_status}'
    buy_desc:
-    start: '&8Mensagem de soco\n\n&7Selecione a Mensagem de soco {name} para\n&7mensagens de bate-papo no jogo!\n\n&eClique direito para visualizar! \n \n{buy_desc_status}'
+    start: '&8Punch Message\n\n&7Select the {name} Punch Message for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n \n{buy_desc_status}'
    has_desc:
-    start: '&8Mensagem de soco\n\n&7Selecione a Mensagem de soco {name} para\n&7mensagens de bate-papo no jogo!\n\n&eClique direito para visualizar! \n\n{has_desc_status}'
+    start: '&8Punch Message\n\n&7Select the {name} Punch Message for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n\n{has_desc_status}'
  mvpcolor:
   icon:
    perm_desc:
@@ -85,10 +81,10 @@ cosmetics:
    has_desc:
     start: '&8Cor MVP\n \n{has_desc_status}'
  color:
-  locked: '§c'
-  canbuy: '§e'
-  unlocked: '§a'
-  selected: '§a'
+  locked: '&c'
+  canbuy: '&e'
+  unlocked: '&a'
+  selected: '&a'
  icon:
   perm_desc:
    common: '&cVocê não tem permissão.'
@@ -147,48 +143,48 @@ party:
  role: '&6Líder'
  rmember: '&7Membro'
  guild: '&bNenhum'
- member: 'SKULL_ITEM:3 : 1 : owner>%name% : name>&a%name% : desc>&7Cargo: %role%\n&7Status: %status%\n&7Guilda: %guild%'
+ member: 'SKULL_ITEM:3 : 1 : owner>%name% : name>&a%name% : desc>&7Cargo: %role%\n&7Status: %status%\n&7Guild: %guild%'
  only_players: '&cSomente jogadores podem usar este comando.'
- chat_usage: '&cUse /p [mensagem] para conversar com sua Party.'
- not_in_party: '&cVocê não está em uma Party.'
+ chat_usage: '&cUse /p [message] to chat with your Party.'
+ not_in_party: '&cYou are not in a Party.'
  chat_format: '&d[Party] {prefix}&f: {message}'
- help_message: ' \n&6/p [mensagem] &f_ &7Converse com os membros da Party.\n&6/party open &f_ &7Deixa a Party pública.\n&6/party close &f_ &7Deixa a Party privada.\n&6/party join [jogador] &f_ &7Entrar em uma Party pública.\n&6/party accept [jogador] &f_ &7Aceitar um convite.\n&6/party help &f_ &7Exibe esta mensagem de ajuda.\n&6/party invite [jogador] &f_ &7Convidar um jogador.\n&6/party delete &f_ &7Excluir a Party.\n&6/party kick [jogador] &f_ &7Expulsar um membro.\n&6/party info &f_ &7Ver informações da sua Party.\n&6/party deny [jogador] &f_ &7Recusar um convite.\n&6/party leave &f_ &7Sair da Party.\n&6/party transfer [jogador] &f_ &7Transferir a liderança para outro membro.\n '
- not_leader: '&cVocê não é o líder da Party.'
- already_public: '&cSua Party já está pública.'
- opened: '&aVocê tornou a Party pública para qualquer jogador.'
- already_private: '&cSua Party já está privada.'
- closed: '&cVocê tornou a Party acessível apenas para convidados.'
- join_usage: '&cUse /party join [jogador]'
- cant_join_own: '&cVocê não pode entrar na sua própria Party.'
- already_in_party: '&cVocê já faz parte de uma Party.'
- not_leader_target: '&c{player} não é o líder de uma Party.'
- closed_party: '&cA Party de {player} está fechada apenas para convidados.'
- full_party: '&cA Party de {player} está cheia.'
- joined: ' \n&aVocê entrou na Party de {prefix}!\n '
- accept_usage: '&cUse /party accept [jogador]'
- cant_accept_own: '&cVocê não pode aceitar convites de si mesmo.'
- no_invite: '&c{player} não te convidou para a Party.'
- deleted_broadcast: ' \n{prefix} &aexcluiu a Party!\n '
- deleted: '&aVocê excluiu a Party.'
- kick_usage: '&cUse /party kick [jogador]'
- not_party_leader: '&cVocê não é o líder da Party.'
- cant_kick_self: '&cVocê não pode se expulsar.'
- not_in_your_party: '&cEsse jogador não faz parte da sua Party.'
- kicked_broadcast: ' \n{kicker} &aexpulsou {kicked} &ada Party!\n '
- info_format: ' \n&6Líder: {leader}\n&6Pública: {public}\n&6Limite de Membros: &f{members}/{slots}\n&6Membros: {member_list}\n '
- deny_usage: '&cUse /party deny [jogador]'
- cant_deny_self: '&cVocê não pode recusar convites de si mesmo.'
- denied: ' \n&aVocê recusou o convite da Party de {prefix}!\n '
- left: '&aVocê saiu da Party!'
- transfer_usage: '&cUse /party transfer [jogador]'
- cant_transfer_self: '&cVocê não pode transferir a liderança da Party para si mesmo.'
- transferred_broadcast: ' \n{old_leader} &atransferiu a liderança da Party para {new_leader}&a!\n '
- invite_usage: '&cUse /party invite [jogador]'
- player_not_found: '&cJogador não encontrado.'
- cant_invite_self: '&cVocê não pode se convidar.'
- only_leader_invite: '&cApenas o líder da Party pode convidar jogadores!'
- already_invited: '&cVocê já enviou um convite para {player}.'
- invited: ' \n{prefix} &afoi convidado para a Party. Ele tem 60 segundos para aceitar ou recusar este convite.\n '
+ help_message: ' \n&6/p [message] &f_ &7Chat with party members.\n&6/party open &f_ &7Make the party public.\n&6/party close &f_ &7Make the party private.\n&6/party join [player] &f_ &7Join a public party.\n&6/party accept [player] &f_ &7Accept an invitation.\n&6/party help &f_ &7Display this help message.\n&6/party invite [player] &f_ &7Invite a player.\n&6/party delete &f_ &7Delete the party.\n&6/party kick [player] &f_ &7Kick a member.\n&6/party info &f_ &7View information about your Party.\n&6/party deny [player] &f_ &7Deny an invitation.\n&6/party leave &f_ &7Leave the Party.\n&6/party transfer [player] &f_ &7Transfer leadership to another member.\n '
+ not_leader: '&cYou are not the Party leader.'
+ already_public: '&cYour party is already public.'
+ opened: '&aYou have opened the party to any player.'
+ already_private: '&cYour party is already private.'
+ closed: '&cYou have closed the party to invited players only.'
+ join_usage: '&cUse /party join [player]'
+ cant_join_own: '&cYou cannot join your own party.'
+ already_in_party: '&cYou already belong to a Party.'
+ not_leader_target: '&c{player} is not a Party leader.'
+ closed_party: '&c{player}''s Party is closed to invited players only.'
+ full_party: '&c{player}''s Party is full.'
+ joined: ' \n&aYou have joined {prefix}''s Party!\n '
+ accept_usage: '&cUse /party accept [player]'
+ cant_accept_own: '&cYou cannot accept invitations from yourself.'
+ no_invite: '&c{player} did not invite you to their Party.'
+ deleted_broadcast: ' \n{prefix} &adeleted the Party!\n '
+ deleted: '&aYou have deleted the Party.'
+ kick_usage: '&cUse /party kick [player]'
+ not_party_leader: '&cYou are not a Party leader.'
+ cant_kick_self: '&cYou cannot kick yourself.'
+ not_in_your_party: '&cThat player does not belong to your Party.'
+ kicked_broadcast: ' \n{kicker} &akicked {kicked} &afrom the Party!\n '
+ info_format: ' \n&6Leader: {leader}\n&6Public: {public}\n&6Member Limit: &f{members}/{slots}\n&6Members: {member_list}\n '
+ deny_usage: '&cUse /party deny [player]'
+ cant_deny_self: '&cYou cannot deny invitations from yourself.'
+ denied: ' \n&aYou have denied the Party invitation from {prefix}!\n '
+ left: '&aYou have left the Party!'
+ transfer_usage: '&cUse /party transfer [player]'
+ cant_transfer_self: '&cYou cannot transfer Party leadership to yourself.'
+ transferred_broadcast: ' \n{old_leader} &atransferred Party leadership to {new_leader}&a!\n '
+ invite_usage: '&cUse /party invite [player]'
+ player_not_found: '&cUser not found.'
+ cant_invite_self: '&cYou cannot send invitations to yourself.'
+ only_leader_invite: '&cOnly the Party leader can send invitations!'
+ already_invited: '&cYou have already sent an invitation to {player}.'
+ invited: ' \n{prefix} &ahas been invited to the Party. They have 60 seconds to accept or deny this invitation.\n '
 menu:
  apparence:
   title: 'Personalizar aparência'
@@ -251,16 +247,15 @@ apparence:
 actionBar:
  queueMessage: '&aVocê está na fila para entrar no servidor &8{server} &7(Posição #{position})'
 connection:
- message: "§aConectando..."
- notsucess: '§cNão foi possível conectar a este servidor no momento!'
+ notsucess: '&Não foi possível conectar a este servidor no momento!'
 gamemode:
- mode: '§cModo não encontrado.'
+ mode: 'Modo não encontrado.'
  changed: '&aVocê mudou o modo de jogo de {mode} para {to}.'
  changer: '&aSeu modo de jogo foi alterado para {type}.'
 vanish:
- mode: '§cVocê está invisível para outros jogadores!'
+ mode: '§Você está invisível para outros jogadores!'
 waiting:
- timer: '§cVocê precisa esperar {more} segundos para usá-lo novamente.'
+ timer: '§Você precisa esperar {more} vezes para usá_lo novamente.'
 visibility:
  on: '&aVisibilidade dos jogadores ativada.'
  off: '&aVisibilidade dos jogadores desativada.'
@@ -287,8 +282,6 @@ menucosmetics:
  colored_tag: '38:7 : 1 : name>&aTag Colorida : desc>&7Mude a cor da tag e\n&7fique estiloso! \n\n&7Desbloqueados: {color}{owned}/{max} &8({percentage}%)\n&7Selecionado Atualmente: {selected} \n\n&eClique para ver!'
  empty_slot: '160:7 : 1 : name>&7'
 cosmetic:
- rank: 'Cor do Rank'
- punch: 'Punho'
  join_message_name: 'Mensagem de Entrada'
  coloredtag_name: 'Tag Colorida'
 message:

@@ -51,7 +51,7 @@ public abstract class HotbarActionType {
                 timeString = timeString.substring(0, timeString.lastIndexOf("."));
               }
 
-              player.sendMessage(StringUtils.formatColors(LanguageAPI.getConfig(profile).getString("waiting.timer").replace("{more}", timeString)));
+              player.sendMessage(LanguageAPI.getConfig(profile).getString("waiting.timer").replace("{more}", timeString));
               return;
             }
           }
