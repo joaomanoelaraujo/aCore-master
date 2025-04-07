@@ -6,6 +6,7 @@ import me.joaomanoel.d4rkk.dev.libraries.menu.PagedPlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.utils.LanguageIcons;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -25,16 +26,30 @@ public class MenuIdiomas extends PagedPlayerMenu {
     private Map<ItemStack, String> IDIOMAS = new HashMap<>();
 
     public MenuIdiomas(Profile profile) {
-        super(profile.getPlayer(), "Selecionar Idiomas", 4);
+        super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("languages.title"), 4);
         this.onlySlots(10, 11, 12, 13, 14, 15, 16, 19);
         this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")), 31);
+
         List<ItemStack> items = new ArrayList<>();
         for (String key : LanguageAPI.listAllKeys()) {
             String color = profile.getLanguageContainer().getLanguage().equals(key) ? "&6" : "&e";
-            ItemStack icon = BukkitUtils.deserializeItemStack("DIAMOND : 1 : name>" + color + key);
+            String rawIconStr = LanguageIcons.getIcon(key);
+
+            if(rawIconStr == null){
+                continue;
+            }
+
+            String iconStr = rawIconStr
+                    .replace("{color}", color)
+                    .replace("{select_text}", profile.getLanguageContainer().getLanguage().equals(key)
+                            ? LanguageAPI.getConfig(profile).getString("language.icon.has_desc.selected")
+                            : LanguageAPI.getConfig(profile).getString("language.icon.has_desc.select"));
+
+            ItemStack icon = BukkitUtils.deserializeItemStack(iconStr);
             IDIOMAS.put(icon, key);
             items.add(icon);
         }
+
 
         this.setItems(items);
         this.register(Core.getInstance());
@@ -60,6 +75,7 @@ public class MenuIdiomas extends PagedPlayerMenu {
                         String key = IDIOMAS.getOrDefault(item, null);
                         if (key != null) {
                             profile.getLanguageContainer().changeLanguage(key);
+                            EnumSound.LEVEL_UP.play(this.player, 0.5F, 1.0F);
                             new MenuIdiomas(profile);
                         }
                     }

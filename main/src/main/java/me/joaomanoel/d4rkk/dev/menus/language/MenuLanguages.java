@@ -55,8 +55,7 @@ public class MenuLanguages<T extends Cosmetic> extends PagedPlayerMenu {
     this.onlySlots(10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34);
 
     // Back button
-    ItemStack backButton = BukkitUtils.deserializeItemStack(
-            LanguageAPI.getConfig(profile).getString("menu$cosmetic$back")
+    ItemStack backButton = BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu$cosmetic$back")
     );
     this.removeSlotsWith(backButton, (this.rows * 9) - 5);
   }

@@ -31,7 +31,6 @@ public class MenuBuyCashCosmetic<T extends Cosmetic> extends PlayerMenu {
     this.cosmetic = cosmetic;
     this.cosmeticClass = cosmeticClass;
 
-    // Usando o sistema de tradução para os itens
     this.setItem(13, BukkitUtils.deserializeItemStack(
             LanguageAPI.getConfig(profile).getString("main.menu_confirm_cash")
                     .replace("{cosmetic_name}", cosmetic.getName())

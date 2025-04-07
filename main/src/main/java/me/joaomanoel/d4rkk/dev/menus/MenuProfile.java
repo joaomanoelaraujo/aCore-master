@@ -6,7 +6,7 @@ import me.joaomanoel.d4rkk.dev.cosmetic.types.JoinMessage;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.apparence.MenuApparence;
-import me.joaomanoel.d4rkk.dev.menus.language.MenuLanguages;
+
 import me.joaomanoel.d4rkk.dev.menus.party.MenuParty;
 import me.joaomanoel.d4rkk.dev.menus.profile.*;
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -15,6 +15,7 @@ import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -22,6 +23,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -68,7 +70,7 @@ public class MenuProfile extends PlayerMenu {
             BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.status")));
 
     String languages = LanguageAPI.getConfig(profile).getString("profile.language").replace("{languages}", getLanguageMessage());
-    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.slot.lang"), BukkitUtils.deserializeItemStack(languages));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.langslot"), BukkitUtils.deserializeItemStack(languages));
 
     this.setItem(LanguageAPI.getConfig(profile).getInt("profile.prslot2"),
             BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.menu.preferences")));
@@ -171,10 +173,30 @@ public class MenuProfile extends PlayerMenu {
 
   private String getLanguageMessage() {
     StringBuilder sb = new StringBuilder();
-    for (String key : LanguageAPI.listAllKeys()) {
-      sb.append("\n    " + "§8§l• §f").append(key);
+    YamlConfiguration config = YamlConfiguration.loadConfiguration(
+            new File(Core.getInstance().getDataFolder(), "languages.yml")
+    );
+
+    if (!config.contains("languages")) {
+      return "§cNenhuma linguagem encontrada.";
+    }
+
+    for (String key : config.getConfigurationSection("languages").getKeys(false)) {
+      String nameLine = config.getString("languages." + key + ".icon");
+      String name = key;
+
+      // Tenta extrair o nome da linguagem do campo "name>" (caso esteja formatado como name>&aPortugues)
+      if (nameLine != null && nameLine.contains("name>")) {
+        int start = nameLine.indexOf("name>") + 5;
+        int end = nameLine.indexOf(" : ", start);
+        if (end == -1) end = nameLine.length();
+        name = nameLine.substring(start, end).replace("&", "§");
+      }
+
+      sb.append("\n    §8§l• §f").append(name);
     }
 
     return sb.toString();
   }
+
 }

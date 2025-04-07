@@ -207,7 +207,7 @@ public class StringUtils {
   }
   
   /**
-   * "Capitaliza" uma String Exemplo: MAXTER se torna Maxter
+   * "Capitaliza" uma String Exemplo: D4RKK se torna D4rkk
    *
    * @param toCapitalise String para capitalizar
    * @return Resultado capitalizado.
