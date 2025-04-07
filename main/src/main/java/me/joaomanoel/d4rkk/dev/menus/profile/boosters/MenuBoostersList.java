@@ -1,9 +1,9 @@
 package me.joaomanoel.d4rkk.dev.menus.profile.boosters;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
 import me.joaomanoel.d4rkk.dev.achievements.Achievement;
 import me.joaomanoel.d4rkk.dev.booster.Booster;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PagedPlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.profile.MenuBoosters;
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -36,14 +36,14 @@ public class MenuBoostersList<T extends Achievement> extends PagedPlayerMenu {
     this.nextPage = 44;
     this.onlySlots(10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25);
 
-    this.removeSlotsWith(BukkitUtils.deserializeItemStack(EN_US.menu$back), 40);
+    this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")), 40);
 
     List<ItemStack> items = new ArrayList<>();
     List<Booster> boosters = profile.getBoostersContainer().getBoosters(type);
     for (Booster booster : boosters) {
-      String boosterType = type == Booster.BoosterType.NETWORK ? EN_US.booster$type : EN_US.booster$type2;
+      String boosterType = type == Booster.BoosterType.NETWORK ? LanguageAPI.getConfig(profile).getString("booster.type") : LanguageAPI.getConfig(profile).getString("booster.type2");
       ItemStack icon = BukkitUtils.deserializeItemStack(
-              EN_US.booster$list$item
+              LanguageAPI.getConfig(profile).getString("booster.list.item")
                       .replace("{type}", type == Booster.BoosterType.NETWORK ? ":8232" : "")
                       .replace("{boosterType}", boosterType)
                       .replace("{multiplier}", String.valueOf(booster.getMultiplier()))
@@ -53,7 +53,7 @@ public class MenuBoostersList<T extends Achievement> extends PagedPlayerMenu {
     }
 
     if (items.isEmpty()) {
-      this.removeSlotsWith(BukkitUtils.deserializeItemStack(EN_US.booster$list$empty), 22);
+      this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("booster.list.empty")), 22);
     }
     this.setItems(items);
     boosters.clear();
@@ -93,19 +93,19 @@ public class MenuBoostersList<T extends Achievement> extends PagedPlayerMenu {
               if (booster != null) {
                 if (type == Booster.BoosterType.NETWORK) {
                   if (!Core.minigames.contains(Core.minigame)) {
-                    this.player.sendMessage(EN_US.booster$network$notInMinigame);
+                    this.player.sendMessage(LanguageAPI.getConfig(profile).getString("booster.network.notInMinigame"));
                     return;
                   }
 
                   if (!Booster.setNetworkBooster(Core.minigame, profile, booster)) {
                     EnumSound.ENDERMAN_TELEPORT.play(this.player, 0.5F, 1.0F);
-                    this.player.sendMessage(EN_US.booster$network$alreadyActive.replace("{minigame}", Core.minigame));
+                    this.player.sendMessage(LanguageAPI.getConfig(profile).getString("booster.network.alreadyActive").replace("{minigame}", Core.minigame));
                     this.player.closeInventory();
                     return;
                   }
 
                   EnumSound.LEVEL_UP.play(this.player, 0.5F, 1.0F);
-                  Profile.listProfiles().forEach(pf -> pf.getPlayer().sendMessage(EN_US.booster$network$activated
+                  Profile.listProfiles().forEach(pf -> pf.getPlayer().sendMessage(LanguageAPI.getConfig(profile).getString("booster.network.activated")
                           .replace("{player}", this.player.getName())
                           .replace("{multiplier}", String.valueOf(booster.getMultiplier()))
                           .replace("{minigame}", Core.minigame)));
@@ -113,13 +113,13 @@ public class MenuBoostersList<T extends Achievement> extends PagedPlayerMenu {
                 } else {
                   if (!profile.getBoostersContainer().enable(booster)) {
                     EnumSound.ENDERMAN_TELEPORT.play(this.player, 0.5F, 1.0F);
-                    this.player.sendMessage(EN_US.booster$personal$alreadyActive);
+                    this.player.sendMessage(LanguageAPI.getConfig(profile).getString("booster.personal.alreadyActive"));
                     this.player.closeInventory();
                     return;
                   }
 
                   this.player.sendMessage(
-                          EN_US.booster$personal$activated
+                          LanguageAPI.getConfig(profile).getString("booster.personal.activated")
                                   .replace("{multiplier}", String.valueOf(booster.getMultiplier()))
                                   .replace("{duration}", TimeUtils.getTime(TimeUnit.HOURS.toMillis(booster.getHours()))));
                   new MenuBoosters(profile);

@@ -14,8 +14,8 @@
 package me.joaomanoel.d4rkk.dev.menus;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
 
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PagedPlayerMenu;
 
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -58,7 +58,7 @@ extends PagedPlayerMenu {
                 }
             }
 
-                    this.removeSlotsWith(BukkitUtils.deserializeItemStack(EN_US.menu$back), this.rows * 9 - 5);
+                    this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")), this.rows * 9 - 5);
         }
         this.setItems(item);
         item.clear();

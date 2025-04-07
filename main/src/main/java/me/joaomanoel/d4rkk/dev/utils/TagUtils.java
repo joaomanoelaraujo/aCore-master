@@ -17,8 +17,6 @@ public class TagUtils {
     private static final Map<String, FakeTeam> TEAMS = new HashMap<>();
     private static final Map<String, FakeTeam> CACHED_FAKE_TEAMS = new HashMap<>();
 
-
-
     public static void setTag(Player player) {
         Role role = Role.getPlayerRole(player);
         String suffix = "";
@@ -35,8 +33,6 @@ public class TagUtils {
 
         setTag(player.getName(), role.getPrefix(), suffix, role.getId());
     }
-
-
 
     public static void setTag(Player player, Role grupo) {
         String suffix = "";

@@ -1,8 +1,8 @@
 package me.joaomanoel.d4rkk.dev.menus.profile;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.LangAPI;
 import me.joaomanoel.d4rkk.dev.database.data.container.PreferencesContainer;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -21,50 +21,50 @@ import org.bukkit.inventory.ItemStack;
 public class MenuPreferences extends PlayerMenu {
 
   public MenuPreferences(Profile profile) {
-    super(profile.getPlayer(), LangAPI.getTranslatedText("menu$preferences$title", profile), 5);
+    super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("menu.preferences.title"), 5);
 
     PreferencesContainer pc = profile.getPreferencesContainer();
 
     PlayerVisibility pv = pc.getPlayerVisibility();
-    this.setItem(11, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$preferences$players", profile)));
+    this.setItem(11, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.preferences.players")));
     this.setItem(20, BukkitUtils.deserializeItemStack(
-            LangAPI.getTranslatedText("menu$preferences$state", profile)
-                    .replace("{inkSack}", String.valueOf(pv.getInkSack()))
+            LanguageAPI.getConfig(profile).getString("menu.preferences.state")
+                    .replace("{inkSack}", pv.getInkSack())
                     .replace("{name}", pv.getName())
                     .replace("{state}", StringUtils.stripColors(pv.getName()))));
 
     PrivateMessages pm = pc.getPrivateMessages();
-    this.setItem(12, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$preferences$privateMessages", profile)));
+    this.setItem(12, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.preferences.privateMessages")));
     this.setItem(21, BukkitUtils.deserializeItemStack(
-            LangAPI.getTranslatedText("menu$preferences$state", profile)
-                    .replace("{inkSack}", String.valueOf(pm.getInkSack()))
+            LanguageAPI.getConfig(profile).getString("menu.preferences.state")
+                    .replace("{inkSack}", pm.getInkSack())
                     .replace("{name}", pm.getName())
                     .replace("{state}", StringUtils.stripColors(pm.getName()))));
 
     BloodAndGore bg = pc.getBloodAndGore();
-    this.setItem(14, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$preferences$violence", profile)));
+    this.setItem(14, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.preferences.violence")));
     this.setItem(23, BukkitUtils.deserializeItemStack(
-            LangAPI.getTranslatedText("menu$preferences$state", profile)
-                    .replace("{inkSack}", String.valueOf(bg.getInkSack()))
+            LanguageAPI.getConfig(profile).getString("menu.preferences.state")
+                    .replace("{inkSack}", bg.getInkSack())
                     .replace("{name}", bg.getName())
                     .replace("{state}", StringUtils.stripColors(bg.getName()))));
 
     ProtectionLobby pl = pc.getProtectionLobby();
-    this.setItem(15, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$preferences$protectionLobby", profile)));
+    this.setItem(15, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.preferences.protectionLobby")));
     this.setItem(24, BukkitUtils.deserializeItemStack(
-            LangAPI.getTranslatedText("menu$preferences$state", profile)
-                    .replace("{inkSack}", String.valueOf(pl.getInkSack()))
+            LanguageAPI.getConfig(profile).getString("menu.preferences.state")
+                    .replace("{inkSack}", pl.getInkSack())
                     .replace("{name}", pl.getName())
                     .replace("{state}", StringUtils.stripColors(pl.getName()))));
 
     ChatMention cm = pc.getChatMention();
-    this.setItem(13, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$preferences$chatMention", profile)));
+    this.setItem(13, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.preferences.chatMention")));
     this.setItem(22, BukkitUtils.deserializeItemStack(
-            LangAPI.getTranslatedText("menu$preferences$state", profile)
-                    .replace("{inkSack}", String.valueOf(cm.getInkSack()))
+            LanguageAPI.getConfig(profile).getString("menu.preferences.state")
+                    .replace("{inkSack}", cm.getInkSack())
                     .replace("{name}", cm.getName())
                     .replace("{state}", StringUtils.stripColors(cm.getName()))));
-    this.setItem(40, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$back", profile)));
+    this.setItem(40, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")));
 
     this.register(Core.getInstance());
     this.open();

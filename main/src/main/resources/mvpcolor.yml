@@ -4,72 +4,84 @@ strongred:
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzg3M2ZjZGUyOGQ2NzZhOGU1NzVmNzkzNjVmM2ViZWE0ZjFiMGZmMjg4NzZkODMxYjY1NTU1N2M1ZDllZTRjNiJ9fX0='
   color: '§4'
+
 green:
   id: 2
   name: 'Green'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNThlOTMyNWRkMTkyODlhMTE0MDFhZDg0NDk1MGJjMzE5YzNlM2NiMGU1MDM0ZDJhNWNjZmIyZDUwOTlmZjZlMSJ9fX0='
   color: '§a'
+
 red:
   id: 3
   name: 'Red'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmMzYjNjYTg5YzM3MTQ5NzhmY2NiZmY2MmZlODhkNDJkZmFiNWFiMGI5NzljNTgzNzcxZmY3N2I1NGU4ZjMifX19'
   color: '§c'
+
 pink:
   id: 4
   name: 'Pink'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjkyYjgxZDhiNmMwOGMxODBkOTQ0MzZmOWZlYzUzMjNiODA5NTI0MjMyMDAyOTEyMjEzMjdjMTM1YWRhYjMwZSJ9fX0='
   color: '§d'
+
 blue:
   id: 5
   name: 'Blue'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTA1ODQxNzVmNWY1N2I3NWUxNDQ3ZGE5N2FkMzBmOGNjZWIyZGQwYzg5YzhkZmRkZWI4YzVjOWMyNzM2ZmZmNCJ9fX0='
   color: '§9'
+
 lightblue:
   id: 6
   name: 'Light Blue'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjEwZTM3NGNkYzJiYTk1YmI3MmYxYTAzNmM3N2RhMzUwOTkzNWExYWJkMjRiNjhjNmIzNTkxNjkwYjEwM2ZlZCJ9fX0='
   color: '§b'
+
 cyan:
   id: 7
   name: 'Cyan'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmNmZWU2MTkxMjUzMjA1MGE0Nzk1YjljM2I2NmQ1MDgwMzZjNzFkZDg4OWQ2NzI4ZmJlOWVlM2M4ZWJkN2Q0ZSJ9fX0='
   color: '§3'
+
 gray:
   id: 8
   name: 'Gray'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjFhMWUyNDk0MjdmNjA5YWZiZjI0ZTJlODI2Y2EwYjQxMGE1NmNjM2MwOWI1NmVkNjkwYTk5OWE5MDQ2MDI0YyJ9fX0='
   color: '§7'
+
 orange:
   id: 9
   name: 'Orange'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzhlNDQwMjNlMTFlZWI1YjI5M2QwODYzNTFlMjllNmZmYWVjMDFiNzY4ZGMxNDYwYjFiZTU0YjgwOWJkNmRiZiJ9fX0='
   color: '§6'
+
 yellow:
   id: 10
   name: 'Yellow'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjdjY2UwZjdjZDkxYjljMTYyODBiMDliMTJlNzk4Mjk0N2JhMTJhMzhlMzdkMDJhMDQ3ZDEwNTNjMzIzOWRkYyJ9fX0='
   color: '§e'
+
 darkblue:
   id: 11
   name: 'Dark Blue'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjc4ZDdjYWQzYWE2MDQ4ZjNjM2M4NzJiNmJmYWM4NDQ5OTQ0ZGRkOWZiYzFkOTU5MjdmMWQ4OTZiMmFiNzBkMyJ9fX0='
   color: '§1'
+
 black:
   id: 12
   name: 'Black'
   permission: ''
   icon: 'SKULL_ITEM:3 : 1 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmE1MmQ1NzlhZmUyZmRmN2I4ZWNmYTc0NmNkMDE2MTUwZDk2YmViNzUwMDliYjI3MzNhZGUxNWQ0ODdjNDJhMSJ9fX0='
   color: '§0'
+
 white:
   id: 13
   name: 'White'

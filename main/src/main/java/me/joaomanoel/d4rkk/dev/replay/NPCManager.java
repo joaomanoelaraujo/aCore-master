@@ -21,7 +21,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.util.Pair;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -32,13 +31,13 @@ public class NPCManager {
     private static final List<Material> ARMOR = Arrays.asList(Material.DIAMOND_HELMET, Material.DIAMOND_CHESTPLATE, Material.DIAMOND_LEGGINGS, Material.DIAMOND_BOOTS, Material.IRON_HELMET, Material.IRON_CHESTPLATE, Material.IRON_LEGGINGS, Material.IRON_BOOTS, Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE, Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS, Material.GOLD_HELMET, Material.GOLD_CHESTPLATE, Material.GOLD_LEGGINGS, Material.GOLD_BOOTS, Material.LEATHER_HELMET, Material.LEATHER_CHESTPLATE, Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS);
 
     public static List<com.comphenix.packetwrapper.old.WrapperPlayServerEntityEquipment> updateEquipmentv16(int id, InvData data) {
-        ArrayList<Pair> items = new ArrayList<>();
+/*        ArrayList<Pair> items = new ArrayList<>();
         items.add(new Pair(EnumWrappers.ItemSlot.HEAD, NPCManager.fromID(data.getHead())));
         items.add(new Pair(EnumWrappers.ItemSlot.CHEST, NPCManager.fromID(data.getChest())));
         items.add(new Pair(EnumWrappers.ItemSlot.LEGS, NPCManager.fromID(data.getLeg())));
         items.add(new Pair(EnumWrappers.ItemSlot.FEET, NPCManager.fromID(data.getBoots())));
         items.add(new Pair(EnumWrappers.ItemSlot.MAINHAND, NPCManager.fromID(data.getMainHand())));
-        items.add(new Pair(EnumWrappers.ItemSlot.OFFHAND, NPCManager.fromID(data.getOffHand())));
+        items.add(new Pair(EnumWrappers.ItemSlot.OFFHAND, NPCManager.fromID(data.getOffHand())));*/
         WrapperPlayServerEntityEquipment packet = new WrapperPlayServerEntityEquipment();
         packet.setEntityID(id);
 

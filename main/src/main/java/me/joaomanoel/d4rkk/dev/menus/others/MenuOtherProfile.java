@@ -1,8 +1,8 @@
 package me.joaomanoel.d4rkk.dev.menus.others;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.LangAPI;
 import me.joaomanoel.d4rkk.dev.api.StatsAPI;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PlayerMenu;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
@@ -28,7 +28,7 @@ public class MenuOtherProfile extends PlayerMenu {
     Profile profile1 = Profile.getProfile(player2.getName());
 
     // Usando o sistema de tradução para o nível e guilda
-    String levelInfo = String.format(LangAPI.getTranslatedText("profileo$menu$levelInfo", profile),
+    String levelInfo = String.format(LanguageAPI.getConfig(profile).getString("profileo.menu.levelInfo"),
             Role.getPrefixed(player2.getName()), levelAPI.getLevel(profile1), levelAPI.getGuild(),
             Role.getRoleByName(profile1.getDataContainer("aCoreProfile", "role").getAsString()).getName());
 
@@ -40,21 +40,21 @@ public class MenuOtherProfile extends PlayerMenu {
     }
 
     // Usando tradução para o botão de fechar
-    this.setItem(49, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("profileo$menu$close", profile)));
+    this.setItem(49, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profileo.menu.close")));
 
     // Tradução para os outros botões
-    this.setItem(21, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("profileo$menu$socialMedia", profile)));
-    this.setItem(23, BukkitUtils.deserializeItemStack(String.format(LangAPI.getTranslatedText("profileo$menu$statistics", profile),
+    this.setItem(21, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profileo.menu.socialMedia")));
+    this.setItem(23, BukkitUtils.deserializeItemStack(String.format(LanguageAPI.getConfig(profile).getString("profileo.menu.statistics"),
             Role.getColored(player2.getName()))));
-    this.setItem(30, BukkitUtils.deserializeItemStack(String.format(LangAPI.getTranslatedText("profileo$menu$partyInvite", profile),
+    this.setItem(30, BukkitUtils.deserializeItemStack(String.format(LanguageAPI.getConfig(profile).getString("profileo.menu.partyInvite"),
             Role.getColored(player2.getName()))));
-    this.setItem(31, BukkitUtils.deserializeItemStack(String.format(LangAPI.getTranslatedText("profileo$menu$friendInvite", profile),
+    this.setItem(31, BukkitUtils.deserializeItemStack(String.format(LanguageAPI.getConfig(profile).getString("profileo.menu.friendInvite"),
             Role.getColored(player2.getName()))));
-    this.setItem(32, BukkitUtils.deserializeItemStack(String.format(LangAPI.getTranslatedText("profileo$menu$blockPlayer", profile),
+    this.setItem(32, BukkitUtils.deserializeItemStack(String.format(LanguageAPI.getConfig(profile).getString("profileo.menu.blockPlayer"),
             Role.getColored(player2.getName()))));
-    this.setItem(39, BukkitUtils.deserializeItemStack(String.format(LangAPI.getTranslatedText("profileo$menu$guildInvite", profile),
+    this.setItem(39, BukkitUtils.deserializeItemStack(String.format(LanguageAPI.getConfig(profile).getString("profileo.menu.guildInvite"),
             Role.getColored(player2.getName()))));
-    this.setItem(40, BukkitUtils.deserializeItemStack(String.format(LangAPI.getTranslatedText("profileo$menu$leadershipPass", profile),
+    this.setItem(40, BukkitUtils.deserializeItemStack(String.format(LanguageAPI.getConfig(profile).getString("profileo.menu.leadershipPass"),
             Role.getColored(player2.getName()))));
 
     this.register(Core.getInstance());

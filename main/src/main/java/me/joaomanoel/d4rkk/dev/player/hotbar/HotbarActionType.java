@@ -1,6 +1,6 @@
 package me.joaomanoel.d4rkk.dev.player.hotbar;
 
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.listeners.Listeners;
 import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.menus.MenuServers;
@@ -51,7 +51,7 @@ public abstract class HotbarActionType {
                 timeString = timeString.substring(0, timeString.lastIndexOf("."));
               }
 
-              player.sendMessage(EN_US.waiting$timer.replace("{more}", timeString));
+              player.sendMessage(StringUtils.formatColors(LanguageAPI.getConfig(profile).getString("waiting.timer").replace("{more}", timeString)));
               return;
             }
           }
@@ -60,10 +60,10 @@ public abstract class HotbarActionType {
           profile.getPreferencesContainer().changePlayerVisibility();
           switch (profile.getPreferencesContainer().getPlayerVisibility()) {
             case TODOS:
-              player.sendMessage(EN_US.visibility$on);
+              player.sendMessage(LanguageAPI.getConfig(profile).getString("visibility.on"));
               break;
             case NENHUM:
-              player.sendMessage(EN_US.visibility$off);
+              player.sendMessage(LanguageAPI.getConfig(profile).getString("visibility.off"));
               break;
           }
           profile.refreshPlayers();

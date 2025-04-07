@@ -1,14 +1,13 @@
 package me.joaomanoel.d4rkk.dev.menus;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.LangAPI;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
 import me.joaomanoel.d4rkk.dev.cash.CashManager;
 import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.CosmeticType;
 import me.joaomanoel.d4rkk.dev.cosmetic.container.SelectedContainer;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.ColoredTag;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.JoinMessage;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PagedPlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.buy.MenuBuyCashCosmetic;
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -27,8 +26,6 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 
-import static me.joaomanoel.d4rkk.dev.languages.translates.EN_US.menu$cosmetic_slot$back;
-
 public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
 
   private Class<T> cosmeticClass;
@@ -41,9 +38,10 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
     this.onlySlots(19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43);
 
 
-    this.removeSlotsWith(BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$cosmetic$back", profile)), menu$cosmetic_slot$back);
+    this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.cosmetic.back")), LanguageAPI.getConfig(profile).getInt("menu.cosmetic_slot.back"));
 
-    // Configuração dos itens do menu
+//    System.out.println(LanguageAPI.getConfig(profile).getString("menucosmetics.join_message"));
+//    // Configuração dos itens do menu
     String color = "§a";
     StringBuilder sb1 = new StringBuilder();
     Optional<JoinMessage> selectedCosmetic8 = Cosmetic.listByType(JoinMessage.class)
@@ -66,12 +64,13 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
     long owned = deathhologram.stream().filter(deathholograms -> deathholograms.has(profile)).count();
     long percentage = max == 0 ? 100 : (owned * 100) / max;
     deathhologram.clear();
-    String joinMessageDesc = LangAPI.getTranslatedText("menucosmetics$join_message", profile)
+    String joinMessageDesc = LanguageAPI.getConfig(profile).getString("menucosmetics.join_message")
             .replace("{color}", color)
             .replace("{owned}", String.valueOf(owned))
             .replace("{max}", String.valueOf(max))
             .replace("{percentage}", String.valueOf(percentage))
             .replace("{selected}", sb1.toString().isEmpty() ? "\n &aNone" : sb1.toString());
+
     this.removeSlotsWith(BukkitUtils.deserializeItemStack(joinMessageDesc), 5);
 
     List<ColoredTag> coloredtag = Cosmetic.listByType(ColoredTag.class);
@@ -79,7 +78,7 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
     owned = coloredtag.stream().filter(coloredtags -> coloredtags.has(profile)).count();
     percentage = max == 0 ? 100 : (owned * 100) / max;
     coloredtag.clear();
-    String coloredTagDesc = LangAPI.getTranslatedText("menucosmetics$colored_tag", profile)
+    String coloredTagDesc = LanguageAPI.getConfig(profile).getString("menucosmetics.colored_tag")
             .replace("{color}", color)
             .replace("{owned}", String.valueOf(owned))
             .replace("{max}", String.valueOf(max))
@@ -88,23 +87,23 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
     this.removeSlotsWith(BukkitUtils.deserializeItemStack(coloredTagDesc), 3);
 
     // Outros itens
-    this.removeSlotsWith(BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menucosmetics$empty_slot", profile)), 9);
+    this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menucosmetics.empty_slot")), 9);
 
     // Configuração de slots específicos com base nos cosméticos
     if (this.cosmeticClass.equals(JoinMessage.class)) {
       for (int i = 9; i <= 17; i++) {
         if (i == 14) {
-          this.removeSlotsWith(BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menucosmetics$empty_slot", profile).replace("160:7", "160:5")), i);
+          this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menucosmetics.empty_slot").replace("160:7", "160:5")), i);
         } else {
-          this.removeSlotsWith(BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menucosmetics$empty_slot", profile)), i);
+          this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menucosmetics.empty_slot")), i);
         }
       }
     } else if (this.cosmeticClass.equals(ColoredTag.class)) {
       for (int i = 9; i <= 17; i++) {
         if (i == 12) {
-          this.removeSlotsWith(BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menucosmetics$empty_slot", profile).replace("160:7", "160:5")), i);
+          this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menucosmetics.empty_slot").replace("160:7", "160:5")), i);
         } else {
-          this.removeSlotsWith(BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menucosmetics$empty_slot", profile)), i);
+          this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menucosmetics.empty_slot")), i);
         }
       }
     }
@@ -147,10 +146,10 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
               this.openPrevious();
               } else if (evt.getSlot() == 5) {
                 EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
-                new MenuCosmetic<>(profile, EN_US.cosmetic$join_message_name, JoinMessage.class);
+                new MenuCosmetic<>(profile, LanguageAPI.getConfig(profile).getString("cosmetic.join_message_name"), JoinMessage.class);
             } else if (evt.getSlot() == 3) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
-              new MenuCosmetic<>(profile, EN_US.cosmetic$coloredtag_name, ColoredTag.class);
+              new MenuCosmetic<>(profile, LanguageAPI.getConfig(profile).getString("cosmetic.coloredtag_name"), ColoredTag.class);
               } else if (evt.getSlot() == 48) {
                 EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
                 new MenuProfile(profile);
@@ -162,7 +161,7 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
               if (cosmetic != null) {
                 if (evt.isRightClick()) {
                   if (cosmetic.getType() == CosmeticType.JOIN_MESSAGE) {
-                    player.sendMessage(EN_US.message$deathmessage);
+                    player.sendMessage(LanguageAPI.getConfig(profile).getString("message.deathmessage"));
                     ((JoinMessage) cosmetic).getMessages().forEach(message -> player.sendMessage(" §8▪ " + StringUtils.formatColors(message.replace("{player}", "§7Player"))));
                     player.sendMessage("");
                     return;
@@ -170,7 +169,7 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
                     String colorCode = ((ColoredTag) cosmetic).getColor();
 
                     // Replace the {color} placeholder in the message
-                    String message = EN_US.message$coloredtag.replace("{color}", "").replace("{role}", Role.getPrefixed(player.getName(), colorCode));
+                    String message = LanguageAPI.getConfig(profile).getString("message.coloredtag").replace("{color}", "").replace("{role}", Role.getPrefixed(player.getName(), colorCode));
 
                     // Send the message to the player
                     player.sendMessage(message);
@@ -194,7 +193,7 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
 
                 if (!cosmetic.canBuy(this.player)) {
                   EnumSound.ENDERMAN_TELEPORT.play(this.player, 0.5F, 1.0F);
-                  this.player.sendMessage(EN_US.message$nohaveperm);
+                  this.player.sendMessage(LanguageAPI.getConfig(profile).getString("message.nohaveperm"));
                   return;
                 }
 

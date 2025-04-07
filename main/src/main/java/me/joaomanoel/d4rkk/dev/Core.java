@@ -18,9 +18,7 @@ import me.joaomanoel.d4rkk.dev.hook.aCoreExpansion;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.FakeAdapter;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.HologramAdapter;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.NPCAdapter;
-import me.joaomanoel.d4rkk.dev.languages.GLanguage;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
-import me.joaomanoel.d4rkk.dev.languages.translates.PT_BR;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.MinecraftVersion;
 import me.joaomanoel.d4rkk.dev.libraries.holograms.HologramLibrary;
 import me.joaomanoel.d4rkk.dev.libraries.npclib.NPCLibrary;
@@ -35,10 +33,7 @@ import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
 import me.joaomanoel.d4rkk.dev.replay.*;
 import me.joaomanoel.d4rkk.dev.servers.ServerItem;
 import me.joaomanoel.d4rkk.dev.titles.TitleLoader;
-import me.joaomanoel.d4rkk.dev.utils.aUpdater;
-import me.joaomanoel.d4rkk.dev.utils.enums.EnumRarity;
-import me.joaomanoel.d4rkk.dev.utils.langs.Language;
-import me.joaomanoel.d4rkk.dev.utils.langs.LanguageManager;
+import me.joaomanoel.d4rkk.dev.utils.LanguageIcons;
 import me.joaomanoel.d4rkk.dev.utils.queue.Queue;
 import me.joaomanoel.d4rkk.dev.utils.queue.QueuePlayer;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -50,12 +45,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.entity.Player;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.logging.Level;
@@ -64,7 +56,7 @@ import java.util.logging.Level;
 public class Core extends KPlugin {
   
   public static final List<String> warnings = new ArrayList<>();
-  public static final List<String> minigames = Arrays.asList("Block Sumo", "Sky Wars", "Bed Wars", "The Bridge", "The Pit", "Mega Walls");
+  public static final List<String> minigames = Arrays.asList("Block Sumo", "Sky Wars", "Bed Wars", "The Bridge", "The Pit");
 
 
 
@@ -74,7 +66,6 @@ public class Core extends KPlugin {
   public static String minigame = "";
 
   private static Core instance;
-  private static LanguageManager languageManager;
   private static Location lobby;
   public static Metrics metrics;
   public static Location getLobby() {
@@ -102,7 +93,7 @@ public class Core extends KPlugin {
         QueuePlayer qp = queue.getQueuePlayer(player);
         if (qp != null) {
           if (qp.server.equalsIgnoreCase(name)) {
-            qp.player.sendMessage(EN_US.already);
+            qp.player.sendMessage(LanguageAPI.getConfig(profile).getString("already"));
           } else {
             qp.server = name;
           }
@@ -117,7 +108,7 @@ public class Core extends KPlugin {
           if (player.isOnline()) {
             player.closeInventory();
             NMS.sendActionBar(player, "");
-            player.sendMessage(EN_US.connecting);
+            player.sendMessage(LanguageAPI.getConfig(profile).getString("connecting.message"));
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("Connect");
             out.writeUTF(name);
@@ -201,11 +192,15 @@ public class Core extends KPlugin {
     new SkyWarsPlaceholder().register();
 
 
+    try {
+      LanguageAPI.setupLanguages("EN_US", "PT_BR", "ES_ES", "JA_JP", "KO_KR", "ZH_CN");
+    } catch (IOException ex) {
+      getLogger().severe("Ocorreu um erro ao carregar as linguagens padrão.");
+      throw new RuntimeException(ex);
+    }
+
     GameState.loadLanguage(getConfig());
     aFriends = Bukkit.getPluginManager().getPlugin("aFriends") != null;
-    LanguageManager manager = new LanguageManager();
-    manager.loadLanguages();
-
     Database.setupDatabase(
             getConfig().getString("database.type"),
             getConfig().getString("database.mysql.host"),
@@ -239,12 +234,11 @@ public class Core extends KPlugin {
 
     Commands.setupCommands();
     Listeners.setupListeners();
+    LanguageIcons.load(this);
 
-    if (this.getConfig().getBoolean("language-system")){
-  }
 
-    EN_US.setupLanguage();
-    PT_BR.setupLanguage();
+
+
 //    ReplayManager.register();
 //    ReplaySaver.register(new DatabaseReplaySaver());
 //    metrics = new Metrics(this, 2188);

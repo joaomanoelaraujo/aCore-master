@@ -1,7 +1,7 @@
 package me.joaomanoel.d4rkk.dev.cosmetic.types;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.cash.CashManager;
 import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.CosmeticType;
@@ -74,15 +74,15 @@ public class ColoredTag extends Cosmetic {
     
     Role role = Role.getRoleByPermission(this.getPermission());
     String color = has ?
-        (isSelected ? EN_US.cosmetics$color$selected : EN_US.cosmetics$color$unlocked) :
-        ((CashManager.CASH && cash >= this.getCash())) && canBuy ? EN_US.cosmetics$color$canbuy : EN_US.cosmetics$color$locked;
+        (isSelected ? LanguageAPI.getConfig(profile).getString("cosmetics.color.selected") : LanguageAPI.getConfig(profile).getString("cosmetics.color.unlocked")) :
+        ((CashManager.CASH && cash >= this.getCash())) && canBuy ? LanguageAPI.getConfig(profile).getString("cosmetics.color.canbuy") : LanguageAPI.getConfig(profile).getString("cosmetics.color.locked");
     String desc = (has && canBuy ?
-        EN_US.cosmetics$coloredtag$icon$has_desc$start.replace("{has_desc_status}", isSelected ? EN_US.cosmetics$icon$has_desc$selected : EN_US.cosmetics$icon$has_desc$select) :
+            LanguageAPI.getConfig(profile).getString("cosmetics.coloredtag.icon.has_desc.start").replace("{has_desc_status}", isSelected ? LanguageAPI.getConfig(profile).getString("cosmetics.icon.has_desc.selected") : LanguageAPI.getConfig(profile).getString("cosmetics.icon.has_desc.select")) :
         canBuy ?
-            EN_US.cosmetics$coloredtag$icon$buy_desc$start
-                .replace("{buy_desc_status}", ((CashManager.CASH && cash >= this.getCash())) ? EN_US.cosmetics$icon$buy_desc$click_to_buy : EN_US.cosmetics$icon$buy_desc$enough) :
-            EN_US.cosmetics$coloredtag$icon$perm_desc$start
-                .replace("{perm_desc_status}", (role == null ? EN_US.cosmetics$icon$perm_desc$common : EN_US.cosmetics$icon$perm_desc$role.replace("{role}", role.getName()))))
+                LanguageAPI.getConfig(profile).getString("cosmetics.coloredtag.icon.buy_desc.start")
+                .replace("{buy_desc_status}", ((CashManager.CASH && cash >= this.getCash())) ? LanguageAPI.getConfig(profile).getString("cosmetics.icon.buy_desc.click_to_buy") : LanguageAPI.getConfig(profile).getString("cosmetics.icon.buy_desc.enough")) :
+                LanguageAPI.getConfig(profile).getString("cosmetics.coloredtag.icon.perm_desc.start")
+                .replace("{perm_desc_status}", (role == null ? LanguageAPI.getConfig(profile).getString("cosmetics.icon.perm_desc.common") : LanguageAPI.getConfig(profile).getString("cosmetics.icon.perm_desc.role").replace("{role}", role.getName()))))
         .replace("{name}", this.name).replace("{rarity}", this.getRarity().getName()).replace("{cash}", StringUtils.formatNumber(this.getCash()));
     ItemStack item = BukkitUtils.deserializeItemStack(this.icon + " : name>" + color + this.name + " : desc>" + desc);
     if (isSelected) {

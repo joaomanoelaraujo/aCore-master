@@ -1,10 +1,10 @@
 package me.joaomanoel.d4rkk.dev.menus.buy;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.LangAPI;
 import me.joaomanoel.d4rkk.dev.cash.CashException;
 import me.joaomanoel.d4rkk.dev.cash.CashManager;
 import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.MenuCosmetic;
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -26,18 +26,17 @@ public class MenuBuyCashCosmetic<T extends Cosmetic> extends PlayerMenu {
   private Class<? extends Cosmetic> cosmeticClass;
 
   public MenuBuyCashCosmetic(Profile profile, String name, T cosmetic, Class<? extends Cosmetic> cosmeticClass) {
-    super(profile.getPlayer(), LangAPI.getTranslatedText("menubuycashsearch$title", profile), 3);
+    super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("menubuycashsearch.title"), 3);
     this.name = name;
     this.cosmetic = cosmetic;
     this.cosmeticClass = cosmeticClass;
 
-    // Usando o sistema de tradução para os itens
     this.setItem(13, BukkitUtils.deserializeItemStack(
-            LangAPI.getTranslatedText("main$menu_confirm_cash", profile)
+            LanguageAPI.getConfig(profile).getString("main.menu_confirm_cash")
                     .replace("{cosmetic_name}", cosmetic.getName())
                     .replace("{cosmetic_cash}", StringUtils.formatNumber(cosmetic.getCash()))));
 
-    this.setItem(15, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("main$menu_buy_cancel", profile)));
+    this.setItem(15, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("main.menu_buy_cancel")));
 
     this.register(Core.getInstance());
     this.open();
@@ -62,14 +61,14 @@ public class MenuBuyCashCosmetic<T extends Cosmetic> extends PlayerMenu {
             if (evt.getSlot() == 13) {
               if (profile.getStats("aCoreProfile", "cash") < this.cosmetic.getCash()) {
                 EnumSound.ENDERMAN_TELEPORT.play(this.player, 0.5F, 1.0F);
-                this.player.sendMessage(LangAPI.getTranslatedText("main$not_enough_coins", profile));
+                this.player.sendMessage(LanguageAPI.getConfig(profile).getString("main.not_enough_coins"));
                 return;
               }
 
               try {
                 CashManager.removeCash(profile, this.cosmetic.getCash());
                 this.cosmetic.give(profile);
-                this.player.sendMessage(LangAPI.getTranslatedText("main$cosmetic_purchased", profile)
+                this.player.sendMessage(LanguageAPI.getConfig(profile).getString("main.cosmetic_purchased")
                         .replace("{name}", this.cosmetic.getName()));
                 EnumSound.LEVEL_UP.play(this.player, 0.5F, 2.0F);
               } catch (CashException ignore) {

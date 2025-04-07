@@ -1,7 +1,7 @@
 package me.joaomanoel.d4rkk.dev.servers;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
 import me.joaomanoel.d4rkk.dev.servers.balancer.BaseBalancer;
@@ -75,7 +75,7 @@ public class ServerItem {
     if (server != null) {
       Core.sendServer(profile, server.getName());
     } else {
-      profile.getPlayer().sendMessage(EN_US.connection$notsucess);
+      profile.getPlayer().sendMessage(LanguageAPI.getConfig(profile).getString("connection.notsucess"));
     }
   }
   

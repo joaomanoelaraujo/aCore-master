@@ -1,14 +1,13 @@
 package me.joaomanoel.d4rkk.dev.cosmetic;
 
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 
 public enum CosmeticType {
 
-    JOIN_MESSAGE(EN_US.cosmetic$join_message_name),
-    LANGUAGE("Languages"),
-    MVPCOLOR("Rank Color"),
-    PUNCH("Punch"),
-    COLORED_TAG(EN_US.cosmetic$coloredtag_name);
+    JOIN_MESSAGE(LanguageAPI.getConfig().getString("cosmetic.join_message_name")),
+    MVPCOLOR(LanguageAPI.getConfig().getString("cosmetic.rank")),
+    PUNCH(LanguageAPI.getConfig().getString("cosmetic.punch")),
+    COLORED_TAG(LanguageAPI.getConfig().getString("cosmetic.coloredtag_name"));
 
     private final String[] names;
 

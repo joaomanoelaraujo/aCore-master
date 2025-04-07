@@ -1,18 +1,16 @@
 package me.joaomanoel.d4rkk.dev.cosmetic.types;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.cash.CashManager;
 import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.CosmeticType;
 import me.joaomanoel.d4rkk.dev.cosmetic.container.SelectedContainer;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
 import me.joaomanoel.d4rkk.dev.plugin.logger.KLogger;
 import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
-import me.joaomanoel.d4rkk.dev.utils.enums.EnumRarity;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -75,13 +73,13 @@ public class PunchMessage extends Cosmetic {
 
     Role role = Role.getRoleByPermission(this.getPermission());
     String color = has ?
-            (isSelected ? EN_US.cosmetics$color$selected : EN_US.cosmetics$color$unlocked) :
-            EN_US.cosmetics$color$locked;
+            (isSelected ? LanguageAPI.getConfig(profile).getString("cosmetics.color.selected") : LanguageAPI.getConfig(profile).getString("cosmetics.color.unlocked")) :
+            LanguageAPI.getConfig(profile).getString("cosmetics.color.locked");
 
     String desc = has ?
-            EN_US.cosmetics$punchmessage$icon$has_desc$start.replace("{has_desc_status}", isSelected ? EN_US.cosmetics$icon$has_desc$selected : EN_US.cosmetics$icon$has_desc$select) :
-            EN_US.cosmetics$punchmessage$icon$perm_desc$start
-                    .replace("{perm_desc_status}", (role == null ? EN_US.cosmetics$icon$perm_desc$common : EN_US.cosmetics$icon$perm_desc$role.replace("{role}", role.getName())));
+            LanguageAPI.getConfig(profile).getString("cosmetics.punchmessage.icon.has_desc.start").replace("{has_desc_status}", isSelected ? LanguageAPI.getConfig(profile).getString("cosmetics.icon.has_desc.selected") : LanguageAPI.getConfig(profile).getString("cosmetics.icon.has_desc.select")) :
+            LanguageAPI.getConfig(profile).getString("cosmetics.punchmessage.icon.perm_desc.start")
+                    .replace("{perm_desc_status}", (role == null ? LanguageAPI.getConfig(profile).getString("cosmetics.icon.perm_desc.common") : LanguageAPI.getConfig(profile).getString("cosmetics.icon.perm_desc.role").replace("{role}", role.getName())));
 
     desc = desc.replace("{name}", this.name);
 

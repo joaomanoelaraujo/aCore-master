@@ -3,7 +3,7 @@ package me.joaomanoel.d4rkk.dev.utils.queue;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.nms.NMS;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import org.bukkit.Bukkit;
@@ -41,7 +41,7 @@ public class Queue {
               qp.destroy();
               continue;
             }
-            String message = EN_US.actionBar$queueMessage
+            String message = LanguageAPI.getConfig(profile).getString("actionBar.queueMessage")
                     .replace("{server}", qp.server)
                     .replace("{position}", String.valueOf(id));
             NMS.sendActionBar(qp.player, message);
@@ -63,7 +63,7 @@ public class Queue {
                 if (player.isOnline()) {
                   player.closeInventory();
                   NMS.sendActionBar(player, "");
-                  player.sendMessage(EN_US.connecting);
+                  player.sendMessage(LanguageAPI.getConfig(profile).getString("connection.message"));
                   ByteArrayDataOutput out = ByteStreams.newDataOutput();
                   out.writeUTF("Connect");
                   out.writeUTF(server);

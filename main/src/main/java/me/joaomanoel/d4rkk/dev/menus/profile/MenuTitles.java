@@ -1,8 +1,7 @@
 package me.joaomanoel.d4rkk.dev.menus.profile;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.LangAPI;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PagedPlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -28,12 +27,12 @@ public class MenuTitles extends PagedPlayerMenu {
   private Map<ItemStack, Title> titles = new HashMap<>();
   
   public MenuTitles(Profile profile) {
-    super(profile.getPlayer(), EN_US.titles$title, 5);
+    super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("titles.title"), 5);
     this.previousPage = 36;
     this.nextPage = 44;
     this.onlySlots(10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25);
     
-    this.removeSlotsWith(BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$back", profile)), 40);
+    this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")), 40);
     
     List<ItemStack> items = new ArrayList<>();
     List<ItemStack> sub = new ArrayList<>();

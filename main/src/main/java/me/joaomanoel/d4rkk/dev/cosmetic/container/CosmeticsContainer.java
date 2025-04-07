@@ -16,7 +16,7 @@ public class CosmeticsContainer extends AbstractContainer {
     JSONObject cosmetics = this.dataContainer.getAsJsonObject();
     if (!cosmetics.containsKey("JOIN_MESSAGE")) {
       for (CosmeticType type : CosmeticType.values()) {
-        cosmetics.put(type.name(), type == CosmeticType.JOIN_MESSAGE || type == CosmeticType.LANGUAGE ? new JSONObject() : new JSONArray());
+        cosmetics.put(type.name(), type == CosmeticType.JOIN_MESSAGE ? new JSONObject() : new JSONArray());
       }
     }
     

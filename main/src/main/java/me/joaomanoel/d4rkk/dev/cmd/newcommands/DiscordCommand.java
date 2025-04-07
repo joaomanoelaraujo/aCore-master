@@ -1,7 +1,8 @@
 package me.joaomanoel.d4rkk.dev.cmd.newcommands;
 
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
 import me.joaomanoel.d4rkk.dev.cmd.Commands;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
+import me.joaomanoel.d4rkk.dev.player.Profile;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -35,7 +36,7 @@ public class DiscordCommand extends Commands {
          TextComponent click = new TextComponent("HERE");
          click.setColor(ChatColor.YELLOW);
          click.setBold(true);
-         click.setClickEvent(new ClickEvent(Action.OPEN_URL, EN_US.discord$link));
+         click.setClickEvent(new ClickEvent(Action.OPEN_URL, LanguageAPI.getConfig(Profile.getProfile(player.getName())).getString("discord.link")));
          click.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText("§7Click here to open the server's discord.")));
          component.addExtra(click);
          BaseComponent[] var12 = TextComponent.fromLegacyText(" §eto open the server's discord.\n ");

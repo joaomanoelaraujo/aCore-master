@@ -3,11 +3,11 @@ package me.joaomanoel.d4rkk.dev.menus.party;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.bukkit.BukkitParty;
 import me.joaomanoel.d4rkk.dev.bukkit.BukkitPartyManager;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PlayerMenu;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
-import me.joaomanoel.d4rkk.dev.languages.LangAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -18,12 +18,10 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
-import static me.joaomanoel.d4rkk.dev.languages.translates.EN_US.*;
-
 public class MenuKick extends PlayerMenu {
 
   public MenuKick(Profile profile) {
-    super(profile.getPlayer(), LangAPI.getTranslatedText("kick$title$menu", profile), menu$kcrows);
+    super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("kick.title.menu"), LanguageAPI.getConfig(profile).getInt("menu.kcrows"));
     this.register(Core.getInstance());
     this.open();
     displayPartyMembers(profile);
@@ -45,10 +43,10 @@ public class MenuKick extends PlayerMenu {
       }
 
       Player memberPlayer = Bukkit.getPlayerExact(memberName);
-      String status = (memberPlayer != null && memberPlayer.isOnline()) ? LangAPI.getTranslatedText("party$online", profile) : LangAPI.getTranslatedText("party$offline", profile);
-      String role = party.isLeader(memberName) ? LangAPI.getTranslatedText("party$role", profile) : LangAPI.getTranslatedText("party$rmember", profile);
-      String guild = LangAPI.getTranslatedText("party$guild", profile);
-      String itemData = LangAPI.getTranslatedText("party$member", profile)
+      String status = (memberPlayer != null && memberPlayer.isOnline()) ? LanguageAPI.getConfig(profile).getString("party.online") : LanguageAPI.getConfig(profile).getString("party.offline");
+      String role = party.isLeader(memberName) ? LanguageAPI.getConfig(profile).getString("party.role") : LanguageAPI.getConfig(profile).getString("party.rmember");
+      String guild = LanguageAPI.getConfig(profile).getString("party.guild");
+      String itemData = LanguageAPI.getConfig(profile).getString("party.member")
               .replace("%name%", memberName)      // Substitui %name% pelo nome do jogador
               .replace("%role%", role) // Substitui %role% pelo prefixo do cargo
               .replace("%status%", status)        // Substitui %status% pelo status do jogador
@@ -82,7 +80,7 @@ public class MenuKick extends PlayerMenu {
 
             if (party != null && party.isLeader(player.getName())) {
               party.kick(memberName);
-              player.sendMessage(LangAPI.getTranslatedText("party$kickm", profile).replace("{member}", memberName));
+              player.sendMessage(LanguageAPI.getConfig(profile).getString("party.kickm").replace("{member}", memberName));
               new MenuParty(profile); // Volta para o menu principal da party
             }
 

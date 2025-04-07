@@ -2,7 +2,7 @@ package me.joaomanoel.d4rkk.dev.menus.profile.achievements;
 
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.achievements.Achievement;
-import me.joaomanoel.d4rkk.dev.languages.LangAPI;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PagedPlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.profile.MenuAchievements;
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -27,7 +27,7 @@ public class MenuAchievementsList<T extends Achievement> extends PagedPlayerMenu
     this.nextPage = 44;
     this.onlySlots(10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25);
     
-    this.removeSlotsWith(BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$back", profile)), 40);
+    this.removeSlotsWith(BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")), 40);
     
     List<ItemStack> items = new ArrayList<>();
     List<T> achievements = Achievement.listAchievements(achievementCLass);

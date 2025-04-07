@@ -2,7 +2,7 @@ package me.joaomanoel.d4rkk.dev.menus;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.UpdatablePlayerMenu;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.servers.ServerItem;
@@ -22,9 +22,9 @@ public class MenuServers extends UpdatablePlayerMenu {
     super(profile.getPlayer(), ServerItem.CONFIG.getString("title"), ServerItem.CONFIG.getInt("rows"));
 
 
-    if (EN_US.menu$minigames$active) {
-      this.setItem(EN_US.menu$minigames$slot, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
-              EN_US.menu$minigames$contribute)));
+    if (LanguageAPI.getConfig(profile).getBoolean("menu.minigames.active")) {
+      this.setItem(LanguageAPI.getConfig(profile).getInt("menu.minigames.slot"), BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
+              LanguageAPI.getConfig(profile).getString("menu.minigames.contribute"))));
     }
 
     this.update();
@@ -52,8 +52,8 @@ public class MenuServers extends UpdatablePlayerMenu {
               this.player.sendMessage("§cYou're already connected to this server.");
               return;
 
-            } else if (evt.getSlot() == EN_US.menu$minigames$slot){
-              if (EN_US.menu$minigames$active) {
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("menu.minigames.slot")){
+              if (LanguageAPI.getConfig(profile).getBoolean("menu.minigames.active")) {
                 player.chat("/shop");
               }
             }

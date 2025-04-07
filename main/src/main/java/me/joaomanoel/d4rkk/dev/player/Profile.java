@@ -522,6 +522,10 @@ public class Profile {
   public SelectedContainer getSelectedContainer() {
     return this.getAbstractContainer("aCoreProfile", "selected", SelectedContainer.class);
   }
+
+  public LanguageContainer getLanguageContainer() {
+    return this.getAbstractContainer("aCoreProfile", "language", LanguageContainer.class);
+  }
   
   public DataContainer getDataContainer(String table, String key) {
     return this.tableMap.get(table).get(key);

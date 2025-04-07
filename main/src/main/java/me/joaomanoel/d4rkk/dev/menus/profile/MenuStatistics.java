@@ -1,8 +1,7 @@
 package me.joaomanoel.d4rkk.dev.menus.profile;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.LangAPI;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -20,21 +19,21 @@ import org.bukkit.inventory.ItemStack;
 public class MenuStatistics extends PlayerMenu {
 
   public MenuStatistics(Profile profile) {
-    super(profile.getPlayer(), LangAPI.getTranslatedText("menu$statistics$title", profile), 4);
+    super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("menu.statistics.title"), 4);
 
     this.setItem(10, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
-            LangAPI.getTranslatedText("menu$statistics$skywars", profile))));
+            LanguageAPI.getConfig(profile).getString("menu.statistics.skywars"))));
 
     this.setItem(12, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
-            LangAPI.getTranslatedText("menu$statistics$bedwars", profile))));
+            LanguageAPI.getConfig(profile).getString("menu.statistics.bedwars"))));
 
     this.setItem(14, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
-            LangAPI.getTranslatedText("menu$statistics$thebridge", profile))));
+            LanguageAPI.getConfig(profile).getString("menu.statistics.thebridge"))));
 
     this.setItem(16, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
-            LangAPI.getTranslatedText("menu$statistics$thepit", profile))));
+            LanguageAPI.getConfig(profile).getString("menu.statistics.thepit"))));
 
-    this.setItem(31, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$back", profile)));
+    this.setItem(31, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")));
 
     this.register(Core.getInstance());
     this.open();

@@ -1,10 +1,11 @@
 package me.joaomanoel.d4rkk.dev.cmd;
 
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.Manager;
 import me.joaomanoel.d4rkk.dev.bukkit.BukkitParty;
 import me.joaomanoel.d4rkk.dev.bukkit.BukkitPartyManager;
 import me.joaomanoel.d4rkk.dev.party.PartyRole;
+import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import org.bukkit.Bukkit;
@@ -23,29 +24,30 @@ public class PartyCommand extends Commands {
   @Override
   public void perform(CommandSender sender, String label, String[] args) {
     if (!(sender instanceof Player)) {
-      sender.sendMessage(EN_US.party$only_players);
+      sender.sendMessage(LanguageAPI.getConfig().getString("party.only_players"));
       return;
     }
 
     Player player = (Player) sender;
+    Profile profile = Profile.getProfile(player.getName());
     if (label.equalsIgnoreCase("p")) {
       if (args.length == 0) {
-        player.sendMessage(EN_US.party$chat_usage);
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.chat_usage"));
         return;
       }
 
       BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
       if (party == null) {
-        player.sendMessage(EN_US.party$not_in_party);
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_in_party"));
         return;
       }
 
-      party.broadcast(EN_US.party$chat_format
+      party.broadcast(LanguageAPI.getConfig(profile).getString("party.chat_format")
               .replace("{prefix}", Role.getPrefixed(player.getName()))
               .replace("{message}", StringUtils.join(args, " ")));
     } else {
       if (args.length == 0) {
-        player.sendMessage(EN_US.party$help_message);
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.help_message"));
         return;
       }
 
@@ -53,164 +55,164 @@ public class PartyCommand extends Commands {
       if (action.equalsIgnoreCase("open")) {
         BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
         if (party == null) {
-          player.sendMessage(EN_US.party$not_in_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_in_party"));
           return;
         }
 
         if (!party.isLeader(player.getName())) {
-          player.sendMessage(EN_US.party$not_leader);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_leader"));
           return;
         }
 
         if (party.isOpen()) {
-          player.sendMessage(EN_US.party$already_public);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.already_public"));
           return;
         }
 
         party.setIsOpen(true);
-        player.sendMessage(EN_US.party$opened);
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.opened"));
       } else if (action.equalsIgnoreCase("close")) {
         BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
         if (party == null) {
-          player.sendMessage(EN_US.party$not_in_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_in_party"));
           return;
         }
 
         if (!party.isLeader(player.getName())) {
-          player.sendMessage(EN_US.party$not_leader);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_leader"));
           return;
         }
 
         if (!party.isOpen()) {
-          player.sendMessage(EN_US.party$already_private);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.already_private"));
           return;
         }
 
         party.setIsOpen(false);
-        player.sendMessage(EN_US.party$closed);
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.closed"));
       } else if (action.equalsIgnoreCase("join")) {
         if (args.length == 1) {
-          player.sendMessage(EN_US.party$join_usage);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.join_usage"));
           return;
         }
 
         String target = args[1];
         if (target.equalsIgnoreCase(player.getName())) {
-          player.sendMessage(EN_US.party$cant_join_own);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.cant_join_own"));
           return;
         }
 
         BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
         if (party != null) {
-          player.sendMessage(EN_US.party$already_in_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.already_in_party"));
           return;
         }
 
         party = BukkitPartyManager.getLeaderParty(target);
         if (party == null) {
-          player.sendMessage(EN_US.party$not_leader_target.replace("{player}", Manager.getCurrent(target)));
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_leader_target").replace("{player}", Manager.getCurrent(target)));
           return;
         }
 
         target = party.getName(target);
         if (!party.isOpen()) {
-          player.sendMessage(EN_US.party$closed_party.replace("{player}", Manager.getCurrent(target)));
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.closed_party").replace("{player}", Manager.getCurrent(target)));
           return;
         }
 
         if (!party.canJoin()) {
-          player.sendMessage(EN_US.party$full_party.replace("{player}", Manager.getCurrent(target)));
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.full_party").replace("{player}", Manager.getCurrent(target)));
           return;
         }
 
         party.join(player.getName());
-        player.sendMessage(EN_US.party$joined.replace("{prefix}", Role.getPrefixed(target)));
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.joined").replace("{prefix}", Role.getPrefixed(target)));
       } else if (action.equalsIgnoreCase("accept")) {
         if (args.length == 1) {
-          player.sendMessage(EN_US.party$accept_usage);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.accept_usage"));
           return;
         }
 
         String target = args[1];
         if (target.equalsIgnoreCase(player.getName())) {
-          player.sendMessage(EN_US.party$cant_accept_own);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.cant_accept_own"));
           return;
         }
 
         BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
         if (party != null) {
-          player.sendMessage(EN_US.party$already_in_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.already_in_party"));
           return;
         }
 
         party = BukkitPartyManager.getLeaderParty(target);
         if (party == null) {
-          player.sendMessage(EN_US.party$not_leader_target.replace("{player}", Manager.getCurrent(target)));
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_leader_target").replace("{player}", Manager.getCurrent(target)));
           return;
         }
 
         target = party.getName(target);
         if (!party.isInvited(player.getName())) {
-          player.sendMessage(EN_US.party$no_invite.replace("{player}", Manager.getCurrent(target)));
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.no_invite").replace("{player}", Manager.getCurrent(target)));
           return;
         }
 
         if (!party.canJoin()) {
-          player.sendMessage(EN_US.party$full_party.replace("{player}", Manager.getCurrent(target)));
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.full_party").replace("{player}", Manager.getCurrent(target)));
           return;
         }
 
         party.join(player.getName());
-        player.sendMessage(EN_US.party$joined.replace("{prefix}", Role.getPrefixed(target)));
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.joined").replace("{prefix}", Role.getPrefixed(target)));
       } else if (action.equalsIgnoreCase("help")) {
-        player.sendMessage(EN_US.party$help_message);
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.help_message"));
       } else if (action.equalsIgnoreCase("delete")) {
         BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
         if (party == null) {
-          player.sendMessage(EN_US.party$not_in_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_in_party"));
           return;
         }
 
         if (!party.isLeader(player.getName())) {
-          player.sendMessage(EN_US.party$not_leader);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_leader"));
           return;
         }
 
-        party.broadcast(EN_US.party$deleted_broadcast.replace("{prefix}", Role.getPrefixed(player.getName())), true);
+        party.broadcast(LanguageAPI.getConfig(profile).getString("party.deleted_broadcast").replace("{prefix}", Role.getPrefixed(player.getName())), true);
         party.delete();
-        player.sendMessage(EN_US.party$deleted);
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.deleted"));
       } else if (action.equalsIgnoreCase("kick")) {
         if (args.length == 1) {
-          player.sendMessage(EN_US.party$kick_usage);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.kick_usage"));
           return;
         }
 
         BukkitParty party = BukkitPartyManager.getLeaderParty(player.getName());
         if (party == null) {
-          player.sendMessage(EN_US.party$not_party_leader);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_party_leader"));
           return;
         }
 
         String target = args[1];
         if (target.equalsIgnoreCase(player.getName())) {
-          player.sendMessage(EN_US.party$cant_kick_self);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.cant_kick_self"));
           return;
         }
 
         if (!party.isMember(target)) {
-          player.sendMessage(EN_US.party$not_in_your_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_in_your_party"));
           return;
         }
 
         target = party.getName(target);
         party.kick(target);
-        party.broadcast(EN_US.party$kicked_broadcast
+        party.broadcast(LanguageAPI.getConfig(profile).getString("party.kicked_broadcast")
                 .replace("{kicker}", Role.getPrefixed(player.getName()))
                 .replace("{kicked}", Role.getPrefixed(target)));
       } else if (action.equalsIgnoreCase("info")) {
         BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
         if (party == null) {
-          player.sendMessage(EN_US.party$not_in_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_in_party"));
           return;
         }
 
@@ -219,7 +221,7 @@ public class PartyCommand extends Commands {
                 .map(pp -> (pp.isOnline() ? "§a" : "§c") + pp.getName())
                 .collect(Collectors.toList());
 
-        player.sendMessage(EN_US.party$info_format
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.info_format")
                 .replace("{leader}", Role.getPrefixed(party.getLeader()))
                 .replace("{public}", party.isOpen() ? "§aYes" : "§cNo")
                 .replace("{members}", String.valueOf(party.listMembers().size()))
@@ -227,77 +229,77 @@ public class PartyCommand extends Commands {
                 .replace("{member_list}", StringUtils.join(members, "§7, ")));
       } else if (action.equalsIgnoreCase("deny")) {
         if (args.length == 1) {
-          player.sendMessage(EN_US.party$deny_usage);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.deny_usage"));
           return;
         }
 
         String target = args[1];
         if (target.equalsIgnoreCase(player.getName())) {
-          player.sendMessage(EN_US.party$cant_deny_self);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.cant_deny_self"));
           return;
         }
 
         BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
         if (party != null) {
-          player.sendMessage(EN_US.party$already_in_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.already_in_party"));
           return;
         }
 
         party = BukkitPartyManager.getLeaderParty(target);
         if (party == null) {
-          player.sendMessage(EN_US.party$not_leader_target.replace("{player}", Manager.getCurrent(target)));
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_leader_target").replace("{player}", Manager.getCurrent(target)));
           return;
         }
 
         target = party.getName(target);
         if (!party.isInvited(player.getName())) {
-          player.sendMessage(EN_US.party$no_invite.replace("{player}", Manager.getCurrent(target)));
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.no_invite").replace("{player}", Manager.getCurrent(target)));
           return;
         }
 
         party.reject(player.getName());
-        player.sendMessage(EN_US.party$denied.replace("{prefix}", Role.getPrefixed(target)));
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.denied").replace("{prefix}", Role.getPrefixed(target)));
       } else if (action.equalsIgnoreCase("leave")) {
         BukkitParty party = BukkitPartyManager.getMemberParty(player.getName());
         if (party == null) {
-          player.sendMessage(EN_US.party$not_in_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_in_party"));
           return;
         }
 
         party.leave(player.getName());
-        player.sendMessage(EN_US.party$left);
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.left"));
       } else if (action.equalsIgnoreCase("transfer")) {
         if (args.length == 1) {
-          player.sendMessage(EN_US.party$transfer_usage);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.transfer_usage"));
           return;
         }
 
         BukkitParty party = BukkitPartyManager.getLeaderParty(player.getName());
         if (party == null) {
-          player.sendMessage(EN_US.party$not_party_leader);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_party_leader"));
           return;
         }
 
         String target = args[1];
         if (target.equalsIgnoreCase(player.getName())) {
-          player.sendMessage(EN_US.party$cant_transfer_self);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.cant_transfer_self"));
           return;
         }
 
         if (!party.isMember(target)) {
-          player.sendMessage(EN_US.party$not_in_your_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.not_in_your_party"));
           return;
         }
 
         target = party.getName(target);
         party.transfer(target);
-        party.broadcast(EN_US.party$transferred_broadcast
+        party.broadcast(LanguageAPI.getConfig(profile).getString("party.transferred_broadcast")
                 .replace("{old_leader}", Role.getPrefixed(player.getName()))
                 .replace("{new_leader}", Role.getPrefixed(target)));
       } else {
         if (action.equalsIgnoreCase("invite")) {
           if (args.length == 1) {
-            player.sendMessage(EN_US.party$invite_usage);
+            player.sendMessage(LanguageAPI.getConfig(profile).getString("party.invite_usage"));
             return;
           }
           action = args[1];
@@ -305,13 +307,13 @@ public class PartyCommand extends Commands {
 
         Player target = Bukkit.getPlayerExact(action);
         if (target == null) {
-          player.sendMessage(EN_US.party$player_not_found);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.player_not_found"));
           return;
         }
 
         action = target.getName();
         if (action.equalsIgnoreCase(player.getName())) {
-          player.sendMessage(EN_US.party$cant_invite_self);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.cant_invite_self"));
           return;
         }
 
@@ -321,27 +323,27 @@ public class PartyCommand extends Commands {
         }
 
         if (!party.isLeader(player.getName())) {
-          player.sendMessage(EN_US.party$only_leader_invite);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.only_leader_invite"));
           return;
         }
 
         if (!party.canJoin()) {
-          player.sendMessage(EN_US.party$full_party.replace("{player}", Manager.getCurrent(action)));
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.full_party").replace("{player}", Manager.getCurrent(action)));
           return;
         }
 
         if (party.isInvited(action)) {
-          player.sendMessage(EN_US.party$already_invited.replace("{player}", Manager.getCurrent(action)));
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.already_invited").replace("{player}", Manager.getCurrent(action)));
           return;
         }
 
         if (BukkitPartyManager.getMemberParty(action) != null) {
-          player.sendMessage(EN_US.party$already_in_party);
+          player.sendMessage(LanguageAPI.getConfig(profile).getString("party.already_in_party"));
           return;
         }
 
         party.invite(target);
-        player.sendMessage(EN_US.party$invited.replace("{prefix}", Role.getPrefixed(action)));
+        player.sendMessage(LanguageAPI.getConfig(profile).getString("party.invited").replace("{prefix}", Role.getPrefixed(action)));
       }
     }
   }

@@ -12,10 +12,10 @@ import java.util.Map;
 
 @DataTableInfo(
     name = "aCoreProfile",
-    create = "CREATE TABLE IF NOT EXISTS `aCoreProfile` (`name` VARCHAR(32), `cash` LONG, `role` TEXT, `deliveries` TEXT, `preferences` TEXT, `titles` TEXT, `boosters` TEXT, `cosmetics` TEXT, `achievements` TEXT, `selected` TEXT, `cselected` TEXT, `created` LONG, `clan` TEXT, `lastlogin` LONG, `friends` LONG, `compban` LONG, PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
+    create = "CREATE TABLE IF NOT EXISTS `aCoreProfile` (`name` VARCHAR(32), `cash` LONG, `role` TEXT, `deliveries` TEXT, `preferences` TEXT, `titles` TEXT, `boosters` TEXT, `cosmetics` TEXT, `achievements` TEXT, `selected` TEXT, `cselected` TEXT, `language` TEXT, `created` LONG, `clan` TEXT, `lastlogin` LONG, `friends` LONG, `compban` LONG, PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
     select = "SELECT * FROM `aCoreProfile` WHERE LOWER(`name`) = ?",
-    insert = "INSERT INTO `aCoreProfile` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    update = "UPDATE `aCoreProfile` SET `cash` = ?, `role` = ?, `deliveries` = ?, `preferences` = ?, `titles` = ?, `boosters` = ?, `cosmetics` = ?, `achievements` = ?, `selected` = ?, `cselected` = ?, `created` = ?, `clan` = ?, `lastlogin` = ?, `friends` = ?, `compban` = ? WHERE LOWER(`name`) = ?"
+    insert = "INSERT INTO `aCoreProfile` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    update = "UPDATE `aCoreProfile` SET `cash` = ?, `role` = ?, `deliveries` = ?, `preferences` = ?, `titles` = ?, `boosters` = ?, `cosmetics` = ?, `achievements` = ?, `selected` = ?, `cselected` = ?, `language` = ?, `created` = ?, `clan` = ?, `lastlogin` = ?, `friends` = ?, `compban` = ? WHERE LOWER(`name`) = ?"
 )
 public class CoreTable extends DataTable {
   
@@ -44,6 +44,7 @@ public class CoreTable extends DataTable {
     defaultValues.put("achievements", new DataContainer("[]"));
     defaultValues.put("selected", new DataContainer("{\"title\": \"0\", \"icon\": \"0\"}"));
     defaultValues.put("cselected", new DataContainer("{}"));
+    defaultValues.put("language", new DataContainer(""));
     defaultValues.put("created", new DataContainer(System.currentTimeMillis()));
     defaultValues.put("clan", new DataContainer(""));
     defaultValues.put("lastlogin", new DataContainer(System.currentTimeMillis()));
@@ -51,4 +52,5 @@ public class CoreTable extends DataTable {
     defaultValues.put("compban", new DataContainer(0L));
     return defaultValues;
   }
+
 }

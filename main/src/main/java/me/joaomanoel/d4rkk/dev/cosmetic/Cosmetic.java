@@ -7,7 +7,6 @@ import me.joaomanoel.d4rkk.dev.cosmetic.types.ColoredTag;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.JoinMessage;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.MvpColor;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.PunchMessage;
-import me.joaomanoel.d4rkk.dev.languages.GLanguage;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumRarity;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -40,7 +39,6 @@ public abstract class Cosmetic {
 
     public static void setupCosmetics() {
         JoinMessage.setupJoinMessages();
-        GLanguage.setupLanguage();
         PunchMessage.setupPunchMessages();
         MvpColor.setupColorMvp();
         ColoredTag.setupColoredTag();
@@ -57,13 +55,6 @@ public abstract class Cosmetic {
 
     public static Cosmetic findById(String lootChestID) {
         return COSMETICS.stream().filter(cosmetic -> cosmetic.getLootChestsID().equals(lootChestID)).findFirst().orElse(null);
-    }
-    public static GLanguage findLanguageById(long languageId) {
-        return COSMETICS.stream()
-                .filter(cosmetic -> cosmetic instanceof GLanguage && cosmetic.getId() == languageId)
-                .map(cosmetic -> (GLanguage) cosmetic)
-                .findFirst()
-                .orElse(null);
     }
 
     public static List<Cosmetic> listCosmetics() {

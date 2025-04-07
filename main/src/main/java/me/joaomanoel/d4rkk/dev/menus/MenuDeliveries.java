@@ -1,9 +1,9 @@
 package me.joaomanoel.d4rkk.dev.menus;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
 import me.joaomanoel.d4rkk.dev.database.data.container.DeliveriesContainer;
 import me.joaomanoel.d4rkk.dev.deliveries.Delivery;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.UpdatablePlayerMenu;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
@@ -23,7 +23,7 @@ public class MenuDeliveries extends UpdatablePlayerMenu {
   private Profile profile;
   private Map<ItemStack, Delivery> deliveries;
   public MenuDeliveries(Profile profile) {
-    super(profile.getPlayer(), EN_US.deliveries$title, 5);
+    super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("deliveries.title"), 5);
     this.profile = profile;
     this.deliveries = new HashMap<>();
     

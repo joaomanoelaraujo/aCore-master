@@ -1,9 +1,9 @@
 package me.joaomanoel.d4rkk.dev.menus.profile;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.LangAPI;
 import me.joaomanoel.d4rkk.dev.booster.Booster;
 import me.joaomanoel.d4rkk.dev.booster.NetworkBooster;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.menus.profile.boosters.MenuBoostersList;
@@ -23,35 +23,35 @@ import org.bukkit.inventory.ItemStack;
 public class MenuBoosters extends PlayerMenu {
 
   public MenuBoosters(Profile profile) {
-    super(profile.getPlayer(), LangAPI.getTranslatedText("menu$boosters$title", profile), 4);
+    super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("menu.boosters.title"), 4);
 
-    this.setItem(12, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$boosters$personal", profile)));
-    this.setItem(14, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$boosters$global", profile)));
+    this.setItem(12, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.boosters.personal")));
+    this.setItem(14, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.boosters.global")));
 
     String booster = profile.getBoostersContainer().getEnabled();
     StringBuilder result = new StringBuilder(), network = new StringBuilder();
     for (int index = 0; index < Core.minigames.size(); index++) {
       String minigame = Core.minigames.get(index);
       NetworkBooster nb = Booster.getNetworkBooster(minigame);
-      String status = nb == null ? LangAPI.getTranslatedText("menu$boosters$networkDisabled", profile)
-              : LangAPI.getTranslatedText("menu$boosters$networkActive", profile)
+      String status = nb == null ? LanguageAPI.getConfig(profile).getString("menu.boosters.networkDisabled")
+              : LanguageAPI.getConfig(profile).getString("menu.boosters.networkActive")
               .replace("{multiplier}", String.valueOf(nb.getMultiplier()))
               .replace("{player}", Role.getColored(nb.getBooster()))
               .replace("{time}", TimeUtils.getTimeUntil(nb.getExpires()));
-      network.append(LangAPI.getTranslatedText("menu$boosters$network", profile)
+      network.append(LanguageAPI.getConfig(profile).getString("menu.boosters.network")
                       .replace("{minigame}", minigame).replace("{status}", status))
               .append(index + 1 == Core.minigames.size() ? "" : "\n");
     }
-    result.append(LangAPI.getTranslatedText("menu$boosters$active", profile)
-            .replace("{activeMultiplier}", booster == null ? LangAPI.getTranslatedText("menu$boosters$none", profile)
-                    : LangAPI.getTranslatedText("menu$boosters$calculation", profile)
+    result.append(LanguageAPI.getConfig(profile).getString("menu.boosters.active")
+            .replace("{activeMultiplier}", booster == null ? LanguageAPI.getConfig(profile).getString("menu.boosters.none")
+                    : LanguageAPI.getConfig(profile).getString("menu.boosters.calculation")
                     .replace("{multiplier}", booster.split(":")[0])
                     .replace("{time}", TimeUtils.getTimeUntil(Long.parseLong(booster.split(":")[1])))
                     .replace("{total}", String.valueOf((int) (50.0 * Double.parseDouble(booster.split(":")[0]))))));
 
-    this.setItem(30, BukkitUtils.deserializeItemStack(LangAPI.getTranslatedText("menu$back", profile)));
+    this.setItem(30, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")));
     this.setItem(31, BukkitUtils.deserializeItemStack(
-            LangAPI.getTranslatedText("menu$boosters$credits", profile)
+            LanguageAPI.getConfig(profile).getString("menu.boosters.credits")
                     .replace("{network}", network.toString()).replace("{result}", result.toString())));
 
     this.register(Core.getInstance());
@@ -76,10 +76,10 @@ public class MenuBoosters extends PlayerMenu {
           if (item != null && item.getType() != Material.AIR) {
             if (evt.getSlot() == 12) {
               EnumSound.ITEM_PICKUP.play(this.player, 0.5F, 2.0F);
-              new MenuBoostersList<>(profile, LangAPI.getTranslatedText("booster$type2", profile), Booster.BoosterType.PRIVATE);
+              new MenuBoostersList<>(profile, LanguageAPI.getConfig(profile).getString("booster.type2"), Booster.BoosterType.PRIVATE);
             } else if (evt.getSlot() == 14) {
               EnumSound.ITEM_PICKUP.play(this.player, 0.5F, 2.0F);
-              new MenuBoostersList<>(profile, LangAPI.getTranslatedText("booster$type", profile), Booster.BoosterType.NETWORK);
+              new MenuBoostersList<>(profile, LanguageAPI.getConfig(profile).getString("booster.type"), Booster.BoosterType.NETWORK);
             } else if (evt.getSlot() == 30) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuProfile(profile);

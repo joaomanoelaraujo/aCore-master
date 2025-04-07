@@ -2,23 +2,20 @@ package me.joaomanoel.d4rkk.dev.menus;
 
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.languages.LangAPI;
-import me.joaomanoel.d4rkk.dev.languages.translates.EN_US;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.JoinMessage;
-import me.joaomanoel.d4rkk.dev.languages.GLanguage;
-import me.joaomanoel.d4rkk.dev.languages.translates.PT_BR;
+import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.apparence.MenuApparence;
-import me.joaomanoel.d4rkk.dev.menus.language.MenuLanguages;
+
 import me.joaomanoel.d4rkk.dev.menus.party.MenuParty;
 import me.joaomanoel.d4rkk.dev.menus.profile.*;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
-import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
 import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -26,10 +23,9 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-
-import static me.joaomanoel.d4rkk.dev.languages.translates.EN_US.*;
 
 public class MenuProfile extends PlayerMenu {
 
@@ -37,59 +33,56 @@ public class MenuProfile extends PlayerMenu {
   private static final SimpleDateFormat SDF_PT = new SimpleDateFormat("d 'de' MMMM 'de' yyyy 'às' HH:mm", new Locale("pt", "BR"));
 
   public MenuProfile(Profile profile) {
-    super(profile.getPlayer(), LangAPI.getTranslatedText("profile$title", profile), menu$prows);
+    super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("profile.title"), LanguageAPI.getConfig(profile).getInt("menu.prows"));
 
-    // Continue com o restante do método
-    GLanguage languageId = LangAPI.getLanguageId(profile);
-    SimpleDateFormat dateFormat = (languageId.getId() == 1) ? SDF_EN : SDF_PT;
+    SimpleDateFormat dateFormat = SDF_EN;
 
-    String profileInfo = getTranslatedText("profile$menu$profile", profile)
+    String profileInfo = LanguageAPI.getConfig(profile).getString("profile.menu.profile")
             .replace("{rank}", Role.getRoleByName(profile.getDataContainer("aCoreProfile", "role").getAsString()).getName())
             .replace("{cash}", StringUtils.formatNumber(profile.getStats("aCoreProfile", "cash")))
             .replace("{created}", dateFormat.format(profile.getDataContainer("aCoreProfile", "created").getAsLong()))
             .replace("{last}", dateFormat.format(profile.getDataContainer("aCoreProfile", "lastlogin").getAsLong()));
 
-    this.setItem(getTranslatedInt("profile$slot", profile), BukkitUtils.putProfileOnSkull(this.player, BukkitUtils.deserializeItemStack(profileInfo)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.slot"), BukkitUtils.putProfileOnSkull(this.player, BukkitUtils.deserializeItemStack(profileInfo)));
 
-    if (getTranslatedBoolean("menuprofile$glass", profile)) {
+    if (LanguageAPI.getConfig(profile).getBoolean("menuprofile.glass")) {
       for (int i = 9; i <= 17; i++) {
-        this.setItem(i, BukkitUtils.deserializeItemStack(getTranslatedText("menuprofile$color", profile)));
+        this.setItem(i, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menuprofile.color")));
       }
     }
 
-    this.setItem(getTranslatedInt("profile$statistics$slot1", profile),
-            BukkitUtils.deserializeItemStack(getTranslatedText("profile$menu$statistics", profile)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.statistics.slot1"),
+            BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.menu.statistics")));
 
-    this.setItem(getTranslatedInt("profile$cosmetics$slot4", profile),
-            BukkitUtils.deserializeItemStack(getTranslatedText("profile$menu$cosmetics", profile)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.cosmetics.slot4"),
+            BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.menu.cosmetics")));
 
-    this.setItem(getTranslatedInt("profile$fslot", profile),
-            BukkitUtils.deserializeItemStack(getTranslatedText("profile$mfriends", profile)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.fslot"),
+            BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.mfriends")));
 
-    this.setItem(getTranslatedInt("profile$pslot", profile),
-            BukkitUtils.deserializeItemStack(getTranslatedText("profile$mparty", profile)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.pslot"),
+            BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.mparty")));
 
-    this.setItem(getTranslatedInt("profile$aslot", profile),
-            BukkitUtils.deserializeItemStack(getTranslatedText("profile$apparence", profile)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.aslot"),
+            BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.apparence")));
 
-    this.setItem(getTranslatedInt("profile$sslot", profile),
-            BukkitUtils.deserializeItemStack(getTranslatedText("profile$status", profile)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.sslot"),
+            BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.status")));
 
-    String languages = getTranslatedText("profile$language", profile)
-            .replace("{languages}", "\n    " + getAvailableLanguages());
-    this.setItem(getTranslatedInt("profile$slot$lang", profile), BukkitUtils.deserializeItemStack(languages));
+    String languages = LanguageAPI.getConfig(profile).getString("profile.language").replace("{languages}", getLanguageMessage());
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.langslot"), BukkitUtils.deserializeItemStack(languages));
 
-    this.setItem(getTranslatedInt("profile$prslot2", profile),
-            BukkitUtils.deserializeItemStack(getTranslatedText("profile$menu$preferences", profile)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.prslot2"),
+            BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.menu.preferences")));
 
-    this.setItem(getTranslatedInt("profile$tslot3", profile),
-            BukkitUtils.deserializeItemStack(getTranslatedText("profile$menu$titles", profile)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.tslot3"),
+            BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.menu.titles")));
 
-    this.setItem(getTranslatedInt("profile$boosters$slot4", profile),
-            BukkitUtils.deserializeItemStack(getTranslatedText("profile$menu$boosters", profile)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.boosters.slot4"),
+            BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.menu.boosters")));
 
-    this.setItem(getTranslatedInt("profile$challenges$slot5", profile),
-            BukkitUtils.deserializeItemStack(getTranslatedText("profile$menu$challenges", profile)));
+    this.setItem(LanguageAPI.getConfig(profile).getInt("profile.challenges.slot5"),
+            BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.menu.challenges")));
 
     this.register(Core.getInstance());
     this.open();
@@ -113,19 +106,19 @@ public class MenuProfile extends PlayerMenu {
           if (item != null && item.getType() != Material.AIR) {
             if (evt.getSlot() == 10) {
               EnumSound.ITEM_PICKUP.play(this.player, 0.5F, 2.0F);
-            } else if (evt.getSlot() == profile$statistics$slot1) {
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.statistics.slot1")) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuStatistics(profile);
-            } else if (evt.getSlot() == profile$aslot){
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.aslot")){
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuApparence(profile);
-            } else if (evt.getSlot() == profile$slot$lang){
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.slot.lang")){
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
-              new MenuLanguages<>(profile, "Languages", GLanguage.class);
-            } else if (evt.getSlot() == profile$prslot2) {
+              new MenuIdiomas(profile);
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.prslot2")) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuPreferences(profile);
-            } else if (evt.getSlot() == profile$fslot) {
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.fslot")) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               if (Core.aFriends){
                 EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
@@ -133,25 +126,25 @@ public class MenuProfile extends PlayerMenu {
               } else {
                 EnumSound.ENDERMAN_TELEPORT.play(this.player, 0.5F, 2.0F);
               }
-            } else if (evt.getSlot() == profile$pslot) {
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.pslot")) {
               //todo: fazer o menu de party.
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuParty(profile);
-            } else if (evt.getSlot() == profile$tslot3) {
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.tslot3")) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuTitles(profile);
-            } else if (evt.getSlot() == profile$boosters$slot4) {
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.boosters.slot4")) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuBoosters(profile);
-            } else if (evt.getSlot() == profile$cosmetics$slot4) {
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.cosmetics.slot4")) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
-              new MenuCosmetic<>(profile, cosmetic$join_message_name, JoinMessage.class);
-            } else if (evt.getSlot() == profile$challenges$slot5) {
+              new MenuCosmetic<>(profile, LanguageAPI.getConfig(profile).getString("cosmetic.join_message_name"), JoinMessage.class);
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.challenges.slot5")) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuAchievements(profile);
-            } else if (evt.getSlot() == profile$aslot) {
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.aslot")) {
               EnumSound.ENDERMAN_TELEPORT.play(player, 1.0F, 2.0F);
-            } else if (evt.getSlot() == profile$sslot){
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.sslot")){
               EnumSound.ENDERMAN_TELEPORT.play(player, 1.0F, 2.0F);
             }
           }
@@ -159,21 +152,7 @@ public class MenuProfile extends PlayerMenu {
       }
     }
   }
-  private String getAvailableLanguages() {
-    KConfig config = Core.getInstance().getConfig("LANGUAGES", "languages");
 
-    // StringBuilder para criar a lista formatada
-    StringBuilder languagesList = new StringBuilder();
-
-    // Itera por todas as linguagens configuradas
-    for (String key : config.getKeys(false)) {
-      String languageName = config.getString(key + ".name");
-      languagesList.append("    §f▪ ").append(languageName).append("\n");
-    }
-
-    // Retorna a lista formatada, removendo a última quebra de linha
-    return languagesList.toString().trim();
-  }
   public void cancel() {
     HandlerList.unregisterAll(this);
   }
@@ -192,43 +171,32 @@ public class MenuProfile extends PlayerMenu {
     }
   }
 
-  private String getTranslatedText(String key, Profile profile) {
-    GLanguage languageId = LangAPI.getLanguageId(profile);
-    return (languageId.getId() == 1) ? getFieldValue(EN_US.class, key) : getFieldValue(PT_BR.class, key);
+  private String getLanguageMessage() {
+    StringBuilder sb = new StringBuilder();
+    YamlConfiguration config = YamlConfiguration.loadConfiguration(
+            new File(Core.getInstance().getDataFolder(), "languages.yml")
+    );
+
+    if (!config.contains("languages")) {
+      return "§cNenhuma linguagem encontrada.";
+    }
+
+    for (String key : config.getConfigurationSection("languages").getKeys(false)) {
+      String nameLine = config.getString("languages." + key + ".icon");
+      String name = key;
+
+      // Tenta extrair o nome da linguagem do campo "name>" (caso esteja formatado como name>&aPortugues)
+      if (nameLine != null && nameLine.contains("name>")) {
+        int start = nameLine.indexOf("name>") + 5;
+        int end = nameLine.indexOf(" : ", start);
+        if (end == -1) end = nameLine.length();
+        name = nameLine.substring(start, end).replace("&", "§");
+      }
+
+      sb.append("\n    §8§l• §f").append(name);
+    }
+
+    return sb.toString();
   }
 
-  private int getTranslatedInt(String key, Profile profile) {
-    GLanguage languageId = LangAPI.getLanguageId(profile);
-    return (languageId.getId() == 1) ? getFieldValueAsInt(EN_US.class, key) : getFieldValueAsInt(PT_BR.class, key);
-  }
-  private boolean getTranslatedBoolean(String key, Profile profile) {
-    GLanguage languageId = LangAPI.getLanguageId(profile);
-    return (languageId.getId() == 1) ? getFieldValueAsBoolean(EN_US.class, key) : getFieldValueAsBoolean(PT_BR.class, key);
-  }
-
-  private boolean getFieldValueAsBoolean(Class<?> clazz, String key) {
-    try {
-      return (boolean) clazz.getField(key).get(null);
-    } catch (Exception e) {
-      e.printStackTrace();
-      return false;
-    }
-  }
-  private String getFieldValue(Class<?> clazz, String key) {
-    try {
-      return (String) clazz.getField(key).get(null);
-    } catch (Exception e) {
-      e.printStackTrace();
-      return "§cTranslation missing!";
-    }
-  }
-
-  private int getFieldValueAsInt(Class<?> clazz, String key) {
-    try {
-      return (int) clazz.getField(key).get(null);
-    } catch (Exception e) {
-      e.printStackTrace();
-      return -1;
-    }
-  }
 }
