@@ -1,5 +1,8 @@
 # aCore _ Created by D4RKK 
 # Version: 2.0
+already: '§cVocê já está conectado a esse servidor.'
+languages:
+ title: 'Selecionar Idioma'
 discord:
  link: 'https://discord.gg/aaa'
 loja:
