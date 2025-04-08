@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>dev.slickcollections.d4rkk</groupId>
-        <artifactId>aCore-parent</artifactId>
-        <version>1.6.2</version>
+        <groupId>me.joaomanoel.d4rkk.dev</groupId>
+        <artifactId>aCore-master</artifactId>
+        <version>2.1</version>
         <relativePath>../pom.xml</relativePath> <!-- Caminho relativo para o POM pai -->
     </parent>
 
