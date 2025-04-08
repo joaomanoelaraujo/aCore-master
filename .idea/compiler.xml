@@ -8,11 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="main" />
         <module name="nms-1.20.6" />
-        <module name="5" />
         <module name="aCore" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="5" target="1.8" />
       <module name="nms-1.20.6" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -1,3 +1,0 @@
-name: Main-core
-version: '${project.version}'
-main: hypedmc.com.br.maincore.Main_core
