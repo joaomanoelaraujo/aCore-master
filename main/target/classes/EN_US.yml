@@ -1,12 +1,11 @@
-# aCore _ Created by D4RKK 
+# aCore _ Created by D4RKK
 # Version: 2.0
-
 discord:
  link: 'https://discord.gg/aaa'
-languages:
- title: 'Select a language'
 loja:
  link: 'www.yourserver.com'
+languages:
+ title: 'Select Language'
 profileo:
  menu:
   levelInfo: 'SKULL_ITEM:3 : 1 : name>%s : desc>&7Level: &6%s\n&7Guild: &b%s\n&7Rank: %s'
@@ -37,7 +36,6 @@ profile:
  apparence: '299 : 1 : name>&aCustomize Appearance : desc>\n&7Customize the following visual\n&7options for yourself!\n &f▪ MVP+ Rank Color\n &f▪ Punch Messages\n\n&eClick to view! : paint>27:27:118'
  status: '145:0 : 1 : name>&aAccount Status : desc>&7Check the status of your account and its\n&7punishment history. \n\n&eClick to view!'
  language: 'SKULL_ITEM:3 : 1 : name>&aLanguages : desc>&7Change your language\n\n&7Currently available: {languages} \n\n&7More languages will be available soon!\n\n&eClick to change language! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjE1MWNmZmRhZjMwMzY3MzUzMWE3NjUxYjM2NjM3Y2FkOTEyYmE0ODU2NDMxNThlNTQ4ZDU5YjJlYWQ1MDExIn19fQ=='
- langslot: 40
  slot: 4
  # Apparence icon slot
  aslot: 30
@@ -196,10 +194,10 @@ menu:
 actionBar:
  queueMessage: '&aYou are in the queue to join the server &8{server} &7(Position #{position})'
 connection:
- message: '§aConnecting...'
+ message: 'Connecting...'
  notsucess: '§Unable to connect to this server at this time!'
 gamemode:
- mode: '§cMode not found.'
+ mode: 'Mode not found.'
  changed: '&aYou changed the game mode from {mode} to {to}.'
  changer: '&aYour game mode has been changed to {type}.'
 vanish:
@@ -248,11 +246,11 @@ cosmetics:
  coloredtag:
   icon:
    perm_desc:
-    start: '&8Colored Tag\n\n&7Select the {name} color for\n&7in-game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n \n{perm_desc_status}'
+    start: '&8Colored Tag\n\n&7Select the {name} color for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n \n{perm_desc_status}'
    buy_desc:
-    start: '&8Colored Tag\n\n&7Select the {name} color for\n&7in-game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n&7Cost: &2{cash}\n \n{buy_desc_status}'
+    start: '&8Colored Tag\n\n&7Select the {name} color for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n&7Cost: &2{cash}\n \n{buy_desc_status}'
    has_desc:
-    start: '&8Colored Tag\n\n&7Select the {name} color for\n&7in-game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n \n{has_desc_status}'
+    start: '&8Colored Tag\n\n&7Select the {name} color for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n \n{has_desc_status}'
  mvpcolor:
   icon:
    perm_desc:
@@ -264,19 +262,17 @@ cosmetics:
  joinmessage:
   icon:
    perm_desc:
-    start: '&8Join Message\n\n&7Select the {name} Join Message for\n&7in-game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n \n{perm_desc_status}'
+    start: '&8Join Message\n\n&7Select the {name} Join Message for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n \n{perm_desc_status}'
    buy_desc:
-    start: '&8Join Message\n\n&7Select the {name} Join Message for\n&7in-game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n&7Cost: &2{cash}\n \n{buy_desc_status}'
+    start: '&8Join Message\n\n&7Select the {name} Join Message for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n&7Cost: &2{cash}\n \n{buy_desc_status}'
    has_desc:
-    start: '&8Join Message\n\n&7Select the {name} Join Message for\n&7in-game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n \n{has_desc_status}'
+    start: '&8Join Message\n\n&7Select the {name} Join Message for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n\n&7Rarity: {rarity}\n \n{has_desc_status}'
  punchmessage:
   icon:
    perm_desc:
-    start: '&8Punch Message\n\n&7Select the {name} Punch Message for\n&7in-game chat messages!\n\n&eRight_Click to preview! \n \n{perm_desc_status}'
-   buy_desc:
-    start: '&8Punch Message\n\n&7Select the {name} Punch Message for\n&7in-game chat messages!\n\n&eRight_Click to preview! \n \n{buy_desc_status}'
+    start: '&8Punch Message\n\n&7Select the {name} Punch Message for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n \n{perm_desc_status}'
    has_desc:
-    start: '&8Punch Message\n\n&7Select the {name} Punch Message for\n&7in-game chat messages!\n\n&eRight_Click to preview! \n\n{has_desc_status}'
+    start: '&8Punch Message\n\n&7Select the {name} Punch Message for\n&7in_game chat messages!\n\n&eRight_Click to preview! \n \n{has_desc_status}'
 language:
  icon:
   has_desc:
@@ -289,8 +285,6 @@ menucosmetics:
 cosmetic:
  join_message_name: 'Join Message'
  coloredtag_name: 'Colored Tag'
- rank: "Rank Color"
- punch: "Punch"
 message:
  nohaveperm: '&cYou don''t have enough permission for that.'
  deathmessage: '\n&eMessages that can be displayed when joined lobby:\n \n'

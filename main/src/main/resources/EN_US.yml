@@ -5,7 +5,7 @@ discord:
 loja:
  link: 'www.yourserver.com'
 languages:
- title: 'Seleccione un idioma'
+ title: 'Select Language'
 profileo:
  menu:
   levelInfo: 'SKULL_ITEM:3 : 1 : name>%s : desc>&7Level: &6%s\n&7Guild: &b%s\n&7Rank: %s'
