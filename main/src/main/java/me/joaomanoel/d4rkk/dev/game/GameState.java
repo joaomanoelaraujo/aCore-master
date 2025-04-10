@@ -18,7 +18,7 @@ public enum GameState {
 
   private static Map<String, String> getTranslationsForLanguage(String language) {
     Map<String, String> translationMap = new HashMap<>();
-    switch (language.toLowerCase()) {
+    switch (language) {
       case "EN_US":
         translationMap.put("AGUARDANDO", "Waiting for players...");
         translationMap.put("INICIANDO", "Starting game...");
