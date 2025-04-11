@@ -112,7 +112,7 @@ public class MenuProfile extends PlayerMenu {
             } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.aslot")){
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuApparence(profile);
-            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.slot.lang")){
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.langslot")){
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuIdiomas(profile);
             } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.prslot2")) {

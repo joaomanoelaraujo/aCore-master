@@ -1,8 +1,8 @@
-# aCore _ Created by D4RKK
+# aCore _ Created by D4RKK 
 # Version: 2.0
-already: '§cYa estás conectado al servidor.'
+already: '§cYa estás conectado a este servidor.'
 languages:
-  title: 'Seleccione un idioma'
+  title: 'Seleccionar Idioma'
 discord:
   link: 'https://discord.gg/aaa'
 loja:
@@ -12,11 +12,11 @@ profileo:
     levelInfo: 'SKULL_ITEM:3 : 1 : name>%s : desc>&7Nivel: &6%s\n&7Gremio: &b%s\n&7Rango: %s'
     socialMedia: 'SKULL_ITEM:3 : 1 : name>&aRedes Sociales : desc>&e¡Haz clic para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTFiN2EwYzIxMGU2Y2RmNWEzNWZkODE5N2U2ZTI0YTAzODMxNWJiZTNiZGNkMWJjYzM2MzBiZjI2ZjU5ZWM1YyJ9fX0='
     statistics: 'PAPER : 1 : name>&aEstadísticas : desc>&7Haz clic para ver las estadísticas de %s'
-    partyInvite: 'DIAMOND : 1 : name>&aInvitar a la Party : desc>&7¡Haz clic aquí para invitar a %s a la party!'
+    partyInvite: 'DIAMOND : 1 : name>&aInvitar a Grupo : desc>&7¡Haz clic para invitar a %s al grupo!'
     friendInvite: '386 : 1 : name>&aAgregar Amigo : desc>&7Haz clic para agregar a %s como amigo'
     blockPlayer: 'BARRIER : 1 : name>&aBloquear : desc>&7Haz clic para bloquear a %s'
     guildInvite: 'SKULL_ITEM:3 : 1 : name>&aInvitar al Gremio : desc>&7¡Haz clic para invitar a %s al gremio! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWRhZmEyZDNlNGU2ZGZmNDI5MTcxMzExYTljYzJiYWIyNjYwYjYyOTUyNzYyNzM0ZDU2OTQ1OTJhMjgwNzk4YSJ9fX0='
-    leadershipPass: 'SKULL_ITEM:3 : 1 : name>&aTransferir liderazgo : desc>&7Haz clic para transferir el liderazgo de la party a %s : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJkYjc1MDY3Mjk0MTFjMzE3ODhmNDAzZDA3NjgxN2NiNGQwYTJhYmFmZDNkZjk2MGRmMmY1ZDBiNGRiYmZlOSJ9fX0='
+    leadershipPass: 'SKULL_ITEM:3 : 1 : name>&aTransferir Liderazgo : desc>&7Haz clic para transferir el liderazgo del grupo a %s : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJkYjc1MDY3Mjk0MTFjMzE3ODhmNDAzZDA3NjgxN2NiNGQwYTJhYmFmZDNkZjk2MGRmMmY1ZDBiNGRiYmZlOSJ9fX0='
     close: 'ARROW : 1 : name>&cCerrar'
 menuprofile:
   color: '160:1 : 1 : name>&7'
@@ -25,20 +25,20 @@ menuprofile:
 profile:
   title: 'Perfil'
   menu:
-    preferences: 'REDSTONE_COMPARATOR : 1 : hide>all : name>&aPreferencias : desc>&7En nuestro servidor, puedes personalizar completamente\n&7tu experiencia de juego.\n&7Personaliza varias opciones exclusivas como\n&7desees!\n \n&8Las opciones incluyen habilitar o deshabilitar\n&8mensajes privados, jugadores y otros.\n \n&e¡Haz clic para personalizar opciones!'
+    preferences: 'REDSTONE_COMPARATOR : 1 : hide>all : name>&aPreferencias : desc>&7En nuestro servidor, puedes personalizar completamente\n&7tu experiencia de juego.\n&7¡Personaliza varias opciones exclusivas como\n&7desees!\n \n&8Las opciones incluyen habilitar o deshabilitar\n&8mensajes privados, jugadores y más.\n \n&e¡Haz clic para personalizar opciones!'
     titles: 'MAP : 1 : hide>all : name>&aTítulos : desc>&7Muestra tu estilo con un título exclusivo\n&7que se mostrará sobre tu cabeza\n&7para otros jugadores.\n \n&8Recuerda que no verás el título,\n&8solo otros jugadores lo verán.\n \n&e¡Haz clic para seleccionar un título!'
-    boosters: 'POTION:8232 : 1 : hide>all : name>&aMultiplicadores de Moneda : desc>&7En nuestro servidor, hay un sistema de\n&7&6Multiplicadores de Moneda &7que afectan\n&7la cantidad de &6Monedas &7ganadas en partidas.\n \n&8Los multiplicadores pueden ser personales o globales,\n&8beneficiándote a ti y hasta otros jugadores.\n \n&e¡Haz clic para ver tus multiplicadores!'
-    challenges: 'GOLD_INGOT : 1 : name>&aDesafíos : desc>&7En nuestro servidor, hay un sistema de\n&7&6Desafíos &7que consisten en misiones únicas\n&7que otorgan varias recompensas vitalicias.\n \n&8Las recompensas varían desde títulos, monedas,\n&8iconos de prestigio y otros cosméticos.\n \n&e¡Haz clic para ver los desafíos!'
+    boosters: 'POTION:8232 : 1 : hide>all : name>&aMultiplicadores de Monedas : desc>&7En nuestro servidor, hay un sistema de\n&7&6Multiplicadores de Monedas &7que afectan\n&7la cantidad de &6Monedas &7ganadas en partidas.\n \n&8Los multiplicadores pueden ser personales o globales,\n&8beneficiándote a ti y a otros jugadores.\n \n&e¡Haz clic para ver tus multiplicadores!'
+    challenges: 'GOLD_INGOT : 1 : name>&aDesafíos : desc>&7En nuestro servidor, hay un sistema de\n&7&6Desafíos &7que consisten en misiones únicas\n&7que otorgan varias recompensas permanentes.\n \n&8Las recompensas incluyen títulos, monedas,\n&8iconos de prestigio y otros cosméticos.\n \n&e¡Haz clic para ver los desafíos!'
     statistics: 'PAPER : 1 : name>&aEstadísticas : desc>&7Mira tus estadísticas para\n&7cada Minijuego en nuestro servidor.\n \n&e¡Haz clic para ver las estadísticas!'
     cosmetics: '416 : 1 : name>&aCosméticos : desc>&7Mira tus cosméticos para\n&7cada servidor.\n \n&e¡Haz clic para ver!'
-    profile: 'SKULL_ITEM:3 : 1 : name>&aInformación Personal : desc>&fRango: {rank}\n\n&fCash: &b{cash}\n\n&fRegistrado: &7{created}\n&fÚltimo Acceso: {last}'
-  mfriends: 'SKULL_ITEM:3 : 1 : name>&aAmigos : desc>&7Mira el perfil de tus amigos y\n&7interactúa con aquellos que están\n&7en línea! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGU0ODU4ZWUyMzI2MmEzMTRhMGQwZGExN2Q4NzEzOWI5MzhlMzBlZjk2MmQwNDE3N2E4NjVhNGIwZDM4MTA2ZSJ9fX0='
-  mparty: 'SKULL_ITEM:3 : 1 : name>&aParty : desc>&7¡Crea una party para jugar con\n&7otros jugadores! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJkYjc1MDY3Mjk0MTFjMzE3ODhmNDAzZDA3NjgxN2NiNGQwYTJhYmFmZDNkZjk2MGRmMmY1ZDBiNGRiYmZlOSJ9fX0='
+    profile: 'SKULL_ITEM:3 : 1 : name>&aInformación Personal : desc>&fRango: {rank}\n\n&fEfectivo: &b{cash}\n\n&fRegistrado: &7{created}\n&fÚltimo Acceso: {last}'
+  mfriends: 'SKULL_ITEM:3 : 1 : name>&aAmigos : desc>&7Ver el perfil de tus amigos y\n&7interactuar con los que están\n&7en línea! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGU0ODU4ZWUyMzI2MmEzMTRhMGQwZGExN2Q4NzEzOWI5MzhlMzBlZjk2MmQwNDE3N2E4NjVhNGIwZDM4MTA2ZSJ9fX0='
+  mparty: 'SKULL_ITEM:3 : 1 : name>&aGrupo : desc>&7¡Crea un grupo para jugar con\n&7otros jugadores! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJkYjc1MDY3Mjk0MTFjMzE3ODhmNDAzZDA3NjgxN2NiNGQwYTJhYmFmZDNkZjk2MGRmMmY1ZDBiNGRiYmZlOSJ9fX0='
   apparence: '299 : 1 : name>&aPersonalizar Apariencia : desc>\n&7Personaliza las siguientes opciones visuales\n&7para ti mismo!\n &f▪ Color del Rango MVP+\n &f▪ Mensajes de Golpe\n\n&e¡Haz clic para ver! : paint>27:27:118'
   status: '145:0 : 1 : name>&aEstado de la Cuenta : desc>&7Verifica el estado de tu cuenta y tu\n&7historial de sanciones. \n\n&e¡Haz clic para ver!'
   language: 'SKULL_ITEM:3 : 1 : name>&aIdiomas : desc>&7Cambia tu idioma\n\n&7Actualmente disponibles: {languages} \n\n&7¡Más idiomas estarán disponibles pronto!\n\n&e¡Haz clic para cambiar el idioma! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjE1MWNmZmRhZjMwMzY3MzUzMWE3NjUxYjM2NjM3Y2FkOTEyYmE0ODU2NDMxNThlNTQ4ZDU5YjJlYWQ1MDExIn19fQ=='
-  langslot: 40
   slot: 4
+  langslot: 40
   aslot: 30
   sslot: 32
   fslot: 5
@@ -54,18 +54,18 @@ profile:
   statistics:
     slot1: 29
 player:
-  enter: '&5&l[PARTY] &aIngresa el nombre de un jugador:'
+  enter: '&5&l[GRUPO] &aIngresa el nombre de un jugador:'
 deliveries:
   title: 'Entregas'
 cosmetics:
   punchmessage:
     icon:
       perm_desc:
-        start: '&8Mensaje de golpe\n\n&7Selecciona el Mensaje de golpe {name} para\n&7mensajes de chat en el juego!\n\n&e¡Haz clic derecho para visualizar! \n \n{perm_desc_status}'
+        start: '&8Mensaje de Golpe\n\n&7Selecciona el Mensaje de Golpe {name} para\n&7mensajes en el chat del juego!\n\n&e¡Clic derecho para previsualizar! \n \n{perm_desc_status}'
       buy_desc:
-        start: '&8Mensaje de golpe\n\n&7Selecciona el Mensaje de golpe {name} para\n&7mensajes de chat en el juego!\n\n&e¡Haz clic derecho para visualizar! \n \n{buy_desc_status}'
+        start: '&8Mensaje de Golpe\n\n&7Selecciona el Mensaje de Golpe {name} para\n&7mensajes en el chat del juego!\n\n&e¡Clic derecho para previsualizar! \n \n{buy_desc_status}'
       has_desc:
-        start: '&8Mensaje de golpe\n\n&7Selecciona el Mensaje de golpe {name} para\n&7mensajes de chat en el juego!\n\n&e¡Haz clic derecho para visualizar! \n\n{has_desc_status}'
+        start: '&8Mensaje de Golpe\n\n&7Selecciona el Mensaje de Golpe {name} para\n&7mensajes en el chat del juego!\n\n&e¡Clic derecho para previsualizar! \n\n{has_desc_status}'
   mvpcolor:
     icon:
       perm_desc:
@@ -75,10 +75,10 @@ cosmetics:
       has_desc:
         start: '&8Color MVP\n \n{has_desc_status}'
   color:
-    locked: '§c'
-    canbuy: '§e'
-    unlocked: '§a'
-    selected: '§a'
+    locked: '&c'
+    canbuy: '&e'
+    unlocked: '&a'
+    selected: '&a'
   icon:
     perm_desc:
       common: '&cNo tienes permiso.'
@@ -92,32 +92,32 @@ cosmetics:
   coloredtag:
     icon:
       perm_desc:
-        start: '&8Etiqueta Colorida\n\n&7Selecciona el color {name} para\n&7mensajes en el chat del juego!\n\n&e¡Haz clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n \n{perm_desc_status}'
+        start: '&8Etiqueta Colorida\n\n&7Selecciona el color {name} para\n&7mensajes en el chat del juego!\n\n&e¡Clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n \n{perm_desc_status}'
       buy_desc:
-        start: '&8Etiqueta Colorida\n\n&7Selecciona el color {name} para\n&7mensajes en el chat del juego!\n\n&e¡Haz clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n&7Costo: &2{cash}\n \n{buy_desc_status}'
+        start: '&8Etiqueta Colorida\n\n&7Selecciona el color {name} para\n&7mensajes en el chat del juego!\n\n&e¡Clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n&7Costo: &2{cash}\n \n{buy_desc_status}'
       has_desc:
-        start: '&8Etiqueta Colorida\n\n&7Selecciona el color {name} para\n&7mensajes en el chat del juego!\n\n&e¡Haz clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n \n{has_desc_status}'
+        start: '&8Etiqueta Colorida\n\n&7Selecciona el color {name} para\n&7mensajes en el chat del juego!\n\n&e¡Clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n \n{has_desc_status}'
   joinmessage:
     icon:
       perm_desc:
-        start: '&8Mensaje de Entrada\n\n&7Selecciona el Mensaje de Entrada {name} para\n&7mensajes en el chat del juego!\n\n&e¡Haz clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n \n{perm_desc_status}'
+        start: '&8Mensaje de Entrada\n\n&7Selecciona el Mensaje de Entrada {name} para\n&7mensajes en el chat del juego!\n\n&e¡Clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n \n{perm_desc_status}'
       buy_desc:
-        start: '&8Mensaje de Entrada\n\n&7Selecciona el Mensaje de Entrada {name} para\n&7mensajes en el chat del juego!\n\n&e¡Haz clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n&7Costo: &2{cash}\n \n{buy_desc_status}'
+        start: '&8Mensaje de Entrada\n\n&7Selecciona el Mensaje de Entrada {name} para\n&7mensajes en el chat del juego!\n\n&e¡Clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n&7Costo: &2{cash}\n \n{buy_desc_status}'
       has_desc:
-        start: '&8Mensaje de Entrada\n\n&7Selecciona el Mensaje de Entrada {name} para\n&7mensajes en el chat del juego!\n\n&e¡Haz clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n \n{has_desc_status}'
+        start: '&8Mensaje de Entrada\n\n&7Selecciona el Mensaje de Entrada {name} para\n&7mensajes en el chat del juego!\n\n&e¡Clic derecho para previsualizar! \n\n&7Rareza: {rarity}\n \n{has_desc_status}'
 titles:
   title: 'Título'
 kick:
   title:
     menu: 'Expulsar Jugador'
 party:
-  kickm: '&aHas expulsado a {member} &ade la party.'
-  invite: '386 : 1 : name>&aInvitar Jugador : desc>&7Invita a un jugador a tu party.'
-  kick: '166 : 1 : name>&aExpulsar Jugador : desc>&7Expulsa a un jugador de tu party.'
-  push: '405 : 1 : name>&aEmpujar Party : desc>&7Teletransporta a todos los miembros de la party a\n&7tu lobby.'
-  undo: 'TNT : 1 : name>&aDeshacer Party : desc>&7Eliminar la party actual.'
+  kickm: '&aHas expulsado a {member} &adel grupo.'
+  invite: '386 : 1 : name>&aInvitar Jugador : desc>&7Invita a un jugador a tu grupo.'
+  kick: '166 : 1 : name>&aExpulsar Jugador : desc>&7Expulsa a un jugador de tu grupo.'
+  push: '405 : 1 : name>&aEmpujar Grupo : desc>&7Teletransporta a todos los miembros del grupo a\n&7tu lobby.'
+  undo: 'TNT : 1 : name>&aDeshacer Grupo : desc>&7Eliminar el grupo actual.'
   search: 'SIGN : 1 : name>&aBuscar Jugadores'
-  create: '159:2 : 1 : name>&aCrear Party : desc>\n&eHaz clic para invitar a un\n&ejugador a tu party'
+  create: '159:2 : 1 : name>&aCrear Grupo : desc>\n&eHaz clic para invitar a un\n&ejugador a tu grupo'
   cslot: 31
   islot: 18
   kslot: 19
@@ -131,55 +131,55 @@ party:
   rmember: '&7Miembro'
   guild: '&bNinguno'
   member: 'SKULL_ITEM:3 : 1 : owner>%name% : name>&a%name% : desc>&7Cargo: %role%\n&7Estado: %status%\n&7Gremio: %guild%'
-  only_players: '&cSolo jugadores pueden usar este comando.'
-  chat_usage: '&cUsa /p [mensaje] para chatear con tu Party.'
-  not_in_party: '&cNo estás en una Party.'
-  chat_format: '&d[Party] {prefix}&f: {message}'
-  help_message: ' \n&6/p [mensaje] &f_ &7Chatea con los miembros de la Party.\n&6/party open &f_ &7Hace la Party pública.\n&6/party close &f_ &7Hace la Party privada.\n&6/party join [jugador] &f_ &7Unirse a una Party pública.\n&6/party accept [jugador] &f_ &7Aceptar una invitación.\n&6/party help &f_ &7Muestra este mensaje de ayuda.\n&6/party invite [jugador] &f_ &7Invitar a un jugador.\n&6/party delete &f_ &7Eliminar la Party.\n&6/party kick [jugador] &f_ &7Expulsar a un miembro.\n&6/party info &f_ &7Ver información de tu Party.\n&6/party deny [jugador] &f_ &7Rechazar una invitación.\n&6/party leave &f_ &7Salir de la Party.\n&6/party transfer [jugador] &f_ &7Transferir el liderazgo a otro miembro.\n '
-  not_leader: '&cNo eres el líder de la Party.'
-  already_public: '&cTu Party ya es pública.'
-  opened: '&aHas hecho la Party pública para cualquier jugador.'
-  already_private: '&cTu Party ya es privada.'
-  closed: '&cHas hecho la Party accesible solo para invitados.'
+  only_players: '&cSolo los jugadores pueden usar este comando.'
+  chat_usage: '&cUsa /p [mensaje] para chatear con tu Grupo.'
+  not_in_party: '&cNo estás en un Grupo.'
+  chat_format: '&d[Grupo] {prefix}&f: {message}'
+  help_message: ' \n&6/p [mensaje] &f_ &7Chatear con miembros del grupo.\n&6/party open &f_ &7Hacer el grupo público.\n&6/party close &f_ &7Hacer el grupo privado.\n&6/party join [jugador] &f_ &7Unirse a un grupo público.\n&6/party accept [jugador] &f_ &7Aceptar una invitación.\n&6/party help &f_ &7Mostrar este mensaje de ayuda.\n&6/party invite [jugador] &f_ &7Invitar a un jugador.\n&6/party delete &f_ &7Eliminar el grupo.\n&6/party kick [jugador] &f_ &7Expulsar a un miembro.\n&6/party info &f_ &7Ver información sobre tu Grupo.\n&6/party deny [jugador] &f_ &7Rechazar una invitación.\n&6/party leave &f_ &7Abandonar el Grupo.\n&6/party transfer [jugador] &f_ &7Transferir liderazgo a otro miembro.\n '
+  not_leader: '&cNo eres el líder del Grupo.'
+  already_public: '&cTu grupo ya es público.'
+  opened: '&aHas abierto el grupo para cualquier jugador.'
+  already_private: '&cTu grupo ya es privado.'
+  closed: '&cHas cerrado el grupo solo para jugadores invitados.'
   join_usage: '&cUsa /party join [jugador]'
-  cant_join_own: '&cNo puedes unirte a tu propia Party.'
-  already_in_party: '&cYa formas parte de una Party.'
-  not_leader_target: '&c{player} no es el líder de una Party.'
-  closed_party: '&cLa Party de {player} está cerrada solo para invitados.'
-  full_party: '&cLa Party de {player} está llena.'
-  joined: ' \n&aTe has unido a la Party de {prefix}!\n '
+  cant_join_own: '&cNo puedes unirte a tu propio grupo.'
+  already_in_party: '&cYa perteneces a un Grupo.'
+  not_leader_target: '&c{player} no es líder de un Grupo.'
+  closed_party: '&cEl Grupo de {player} está cerrado solo para jugadores invitados.'
+  full_party: '&cEl Grupo de {player} está lleno.'
+  joined: ' \n&aTe has unido al Grupo de {prefix}!\n '
   accept_usage: '&cUsa /party accept [jugador]'
   cant_accept_own: '&cNo puedes aceptar invitaciones de ti mismo.'
-  no_invite: '&c{player} no te ha invitado a la Party.'
-  deleted_broadcast: ' \n{prefix} &aha eliminado la Party!\n '
-  deleted: '&aHas eliminado la Party.'
+  no_invite: '&c{player} no te ha invitado a su Grupo.'
+  deleted_broadcast: ' \n{prefix} &aha eliminado el Grupo!\n '
+  deleted: '&aHas eliminado el Grupo.'
   kick_usage: '&cUsa /party kick [jugador]'
-  not_party_leader: '&cNo eres el líder de la Party.'
+  not_party_leader: '&cNo eres líder de un Grupo.'
   cant_kick_self: '&cNo puedes expulsarte a ti mismo.'
-  not_in_your_party: '&cEse jugador no forma parte de tu Party.'
-  kicked_broadcast: ' \n{kicker} &aha expulsado a {kicked} &ade la Party!\n '
-  info_format: ' \n&6Líder: {leader}\n&6Pública: {public}\n&6Límite de Miembros: &f{members}/{slots}\n&6Miembros: {member_list}\n '
+  not_in_your_party: '&cEse jugador no pertenece a tu Grupo.'
+  kicked_broadcast: ' \n{kicker} &aha expulsado a {kicked} &adel Grupo!\n '
+  info_format: ' \n&6Líder: {leader}\n&6Público: {public}\n&6Límite de Miembros: &f{members}/{slots}\n&6Miembros: {member_list}\n '
   deny_usage: '&cUsa /party deny [jugador]'
   cant_deny_self: '&cNo puedes rechazar invitaciones de ti mismo.'
-  denied: ' \n&a¡Has rechazado la invitación de la Party de {prefix}!\n '
-  left: '&a¡Has salido de la Party!'
+  denied: ' \n&a¡Has rechazado la invitación al Grupo de {prefix}!\n '
+  left: '&a¡Has abandonado el Grupo!'
   transfer_usage: '&cUsa /party transfer [jugador]'
-  cant_transfer_self: '&cNo puedes transferir el liderazgo de la Party a ti mismo.'
-  transferred_broadcast: ' \n{old_leader} &aha transferido el liderazgo de la Party a {new_leader}&a!\n '
+  cant_transfer_self: '&cNo puedes transferir el liderazgo del Grupo a ti mismo.'
+  transferred_broadcast: ' \n{old_leader} &aha transferido el liderazgo del Grupo a {new_leader}&a!\n '
   invite_usage: '&cUsa /party invite [jugador]'
-  player_not_found: '&cJugador no encontrado.'
-  cant_invite_self: '&cNo puedes invitarte a ti mismo.'
-  only_leader_invite: '&c¡Solo el líder de la Party puede invitar jugadores!'
+  player_not_found: '&cUsuario no encontrado.'
+  cant_invite_self: '&cNo puedes enviarte invitaciones a ti mismo.'
+  only_leader_invite: '&c¡Solo el líder del Grupo puede enviar invitaciones!'
   already_invited: '&cYa has enviado una invitación a {player}.'
-  invited: ' \n{prefix} &aha sido invitado a la Party. Tiene 60 segundos para aceptar o rechazar esta invitación.\n '
+  invited: ' \n{prefix} &aha sido invitado al Grupo. Tiene 60 segundos para aceptar o rechazar esta invitación.\n '
 menu:
   apparence:
     title: 'Personalizar apariencia'
     rows: 4
     color: '351:0 : 1 : name>&aColor del Rango MVP+ : desc>&7Los jugadores &bMVP&c+&7 pueden\n&7desbloquear y cambiar el color\n&7del +.\n\n&e¡Haz clic para cambiar!'
-    punch: '395 : 1 : name>&aMensajes de Golpe : desc>&7Personaliza el mensaje al usar\n&7tu habilidad de golpe!\n\n&cLos Golpes en los lobbies son\n&cexclusivos para &bMVP&c+ o para\n&caquellos que tienen el ítem Golpear\n&camigos.\n\n&e¡Haz clic para cambiar!'
+    punch: '395 : 1 : name>&aMensajes de Golpe : desc>&7¡Personaliza el mensaje al usar\n&7tu habilidad de golpe!\n\n&cLos Golpes en los lobbies son\n&cexclusivos para &bMVP&c+ o para\n&caquellos que tienen el ítem Golpear\n&camigos.\n\n&e¡Haz clic para cambiar!'
     status: '421 : 1 : name>&aEstado : desc>&7Establece un estado para mostrar sobre\n&7tu cabeza en los lobbies.\n\n&e¡Haz clic para cambiar!'
-  ptitle: 'Party'
+  ptitle: 'Grupo'
   prows: 6
   kcrows: 5
   back: 'ARROW : 1 : name>&cVolver'
@@ -187,13 +187,13 @@ menu:
     title: 'Desafíos'
     thepit: 'SKULL_ITEM:3 : 1 : name>&aThe Pit : desc>&fDesafíos: {color}{completed}/{max}\n \n&e¡Haz clic para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNDVkNzI1NTg3Mjk4YWRhYTc5NmU3MjRkNDhlZmIyOThkNzA2YWE4MjhhN2E0YzJhZjBjYmM5YzNjMiJ9fX0='
     bedwars: 'SKULL_ITEM:3 : 1 : name>&aBed Wars : desc>&fDesafíos: {color}{completed}/{max}\n \n&e¡Haz clic para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmZiMjkwYTEzZGY4ODI2N2VhNWY1ZmNmNzk2YjYxNTdmZjY0Y2NlZTVjZDM5ZDQ2OTcyNDU5MWJhYmVlZDFmNiJ9fX0='
-    skywars: 'SKULL_ITEM:3 : 1 : name>&aSky Wars : desc>&fDesafíos: {color}{completed}/{max}\n \n&e¡Haz clic para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MDI0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkNDc4OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
+    skywars: 'SKULL_ITEM:3 : 1 : name>&aSky Wars : desc>&fDesafíos: {color}{completed}/{max}\n \n&e¡Haz clic para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MDI0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkNDc4YjZmZDg0OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
     thebridge: 'SKULL_ITEM:3 : 1 : name>&aThe Bridge : desc>&fDesafíos: {color}{completed}/{max}\n \n&e¡Haz clic para ver! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhZjg1MzVjNTQ3ZTFkNjhmMmEyMGRkOGVlZTk5YzE2NTAzMTU3N2FhZTYwZWEyZTJlMmNjMTgzMDkwZjU3ZSJ9fX0='
   preferences:
     title: 'Preferencias'
     players: '347 : 1 : name>&aJugadores : desc>&7Activa o desactiva\n&7jugadores en el lobby.'
-    privateMessages: 'PAPER : 1 : name>&aMensajes Privados : desc>&7Activa o desactiva\n&7mensajes enviados a través del /tell.'
-    violence: 'REDSTONE : 1 : name>&aViolencia : desc>&7Activa o desactiva\n&7partículas de sangre en el PvP.'
+    privateMessages: 'PAPER : 1 : name>&aMensajes Privados : desc>&7Activa o desactiva\n&7mensajes enviados a través de /tell.'
+    violence: 'REDSTONE : 1 : name>&aViolencia : desc>&7Activa o desactiva\n&7partículas de sangre en PvP.'
     protectionLobby: 'NETHER_STAR : 1 : name>&aProtección en /lobby : desc>&7Activa o desactiva\n&7solicitud de confirmación al usar /lobby.'
     chatMention: 'MAP : 1 : hide>all : name>&aMención en Chat : desc>&7Activa o desactiva menciones en\n&7chat.'
     state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&fEstado: &7{state}\n \n&e¡Haz clic para modificar!'
@@ -207,11 +207,11 @@ menu:
     network: ' &8• &b{minigame}: {status}'
     networkActive: '&6{multiplier}x &7para {player} &8({time})'
     networkDisabled: '&cDesactivado'
-    credits: 'PAPER : 1 : name>&aMultiplicadores de Crédito : desc>&7Los Multiplicadores son acumulativos. Cuantos más\n&7multiplicadores activos, mayor el bonus recibido.\n \n&fMultiplicadores Globales:\n{network}\n \n{result}'
+    credits: 'PAPER : 1 : name>&aMultiplicadores de Crédito : desc>&7Los Multiplicadores son acumulativos. Cuantos más\n&7multiplicadores activos, mayor el bono recibido.\n \n&fMultiplicadores Globales:\n{network}\n \n{result}'
   statistics:
     title: 'Estadísticas'
     bedwars: 'SKULL_ITEM:3 : 1 : name>&aBedWars : desc>&eGeneral: \n  &fVictorias: &7%aCore_BedWars_wins%\n  &fPartidas: &7%aCore_BedWars_games%\n \n&fMonedas: &6%aCore_BedWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmZiMjkwYTEzZGY4ODI2N2VhNWY1ZmNmNzk2YjYxNTdmZjY0Y2NlZTVjZDM5ZDQ2OTcyNDU5MWJhYmVlZDFmNiJ9fX0='
-    skywars: 'SKULL_ITEM:3 : 1 : name>&aSkyWars : desc>&eGeneral: \n  &fVictorias: &7%aCore_SkyWars_wins%\n  &fPartidas: &7%aCore_SkyWars_games%\n  &fPuntos: &7%aCore_SkyWars_rankedpoints%\n \n&fMonedas: &6%aCore_SkyWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MDI0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkNDc4YjZmZDg0OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
+    skywars: 'SKULL_ITEM:3 : 1 : name>&aSkyWars : desc>&eGeneral: \n  &fVictorias: &7%aCore_SkyWars_wins%\n  &fPartidas: &7%aCore_SkyWars_games%\n  &fPuntos: &7%aCore_SkyWars_rankedpoints%\n \n&fMonedas: &6%aCore_SkyWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MD I0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkNDc4YjZmZDg0OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
     thebridge: 'SKULL_ITEM:3 : 1 : name>&aThe Bridge : desc>&e1v1:\n  &fAsesinatos: &7%aCore_TheBridge_1v1kills%\n  &fMuertes: &7%aCore_TheBridge_1v1deaths%\n  &fPuntos: &7%aCore_TheBridge_1v1points%\n  &fVictorias: &7%aCore_TheBridge_1v1wins%\n  &fPartidas: &7%aCore_TheBridge_1v1games%\n&e2v2:\n  &fAsesinatos: &7%aCore_TheBridge_2v2kills%\n  &fMuertes: &7%aCore_TheBridge_2v2deaths%\n  &fPuntos: &7%aCore_TheBridge_2v2points%\n  &fVictorias: &7%aCore_TheBridge_2v2wins%\n  &fPartidas: &7%aCore_TheBridge_2v2games%\n \n&eRacha de Victorias:\n  &fDiaria: &7%aCore_TheBridge_winstreak%\n \n&fMonedas: &6%aCore_TheBridge_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhZjg1MzVjNTQ3ZTFkNjhmMmEyMGRkOGVlZTk5YzE2NTAzMTU3N2FhZTYwZWEyZTJlMmNjMTgzMDkwZjU3ZSJ9fX0='
     thepit: 'SKULL_ITEM:3 : 1 : name>&aThe Pit : desc>&eGeneral: \n  &fAsesinatos: &7%aCore_ThePit_kills%\n  &fMuertes: &7%aCore_ThePit_deaths%\n  &fAsistencias: &7%aCore_ThePit_assists%\n \n&fMonedas: &6%aCore_BedWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNDVkNzI1NTg3Mjk4YWRhYTc5NmU3MjRkNDhlZmIyOThkNzA2YWE4MjhhN2E0YzJhZjBjYmM5YzNjMiJ9fX0='
   minigames:
@@ -232,16 +232,15 @@ apparence:
 actionBar:
   queueMessage: '&aEstás en la cola para entrar al servidor &8{server} &7(Posición #{position})'
 connection:
-  message: "§aConectando..."
-  notsucess: '§c¡No fue posible conectar a este servidor en este momento!'
+  notsucess: '&c¡No se pudo conectar a este servidor en este momento!'
 gamemode:
-  mode: '§cModo no encontrado.'
+  mode: '&cModo no encontrado.'
   changed: '&aHas cambiado el modo de juego de {mode} a {to}.'
   changer: '&aTu modo de juego ha sido cambiado a {type}.'
 vanish:
-  mode: '§c¡Estás invisible para otros jugadores!'
+  mode: '§¡Estás invisible para otros jugadores!'
 waiting:
-  timer: '§cNecesitas esperar {more} segundos para usarlo nuevamente.'
+  timer: '§Necesitas esperar {more} veces para usarlo nuevamente.'
 visibility:
   on: '&aVisibilidad de jugadores activada.'
   off: '&aVisibilidad de jugadores desactivada.'
@@ -253,28 +252,26 @@ booster:
     empty: 'WEB : 1 : name>&c¡No tienes ningún Booster!'
   network:
     notInMinigame: '&cNecesitas estar en un servidor de Minijuego para activar este Booster.'
-    alreadyActive: '&cYa existe un Booster Global activo para {minigame}.'
-    activated: ' \n {roleColor}{player} &7ha activado un &6Booster Global de Monedas&7.\n &bTODOS &7los jugadores reciben un bonus de {multiplier}x &7en juegos de &6{minigame}&7.\n '
+    alreadyActive: '&cYa hay un Booster Global activo para {minigame}.'
+    activated: ' \n {roleColor}{player} &7ha activado un &6Booster Global de Monedas&7.\n &bTODOS &7los jugadores reciben un bono de {multiplier}x &7en juegos de &6{minigame}&7.\n '
   personal:
     alreadyActive: '&cYa tienes un Booster Personal activo.'
-    activated: '&aHas activado un &6Booster de Moneda {multiplier}x &8({duration})&a.'
+    activated: '&aHas activado un &6Booster de Monedas {multiplier}x &8({duration})&a.'
 language:
   icon:
     has_desc:
       select: '&e¡Haz clic para seleccionar!'
       selected: '&e¡Haz clic para deseleccionar!'
 menucosmetics:
-  join_message: '323 : 1 : name>&aMensaje de Entrada : desc>&7Al entrar al lobby, anuncia\n&7tu entrada con estilo! \n\n&7Desbloqueados: {color}{owned}/{max} &8({percentage}%)\n&7Seleccionado Actualmente: {selected} \n\n&e¡Haz clic para ver!'
-  colored_tag: '38:7 : 1 : name>&aEtiqueta Colorida : desc>&7Cambia el color de la etiqueta y\n&7luce con estilo! \n\n&7Desbloqueados: {color}{owned}/{max} &8({percentage}%)\n&7Seleccionado Actualmente: {selected} \n\n&e¡Haz clic para ver!'
+  join_message: '323 : 1 : name>&aMensaje de Entrada : desc>&7¡Al entrar al lobby, anuncia\n&7tu entrada con estilo! \n\n&7Desbloqueados: {color}{owned}/{max} &8({percentage}%)\n&7Seleccionado Actualmente: {selected} \n\n&e¡Haz clic para ver!'
+  colored_tag: '38:7 : 1 : name>&aEtiqueta Colorida : desc>&7¡Cambia el color de la etiqueta y\n&7luce con estilo! \n\n&7Desbloqueados: {color}{owned}/{max} &8({percentage}%)\n&7Seleccionado Actualmente: {selected} \n\n&e¡Haz clic para ver!'
   empty_slot: '160:7 : 1 : name>&7'
 cosmetic:
-  rank: 'Color del Rango'
-  punch: 'Puño'
   join_message_name: 'Mensaje de Entrada'
   coloredtag_name: 'Etiqueta Colorida'
 message:
-  nohaveperm: '&cNo tienes permiso suficiente para esto.'
-  deathmessage: '\n&eMensajes que pueden ser mostrados al entrar al lobby:\n \n'
+  nohaveperm: '&cNo tienes suficiente permiso para esto.'
+  deathmessage: '\n&eMensajes que pueden mostrarse al entrar al lobby:\n \n'
   coloredtag: '\n&eTu etiqueta se verá así:\n {color} {role}\n'
 menubuycashsearch:
   title: 'Confirmar'

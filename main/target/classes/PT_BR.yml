@@ -38,6 +38,7 @@ profile:
  status: '145:0 : 1 : name>&aStatus da Conta : desc>&7Verifique o status da sua conta e seu\n&7histórico de punições. \n\n&eClique para ver!'
  language: 'SKULL_ITEM:3 : 1 : name>&aIdiomas : desc>&7Mude seu idioma\n\n&7Atualmente disponíveis: {languages} \n\n&7Mais idiomas estarão disponíveis em breve!\n\n&eClique para mudar o idioma! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjE1MWNmZmRhZjMwMzY3MzUzMWE3NjUxYjM2NjM3Y2FkOTEyYmE0ODU2NDMxNThlNTQ4ZDU5YjJlYWQ1MDExIn19fQ=='
  slot: 4
+ langslot: 40
  # Apparence icon slot
  aslot: 30
  # Status account icon slot
@@ -252,7 +253,7 @@ actionBar:
 connection:
  notsucess: '&Não foi possível conectar a este servidor no momento!'
 gamemode:
- mode: 'Modo não encontrado.'
+ mode: '&cModo não encontrado.'
  changed: '&aVocê mudou o modo de jogo de {mode} para {to}.'
  changer: '&aSeu modo de jogo foi alterado para {type}.'
 vanish:

@@ -19,25 +19,33 @@ public class LanguageAPI {
     private static final String defaultLanguage = Core.getInstance().getConfig().getString("defaultLanguage");
 
     public static void setupLanguages(String... defaultLanguages) throws IOException {
-        File folder = new File("plugins/" + Core.getInstance().getDescription().getName() + "/translate");
+        File folder = new File("plugins/" +
+                Core.getInstance().getDescription().getName() +
+                "/translate");
         if (!folder.exists()) {
             folder.mkdirs();
         }
 
-        String name;
-        for (File file : Objects.requireNonNull(folder.listFiles())) {
-            name = file.getName().replace(".yml", "");
-            KConfig config = KConfig.getConfig(Core.getInstance(), file.getPath().replace("\\" + file.getName(), ""), name);
+
+        for (File file : Objects.requireNonNull(folder.listFiles((d, name) -> name.endsWith(".yml")))) {
+            String name = file.getName().replace(".yml", "");
+            String folderPath = file.getParent();
+            KConfig config = KConfig.getConfig(Core.getInstance(), folderPath, name);
             CACHED_CONFIG.put(name, new ColorTranslatingConfig(config));
         }
 
-        for (String defaultLanguage : Arrays.stream(defaultLanguages)
-                .filter(fileName -> !CACHED_CONFIG.containsKey(fileName))
+        for (String lang : Arrays.stream(defaultLanguages)
+                .filter(l -> !CACHED_CONFIG.containsKey(l))
                 .collect(Collectors.toList())) {
-            File file = new File("plugins/" + Core.getInstance().getDescription().getName() + "/translate/" + defaultLanguage + ".yml");
-            Files.copy(Objects.requireNonNull(LanguageAPI.class.getResourceAsStream("/" + defaultLanguage + ".yml")), file.toPath());
-            KConfig config = KConfig.getConfig(Core.getInstance(), file.getPath().replace("\\" + file.getName(), ""), file.getName().replace(".yml", ""));
-            CACHED_CONFIG.put(defaultLanguage, new ColorTranslatingConfig(config));
+            File dest = new File(folder, lang + ".yml");
+            Files.copy(Objects.requireNonNull(
+                            LanguageAPI.class.getResourceAsStream("/" + lang + ".yml")),
+                    dest.toPath());
+
+            String folderPath = dest.getParent();
+            String name = dest.getName().replace(".yml", "");
+            KConfig config = KConfig.getConfig(Core.getInstance(), folderPath, name);
+            CACHED_CONFIG.put(name, new ColorTranslatingConfig(config));
         }
 
         if (getConfig() == null) {
