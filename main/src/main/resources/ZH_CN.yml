@@ -241,9 +241,8 @@ vanish:
   mode: '§您对其他玩家隐形！'
 waiting:
   timer: '§您需要等待 {more} 次才能再次使用。'
-visibility:
-  on: '&a已启用玩家可见性。'
-  off: '&a已禁用玩家可见性。'
+visibleon: '&a已启用玩家可见性。'
+visibleoff: '&a已禁用玩家可见性。'
 booster:
   type: '全服'
   type2: '个人'

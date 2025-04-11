@@ -1,5 +1,7 @@
 # aCore _ Created by D4RKK 
 # Version: 2.0
+visibleoff: '&aVisibilidade dos jogadores desativada.'
+visibleon: '&aVisibilidade dos jogadores ativada.'
 already: '§cVocê já está conectado a esse servidor.'
 languages:
  title: 'Selecionar Idioma'
@@ -257,12 +259,9 @@ gamemode:
  changed: '&aVocê mudou o modo de jogo de {mode} para {to}.'
  changer: '&aSeu modo de jogo foi alterado para {type}.'
 vanish:
- mode: '§Você está invisível para outros jogadores!'
+ mode: '§aVocê está invisível para outros jogadores!'
 waiting:
- timer: '§Você precisa esperar {more} vezes para usá_lo novamente.'
-visibility:
- on: '&aVisibilidade dos jogadores ativada.'
- off: '&aVisibilidade dos jogadores desativada.'
+ timer: '§cVocê precisa esperar {more} segundos para usar novamente.'
 booster:
  type: 'Global'
  type2: 'Pessoal'

@@ -163,9 +163,10 @@ public class Listeners implements Listener {
     if (profile == null || Core.minigame.equals("The Pit")) {
       return;
     }
-
-    if (!profile.playingGame()) {
-      new MenuOtherProfile(profile, clickedPlayer);
+    if (!evt.getPlayer().getItemInHand().hasItemMeta()) {
+      if (!profile.playingGame()) {
+        new MenuOtherProfile(profile, clickedPlayer);
+      }
     }
   }
 

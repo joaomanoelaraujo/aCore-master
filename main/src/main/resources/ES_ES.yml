@@ -241,9 +241,8 @@ vanish:
   mode: '§¡Estás invisible para otros jugadores!'
 waiting:
   timer: '§Necesitas esperar {more} veces para usarlo nuevamente.'
-visibility:
-  on: '&aVisibilidad de jugadores activada.'
-  off: '&aVisibilidad de jugadores desactivada.'
+visibleon: '&aVisibilidad de jugadores activada.'
+visibleoff: '&aVisibilidad de jugadores desactivada.'
 booster:
   type: 'Global'
   type2: 'Personal'

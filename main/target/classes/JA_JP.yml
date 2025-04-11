@@ -241,9 +241,8 @@ vanish:
   mode: '§他のプレイヤーから見えなくなっています！'
 waiting:
   timer: '§再度使用するには {more} 回待つ必要があります。'
-visibility:
-  on: '&aプレイヤーの表示をオンにしました。'
-  off: '&aプレイヤーの表示をオフにしました。'
+visibleon: '&aプレイヤーの表示をオンにしました。'
+visibleoff: '&aプレイヤーの表示をオフにしました。'
 booster:
   type: 'グローバル'
   type2: '個人'

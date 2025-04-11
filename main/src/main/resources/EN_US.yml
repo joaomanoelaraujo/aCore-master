@@ -241,9 +241,8 @@ vanish:
  mode: '§You are invisible to other players!'
 waiting:
  timer: '§You need to wait {more} times to use it again.'
-visibility:
- on: '&aPlayer visibility enabled.'
- off: '&aPlayer visibility disabled.'
+visibleon: '&aPlayer visibility enabled.'
+visibleoff: '&aPlayer visibility disabled.'
 booster:
  type: 'Global'
  type2: 'Personal'

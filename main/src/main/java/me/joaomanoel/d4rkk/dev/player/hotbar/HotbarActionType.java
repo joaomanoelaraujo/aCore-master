@@ -6,6 +6,7 @@ import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.menus.MenuServers;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.text.DecimalFormat;
@@ -58,12 +59,13 @@ public abstract class HotbarActionType {
 
           Listeners.DELAY_PLAYERS.put(player.getName(), System.currentTimeMillis() + 3000);
           profile.getPreferencesContainer().changePlayerVisibility();
+
           switch (profile.getPreferencesContainer().getPlayerVisibility()) {
             case TODOS:
-              player.sendMessage(LanguageAPI.getConfig(profile).getString("visibility.on"));
+              player.sendMessage(LanguageAPI.getConfig(profile).getString("visibleon"));
               break;
             case NENHUM:
-              player.sendMessage(LanguageAPI.getConfig(profile).getString("visibility.off"));
+              player.sendMessage(LanguageAPI.getConfig(profile).getString("visibleoff"));
               break;
           }
           profile.refreshPlayers();

@@ -241,9 +241,8 @@ vanish:
   mode: '§다른 플레이어에게 보이지 않습니다!'
 waiting:
   timer: '§다시 사용하기까지 {more}번 기다려야 합니다.'
-visibility:
-  on: '&a플레이어 표시가 활성화되었습니다.'
-  off: '&a플레이어 표시가 비활성화되었습니다.'
+visibleon: '&a플레이어 표시가 활성화되었습니다.'
+visibleoff: '&a플레이어 표시가 비활성화되었습니다.'
 booster:
   type: '전체'
   type2: '개인'
