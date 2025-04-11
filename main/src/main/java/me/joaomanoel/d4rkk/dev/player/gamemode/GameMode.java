@@ -13,7 +13,7 @@ public class GameMode {
          player.sendMessage(LanguageAPI.getConfig(Profile.getProfile(player.getName())).getString("gamemode.changed").replace("{to}", type.name().toUpperCase()).replace("{mode}", target.getName()));
       } else {
          target.setGameMode(org.bukkit.GameMode.valueOf(type.name()));
-         target.sendMessage(LanguageAPI.getConfig(Profile.getProfile(player.getName())).getString("gamemode$changer").replace("{type}", type.name().toUpperCase()));
+         target.sendMessage(LanguageAPI.getConfig(Profile.getProfile(player.getName())).getString("gamemode.changer").replace("{type}", type.name().toUpperCase()));
       }
    }
 }

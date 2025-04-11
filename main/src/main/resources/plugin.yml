@@ -1,6 +1,6 @@
 author: D4RKK
 name: aCore
-version: 2.1.2
+version: 2.1.3
 depend: [ProtocolLib, PlaceholderAPI]
 
 main: me.joaomanoel.d4rkk.dev.Core
