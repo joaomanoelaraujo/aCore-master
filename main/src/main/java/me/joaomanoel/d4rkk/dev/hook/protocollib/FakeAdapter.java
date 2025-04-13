@@ -1,13 +1,17 @@
 package me.joaomanoel.d4rkk.dev.hook.protocollib;
 
 import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
+import com.comphenix.protocol.utility.MinecraftVersion;
 import com.comphenix.protocol.wrappers.PlayerInfoData;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.comphenix.protocol.wrappers.WrappedGameProfile;
 import me.joaomanoel.d4rkk.dev.Core;
+import me.joaomanoel.d4rkk.dev.hook.protocollib.fake.FakeAdapter_1_20_R4;
+import me.joaomanoel.d4rkk.dev.hook.protocollib.fake.FakeAdapter_1_8_R3;
 import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -22,78 +26,25 @@ import static com.comphenix.protocol.PacketType.Play.Server.*;
 @SuppressWarnings("unchecked")
 public class FakeAdapter extends PacketAdapter {
 
+  private final FakeAdapter_1_8_R3 adapter_1_8_r3 = new FakeAdapter_1_8_R3();
+  private final FakeAdapter_1_20_R4 adapter_1_20_r4 = new FakeAdapter_1_20_R4();
+
   public FakeAdapter() {
     super(params().plugin(Core.getInstance()).types(PacketType.Play.Client.CHAT, TAB_COMPLETE, PLAYER_INFO, CHAT, SCOREBOARD_OBJECTIVE, SCOREBOARD_SCORE, SCOREBOARD_TEAM));
   }
 
   @Override
   public void onPacketReceiving(PacketEvent evt) {
-    PacketContainer packet = evt.getPacket();
-    if (packet.getType() == PacketType.Play.Client.CHAT) {
-      String command = packet.getStrings().read(0);
-      if (command.startsWith("/")) {
-        packet.getStrings().write(0, FakeManager.replaceNickedPlayers(packet.getStrings().read(0), false));
-      } else {
-        packet.getStrings().write(0, FakeManager.replaceNickedChanges(packet.getStrings().read(0)));
-      }
-    }
+    MinecraftVersion version = ProtocolLibrary.getProtocolManager().getMinecraftVersion();
+    if (version.getVersion().equals("1.8.8")) adapter_1_8_r3.onPacketReceiving(evt);
+    else if (version.getVersion().equals("1.20.6")) adapter_1_20_r4.onPacketReceiving(evt);
   }
 
   @Override
   public void onPacketSending(PacketEvent evt) {
-    PacketContainer packet = evt.getPacket();
-    if (packet.getType() == TAB_COMPLETE) {
-      List<String> list = new ArrayList<>();
-      for (String complete : packet.getStringArrays().read(0)) {
-        list.add(FakeManager.replaceNickedPlayers(complete, true));
-      }
-
-      packet.getStringArrays().write(0, list.toArray(new String[0]));
-    } else if (packet.getType() == PLAYER_INFO) {
-      List<PlayerInfoData> infoDataList = new ArrayList<>();
-      for (PlayerInfoData infoData : packet.getPlayerInfoDataLists().read(0)) {
-        WrappedGameProfile profile = infoData.getProfile();
-        if (FakeManager.isFake(profile.getName())) {
-          infoData = new PlayerInfoData(FakeManager.cloneProfile(profile), infoData.getLatency(), infoData.getGameMode(), infoData.getDisplayName());
-        }
-
-        infoDataList.add(infoData);
-      }
-
-      packet.getPlayerInfoDataLists().write(0, infoDataList);
-    } else if (packet.getType() == CHAT) {
-      WrappedChatComponent component = packet.getChatComponents().read(0);
-      if (component != null) {
-        packet.getChatComponents().write(0, WrappedChatComponent.fromJson(FakeManager.replaceNickedPlayers(component.getJson(), true)));
-      }
-      BaseComponent[] components = (BaseComponent[]) packet.getModifier().read(1);
-      if (components != null) {
-        List<BaseComponent> newComps = new ArrayList<>();
-        for (BaseComponent comp : components) {
-          TextComponent newComp = new TextComponent("");
-          for (BaseComponent newTextComp : ComponentSerializer.parse(FakeManager.replaceNickedPlayers(ComponentSerializer.toString(comp), true))) {
-            newComp.addExtra(newTextComp);
-          }
-          newComps.add(newComp);
-        }
-        packet.getModifier().write(1, newComps.toArray(new BaseComponent[0]));
-      }
-    } else if (packet.getType() == SCOREBOARD_OBJECTIVE) {
-      packet.getStrings().write(1, FakeManager.replaceNickedPlayers(packet.getStrings().read(1), true));
-    } else if (packet.getType() == SCOREBOARD_SCORE) {
-      packet.getStrings().write(0, FakeManager.replaceNickedPlayers(packet.getStrings().read(0), true));
-    } else if (packet.getType() == SCOREBOARD_TEAM) {
-      List<String> members = new ArrayList<>();
-      for (String member : (Collection<String>) packet.getModifier().withType(Collection.class).read(0)) {
-        if (FakeManager.isFake(member)) {
-          member = FakeManager.getFake(member);
-        }
-
-        members.add(member);
-      }
-
-      packet.getModifier().withType(Collection.class).write(0, members);
-    }
+    MinecraftVersion version = ProtocolLibrary.getProtocolManager().getMinecraftVersion();
+    if (version.getVersion().equals("1.8.8")) adapter_1_8_r3.onPacketSending(evt);
+    else if (version.getVersion().equals("1.20.6")) adapter_1_20_r4.onPacketSending(evt);
   }
 }
 

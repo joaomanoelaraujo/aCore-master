@@ -1,6 +1,7 @@
 package me.joaomanoel.d4rkk.dev;
 
 import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.utility.MinecraftVersion;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
@@ -16,21 +17,16 @@ import me.joaomanoel.d4rkk.dev.deliveries.Delivery;
 import me.joaomanoel.d4rkk.dev.game.GameState;
 import me.joaomanoel.d4rkk.dev.hook.aCoreExpansion;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.FakeAdapter;
-import me.joaomanoel.d4rkk.dev.hook.protocollib.HologramAdapter;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.NPCAdapter;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
-import me.joaomanoel.d4rkk.dev.libraries.MinecraftVersion;
-import me.joaomanoel.d4rkk.dev.libraries.holograms.HologramLibrary;
-import me.joaomanoel.d4rkk.dev.libraries.npclib.NPCLibrary;
 import me.joaomanoel.d4rkk.dev.listeners.Listeners;
 import me.joaomanoel.d4rkk.dev.listeners.PluginMessageListener;
-import me.joaomanoel.d4rkk.dev.nms.NMS;
+import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.plugin.KPlugin;
 import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
-import me.joaomanoel.d4rkk.dev.replay.*;
 import me.joaomanoel.d4rkk.dev.servers.ServerItem;
 import me.joaomanoel.d4rkk.dev.titles.TitleLoader;
 import me.joaomanoel.d4rkk.dev.utils.LanguageIcons;
@@ -40,6 +36,7 @@ import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.PlaceholderAPIPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.SimpleCommandMap;
@@ -58,8 +55,6 @@ public class Core extends KPlugin {
   public static final List<String> warnings = new ArrayList<>();
   public static final List<String> minigames = Arrays.asList("Block Sumo", "Sky Wars", "Bed Wars", "The Bridge", "The Pit");
 
-
-
   public static boolean validInit;
   public static boolean aFriends;
 
@@ -67,7 +62,7 @@ public class Core extends KPlugin {
 
   private static Core instance;
   private static Location lobby;
-  public static Metrics metrics;
+
   public static Location getLobby() {
     return lobby;
   }
@@ -107,7 +102,7 @@ public class Core extends KPlugin {
         Bukkit.getScheduler().runTask(Core.getInstance(), () -> {
           if (player.isOnline()) {
             player.closeInventory();
-            NMS.sendActionBar(player, "");
+            NMSManager.sendActionBar("", player);
             player.sendMessage(LanguageAPI.getConfig(profile).getString("connecting.message"));
             ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("Connect");
@@ -130,14 +125,9 @@ public class Core extends KPlugin {
   
   @Override
   public void enable() {
-    if (!NMS.setupNMS()) {
-      this.setEnabled(false);
-      this.getLogger().warning("Your version is not compatible with the plugin, please use version 1_8_R3 (Current: " + MinecraftVersion.getCurrentVersion().getVersion() + ")");
-      return;
-    }
-
+    NMSManager.setupNMS(this);
     saveDefaultConfig();
-    ;//new aUpdater(this, 1).run();
+    //new aUpdater(this, 1).run();
     lobby = Bukkit.getWorlds().get(0).getSpawnLocation();
 
     // Remover o spawn-protection-size
@@ -169,18 +159,20 @@ public class Core extends KPlugin {
       return;
     }
 
-    // Remover /reload
-    try {
-      SimpleCommandMap simpleCommandMap = (SimpleCommandMap) Bukkit.getServer().getClass().getDeclaredMethod("getCommandMap").invoke(Bukkit.getServer());
-      Field field = simpleCommandMap.getClass().getDeclaredField("knownCommands");
-      field.setAccessible(true);
-      Map<String, Command> knownCommands = (Map<String, Command>) field.get(simpleCommandMap);
-      knownCommands.remove("rl");
-      knownCommands.remove("reload");
-      knownCommands.remove("bukkit:rl");
-      knownCommands.remove("bukkit:reload");
-    } catch (ReflectiveOperationException ex) {
-      getLogger().log(Level.SEVERE, "Cannot remove reload command: ", ex);
+
+    if (MinecraftVersion.getCurrentVersion().getVersion().equals("1.8.8")) {
+      try {
+        SimpleCommandMap simpleCommandMap = (SimpleCommandMap) Bukkit.getServer().getClass().getDeclaredMethod("getCommandMap").invoke(Bukkit.getServer());
+        Field field = simpleCommandMap.getClass().getDeclaredField("knownCommands");
+        field.setAccessible(true);
+        Map<String, Command> knownCommands = (Map<String, Command>) field.get(simpleCommandMap);
+        knownCommands.remove("rl");
+        knownCommands.remove("reload");
+        knownCommands.remove("bukkit:rl");
+        knownCommands.remove("bukkit:reload");
+      } catch (ReflectiveOperationException ex) {
+        getLogger().log(Level.SEVERE, "Cannot remove reload command: ", ex);
+      }
     }
 
     if (!PlaceholderAPIPlugin.getInstance().getDescription().getVersion().equals("2.10.5")) {
@@ -213,8 +205,6 @@ public class Core extends KPlugin {
             getConfig().getString("database.mongodb.url", "")
     );
 
-    NPCLibrary.setupNPCs(this);
-    HologramLibrary.setupHolograms(this);
 
     setupRoles();
     FakeManager.setupFake();
@@ -231,32 +221,19 @@ public class Core extends KPlugin {
     //carrega os ultimos logins
     loadLastLogins();
 
-
     Commands.setupCommands();
     Listeners.setupListeners();
     LanguageIcons.load(this);
 
-
-
-
-//    ReplayManager.register();
-//    ReplaySaver.register(new DatabaseReplaySaver());
-//    metrics = new Metrics(this, 2188);
-//    if (ConfigManager.CLEANUP_REPLAYS > 0) {
-//      ReplayCleanup.cleanupReplays();
-//    }
     ProtocolLibrary.getProtocolManager().addPacketListener(new FakeAdapter());
     ProtocolLibrary.getProtocolManager().addPacketListener(new NPCAdapter());
-    ProtocolLibrary.getProtocolManager().addPacketListener(new HologramAdapter());
 
     getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessageListener());
     getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessageListenerExample());
 // Adicionado o incoming para BungeeCord
-    getServer().getMessenger().registerOutgoingPluginChannel(this, "aCore");
-    getServer().getMessenger().registerIncomingPluginChannel(this, "aCore", new PluginMessageListener());
-
-    
+    getServer().getMessenger().registerOutgoingPluginChannel(this, "acore:main");
+    getServer().getMessenger().registerIncomingPluginChannel(this, "acore:main", new PluginMessageListener());
 
     validInit = true;
     this.getLogger().info("The plugin has been activated.");
@@ -298,11 +275,6 @@ public class Core extends KPlugin {
           profile.destroy();
         }
       });
-
-//      for (Replay replay : new HashMap<>(ReplayManager.activeReplays).values()) {
-//        if (!replay.isRecording() || replay.getRecorder().getData().getActions().isEmpty()) continue;
-//        replay.getRecorder().stop(ConfigManager.SAVE_STOP);
-//      }
 
       Database.getInstance().close();
     }

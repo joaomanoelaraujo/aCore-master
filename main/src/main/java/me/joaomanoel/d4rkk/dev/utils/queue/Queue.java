@@ -4,7 +4,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
-import me.joaomanoel.d4rkk.dev.nms.NMS;
+import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -44,7 +44,7 @@ public class Queue {
             String message = LanguageAPI.getConfig(profile).getString("actionBar.queueMessage")
                     .replace("{server}", qp.server)
                     .replace("{position}", String.valueOf(id));
-            NMS.sendActionBar(qp.player, message);
+            NMSManager.sendActionBar(message, qp.player);
             id++;
           }
           
@@ -62,7 +62,7 @@ public class Queue {
               Bukkit.getScheduler().runTask(Core.getInstance(), () -> {
                 if (player.isOnline()) {
                   player.closeInventory();
-                  NMS.sendActionBar(player, "");
+                  NMSManager.sendActionBar("", player);
                   player.sendMessage(LanguageAPI.getConfig(profile).getString("connection.message"));
                   ByteArrayDataOutput out = ByteStreams.newDataOutput();
                   out.writeUTF("Connect");

@@ -1,0 +1,281 @@
+# aCore _ Created by D4RKK 
+# Version: 2.0
+already: '§c이미 이 서버에 연결되어 있습니다.'
+languages:
+  title: '언어 선택'
+discord:
+  link: 'https://discord.gg/aaa'
+loja:
+  link: 'www.yourserver.com'
+profileo:
+  menu:
+    levelInfo: 'SKULL_ITEM:3 : 1 : name>%s : desc>&7레벨: &6%s\n&7길드: &b%s\n&7랭크: %s'
+    socialMedia: 'SKULL_ITEM:3 : 1 : name>&a소셜 미디어 : desc>&e클릭하여 보기! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTFiN2EwYzIxMGU2Y2RmNWEzNWZkODE5N2U2ZTI0YTAzODMxNWJiZTNiZGNkMWJjYzM2MzBiZjI2ZjU5ZWM1YyJ9fX0='
+    statistics: 'PAPER : 1 : name>&a통계 : desc>&7%s의 통계 보기'
+    partyInvite: 'DIAMOND : 1 : name>&a파티 초대 : desc>&7%s님을 파티에 초대하려면 클릭하세요!'
+    friendInvite: '386 : 1 : name>&a친구 추가 : desc>&7%s님을 친구로 추가하려면 클릭하세요'
+    blockPlayer: 'BARRIER : 1 : name>&a차단 : desc>&7%s님을 차단하려면 클릭하세요'
+    guildInvite: 'SKULL_ITEM:3 : 1 : name>&a길드 초대 : desc>&7%s님을 길드에 초대하려면 클릭하세요! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWRhZmEyZDNlNGU2ZGZmNDI5MTcxMzExYTljYzJiYWIyNjYwYjYyOTUyNzYyNzM0ZDU2OTQ1OTJhMjgwNzk4YSJ9fX0='
+    leadershipPass: 'SKULL_ITEM:3 : 1 : name>&a리더십 이전 : desc>&7%s님에게 파티 리더십을 이전하려면 클릭하세요 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJkYjc1MDY3Mjk0MTFjMzE3ODhmNDAzZDA3NjgxN2NiNGQwYTJhYmFmZDNkZjk2MGRmMmY1ZDBiNGRiYmZlOSJ9fX0='
+    close: 'ARROW : 1 : name>&c닫기'
+menuprofile:
+  color: '160:1 : 1 : name>&7'
+  color_party: '160:11 : 1 : name>&7'
+  glass: true
+profile:
+  title: '프로필'
+  menu:
+    preferences: 'REDSTONE_COMPARATOR : 1 : hide>all : name>&a환경설정 : desc>&7우리 서버에서는 게임 경험을\n&7완전히 커스터마이즈할 수 있습니다.\n&7원하는 대로 다양한 독점 옵션을\n&7설정하세요!\n \n&8옵션에는 개인 메시지, 플레이어 및\n&8기타 기능을 활성화하거나 비활성화하는\n&8기능이 포함됩니다.\n \n&e클릭하여 옵션 설정!'
+    titles: 'MAP : 1 : hide>all : name>&a칭호 : desc>&7다른 플레이어에게 보여질\n&7머리 위의 독특한 칭호를\n&7선택하세요.\n \n&8참고: 자신에게는 칭호가 보이지 않으며,\n&8다른 플레이어에게만 보입니다.\n \n&e클릭하여 칭호 선택!'
+    boosters: 'POTION:8232 : 1 : hide>all : name>&a코인 부스터 : desc>&7우리 서버에는 게임에서 얻는\n&7&6코인&7의 양에 영향을 주는\n&7&6코인 부스터 &7시스템이 있습니다.\n \n&8부스터는 개인 또는 전체 서버에 적용되어\n&8당신과 다른 플레이어에게 혜택을 줄 수 있습니다.\n \n&e클릭하여 부스터 확인!'
+    challenges: 'GOLD_INGOT : 1 : name>&a도전과제 : desc>&7우리 서버에는 영구적인 보상을\n&7제공하는 독특한 미션으로 구성된\n&7&6도전과제 &7시스템이 있습니다.\n \n&8보상에는 칭호, 코인, 명성 아이콘 및\n&8기타 꾸미기 아이템이 포함됩니다.\n \n&e클릭하여 도전과제 확인!'
+    statistics: 'PAPER : 1 : name>&a통계 : desc>&7서버의 각 미니게임에 대한\n&7통계를 확인하세요.\n \n&e클릭하여 통계 확인!'
+    cosmetics: '416 : 1 : name>&a꾸미기 아이템 : desc>&7각 서버에서 사용할 수 있는\n&7꾸미기 아이템을 확인하세요.\n \n&e클릭하여 확인!'
+    profile: 'SKULL_ITEM:3 : 1 : name>&a개인 정보 : desc>&f랭크: {rank}\n\n&f캐시: &b{cash}\n\n&f가입일: &7{created}\n&f최근 접속: {last}'
+  mfriends: 'SKULL_ITEM:3 : 1 : name>&a친구 : desc>&7친구 프로필을 보고\n&7온라인 친구와 교류하세요! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGU0ODU4ZWUyMzI2MmEzMTRhMGQwZGExN2Q4NzEzOWI5MzhlMzBlZjk2MmQwNDE3N2E4NjVhNGIwZDM4MTA2ZSJ9fX0='
+  mparty: 'SKULL_ITEM:3 : 1 : name>&a파티 : desc>&7다른 플레이어와 함께 플레이하기 위해\n&7파티를 만드세요! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJkYjc1MDY3Mjk0MTFjMzE3ODhmNDAzZDA3NjgxN2NiNGQwYTJhYmFmZDNkZjk2MGRmMmY1ZDBiNGRiYmZlOSJ9fX0='
+  apparence: '299 : 1 : name>&a외형 커스터마이즈 : desc>\n&7다음 시각적 옵션을\n&7커스터마이즈하세요!\n &f▪ MVP+ 랭크 색상\n &f▪ 펀치 메시지\n\n&e클릭하여 확인! : paint>27:27:118'
+  status: '145:0 : 1 : name>&a계정 상태 : desc>&7계정 상태와 제재 기록을\n&7확인하세요. \n\n&e클릭하여 확인!'
+  language: 'SKULL_ITEM:3 : 1 : name>&a언어 : desc>&7언어를 변경하세요\n\n&7현재 사용 가능: {languages} \n\n&7더 많은 언어가 곧 추가될 예정입니다!\n\n&e클릭하여 언어 변경! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjE1MWNmZmRhZjMwMzY3MzUzMWE3NjUxYjM2NjM3Y2FkOTEyYmE0ODU2NDMxNThlNTQ4ZDU5YjJlYWQ1MDExIn19fQ=='
+  slot: 4
+  langslot: 40
+  aslot: 30
+  sslot: 32
+  fslot: 5
+  pslot: 3
+  prslot2: 21
+  tslot3: 33
+  cosmetics:
+    slot4: 22
+  boosters:
+    slot4: 31
+  challenges:
+    slot5: 23
+  statistics:
+    slot1: 29
+player:
+  enter: '&5&l[파티] &a플레이어 이름을 입력하세요:'
+deliveries:
+  title: '배송'
+cosmetics:
+  punchmessage:
+    icon:
+      perm_desc:
+        start: '&8펀치 메시지\n\n&7게임 내 채팅 메시지에\n&7{name} 펀치 메시지를 선택하세요!\n\n&e우클릭으로 미리보기! \n \n{perm_desc_status}'
+      buy_desc:
+        start: '&8펀치 메시지\n\n&7게임 내 채팅 메시지에\n&7{name} 펀치 메시지를 선택하세요!\n\n&e우클릭으로 미리보기! \n \n{buy_desc_status}'
+      has_desc:
+        start: '&8펀치 메시지\n\n&7게임 내 채팅 메시지에\n&7{name} 펀치 메시지를 선택하세요!\n\n&e우클릭으로 미리보기! \n\n{has_desc_status}'
+  mvpcolor:
+    icon:
+      perm_desc:
+        start: '&8MVP 색상\n \n{perm_desc_status}'
+      buy_desc:
+        start: '&8MVP 색상\n \n{buy_desc_status}'
+      has_desc:
+        start: '&8MVP 색상\n \n{has_desc_status}'
+  color:
+    locked: '&c'
+    canbuy: '&e'
+    unlocked: '&a'
+    selected: '&a'
+  icon:
+    perm_desc:
+      common: '&c권한이 없습니다.'
+      role: '&7{role} &7이상 전용.'
+    buy_desc:
+      enough: '&c잔액이 부족합니다.'
+      click_to_buy: '&e클릭하여 구매!'
+    has_desc:
+      select: '&a잠금 해제됨!\n&e클릭하여 선택!'
+      selected: '&a잠금 해제됨!\n&e클릭하여 선택 해제!'
+  coloredtag:
+    icon:
+      perm_desc:
+        start: '&8컬러 태그\n\n&7게임 내 채팅 메시지에\n&7{name} 색상을 선택하세요!\n\n&e우클릭으로 미리보기! \n\n&7희귀도: {rarity}\n \n{perm_desc_status}'
+      buy_desc:
+        start: '&8컬러 태그\n\n&7게임 내 채팅 메시지에\n&7{name} 색상을 선택하세요!\n\n&e우클릭으로 미리보기! \n\n&7희귀도: {rarity}\n&7가격: &2{cash}\n \n{buy_desc_status}'
+      has_desc:
+        start: '&8컬러 태그\n\n&7게임 내 채팅 메시지에\n&7{name} 색상을 선택하세요!\n\n&e우클릭으로 미리보기! \n\n&7희귀도: {rarity}\n \n{has_desc_status}'
+  joinmessage:
+    icon:
+      perm_desc:
+        start: '&8입장 메시지\n\n&7게임 내 채팅 메시지에\n&7{name} 입장 메시지를 선택하세요!\n\n&e우클릭으로 미리보기! \n\n&7희귀도: {rarity}\n \n{perm_desc_status}'
+      buy_desc:
+        start: '&8입장 메시지\n\n&7게임 내 채팅 메시지에\n&7{name} 입장 메시지를 선택하세요!\n\n&e우클릭으로 미리보기! \n\n&7희귀도: {rarity}\n&7가격: &2{cash}\n \n{buy_desc_status}'
+      has_desc:
+        start: '&8입장 메시지\n\n&7게임 내 채팅 메시지에\n&7{name} 입장 메시지를 선택하세요!\n\n&e우클릭으로 미리보기! \n\n&7희귀도: {rarity}\n \n{has_desc_status}'
+titles:
+  title: '칭호'
+kick:
+  title:
+    menu: '플레이어 추방'
+party:
+  kickm: '&a{member}님을 파티에서 추방했습니다.'
+  invite: '386 : 1 : name>&a플레이어 초대 : desc>&7파티에 플레이어를 초대하세요.'
+  kick: '166 : 1 : name>&a플레이어 추방 : desc>&7파티에서 플레이어를 추방하세요.'
+  push: '405 : 1 : name>&a파티 이동 : desc>&7모든 파티원을 당신의\n&7로비로 이동시킵니다.'
+  undo: 'TNT : 1 : name>&a파티 해산 : desc>&7현재 파티를 해산합니다.'
+  search: 'SIGN : 1 : name>&a플레이어 검색'
+  create: '159:2 : 1 : name>&a파티 생성 : desc>\n&e클릭하여 플레이어를\n&e파티에 초대'
+  cslot: 31
+  islot: 18
+  kslot: 19
+  pslot: 20
+  inviteslot: 18
+  uslot: 21
+  sslot: 26
+  online: '&a온라인'
+  offline: '&c오프라인'
+  role: '&6리더'
+  rmember: '&7멤버'
+  guild: '&b없음'
+  member: 'SKULL_ITEM:3 : 1 : owner>%name% : name>&a%name% : desc>&7직위: %role%\n&7상태: %status%\n&7길드: %guild%'
+  only_players: '&c플레이어만 이 명령어를 사용할 수 있습니다.'
+  chat_usage: '&c/p [메시지]를 사용하여 파티 채팅을 하세요.'
+  not_in_party: '&c파티에 속해있지 않습니다.'
+  chat_format: '&d[파티] {prefix}&f: {message}'
+  help_message: ' \n&6/p [메시지] &f_ &7파티원과 채팅.\n&6/party open &f_ &7파티를 공개로 설정.\n&6/party close &f_ &7파티를 비공개로 설정.\n&6/party join [플레이어] &f_ &7공개 파티 참가.\n&6/party accept [플레이어] &f_ &7초대 수락.\n&6/party help &f_ &7도움말 표시.\n&6/party invite [플레이어] &f_ &7플레이어 초대.\n&6/party delete &f_ &7파티 해산.\n&6/party kick [플레이어] &f_ &7멤버 추방.\n&6/party info &f_ &7파티 정보 보기.\n&6/party deny [플레이어] &f_ &7초대 거절.\n&6/party leave &f_ &7파티 나가기.\n&6/party transfer [플레이어] &f_ &7다른 멤버에게 리더 이전.\n '
+  not_leader: '&c파티 리더가 아닙니다.'
+  already_public: '&c이미 공개 파티입니다.'
+  opened: '&a파티를 모든 플레이어가 참가할 수 있도록 공개했습니다.'
+  already_private: '&c이미 비공개 파티입니다.'
+  closed: '&c파티를 초대받은 플레이어만 참가할 수 있도록 비공개로 설정했습니다.'
+  join_usage: '&c/party join [플레이어]를 사용하세요'
+  cant_join_own: '&c자신의 파티에는 참가할 수 없습니다.'
+  already_in_party: '&c이미 파티에 속해있습니다.'
+  not_leader_target: '&c{player}님은 파티 리더가 아닙니다.'
+  closed_party: '&c{player}님의 파티는 초대받은 플레이어만 참가할 수 있습니다.'
+  full_party: '&c{player}님의 파티가 가득 찼습니다.'
+  joined: ' \n&a{prefix}님의 파티에 참가했습니다!\n '
+  accept_usage: '&c/party accept [플레이어]를 사용하세요'
+  cant_accept_own: '&c자신의 초대는 수락할 수 없습니다.'
+  no_invite: '&c{player}님이 파티에 초대하지 않았습니다.'
+  deleted_broadcast: ' \n{prefix} &a님이 파티를 해산했습니다!\n '
+  deleted: '&a파티를 해산했습니다.'
+  kick_usage: '&c/party kick [플레이어]를 사용하세요'
+  not_party_leader: '&c파티 리더가 아닙니다.'
+  cant_kick_self: '&c자신을 추방할 수 없습니다.'
+  not_in_your_party: '&c해당 플레이어는 파티에 속해있지 않습니다.'
+  kicked_broadcast: ' \n{kicker} &a님이 {kicked} &a님을 파티에서 추방했습니다!\n '
+  info_format: ' \n&6리더: {leader}\n&6공개: {public}\n&6멤버 제한: &f{members}/{slots}\n&6멤버: {member_list}\n '
+  deny_usage: '&c/party deny [플레이어]를 사용하세요'
+  cant_deny_self: '&c자신의 초대는 거절할 수 없습니다.'
+  denied: ' \n&a{prefix}님의 파티 초대를 거절했습니다!\n '
+  left: '&a파티를 나갔습니다!'
+  transfer_usage: '&c/party transfer [플레이어]를 사용하세요'
+  cant_transfer_self: '&c자신에게 파티 리더를 이전할 수 없습니다.'
+  transferred_broadcast: ' \n{old_leader} &a님이 {new_leader}&a님에게 파티 리더를 이전했습니다!\n '
+  invite_usage: '&c/party invite [플레이어]를 사용하세요'
+  player_not_found: '&c사용자를 찾을 수 없습니다.'
+  cant_invite_self: '&c자신을 초대할 수 없습니다.'
+  only_leader_invite: '&c파티 리더만 초대할 수 있습니다!'
+  already_invited: '&c이미 {player}님을 초대했습니다.'
+  invited: ' \n{prefix} &a님을 파티에 초대했습니다. 60초 안에 수락하거나 거절해야 합니다.\n '
+menu:
+  apparence:
+    title: '외형 커스터마이즈'
+    rows: 4
+    color: '351:0 : 1 : name>&aMVP+ 랭크 색상 : desc>&7&bMVP&c+ &7플레이어는\n&7+ 색상을 잠금 해제하고\n&7변경할 수 있습니다.\n\n&e클릭하여 변경!'
+    punch: '395 : 1 : name>&a펀치 메시지 : desc>&7펀치 능력을 사용할 때\n&7메시지를 커스터마이즈하세요!\n\n&c로비에서의 펀치는\n&c&bMVP&c+ 또는\n&c친구 펀치 아이템을 가진\n&c플레이어만 사용할 수 있습니다.\n\n&e클릭하여 변경!'
+    status: '421 : 1 : name>&a상태 : desc>&7로비에서 머리 위에 표시될\n&7상태를 설정하세요.\n\n&e클릭하여 변경!'
+  ptitle: '파티'
+  prows: 6
+  kcrows: 5
+  back: 'ARROW : 1 : name>&c뒤로'
+  achievements:
+    title: '도전과제'
+    thepit: 'SKULL_ITEM:3 : 1 : name>&a더 피트 : desc>&f도전과제: {color}{completed}/{max}\n \n&e클릭하여 보기! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNDVkNzI1NTg3Mjk4YWRhYTc5NmU3MjRkNDhlZmIyOThkNzA2YWE4MjhhN2E0YzJhZjBjYmM5YzNjMiJ9fX0='
+    bedwars: 'SKULL_ITEM:3 : 1 : name>&a베드워즈 : desc>&f도전과제: {color}{completed}/{max}\n \n&e클릭하여 보기! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmZiMjkwYTEzZGY4ODI2N2VhNWY1ZmNmNzk2YjYxNTdmZjY0Y2NlZTVjZDM5ZDQ2OTcyNDU5MWJhYmVlZDFmNiJ9fX0='
+    skywars: 'SKULL_ITEM:3 : 1 : name>&a스카이워즈 : desc>&f도전과제: {color}{completed}/{max}\n \n&e클릭하여 보기! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MDI0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkNDc4YjZmZDg0OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
+    thebridge: 'SKULL_ITEM:3 : 1 : name>&a더 브릿지 : desc>&f도전과제: {color}{completed}/{max}\n \n&e클릭하여 보기! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhZjg1MzVjNTQ3ZTFkNjhmMmEyMGRkOGVlZTk5YzE2NTAzMTU3N2FhZTYwZWEyZTJlMmNjMTgzMDkwZjU3ZSJ9fX0='
+  preferences:
+    title: '환경설정'
+    players: '347 : 1 : name>&a플레이어 : desc>&7로비에서 플레이어를\n&7표시하거나 숨깁니다.'
+    privateMessages: 'PAPER : 1 : name>&a개인 메시지 : desc>&7/tell을 통한\n&7메시지를 활성화하거나 비활성화합니다.'
+    violence: 'REDSTONE : 1 : name>&a폭력성 : desc>&7PvP 시 피 입자를\n&7활성화하거나 비활성화합니다.'
+    protectionLobby: 'NETHER_STAR : 1 : name>&a/lobby 보호 : desc>&7/lobby 사용 시\n&7확인 요청을 활성화하거나 비활성화합니다.'
+    chatMention: 'MAP : 1 : hide>all : name>&a채팅 멘션 : desc>&7채팅에서 멘션을\n&7활성화하거나 비활성화합니다.'
+    state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&f상태: &7{state}\n \n&e클릭하여 수정!'
+  boosters:
+    title: '부스터'
+    personal: 'POTION : 1 : name>&a개인 부스터 : desc>&7서버의 모든 미니게임에서\n&7&bVIP &7에게만 적용되는\n&7&6코인 부스터&7를 제공합니다.\n \n&e클릭하여 부스터 확인!'
+    global: 'POTION:8232 : 1 : hide>all : name>&a전체 부스터 : desc>&7하나의 미니게임에서\n&b모든 &7플레이어에게 적용되는\n&7&6코인 부스터&7를 제공합니다.\n \n&e클릭하여 부스터 확인!'
+    active: '&f활성화된 개인 부스터:\n {activeMultiplier}'
+    none: '&c활성화된 부스터가 없습니다.'
+    calculation: '&8• &6부스터 {multiplier}x &8({time})\n \n&f계산:\n &750 코인을 받을 때 부스터가 활성화되어 있으면\n &7총 &6{total} 코인&7을 받게 됩니다.'
+    network: ' &8• &b{minigame}: {status}'
+    networkActive: '&6{multiplier}x &7for {player} &8({time})'
+    networkDisabled: '&c비활성화됨'
+    credits: 'PAPER : 1 : name>&a코인 부스터 : desc>&7부스터는 중첩됩니다. 활성화된 부스터가\n&7많을수록 더 많은 보너스를 받습니다.\n \n&f전체 부스터:\n{network}\n \n{result}'
+  statistics:
+    title: '통계'
+    bedwars: 'SKULL_ITEM:3 : 1 : name>&a베드워즈 : desc>&e전체: \n  &f승리: &7%aCore_BedWars_wins%\n  &f게임: &7%aCore_BedWars_games%\n \n&f코인: &6%aCore_BedWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmZiMjkwYTEzZGY4ODI2N2VhNWY1ZmNmNzk2YjYxNTdmZjY0Y2NlZTVjZDM5ZDQ2OTcyNDU5MWJhYmVlZDFmNiJ9fX0='
+    skywars: 'SKULL_ITEM:3 : 1 : name>&a스카이워즈 : desc>&e전체: \n  &f승리: &7%aCore_SkyWars_wins%\n  &f게임: &7%aCore_SkyWars_games%\n  &f포인트: &7%aCore_SkyWars_rankedpoints%\n \n&f코인: &6%aCore_SkyWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MDI0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkNDc4YjZmZDg0OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
+    thebridge: 'SKULL_ITEM:3 : 1 : name>&a더 브릿지 : desc>&e1v1:\n  &f처치: &7%aCore_TheBridge_1v1kills%\n  &f사망: &7%aCore_TheBridge_1v1deaths%\n  &f포인트: &7%aCore_TheBridge_1v1points%\n  &f승리: &7%aCore_TheBridge_1v1wins%\n  &f게임: &7%aCore_TheBridge_1v1games%\n&e2v2:\n  &f처치: &7%aCore_TheBridge_2v2kills%\n  &f사망: &7%aCore_TheBridge_2v2deaths%\n  &f포인트: &7%aCore_TheBridge_2v2points%\n  &f승리: &7%aCore_TheBridge_2v2wins%\n  &f게임: &7%aCore_TheBridge_2v2games%\n \n&e연승:\n  &f일일: &7%aCore_TheBridge_winstreak%\n \n&f코인: &6%aCore_TheBridge_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhZjg1MzVjNTQ3ZTFkNjhmMmEyMGRkOGVlZTk5YzE2NTAzMTU3N2FhZTYwZWEyZTJlMmNjMTgzMDkwZjU3ZSJ9fX0='
+    thepit: 'SKULL_ITEM:3 : 1 : name>&a더 피트 : desc>&e전체: \n  &f처치: &7%aCore_ThePit_kills%\n  &f사망: &7%aCore_ThePit_deaths%\n  &f도움: &7%aCore_ThePit_assists%\n \n&f코인: &6%aCore_BedWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNDVkNzI1NTg3Mjk4YWRhYTc5NmU3MjRkNDhlZmIyOThkNzA2YWE4MjhhN2E0YzJhZjBjYmM5YzNjMiJ9fX0='
+  minigames:
+    contribute: 'BOOK : 1 : name>&b서버에 기여하기 : desc>&7&eVIP&7가 되어 서버를\n&7지원할 수 있습니다!\n\n&7서버 유지를 돕는 것 외에도\n&7다양한 독점 혜택을\n&7이용할 수 있습니다!'
+    slot: 32
+    active: true
+  cosmetic_slot:
+    back: 48
+  cosmetic:
+    back: 'ARROW : 1 : name>&a뒤로'
+apparence:
+  status:
+    slot: 15
+  color:
+    slot: 11
+  punch:
+    slot: 13
+actionBar:
+  queueMessage: '&a서버 &8{server}&a에 입장하기 위해 대기 중입니다 &7(#{position}번째)'
+connection:
+  notsucess: '&c현재 이 서버에 연결할 수 없습니다!'
+gamemode:
+  mode: '&c모드를 찾을 수 없습니다.'
+  changed: '&a게임 모드를 {mode}에서 {to}로 변경했습니다.'
+  changer: '&a게임 모드가 {type}로 변경되었습니다.'
+vanish:
+  mode: '§다른 플레이어에게 보이지 않습니다!'
+waiting:
+  timer: '§다시 사용하기까지 {more}번 기다려야 합니다.'
+visibleon: '&a플레이어 표시가 활성화되었습니다.'
+visibleoff: '&a플레이어 표시가 비활성화되었습니다.'
+booster:
+  type: '전체'
+  type2: '개인'
+  list:
+    item: 'POTION{type} : 1 : hide>all : name>&a{boosterType} 부스터 : desc>&f배율: &6{multiplier}x\n&f지속시간: &7{duration}\n \n&e클릭하여 부스터 활성화!'
+    empty: 'WEB : 1 : name>&c부스터가 없습니다!'
+  network:
+    notInMinigame: '&c이 부스터를 활성화하려면 미니게임 서버에 있어야 합니다.'
+    alreadyActive: '&c{minigame}에 이미 전체 부스터가 활성화되어 있습니다.'
+    activated: ' \n {roleColor}{player} &7님이 &6전체 코인 부스터&7를 활성화했습니다.\n &b모든 &7플레이어가 &6{minigame}&7에서 {multiplier}x 보너스를 받습니다.\n '
+  personal:
+    alreadyActive: '&c이미 개인 부스터가 활성화되어 있습니다.'
+    activated: '&a{multiplier}x &6코인 부스터&7를 활성화했습니다 &8({duration})&a.'
+language:
+  icon:
+    has_desc:
+      select: '&e클릭하여 선택!'
+      selected: '&e클릭하여 선택 해제!'
+menucosmetics:
+  join_message: '323 : 1 : name>&a입장 메시지 : desc>&7로비에 입장할 때\n&7스타일리시하게 알리세요! \n\n&7잠금 해제: {color}{owned}/{max} &8({percentage}%)\n&7현재 선택: {selected} \n\n&e클릭하여 보기!'
+  colored_tag: '38:7 : 1 : name>&a컬러 태그 : desc>&7태그 색상을 변경하고\n&7스타일리시해지세요! \n\n&7잠금 해제: {color}{owned}/{max} &8({percentage}%)\n&7현재 선택: {selected} \n\n&e클릭하여 보기!'
+  empty_slot: '160:7 : 1 : name>&7'
+cosmetic:
+  join_message_name: '입장 메시지'
+  coloredtag_name: '컬러 태그'
+message:
+  nohaveperm: '&c권한이 없습니다.'
+  deathmessage: '\n&e로비 입장 시 표시될 수 있는 메시지:\n \n'
+  coloredtag: '\n&e태그가 다음과 같이 표시됩니다:\n {color} {role}\n'
+menubuycashsearch:
+  title: '확인'
+main:
+  menu_buy_cancel: '159:14 : 1 : name>&c취소'
+  menu_confirm_cash: '159:13 : 1 : name>&a확인 : desc>&7"{cosmetic_name}" 잠금 해제\n&7가격: &2{cosmetic_cash}&7.'
+  not_enough_coins: '&c이 거래를 완료하기 위한 코인이 부족합니다.'
+  cosmetic_purchased: '&a''{name}''을(를) 구매했습니다!'

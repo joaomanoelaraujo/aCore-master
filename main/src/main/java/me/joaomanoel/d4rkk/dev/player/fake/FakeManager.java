@@ -6,13 +6,12 @@ import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.libraries.profile.Mojang;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
-import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.chat.ComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -84,7 +83,7 @@ public class FakeManager {
     meta.setAuthor("Nys");
     meta.setTitle("Escolher cargo");
     book.setItemMeta(meta);
-    book = BukkitUtils.setNBTList(book, "pages", Collections.singletonList(ComponentSerializer.toString(FAKE_ROLES)));
+/*    book = BukkitUtils.setNBTList(book, "pages", Collections.singletonList(ComponentSerializer.toString(FAKE_ROLES)));*/
     BukkitUtils.openBook(player, book);
   }
   
@@ -94,7 +93,7 @@ public class FakeManager {
     meta.setAuthor("Nys");
     meta.setTitle("Escolher cargo");
     book.setItemMeta(meta);
-    book = BukkitUtils.setNBTList(book, "pages", Collections.singletonList(ComponentSerializer.toString(FAKE_SKINS).replace("{role}", role)));
+/*    book = BukkitUtils.setNBTList(book, "pages", Collections.singletonList(ComponentSerializer.toString(FAKE_SKINS).replace("{role}", role)));*/
     BukkitUtils.openBook(player, book);
   }
   

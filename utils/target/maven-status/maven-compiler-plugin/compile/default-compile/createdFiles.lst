@@ -1,0 +1,7 @@
+me\joaomanoel\d4rkk\dev\libraries\MinecraftVersion.class
+me\joaomanoel\d4rkk\dev\reflection\acessors\MethodAccessor.class
+me\joaomanoel\d4rkk\dev\reflection\acessors\ConstructorAccessor.class
+me\joaomanoel\d4rkk\dev\reflection\acessors\FieldAccessor.class
+me\joaomanoel\d4rkk\dev\reflection\MinecraftReflection.class
+me\joaomanoel\d4rkk\dev\reflection\Accessors.class
+me\joaomanoel\d4rkk\dev\utils\StringUtils.class

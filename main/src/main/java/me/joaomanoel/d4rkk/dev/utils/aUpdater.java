@@ -1,10 +1,8 @@
 package me.joaomanoel.d4rkk.dev.utils;
 
-import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.nms.NMS;
+import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.plugin.KPlugin;
 import me.joaomanoel.d4rkk.dev.plugin.logger.KLogger;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,7 +11,6 @@ import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 
 public class aUpdater {
 
@@ -92,14 +89,14 @@ public class aUpdater {
         bout.write(buffer, 0, bytesRead);
         totalBytesRead += bytesRead;
         int percentage = (totalBytesRead * 100) / max;
-        NMS.sendActionBar(player, "§fDownloading " + file.getName() + " §7[§a" + StringUtils.repeat("█", percentage / 4) + "§8" + StringUtils.repeat("█", 25 - (percentage / 4)) + "§7]");
+        NMSManager.sendActionBar("§fDownloading " + file.getName() + " §7[§a" + StringUtils.repeat("█", percentage / 4) + "§8" + StringUtils.repeat("█", 25 - (percentage / 4)) + "§7]", player);
       }
 
-      NMS.sendActionBar(player, "§aUpdate downloaded, stop the server to proceed.");
+      NMSManager.sendActionBar("§aUpdate downloaded, stop the server to proceed.", player);
       in.close();
       bout.close();
     } catch (Exception ex) {
-      NMS.sendActionBar(player, "§aFailed to download update: " + ex.getMessage());
+      NMSManager.sendActionBar("§aFailed to download update: " + ex.getMessage(), player);
     }
   }
 }

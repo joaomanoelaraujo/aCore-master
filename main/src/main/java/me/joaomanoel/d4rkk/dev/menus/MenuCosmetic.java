@@ -13,7 +13,7 @@ import me.joaomanoel.d4rkk.dev.menus.buy.MenuBuyCashCosmetic;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 
-import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import org.bukkit.Material;

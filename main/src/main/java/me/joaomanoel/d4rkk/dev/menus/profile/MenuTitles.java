@@ -7,7 +7,7 @@ import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.titles.Title;
 import me.joaomanoel.d4rkk.dev.titles.TitleManager;
-import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;

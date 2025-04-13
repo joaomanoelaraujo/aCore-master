@@ -4,7 +4,7 @@ import me.joaomanoel.d4rkk.dev.Achievements;
 import me.joaomanoel.d4rkk.dev.achievements.Achievement;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.titles.Title;
-import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import org.bukkit.inventory.ItemStack;
 

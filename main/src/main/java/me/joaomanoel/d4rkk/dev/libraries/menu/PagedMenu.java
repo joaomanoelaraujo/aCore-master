@@ -1,6 +1,6 @@
 package me.joaomanoel.d4rkk.dev.libraries.menu;
 
-import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

@@ -4,7 +4,7 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
 import me.joaomanoel.d4rkk.dev.bukkit.BukkitParty;
 import me.joaomanoel.d4rkk.dev.bukkit.BukkitPartyManager;
-import me.joaomanoel.d4rkk.dev.nms.NMS;
+import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.party.PartyPlayer;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
@@ -34,7 +34,7 @@ public class PluginMessageListener implements org.bukkit.plugin.messaging.Plugin
             String roleName = in.readUTF();
             String skin = in.readUTF();
             FakeManager.applyFake(player, fakeName, roleName, skin);
-            NMS.refreshPlayer(player);
+            NMSManager.refreshPlayer(player);
           }
           break;
         }

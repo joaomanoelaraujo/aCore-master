@@ -1,0 +1,281 @@
+# aCore _ Created by D4RKK 
+# Version: 2.0
+already: '§cすでにこのサーバーに接続しています。'
+languages:
+  title: '言語選択'
+discord:
+  link: 'https://discord.gg/aaa'
+loja:
+  link: 'www.yourserver.com'
+profileo:
+  menu:
+    levelInfo: 'SKULL_ITEM:3 : 1 : name>%s : desc>&7レベル: &6%s\n&7ギルド: &b%s\n&7ランク: %s'
+    socialMedia: 'SKULL_ITEM:3 : 1 : name>&aソーシャルメディア : desc>&eクリックして表示! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTFiN2EwYzIxMGU2Y2RmNWEzNWZkODE5N2U2ZTI0YTAzODMxNWJiZTNiZGNkMWJjYzM2MzBiZjI2ZjU5ZWM1YyJ9fX0='
+    statistics: 'PAPER : 1 : name>&a統計 : desc>&7%sの統計を表示'
+    partyInvite: 'DIAMOND : 1 : name>&aパーティに招待 : desc>&7%sをパーティに招待する!'
+    friendInvite: '386 : 1 : name>&aフレンド追加 : desc>&7%sをフレンドに追加'
+    blockPlayer: 'BARRIER : 1 : name>&aブロック : desc>&7%sをブロック'
+    guildInvite: 'SKULL_ITEM:3 : 1 : name>&aギルドに招待 : desc>&7%sをギルドに招待する! : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWRhZmEyZDNlNGU2ZGZmNDI5MTcxMzExYTljYzJiYWIyNjYwYjYyOTUyNzYyNzM0ZDU2OTQ1OTJhMjgwNzk4YSJ9fX0='
+    leadershipPass: 'SKULL_ITEM:3 : 1 : name>&aリーダー権限を譲渡 : desc>&7%sにパーティリーダーを譲渡 : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJkYjc1MDY3Mjk0MTFjMzE3ODhmNDAzZDA3NjgxN2NiNGQwYTJhYmFmZDNkZjk2MGRmMmY1ZDBiNGRiYmZlOSJ9fX0='
+    close: 'ARROW : 1 : name>&c閉じる'
+menuprofile:
+  color: '160:1 : 1 : name>&7'
+  color_party: '160:11 : 1 : name>&7'
+  glass: true
+profile:
+  title: 'プロフィール'
+  menu:
+    preferences: 'REDSTONE_COMPARATOR : 1 : hide>all : name>&a設定 : desc>&7当サーバーでは、ゲーム体験を\n&7完全にカスタマイズできます。\n&7様々なユニークなオプションを\n&7お好みに合わせて設定できます！\n \n&8プライベートメッセージ、プレイヤー表示など\n&8の設定が可能です。\n \n&eクリックして設定を変更！'
+    titles: 'MAP : 1 : hide>all : name>&aタイトル : desc>&7ユニークなタイトルで自分らしさを表現し、\n&7他のプレイヤーの頭上に表示される\n&7タイトルを設定できます。\n \n&8自分自身にはタイトルは表示されず、\n&8他のプレイヤーにのみ表示されます。\n \n&eクリックしてタイトルを選択！'
+    boosters: 'POTION:8232 : 1 : hide>all : name>&aコインブースター : desc>&7当サーバーには\n&7&6コインブースター &7システムがあり、\n&7ゲームで獲得する &6コイン &7量に影響します。\n \n&8ブースターは個人用またはグローバルで、\n&8あなたや他のプレイヤーに恩恵をもたらします。\n \n&eクリックしてブースターを確認！'
+    challenges: 'GOLD_INGOT : 1 : name>&aチャレンジ : desc>&7当サーバーには\n&7&6チャレンジ &7システムがあり、\n&7永続的な報酬が得られる特別なミッションがあります。\n \n&8報酬にはタイトル、コイン、\n&8プレステージアイコンなどが含まれます。\n \n&eクリックしてチャレンジを確認！'
+    statistics: 'PAPER : 1 : name>&a統計 : desc>&7当サーバーの各ミニゲームでの\n&7統計を確認できます。\n \n&eクリックして統計を表示！'
+    cosmetics: '416 : 1 : name>&aコスメティック : desc>&7各サーバーで使用できる\n&7コスメティックアイテムを確認。\n \n&eクリックして表示！'
+    profile: 'SKULL_ITEM:3 : 1 : name>&a個人情報 : desc>&fランク: {rank}\n\n&fキャッシュ: &b{cash}\n\n&f登録日: &7{created}\n&f最終ログイン: {last}'
+  mfriends: 'SKULL_ITEM:3 : 1 : name>&aフレンド : desc>&7フレンドのプロフィールを表示し、\n&7オンラインのフレンドと\n&7交流しよう！ : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGU0ODU4ZWUyMzI2MmEzMTRhMGQwZGExN2Q4NzEzOWI5MzhlMzBlZjk2MmQwNDE3N2E4NjVhNGIwZDM4MTA2ZSJ9fX0='
+  mparty: 'SKULL_ITEM:3 : 1 : name>&aパーティ : desc>&7他のプレイヤーと一緒に遊ぶために\n&7パーティを作ろう！ : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWJkYjc1MDY3Mjk0MTFjMzE3ODhmNDAzZDA3NjgxN2NiNGQwYTJhYmFmZDNkZjk2MGRmMmY1ZDBiNGRiYmZlOSJ9fX0='
+  apparence: '299 : 1 : name>&a外観をカスタマイズ : desc>\n&7以下の視覚的オプションを\n&7カスタマイズできます！\n &f▪ MVP+ランクの色\n &f▪ パンチメッセージ\n\n&eクリックして表示！ : paint>27:27:118'
+  status: '145:0 : 1 : name>&aアカウントステータス : desc>&7アカウントの状態と\n&7処罰履歴を確認できます。\n\n&eクリックして表示！'
+  language: 'SKULL_ITEM:3 : 1 : name>&a言語 : desc>&7言語を変更\n\n&7現在利用可能: {languages} \n\n&7より多くの言語が近日追加予定！\n\n&eクリックして言語を変更！ : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjE1MWNmZmRhZjMwMzY3MzUzMWE3NjUxYjM2NjM3Y2FkOTEyYmE0ODU2NDMxNThlNTQ4ZDU5YjJlYWQ1MDExIn19fQ=='
+  slot: 4
+  langslot: 40
+  aslot: 30
+  sslot: 32
+  fslot: 5
+  pslot: 3
+  prslot2: 21
+  tslot3: 33
+  cosmetics:
+    slot4: 22
+  boosters:
+    slot4: 31
+  challenges:
+    slot5: 23
+  statistics:
+    slot1: 29
+player:
+  enter: '&5&l[パーティ] &aプレイヤー名を入力してください:'
+deliveries:
+  title: '配送'
+cosmetics:
+  punchmessage:
+    icon:
+      perm_desc:
+        start: '&8パンチメッセージ\n\n&7ゲームチャットメッセージ用の\n&7{name}パンチメッセージを選択！\n\n&e右クリックでプレビュー！ \n \n{perm_desc_status}'
+      buy_desc:
+        start: '&8パンチメッセージ\n\n&7ゲームチャットメッセージ用の\n&7{name}パンチメッセージを選択！\n\n&e右クリックでプレビュー！ \n \n{buy_desc_status}'
+      has_desc:
+        start: '&8パンチメッセージ\n\n&7ゲームチャットメッセージ用の\n&7{name}パンチメッセージを選択！\n\n&e右クリックでプレビュー！ \n\n{has_desc_status}'
+  mvpcolor:
+    icon:
+      perm_desc:
+        start: '&8MVP色\n \n{perm_desc_status}'
+      buy_desc:
+        start: '&8MVP色\n \n{buy_desc_status}'
+      has_desc:
+        start: '&8MVP色\n \n{has_desc_status}'
+  color:
+    locked: '&c'
+    canbuy: '&e'
+    unlocked: '&a'
+    selected: '&a'
+  icon:
+    perm_desc:
+      common: '&c権限がありません。'
+      role: '&7{role} &7以上限定。'
+    buy_desc:
+      enough: '&c残高が不足しています。'
+      click_to_buy: '&eクリックして購入！'
+    has_desc:
+      select: '&aアンロック済み！\n&eクリックして選択！'
+      selected: '&aアンロック済み！\n&eクリックして選択解除！'
+  coloredtag:
+    icon:
+      perm_desc:
+        start: '&8カラータグ\n\n&7ゲームチャットメッセージ用の\n&7{name}色を選択！\n\n&e右クリックでプレビュー！ \n\n&7レアリティ: {rarity}\n \n{perm_desc_status}'
+      buy_desc:
+        start: '&8カラータグ\n\n&7ゲームチャットメッセージ用の\n&7{name}色を選択！\n\n&e右クリックでプレビュー！ \n\n&7レアリティ: {rarity}\n&7コスト: &2{cash}\n \n{buy_desc_status}'
+      has_desc:
+        start: '&8カラータグ\n\n&7ゲームチャットメッセージ用の\n&7{name}色を選択！\n\n&e右クリックでプレビュー！ \n\n&7レアリティ: {rarity}\n \n{has_desc_status}'
+  joinmessage:
+    icon:
+      perm_desc:
+        start: '&8参加メッセージ\n\n&7ゲームチャットメッセージ用の\n&7{name}参加メッセージを選択！\n\n&e右クリックでプレビュー！ \n\n&7レアリティ: {rarity}\n \n{perm_desc_status}'
+      buy_desc:
+        start: '&8参加メッセージ\n\n&7ゲームチャットメッセージ用の\n&7{name}参加メッセージを選択！\n\n&e右クリックでプレビュー！ \n\n&7レアリティ: {rarity}\n&7コスト: &2{cash}\n \n{buy_desc_status}'
+      has_desc:
+        start: '&8参加メッセージ\n\n&7ゲームチャットメッセージ用の\n&7{name}参加メッセージを選択！\n\n&e右クリックでプレビュー！ \n\n&7レアリティ: {rarity}\n \n{has_desc_status}'
+titles:
+  title: 'タイトル'
+kick:
+  title:
+    menu: 'プレイヤーをキック'
+party:
+  kickm: '&a{member} &aをパーティからキックしました。'
+  invite: '386 : 1 : name>&aプレイヤーを招待 : desc>&7パーティにプレイヤーを招待します。'
+  kick: '166 : 1 : name>&aプレイヤーをキック : desc>&7パーティからプレイヤーを追放します。'
+  push: '405 : 1 : name>&aパーティを転送 : desc>&7パーティメンバー全員を\n&7あなたのロビーにテレポートします。'
+  undo: 'TNT : 1 : name>&aパーティを解散 : desc>&7現在のパーティを解散します。'
+  search: 'SIGN : 1 : name>&aプレイヤーを検索'
+  create: '159:2 : 1 : name>&aパーティを作成 : desc>\n&eクリックしてプレイヤーを\n&eパーティに招待'
+  cslot: 31
+  islot: 18
+  kslot: 19
+  pslot: 20
+  inviteslot: 18
+  uslot: 21
+  sslot: 26
+  online: '&aオンライン'
+  offline: '&cオフライン'
+  role: '&6リーダー'
+  rmember: '&7メンバー'
+  guild: '&bなし'
+  member: 'SKULL_ITEM:3 : 1 : owner>%name% : name>&a%name% : desc>&7役職: %role%\n&7状態: %status%\n&7ギルド: %guild%'
+  only_players: '&cこのコマンドはプレイヤーのみ使用できます。'
+  chat_usage: '&c/p [メッセージ] でパーティチャットを使用してください。'
+  not_in_party: '&cあなたはパーティに所属していません。'
+  chat_format: '&d[パーティ] {prefix}&f: {message}'
+  help_message: ' \n&6/p [メッセージ] &f_ &7パーティメンバーとチャット。\n&6/party open &f_ &7パーティを公開。\n&6/party close &f_ &7パーティを非公開。\n&6/party join [プレイヤー] &f_ &7公開パーティに参加。\n&6/party accept [プレイヤー] &f_ &7招待を承諾。\n&6/party help &f_ &7このヘルプメッセージを表示。\n&6/party invite [プレイヤー] &f_ &7プレイヤーを招待。\n&6/party delete &f_ &7パーティを解散。\n&6/party kick [プレイヤー] &f_ &7メンバーをキック。\n&6/party info &f_ &7パーティ情報を表示。\n&6/party deny [プレイヤー] &f_ &7招待を拒否。\n&6/party leave &f_ &7パーティを退出。\n&6/party transfer [プレイヤー] &f_ &7リーダー権限を他のメンバーに譲渡。\n '
+  not_leader: '&cあなたはパーティリーダーではありません。'
+  already_public: '&cパーティは既に公開されています。'
+  opened: '&aパーティを全プレイヤーに公開しました。'
+  already_private: '&cパーティは既に非公開です。'
+  closed: '&cパーティを招待されたプレイヤーのみに制限しました。'
+  join_usage: '&c/party join [プレイヤー] を使用してください'
+  cant_join_own: '&c自分のパーティには参加できません。'
+  already_in_party: '&cあなたは既にパーティに所属しています。'
+  not_leader_target: '&c{player} はパーティリーダーではありません。'
+  closed_party: '&c{player} のパーティは招待されたプレイヤーのみに制限されています。'
+  full_party: '&c{player} のパーティは満員です。'
+  joined: ' \n&a{prefix} のパーティに参加しました！\n '
+  accept_usage: '&c/party accept [プレイヤー] を使用してください'
+  cant_accept_own: '&c自分からの招待は承諾できません。'
+  no_invite: '&c{player} からパーティ招待を受けていません。'
+  deleted_broadcast: ' \n{prefix} &aがパーティを解散しました！\n '
+  deleted: '&aパーティを解散しました。'
+  kick_usage: '&c/party kick [プレイヤー] を使用してください'
+  not_party_leader: '&cあなたはパーティリーダーではありません。'
+  cant_kick_self: '&c自分自身をキックすることはできません。'
+  not_in_your_party: '&cそのプレイヤーはあなたのパーティに所属していません。'
+  kicked_broadcast: ' \n{kicker} &aが {kicked} &aをパーティからキックしました！\n '
+  info_format: ' \n&6リーダー: {leader}\n&6公開: {public}\n&6メンバー制限: &f{members}/{slots}\n&6メンバー: {member_list}\n '
+  deny_usage: '&c/party deny [プレイヤー] を使用してください'
+  cant_deny_self: '&c自分からの招待は拒否できません。'
+  denied: ' \n&a{prefix} からのパーティ招待を拒否しました！\n '
+  left: '&aパーティを退出しました！'
+  transfer_usage: '&c/party transfer [プレイヤー] を使用してください'
+  cant_transfer_self: '&c自分自身にパーティリーダーを譲渡することはできません。'
+  transferred_broadcast: ' \n{old_leader} &aがパーティリーダーを {new_leader}&a に譲渡しました！\n '
+  invite_usage: '&c/party invite [プレイヤー] を使用してください'
+  player_not_found: '&cユーザーが見つかりません。'
+  cant_invite_self: '&c自分自身を招待することはできません。'
+  only_leader_invite: '&cパーティリーダーのみが招待を送信できます！'
+  already_invited: '&c既に {player} に招待を送信しています。'
+  invited: ' \n{prefix} &aをパーティに招待しました。60秒以内に承諾または拒否する必要があります。\n '
+menu:
+  apparence:
+    title: '外観をカスタマイズ'
+    rows: 4
+    color: '351:0 : 1 : name>&aMVP+ランクの色 : desc>&7&bMVP&c+&7プレイヤーは\n&7+の色を解除して\n&7変更できます。\n\n&eクリックして変更！'
+    punch: '395 : 1 : name>&aパンチメッセージ : desc>&7パンチ能力使用時の\n&7メッセージをカスタマイズ！\n\n&cロビーでのパンチは\n&c&bMVP&c+または\n&cフレンドパンチアイテムを\n&c所持している場合のみ使用可能です。\n\n&eクリックして変更！'
+    status: '421 : 1 : name>&aステータス : desc>&7ロビーで頭上に表示される\n&7ステータスを設定します。\n\n&eクリックして変更！'
+  ptitle: 'パーティ'
+  prows: 6
+  kcrows: 5
+  back: 'ARROW : 1 : name>&c戻る'
+  achievements:
+    title: 'チャレンジ'
+    thepit: 'SKULL_ITEM:3 : 1 : name>&aThe Pit : desc>&fチャレンジ: {color}{completed}/{max}\n \n&eクリックして表示！ : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNDVkNzI1NTg3Mjk4YWRhYTc5NmU3MjRkNDhlZmIyOThkNzA2YWE4MjhhN2E0YzJhZjBjYmM5YzNjMiJ9fX0='
+    bedwars: 'SKULL_ITEM:3 : 1 : name>&aBed Wars : desc>&fチャレンジ: {color}{completed}/{max}\n \n&eクリックして表示！ : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmZiMjkwYTEzZGY4ODI2N2VhNWY1ZmNmNzk2YjYxNTdmZjY0Y2NlZTVjZDM5ZDQ2OTcyNDU5MWJhYmVlZDFmNiJ9fX0='
+    skywars: 'SKULL_ITEM:3 : 1 : name>&aSky Wars : desc>&fチャレンジ: {color}{completed}/{max}\n \n&eクリックして表示！ : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MDI0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkNDc4YjZmZDg0OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
+    thebridge: 'SKULL_ITEM:3 : 1 : name>&aThe Bridge : desc>&fチャレンジ: {color}{completed}/{max}\n \n&eクリックして表示！ : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhZjg1MzVjNTQ3ZTFkNjhmMmEyMGRkOGVlZTk5YzE2NTAzMTU3N2FhZTYwZWEyZTJlMmNjMTgzMDkwZjU3ZSJ9fX0='
+  preferences:
+    title: '設定'
+    players: '347 : 1 : name>&aプレイヤー : desc>&7ロビーでのプレイヤー表示を\n&7オン/オフ。'
+    privateMessages: 'PAPER : 1 : name>&aプライベートメッセージ : desc>&7/tellを通じて送信される\n&7メッセージをオン/オフ。'
+    violence: 'REDSTONE : 1 : name>&a暴力表現 : desc>&7PvPでの\n&7血のパーティクルをオン/オフ。'
+    protectionLobby: 'NETHER_STAR : 1 : name>&a/lobby保護 : desc>&7/lobby使用時の\n&7確認要求をオン/オフ。'
+    chatMention: 'MAP : 1 : hide>all : name>&aチャットでのメンション : desc>&7チャットでの\n&7メンションをオン/オフ。'
+    state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&f状態: &7{state}\n \n&eクリックして変更！'
+  boosters:
+    title: 'ブースター'
+    personal: 'POTION : 1 : name>&a個人ブースター : desc>&7サーバーの全ミニゲームで\n&7&bあなた &7だけに適用される\n&7&6コインブースター &7を一定時間付与。\n \n&eクリックしてブースターを確認！'
+    global: 'POTION:8232 : 1 : hide>all : name>&aグローバルブースター : desc>&7特定のミニゲームで\n&b全プレイヤー &7に適用される\n&7&6コインブースター &7を一定時間付与。\n \n&eクリックしてブースターを確認！'
+    active: '&f有効な個人ブースター:\n {activeMultiplier}'
+    none: '&c有効なブースターがありません。'
+    calculation: '&8• &6ブースター {multiplier}x &8({time})\n \n&f計算例:\n &7ブースター有効時に &650コイン &7獲得すると\n &7合計 &6{total}コイン &7を獲得。'
+    network: ' &8• &b{minigame}: {status}'
+    networkActive: '&6{multiplier}x &7for {player} &8({time})'
+    networkDisabled: '&c無効'
+    credits: 'PAPER : 1 : name>&aクレジットブースター : desc>&7ブースターは累積します。有効な\n&7ブースターが多いほど、獲得ボーナスが増加。\n \n&fグローバルブースター:\n{network}\n \n{result}'
+  statistics:
+    title: '統計'
+    bedwars: 'SKULL_ITEM:3 : 1 : name>&aBedWars : desc>&e全般: \n  &f勝利: &7%aCore_BedWars_wins%\n  &fゲーム: &7%aCore_BedWars_games%\n \n&fコイン: &6%aCore_BedWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmZiMjkwYTEzZGY4ODI2N2VhNWY1ZmNmNzk2YjYxNTdmZjY0Y2NlZTVjZDM5ZDQ2OTcyNDU5MWJhYmVlZDFmNiJ9fX0='
+    skywars: 'SKULL_ITEM:3 : 1 : name>&aSkyWars : desc>&e全般: \n  &f勝利: &7%aCore_SkyWars_wins%\n  &fゲーム: &7%aCore_SkyWars_games%\n  &fポイント: &7%aCore_SkyWars_rankedpoints%\n \n&fコイン: &6%aCore_SkyWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MDI0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkNDc4YjZmZDg0OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
+    thebridge: 'SKULL_ITEM:3 : 1 : name>&aThe Bridge : desc>&e1v1:\n  &fキル: &7%aCore_TheBridge_1v1kills%\n  &fデス: &7%aCore_TheBridge_1v1deaths%\n  &fポイント: &7%aCore_TheBridge_1v1points%\n  &f勝利: &7%aCore_TheBridge_1v1wins%\n  &fゲーム: &7%aCore_TheBridge_1v1games%\n&e2v2:\n  &fキル: &7%aCore_TheBridge_2v2kills%\n  &fデス: &7%aCore_TheBridge_2v2deaths%\n  &fポイント: &7%aCore_TheBridge_2v2points%\n  &f勝利: &7%aCore_TheBridge_2v2wins%\n  &fゲーム: &7%aCore_TheBridge_2v2games%\n \n&e連勝:\n  &f今日: &7%aCore_TheBridge_winstreak%\n \n&fコイン: &6%aCore_TheBridge_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhZjg1MzVjNTQ3ZTFkNjhmMmEyMGRkOGVlZTk5YzE2NTAzMTU3N2FhZTYwZWEyZTJlMmNjMTgzMDkwZjU3ZSJ9fX0='
+    thepit: 'SKULL_ITEM:3 : 1 : name>&aThe Pit : desc>&e全般: \n  &fキル: &7%aCore_ThePit_kills%\n  &fデス: &7%aCore_ThePit_deaths%\n  &fアシスト: &7%aCore_ThePit_assists%\n \n&fコイン: &6%aCore_BedWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNDVkNzI1NTg3Mjk4YWRhYTc5NmU3MjRkNDhlZmIyOThkNzA2YWE4MjhhN2E0YzJhZjBjYmM5YzNjMiJ9fX0='
+  minigames:
+    contribute: 'BOOK : 1 : name>&bサーバーに貢献 : desc>&7&eVIP&7になってサーバーを\n&7支援できます！\n\n&7サーバーの維持を支援するだけでなく、\n&7様々な特典も\n&7利用できます！'
+    slot: 32
+    active: true
+  cosmetic_slot:
+    back: 48
+  cosmetic:
+    back: 'ARROW : 1 : name>&a戻る'
+apparence:
+  status:
+    slot: 15
+  color:
+    slot: 11
+  punch:
+    slot: 13
+actionBar:
+  queueMessage: '&aサーバー &8{server} &7の待機列に参加中です &7(順番 #{position})'
+connection:
+  notsucess: '&c現在このサーバーに接続できません！'
+gamemode:
+  mode: '&cモードが見つかりません。'
+  changed: '&aゲームモードを {mode} から {to} に変更しました。'
+  changer: '&aゲームモードが {type} に変更されました。'
+vanish:
+  mode: '§他のプレイヤーから見えなくなっています！'
+waiting:
+  timer: '§再度使用するには {more} 回待つ必要があります。'
+visibleon: '&aプレイヤーの表示をオンにしました。'
+visibleoff: '&aプレイヤーの表示をオフにしました。'
+booster:
+  type: 'グローバル'
+  type2: '個人'
+  list:
+    item: 'POTION{type} : 1 : hide>all : name>&aブースター {boosterType} : desc>&f倍率: &6{multiplier}x\n&f期間: &7{duration}\n \n&eクリックしてブースターを有効化！'
+    empty: 'WEB : 1 : name>&cブースターを所持していません！'
+  network:
+    notInMinigame: '&cこのブースターを有効化するにはミニゲームサーバーにいる必要があります。'
+    alreadyActive: '&c{minigame} には既にグローバルブースターが有効です。'
+    activated: ' \n {roleColor}{player} &7が &6グローバルコインブースター&7を有効化しました。\n &bすべての &7プレイヤーが &6{minigame}&7 で {multiplier}x &7のボーナスを受け取ります。\n '
+  personal:
+    alreadyActive: '&c既に個人ブースターが有効です。'
+    activated: '&a&6コインブースター {multiplier}x &8({duration})&a を有効化しました。'
+language:
+  icon:
+    has_desc:
+      select: '&eクリックして選択！'
+      selected: '&eクリックして選択解除！'
+menucosmetics:
+  join_message: '323 : 1 : name>&a参加メッセージ : desc>&7ロビーに参加する際、\n&7スタイリッシュに登場！ \n\n&7解除済み: {color}{owned}/{max} &8({percentage}%)\n&7現在の選択: {selected} \n\n&eクリックして表示！'
+  colored_tag: '38:7 : 1 : name>&aカラータグ : desc>&7タグの色を変更して\n&7スタイリッシュに！ \n\n&7解除済み: {color}{owned}/{max} &8({percentage}%)\n&7現在の選択: {selected} \n\n&eクリックして表示！'
+  empty_slot: '160:7 : 1 : name>&7'
+cosmetic:
+  join_message_name: '参加メッセージ'
+  coloredtag_name: 'カラータグ'
+message:
+  nohaveperm: '&c権限が不足しています。'
+  deathmessage: '\n&eロビー参加時に表示可能なメッセージ:\n \n'
+  coloredtag: '\n&eタグの表示例:\n {color} {role}\n'
+menubuycashsearch:
+  title: '確認'
+main:
+  menu_buy_cancel: '159:14 : 1 : name>&cキャンセル'
+  menu_confirm_cash: '159:13 : 1 : name>&a確認 : desc>&7"{cosmetic_name}"を解除\n&7コスト: &2{cosmetic_cash}&7.'
+  not_enough_coins: '&cこの取引を完了するのに必要なコインが不足しています。'
+  cosmetic_purchased: '&a''{name}''を購入しました！'

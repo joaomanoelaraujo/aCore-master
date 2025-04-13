@@ -2,7 +2,7 @@ package me.joaomanoel.d4rkk.dev.cmd.newcommands;
 
 import me.joaomanoel.d4rkk.dev.cmd.Commands;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
-import me.joaomanoel.d4rkk.dev.nms.NMS;
+import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.utils.TagUtils;
@@ -79,7 +79,7 @@ public class TagCommand extends Commands {
                 } else {
                     Role role = Role.getRoleByName(args[0]);
                     if (role != null && roles.contains(role)) {
-                        NMS.sendActionBar(player, "§fYour tag has been changed to: " + role.getName());
+                        NMSManager.sendActionBar("§fYour tag has been changed to: " + role.getName(), player);
                         flood.put(player.getName(), System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(10L));
                         DataContainer container = profile.getDataContainer("aCoreProfile", "tag");
                         container.set(role.getName().replace("§0", "").replace("§1", "").replace("§2", "").replace("§3", "").replace("§4", "").replace("§5", "").replace("§6", "").replace("§7", "").replace("§8", "").replace("§9", "").replace("§a", "").replace("§d", "").replace("§b", "").replace("§c", "").replace("§e", "").replace("§0§l", "").replace("§1§l", "").replace("§2§l", "").replace("§3§l", "").replace("§4§l", "").replace("§5§l", "").replace("§6§l", "").replace("§7§l", "").replace("§8§l", "").replace("§9§l", "").replace("§a§l", "").replace("§d§l", "").replace("§b§l", "").replace("§c§l", "").replace("§e§l", "").replace("+", ""));
@@ -88,7 +88,7 @@ public class TagCommand extends Commands {
 
 
                     } else {
-                        NMS.sendActionBar(player, "§cInvalid tag for your current role.");
+                        NMSManager.sendActionBar("§cInvalid tag for your current role.", player);
                     }
                 }
             }

@@ -6,9 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="main" />
+        <module name="1_20_R4" />
         <module name="nms-1.20.6" />
+        <module name="nms" />
+        <module name="1_8_R3" />
+        <module name="utils" />
         <module name="aCore" />
+        <module name="main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

@@ -5,7 +5,8 @@ import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.database.Database;
 import me.joaomanoel.d4rkk.dev.database.MongoDBDatabase;
 import me.joaomanoel.d4rkk.dev.database.MySQLDatabase;
-import me.joaomanoel.d4rkk.dev.nms.NMS;
+import me.joaomanoel.d4rkk.dev.nms.NMSManager;
+import me.joaomanoel.d4rkk.dev.nms.NMS_Interface;
 import org.bson.Document;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -130,8 +131,8 @@ public class MongoDBConversor implements Listener {
         }
         
         if (player.isOnline()) {
-          NMS.sendActionBar(player, "§aConverting §f" + this.currentTable + ": §7" + this.currentRow + "/" + this.maxRows + " §8(" + NUMBER_FORMAT
-              .format(((this.currentRow * 100.0) / this.maxRows)) + "%)");
+          NMSManager.sendActionBar("§aConverting §f" + this.currentTable + ": §7" + this.currentRow + "/" + this.maxRows + " §8(" + NUMBER_FORMAT
+              .format(((this.currentRow * 100.0) / this.maxRows)) + "%)", player);
         }
       }
     }.runTaskTimerAsynchronously(Core.getInstance(), 0, 5L);

@@ -8,7 +8,6 @@
         <groupId>me.joaomanoel.d4rkk.dev</groupId>
         <artifactId>aCore-master</artifactId>
         <version>2.1</version>
-        <relativePath>../pom.xml</relativePath> <!-- Caminho relativo para o POM pai -->
     </parent>
 
     <artifactId>aCore</artifactId>
@@ -17,43 +16,45 @@
         <main-bukkit>me.joaomanoel.d4rkk.dev.Core</main-bukkit>
         <main-bungee>me.joaomanoel.d4rkk.dev.bungee.Bungee</main-bungee>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.socket</groupId>
             <artifactId>socket.io-client</artifactId>
             <version>1.0.0</version>
         </dependency>
+
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
             <version>2.6.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
             <version>4.0.3</version>
         </dependency>
+
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver-sync</artifactId>
             <version>5.2.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>bson</artifactId>
             <version>5.2.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.comphenix.protocol</groupId>
-            <artifactId>ProtocolLib</artifactId>
-            <version>${protocollib.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>PlaceholderAPI</artifactId>
@@ -61,6 +62,7 @@
             <scope>system</scope>
             <systemPath>${basedir}/dependencies/PlaceholderAPI-2.10.5.jar</systemPath>
         </dependency>
+
         <dependency>
             <groupId>net.md_5</groupId>
             <artifactId>BungeeCord</artifactId>
@@ -68,25 +70,80 @@
             <scope>system</scope>
             <systemPath>${basedir}/dependencies/BungeeCord.jar</systemPath>
         </dependency>
+
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>24.1.0</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.21.1-R0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <groupId>me.joaomanoel.d4rkk.dev</groupId>
+            <artifactId>nms</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>me.joaomanoel.d4rkk.dev</groupId>
+            <artifactId>1_20_R4</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>me.joaomanoel.d4rkk.dev</groupId>
+            <artifactId>1_8_R3</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>me.joaomanoel.d4rkk.dev</groupId>
+            <artifactId>utils</artifactId>
+            <version>2.1</version>
         </dependency>
     </dependencies>
     <build>
+        <finalName>aCore</finalName>
+        <defaultGoal>clean install</defaultGoal>
         <resources>
             <resource>
-                <directory>main/src/main/resources</directory>
+                <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.spigotmc:*</exclude>
+                                    <exclude>net.md_5:*</exclude>
+                                    <exclude>cglib:*</exclude>
+                                    <exclude>com.comphenix.**:*</exclude>
+                                    <exclude>me.clip:*</exclude>
+                                </excludes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/**</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 </project>

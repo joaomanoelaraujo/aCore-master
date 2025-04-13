@@ -11,7 +11,7 @@ import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
 import me.joaomanoel.d4rkk.dev.plugin.logger.KLogger;
 
-import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumRarity;
 import org.bukkit.inventory.ItemStack;

@@ -1,11 +1,12 @@
 package me.joaomanoel.d4rkk.dev.titles;
 
 import me.joaomanoel.d4rkk.dev.player.Profile;
-import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import org.bukkit.inventory.ItemStack;
 
 public class TitleIconFactory {
+
     private static final String ICON_FORMAT = "%material%:%durability% : 1 : hide>all : name>%name% : desc>&fTitle: %title%\n \n%description%\n \n%action%";
     
     public static ItemStack createIcon(Title title, Profile profile) {
@@ -30,4 +31,5 @@ public class TitleIconFactory {
                 .replace("%action%", action)
         );
     }
+
 }

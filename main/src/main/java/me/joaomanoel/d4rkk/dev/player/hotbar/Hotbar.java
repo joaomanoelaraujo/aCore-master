@@ -1,7 +1,7 @@
 package me.joaomanoel.d4rkk.dev.player.hotbar;
 
 import me.joaomanoel.d4rkk.dev.player.Profile;
-import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

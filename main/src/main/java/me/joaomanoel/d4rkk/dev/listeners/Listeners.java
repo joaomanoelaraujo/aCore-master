@@ -12,7 +12,7 @@ import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.npclib.NPCLibrary;
 import me.joaomanoel.d4rkk.dev.menus.others.MenuOtherProfile;
-import me.joaomanoel.d4rkk.dev.nms.NMS;
+import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.enums.ChatMention;
 import me.joaomanoel.d4rkk.dev.player.enums.PrivateMessages;
@@ -137,7 +137,6 @@ public class Listeners implements Listener {
     if (!profile.getPlayer().hasPermission("role.mvpplus")) {
       return;
     }
-
 
     Cosmetic.listByType(MvpColor.class).stream()
             .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))
@@ -319,7 +318,7 @@ public class Listeners implements Listener {
   }
 
   private void handleMention(Player recipient, Player sender, String format, TextComponent component, Profile senderProfile) {
-    NMS.sendActionBar(recipient, Role.getColored(sender.getName()) + " §ementioned you in chat!");
+    NMSManager.sendActionBar(Role.getColored(sender.getName()) + " §ementioned you in chat!", recipient);
     EnumSound.ORB_PICKUP.play(recipient, 1.0F, 1.0F);
     Role role = Role.getPlayerRole(senderProfile.getPlayer());
 

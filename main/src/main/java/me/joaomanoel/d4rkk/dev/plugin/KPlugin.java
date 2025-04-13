@@ -4,21 +4,25 @@ import me.joaomanoel.d4rkk.dev.plugin.config.FileUtils;
 import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
 import me.joaomanoel.d4rkk.dev.plugin.config.KWriter;
 import me.joaomanoel.d4rkk.dev.plugin.logger.KLogger;
-import me.joaomanoel.d4rkk.dev.reflection.Accessors;
-import me.joaomanoel.d4rkk.dev.reflection.acessors.FieldAccessor;
-import org.bukkit.plugin.PluginLogger;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.lang.reflect.Field;
 
 public abstract class KPlugin extends JavaPlugin {
-  
-  private static final FieldAccessor<PluginLogger> LOGGER_ACCESSOR = Accessors.getField(JavaPlugin.class, "logger", PluginLogger.class);
+
   private final FileUtils fileUtils;
 
   public KPlugin() {
     this.fileUtils = new FileUtils(this);
-    LOGGER_ACCESSOR.set(this, new KLogger(this));
+    Class<?> clazz = JavaPlugin.class;
+    try {
+      Field field = clazz.getDeclaredField("logger");
+      field.setAccessible(true);
+      field.set(this, new KLogger(this));
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
     
     this.start();
   }

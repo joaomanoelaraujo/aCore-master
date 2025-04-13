@@ -16,7 +16,7 @@ import me.joaomanoel.d4rkk.dev.player.hotbar.Hotbar;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.player.scoreboard.KScoreboard;
 import me.joaomanoel.d4rkk.dev.titles.TitleManager;
-import me.joaomanoel.d4rkk.dev.utils.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
