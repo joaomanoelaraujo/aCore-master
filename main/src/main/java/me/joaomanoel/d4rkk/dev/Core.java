@@ -19,6 +19,7 @@ import me.joaomanoel.d4rkk.dev.hook.aCoreExpansion;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.FakeAdapter;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.NPCAdapter;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
+import me.joaomanoel.d4rkk.dev.libraries.npc.NPCLibrary;
 import me.joaomanoel.d4rkk.dev.listeners.Listeners;
 import me.joaomanoel.d4rkk.dev.listeners.PluginMessageListener;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
@@ -214,6 +215,8 @@ public class Core extends KPlugin {
     Delivery.setupDeliveries();
     ServerItem.setupServers();
     Achievement.setupAchievements();
+
+    NPCLibrary.setupNPCManager();
 
     //Setup cosmetics
     Cosmetic.setupCosmetics();

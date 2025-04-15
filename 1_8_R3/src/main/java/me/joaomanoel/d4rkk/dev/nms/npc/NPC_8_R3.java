@@ -53,13 +53,20 @@ public class NPC_8_R3 extends EntityPlayer implements NpcEntity {
         this.world.addEntity(this, CreatureSpawnEvent.SpawnReason.CUSTOM);
         PacketPlayOutNamedEntitySpawn packet = new PacketPlayOutNamedEntitySpawn(this);
         for (Player online : Bukkit.getOnlinePlayers()) {
-            if (online.isOnline()) {
-                ((CraftPlayer) online).getHandle().playerConnection.sendPacket(packet);
-                nms.sendTabListAdd(online, getBukkitEntity());
-                online.hidePlayer(this.getPlayer());
-                online.showPlayer(this.getPlayer());
-            }
+            ((CraftPlayer) online).getHandle().playerConnection.sendPacket(packet);
+            nms.sendTabListAdd(online, getBukkitEntity());
+            online.hidePlayer(this.getPlayer());
+            online.showPlayer(this.getPlayer());
         }
+    }
+
+    @Override
+    public void spawn(Player player) {
+        PacketPlayOutNamedEntitySpawn packet = new PacketPlayOutNamedEntitySpawn(this);
+        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+        nms.sendTabListAdd(player, getBukkitEntity());
+        player.hidePlayer(this.getPlayer());
+        player.showPlayer(this.getPlayer());
     }
 
     @Override
@@ -92,6 +99,11 @@ public class NPC_8_R3 extends EntityPlayer implements NpcEntity {
     @Override
     public void setPlayerCopySkin(boolean playerCopySkin) {
         this.copySkin = playerCopySkin;
+    }
+
+    @Override
+    public void interactAtPlayer(Player player) {
+        Bukkit.getPluginManager().callEvent(new PlayerInteractAtNPCEvent(player, this));
     }
 
     @Override

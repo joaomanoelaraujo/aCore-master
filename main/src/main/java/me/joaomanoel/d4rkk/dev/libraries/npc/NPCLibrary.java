@@ -1,21 +1,32 @@
 package me.joaomanoel.d4rkk.dev.libraries.npc;
 
+import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.nms.npc.NpcEntity;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class NPCLibrary {
+public class NPCLibrary implements Listener {
 
     private static final List<NpcEntity> NPCS = new ArrayList<>();
 
+    public static void setupNPCManager() {
+        Bukkit.getPluginManager().registerEvents(new NPCLibrary(), Core.getInstance());
+    }
+
     public static NpcEntity createNPC(Location location, String name) {
-        NpcEntity npc = NMSManager.createNPC(location, name, "", "");
-        NPCS.add(npc);
-        return npc;
+        return createNPC(location, name, "", "");
     }
 
     public static NpcEntity createNPC(Location location, String name, String value, String signature) {
@@ -35,5 +46,20 @@ public class NPCLibrary {
 
     public static List<NpcEntity> listNPCs() {
         return NPCS;
+    }
+
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractAtEntityEvent event) {
+        Player player = event.getPlayer();
+        Entity clickEntity = event.getRightClicked();
+        if (clickEntity instanceof Player) {
+            NPCS.stream().filter(npc1 -> npc1.getPlayer().getUniqueId().equals(player.getUniqueId())).findFirst().ifPresent(npc -> npc.interactAtPlayer(player));
+        }
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        NPCS.forEach(npc -> npc.spawn(player));
     }
 }

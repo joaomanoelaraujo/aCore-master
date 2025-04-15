@@ -69,6 +69,12 @@ public class NPC_20_R2 extends EntityPlayer implements NpcEntity {
     }
 
     @Override
+    public void spawn(Player player) {
+        PacketPlayOutSpawnEntity packet = new PacketPlayOutSpawnEntity(this);
+        ((CraftPlayer) player).getHandle().transferCookieConnection.sendPacket(packet);
+    }
+
+    @Override
     public void setItemInHand(ItemStack item) {
         for (Player online : Bukkit.getOnlinePlayers()) {
             CraftPlayer.TransferCookieConnection connection = ((CraftPlayer) online).getHandle().transferCookieConnection;
@@ -99,6 +105,11 @@ public class NPC_20_R2 extends EntityPlayer implements NpcEntity {
     @Override
     public void setPlayerCopySkin(boolean playerCopySkin) {
         this.copySkin = playerCopySkin;
+    }
+
+    @Override
+    public void interactAtPlayer(Player player) {
+        Bukkit.getPluginManager().callEvent(new PlayerInteractAtNPCEvent(player, this));
     }
 
     @Override
