@@ -12,6 +12,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,10 @@ public class NPCLibrary implements Listener {
         return NPCS.stream().filter(npcEntity -> npcEntity.getPlayer().getUniqueId().equals(uuid)).findFirst().orElse(null);
     }
 
+    public static boolean isNPC(Entity entity) {
+        return NPCS.stream().anyMatch(npcEntity -> npcEntity.getPlayer().getUniqueId().equals(entity.getUniqueId()));
+    }
+
     public static void removeNPC(NpcEntity npc) {
         npc.kill();
         NPCS.remove(npc);
@@ -60,6 +65,15 @@ public class NPCLibrary implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        NPCS.forEach(npc -> npc.spawn(player));
+        NPCS.forEach(npc -> {
+            npc.spawn(player);
+            Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> npc.setShowNick(player), 20L);
+        });
+    }
+
+    @EventHandler
+    public void onPlayerLeave(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        NPCS.forEach(npc -> npc.kill(player));
     }
 }

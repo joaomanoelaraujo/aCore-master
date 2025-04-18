@@ -136,7 +136,6 @@ public class Profile {
     player.setLevel(0);
     player.setAllowFlight(false);
     player.closeInventory();
-    player.spigot().setCollidesWithEntities(true);
     for (PotionEffect pe : player.getActivePotionEffects()) {
       player.removePotionEffect(pe.getType());
     }
@@ -170,7 +169,6 @@ public class Profile {
     player.setAllowFlight(false); // Desativa o voo
     player.setFlying(false); // Garante que o jogador não esteja voando
     player.closeInventory();
-    player.spigot().setCollidesWithEntities(true);
 
     // Remove os efeitos de poção ativos
     for (PotionEffect pe : player.getActivePotionEffects()) {

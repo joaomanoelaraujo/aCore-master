@@ -10,7 +10,7 @@ import me.joaomanoel.d4rkk.dev.cosmetic.types.MvpColor;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.PunchMessage;
 import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
-import me.joaomanoel.d4rkk.dev.libraries.npclib.NPCLibrary;
+import me.joaomanoel.d4rkk.dev.libraries.npc.NPCLibrary;
 import me.joaomanoel.d4rkk.dev.menus.others.MenuOtherProfile;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -244,10 +244,8 @@ public class Listeners implements Listener {
 
     TitleManager.leaveServer(profile);
 
-    if (!((CraftServer) Bukkit.getServer()).getHandle().getServer().isRunning() ||
-            RESTART_WATCHDOG_STOPPING.get(RESTART_WATCHDOG.get(null))) {
+    if (RESTART_WATCHDOG_STOPPING.get(RESTART_WATCHDOG.get(null))) {
       profile.saveSync();
-      LOGGER.info("Player " + profile.getName() + " was saved synchronously!");
     } else {
       profile.save();
     }

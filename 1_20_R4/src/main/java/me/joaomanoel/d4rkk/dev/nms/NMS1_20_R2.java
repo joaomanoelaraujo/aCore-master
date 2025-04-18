@@ -118,7 +118,7 @@ public class NMS1_20_R2 implements NMS_Interface {
         ProtocolManager manager = ProtocolLibrary.getProtocolManager();
         PacketContainer packet = manager.createPacket(PacketType.Play.Server.PLAYER_INFO_REMOVE);
         packet.getUUIDLists().write(0, Collections.singletonList(listPlayer.getUniqueId()));
-        manager.sendServerPacket(listPlayer, packet);
+        manager.sendServerPacket(player, packet);
     }
 
     @Override
