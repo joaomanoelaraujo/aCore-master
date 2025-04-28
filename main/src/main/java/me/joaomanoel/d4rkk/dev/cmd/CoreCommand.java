@@ -3,6 +3,9 @@ package me.joaomanoel.d4rkk.dev.cmd;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.booster.Booster;
 import me.joaomanoel.d4rkk.dev.database.Database;
+import me.joaomanoel.d4rkk.dev.libraries.npc.NPCLibrary;
+import me.joaomanoel.d4rkk.dev.nms.NMSManager;
+import me.joaomanoel.d4rkk.dev.nms.npc.NpcEntity;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 
 import me.joaomanoel.d4rkk.dev.utils.PluginDependencyChecker;
@@ -29,7 +32,6 @@ public class CoreCommand extends Commands {
   public void perform(CommandSender sender, String label, String[] args) {
     if (sender instanceof Player) {
       Player player = (Player) sender;
-
       if (!player.hasPermission("aCore.admin")) {
         player.sendMessage("§6aCore §bv" + Core.getInstance().getDescription().getVersion() + " §7Created by §6d4rkk§7.");
         return;
