@@ -70,6 +70,10 @@ public class NMSManager {
         instance.sendActionBar(text, player);
     }
 
+    public static void createMountableEnderDragon(Player player) {
+        instance.createMountableEnderDragon(player);
+    }
+
     public static void sendTablist(String header, String footer, Player player) {
         instance.sendTablist(header, footer, player);
     }

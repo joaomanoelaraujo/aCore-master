@@ -3,9 +3,7 @@ package me.joaomanoel.d4rkk.dev.nms;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
@@ -30,6 +28,68 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         player.getInventory().setItemInHand(old);
         player.updateInventory();
     }
+    private Material resolveMaterial(String name) {
+        switch (name.toUpperCase()) {
+            case "373":
+                return Material.POTION;
+            case "SKULL_ITEM":
+                return Material.PLAYER_HEAD;
+            case "383":
+                return Material.ENDER_DRAGON_SPAWN_EGG;
+            case "351":
+            case "INK_SACK":
+                return Material.GRAY_DYE; // ou BLACK_DYE se for usado como tinta
+            case "WOOD":
+                return Material.OAK_PLANKS;
+            case "FIREWORK":
+                return Material.FIREWORK_ROCKET;
+            case "WOOL":
+                return Material.WHITE_WOOL;
+            case "BOOK_AND_QUILL":
+                return Material.WRITABLE_BOOK;
+            case "160":
+            case "STAINED_GLASS_PANE":
+                return Material.WHITE_STAINED_GLASS_PANE;
+            case "299": // LEATHER_CHESTPLATE (ID 299 em 1.8)
+                return Material.LEATHER_CHESTPLATE;
+            case "145": // ANVIL
+                return Material.ANVIL;
+            case "395":
+                return Material.WRITTEN_BOOK;
+            case "421":
+                return Material.NAME_TAG;
+            case "416":
+                return Material.LEAD;
+            case "268":
+                return Material.WOODEN_SWORD;
+            case "322":
+                return Material.GOLDEN_APPLE;
+            case "32":
+                return Material.DEAD_BUSH;
+            case "294":
+                return Material.GOLDEN_PICKAXE; // encantado via meta
+            case "379":
+                return Material.BREWING_STAND;
+            case "86":
+                return Material.PUMPKIN;
+            case "332":
+                return Material.SNOWBALL;
+            case "38":
+                return Material.POPPY;
+            case "BED":
+                return Material.RED_BED; // padrão, pode ajustar
+            case "259":
+                return Material.FLINT_AND_STEEL;
+            default:
+                try {
+                    return Material.valueOf(name.toUpperCase());
+                } catch (IllegalArgumentException e) {
+                    Bukkit.getLogger().warning("[aCore] Material desconhecido ao desserializar: " + name);
+                    return Material.BARRIER;
+                }
+        }
+    }
+
 
     @Override
     public ItemStack deserializeItemStack(String item) {
@@ -41,7 +101,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         String[] split = item.split(" : ");
         String mat = split[0].split(":")[0];
 
-        Material material = Material.valueOf(mat);
+        Material material = resolveMaterial(mat);
         ItemStack stack = new ItemStack(material, 1);
         ItemMeta meta = stack.getItemMeta();
 
@@ -60,72 +120,95 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         for (int i = 2; i < split.length; i++) {
             String opt = split[i];
 
-            if (opt.startsWith("nome>")) {
+            if (opt.startsWith("name>")) {
                 meta.setDisplayName(StringUtils.formatColors(opt.split(">")[1]));
             } else if (opt.startsWith("desc>")) {
                 for (String lored : opt.split(">")[1].split("\n")) {
                     lore.add(StringUtils.formatColors(lored));
                 }
-            } else if (opt.startsWith("encantar>")) {
+            } else if (opt.startsWith("enchant>")) {
                 for (String enchanted : opt.split(">")[1].split("\n")) {
                     if (enchantment != null) {
                         enchantment.addStoredEnchant(Enchantment.getByName(enchanted.split(":")[0]), Integer.parseInt(enchanted.split(":")[1]), true);
                         continue;
                     }
-
                     meta.addEnchant(Enchantment.getByName(enchanted.split(":")[0]), Integer.parseInt(enchanted.split(":")[1]), true);
                 }
-            } else if (opt.startsWith("pintar>") && (effect != null || armor != null)) {
+            } else if (opt.startsWith("paint>") && (effect != null || armor != null)) {
                 for (String color : opt.split(">")[1].split("\n")) {
-                    if (color.split(":").length > 2) {
+                    String[] rgb = color.split(":");
+                    if (rgb.length == 3) {
+                        Color c = Color.fromRGB(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2]));
                         if (armor != null) {
-                            armor.setColor(Color.fromRGB(Integer.parseInt(color.split(":")[0]), Integer.parseInt(color.split(":")[1]), Integer.parseInt(color.split(":")[2])));
+                            armor.setColor(c);
                         } else if (effect != null) {
-                            effect.setEffect(FireworkEffect.builder()
-                                    .withColor(Color.fromRGB(Integer.parseInt(color.split(":")[0]), Integer.parseInt(color.split(":")[1]), Integer.parseInt(color.split(":")[2]))).build());
+                            effect.setEffect(FireworkEffect.builder().withColor(c).build());
                         }
                     }
                 }
-            } else if (opt.startsWith("dono>") && skull != null) {
-                skull.setOwner(opt.split(">")[1]);
+            } else if (opt.startsWith("owner>") && skull != null) {
+                String playerName = opt.split(">")[1];
+                skull.setOwningPlayer(Bukkit.getOfflinePlayer(playerName));
             } else if (opt.startsWith("skin>") && skull != null) {
-                GameProfile gp = new GameProfile(UUID.randomUUID(), "CUSTOM_HEAD");
-                gp.getProperties().put("textures", new Property("textures", opt.split(">")[1]));
-                try {
-                    Field profileField = meta.getClass().getDeclaredField("profile");
-                    profileField.setAccessible(true);
-                    profileField.set(meta, gp);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                String texture = opt.length() > 5 ? opt.substring(5) : null;
+
+                if (texture != null && !texture.isEmpty()) {
+                    GameProfile gp = new GameProfile(UUID.randomUUID(), "Head");
+                    gp.getProperties().put("textures", new Property("textures", texture));
+                    try {
+                        Field profileField = meta.getClass().getDeclaredField("profile");
+                        profileField.setAccessible(true);
+                        profileField.set(meta, gp);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            } else if (opt.startsWith("paginas>") && book != null) {
+
+            } else if (opt.startsWith("pages>") && book != null) {
                 book.setPages(opt.split(">")[1].split("\\{pular}"));
-            } else if (opt.startsWith("autor>") && book != null) {
+            } else if (opt.startsWith("author>") && book != null) {
                 book.setAuthor(opt.split(">")[1]);
-            } else if (opt.startsWith("titulo>") && book != null) {
+            } else if (opt.startsWith("title>") && book != null) {
                 book.setTitle(opt.split(">")[1]);
-            } else if (opt.startsWith("efeito>") && potion != null) {
+            } else if (opt.startsWith("effect>") && potion != null) {
                 for (String pe : opt.split(">")[1].split("\n")) {
-                    potion.addCustomEffect(new PotionEffect(PotionEffectType.getByName(pe.split(":")[0]), Integer.parseInt(pe.split(":")[2]), Integer.parseInt(pe.split(":")[1])), false);
+                    String[] effectSplit = pe.split(":");
+                    PotionEffectType type = PotionEffectType.getByName(effectSplit[0]);
+                    int amplifier = Integer.parseInt(effectSplit[1]);
+                    int duration = Integer.parseInt(effectSplit[2]);
+                    potion.addCustomEffect(new PotionEffect(type, duration, amplifier), false);
                 }
-            } else if (opt.startsWith("esconder>")) {
+            } else if (opt.startsWith("hide>")) {
                 String[] flags = opt.split(">")[1].split("\n");
                 for (String flag : flags) {
-                    if (flag.equalsIgnoreCase("tudo")) {
+                    if (flag.equalsIgnoreCase("all")) {
                         meta.addItemFlags(ItemFlag.values());
                         break;
                     } else {
-                        meta.addItemFlags(ItemFlag.valueOf(flag.toUpperCase()));
+                        try {
+                            meta.addItemFlags(ItemFlag.valueOf(flag.toUpperCase()));
+                        } catch (IllegalArgumentException ignored) {
+                        }
                     }
                 }
             }
         }
+
         if (!lore.isEmpty()) {
             meta.setLore(lore);
         }
 
         stack.setItemMeta(meta);
         return stack;
+    }
+
+    public static Sound getSoundSafe(String name) {
+        try {
+            return Sound.valueOf(name.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            Bukkit.getLogger().warning("[aCore] Som desconhecido: " + name + " — usando CLICK como fallback");
+            return Sound.UI_BUTTON_CLICK;
+        }
     }
 
     @Override
@@ -141,7 +224,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         EnchantmentStorageMeta enchantment = meta instanceof EnchantmentStorageMeta ? ((EnchantmentStorageMeta) meta) : null;
 
         if (meta.hasDisplayName()) {
-            sb.append(" : nome>").append(StringUtils.deformatColors(meta.getDisplayName()));
+            sb.append(" : name>").append(StringUtils.deformatColors(meta.getDisplayName()));
         }
 
         if (meta.hasLore()) {
@@ -153,7 +236,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         }
 
         if (meta.hasEnchants() || (enchantment != null && enchantment.hasStoredEnchants())) {
-            sb.append(" : encantar>");
+            sb.append(" : enchant>");
             int size = 0;
             for (Map.Entry<Enchantment, Integer> entry : (enchantment != null ? enchantment.getStoredEnchants() : meta.getEnchants()).entrySet()) {
                 int level = entry.getValue();
@@ -163,28 +246,28 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         }
 
         if (skull != null && !skull.getOwner().isEmpty()) {
-            sb.append(" : dono>").append(skull.getOwner());
+            sb.append(" : owner>").append(skull.getOwner());
         }
 
         if (book != null && book.hasPages()) {
-            sb.append(" : paginas>").append(StringUtils.join(book.getPages(), "{pular}"));
+            sb.append(" : pages>").append(StringUtils.join(book.getPages(), "{pular}"));
         }
 
         if (book != null && book.hasTitle()) {
-            sb.append(" : titulo>").append(book.getTitle());
+            sb.append(" : title>").append(book.getTitle());
         }
 
         if (book != null && book.hasAuthor()) {
-            sb.append(" : autor>").append(book.getAuthor());
+            sb.append(" : author>").append(book.getAuthor());
         }
 
         if ((effect != null && effect.hasEffect() && !effect.getEffect().getColors().isEmpty()) || (armor != null && armor.getColor() != null)) {
             Color color = effect != null ? effect.getEffect().getColors().get(0) : armor.getColor();
-            sb.append(" : pintar>").append(color.getRed()).append(":").append(color.getGreen()).append(":").append(color.getBlue());
+            sb.append(" : paint>").append(color.getRed()).append(":").append(color.getGreen()).append(":").append(color.getBlue());
         }
 
         if (potion != null && potion.hasCustomEffects()) {
-            sb.append(" : efeito>");
+            sb.append(" : effect>");
             int size = 0;
             for (PotionEffect pe : potion.getCustomEffects()) {
                 sb.append(pe.getType().getName()).append(":").append(pe.getAmplifier()).append(":").append(pe.getDuration()).append(++size == potion.getCustomEffects().size() ? "" : "\n");
@@ -192,7 +275,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         }
 
         for (ItemFlag flag : meta.getItemFlags()) {
-            sb.append(" : esconder>").append(flag.name());
+            sb.append(" : hide>").append(flag.name());
         }
 
         return StringUtils.deformatColors(sb.toString()).replace("\n", "\\n");
