@@ -101,9 +101,6 @@ public class Listeners implements Listener {
   public void onPlayerJoin(PlayerJoinEvent evt) {
     Player player = evt.getPlayer();
     UUID playerId = player.getUniqueId();
-
-    TagUtils.setTag(player);
-
     if (player.isOp()) {
       sendUpdateNotification(player);
     }

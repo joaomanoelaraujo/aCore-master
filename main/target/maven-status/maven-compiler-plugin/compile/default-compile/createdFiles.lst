@@ -112,7 +112,6 @@ com\comphenix\packetwrapper\old\WrapperPlayServerEntityMoveLook.class
 me\joaomanoel\d4rkk\dev\plugin\logger\KLogger$MLevel.class
 com\comphenix\packetwrapper\old\WrapperPlayServerEntityTeleport.class
 me\joaomanoel\d4rkk\dev\cmd\CashCommand.class
-me\joaomanoel\d4rkk\dev\utils\Wrapper.class
 com\comphenix\packetwrapper\WrapperPlayClientWindowClick$InventoryClickType.class
 com\comphenix\packetwrapper\WrapperPlayClientVehicleMove.class
 com\comphenix\packetwrapper\v15\WrapperPlayServerRelEntityMove.class
@@ -143,7 +142,6 @@ me\joaomanoel\d4rkk\dev\bungee\Bungee.class
 me\joaomanoel\d4rkk\dev\menus\profile\MenuPreferences.class
 me\joaomanoel\d4rkk\dev\servers\balancer\Server.class
 me\joaomanoel\d4rkk\dev\titles\TitleSelectionHandler.class
-me\joaomanoel\d4rkk\dev\utils\FakeTeam.class
 me\joaomanoel\d4rkk\dev\achievements\types\SkyWarsAchievement$TitleReward.class
 me\joaomanoel\d4rkk\dev\database\data\interfaces\AbstractContainer.class
 me\joaomanoel\d4rkk\dev\deliveries\DeliveryReward$RewardType.class
@@ -221,7 +219,6 @@ me\joaomanoel\d4rkk\dev\titles\TitleController.class
 org\json\simple\parser\Yytoken.class
 me\joaomanoel\d4rkk\dev\player\enums\ProtectionLobby.class
 me\joaomanoel\d4rkk\dev\player\fake\FakeManager.class
-me\joaomanoel\d4rkk\dev\utils\Acessor.class
 me\joaomanoel\d4rkk\dev\servers\ServerItem$1.class
 me\joaomanoel\d4rkk\dev\cosmetic\types\MvpColor.class
 me\joaomanoel\d4rkk\dev\utils\PluginDependencyChecker.class
@@ -247,7 +244,6 @@ com\comphenix\packetwrapper\WrapperPlayServerEntityHeadRotation.class
 com\comphenix\packetwrapper\WrapperPlayClientEntityAction.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\TellCommand.class
 me\joaomanoel\d4rkk\dev\menus\MenuDeliveries.class
-me\joaomanoel\d4rkk\dev\utils\Data.class
 com\comphenix\packetwrapper\WrapperStatusClientPing.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\ClearChatCommand.class
 me\joaomanoel\d4rkk\dev\player\gamemode\GameMode.class
