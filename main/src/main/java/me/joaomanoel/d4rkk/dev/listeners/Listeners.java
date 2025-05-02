@@ -26,6 +26,7 @@ import me.joaomanoel.d4rkk.dev.reflection.acessors.FieldAccessor;
 import me.joaomanoel.d4rkk.dev.titles.TitleManager;
 import me.joaomanoel.d4rkk.dev.utils.PlayerIPUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
+import me.joaomanoel.d4rkk.dev.utils.TagUtils;
 import me.joaomanoel.d4rkk.dev.utils.aUpdater;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import net.md_5.bungee.api.ChatColor;
@@ -100,6 +101,8 @@ public class Listeners implements Listener {
   public void onPlayerJoin(PlayerJoinEvent evt) {
     Player player = evt.getPlayer();
     UUID playerId = player.getUniqueId();
+
+    TagUtils.setTag(player);
 
     if (player.isOp()) {
       sendUpdateNotification(player);

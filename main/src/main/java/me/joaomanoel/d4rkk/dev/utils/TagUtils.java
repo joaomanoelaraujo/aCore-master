@@ -5,8 +5,9 @@ import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
 
 import java.util.*;
 
@@ -14,8 +15,7 @@ import java.util.*;
 @SuppressWarnings("deprecation")
 public class TagUtils {
 
-    private static final Map<String, FakeTeam> TEAMS = new HashMap<>();
-    private static final Map<String, FakeTeam> CACHED_FAKE_TEAMS = new HashMap<>();
+    private static final Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
 
     public static void setTag(Player player) {
         Role role = Role.getPlayerRole(player);
@@ -31,7 +31,7 @@ public class TagUtils {
             }
         }
 
-        setTag(player.getName(), role.getPrefix(), suffix, role.getId());
+        setTag(player, role.getName(), role.getPrefix(), suffix, role.getId());
     }
 
     public static void setTag(Player player, Role grupo) {
@@ -47,132 +47,39 @@ public class TagUtils {
             }
         }
 
-        setTag(player.getName(), grupo.getPrefix(), suffix, grupo.getId());
+        setTag(player, grupo.getName(), grupo.getPrefix(), suffix, grupo.getId());
 
     }
 
 
-    public static void setTag(String player, String prefix, String suffix, int sortPriority) {
-        addPlayerToTeam(player, prefix != null ? prefix : "", suffix != null ? suffix : "", sortPriority);
-    }
-
-    public static void sendTeams(Player player) {
-        for (FakeTeam fakeTeam : TEAMS.values()) {
-            (new Wrapper(fakeTeam.getName(), fakeTeam.getPrefix(), fakeTeam.getSuffix(), 0, fakeTeam.getMembers())).send(player);
-        }
-
-    }
-
-    public static void reset() {
-
-        for (FakeTeam fakeTeam : TEAMS.values()) {
-            removePlayerFromTeamPackets(fakeTeam, fakeTeam.getMembers());
-            removeTeamPackets(fakeTeam);
-        }
-
-        CACHED_FAKE_TEAMS.clear();
-        TEAMS.clear();
-    }
-
-    public static FakeTeam reset(String player) {
-        return reset(player, decache(player));
-    }
-
-    private static FakeTeam decache(String player) {
-        return (FakeTeam)CACHED_FAKE_TEAMS.remove(player);
-    }
-
-    public static FakeTeam getFakeTeam(String player) {
-        return (FakeTeam)CACHED_FAKE_TEAMS.get(player);
-    }
-
-    private static void cache(String player, FakeTeam fakeTeam) {
-        CACHED_FAKE_TEAMS.put(player, fakeTeam);
-    }
-
-    private static FakeTeam reset(String player, FakeTeam fakeTeam) {
-        if (fakeTeam != null && fakeTeam.getMembers().remove(player)) {
-            Player removing = Bukkit.getPlayerExact(player);
-            boolean delete;
-            if (removing != null) {
-                delete = removePlayerFromTeamPackets(fakeTeam, removing.getName());
-            } else {
-                OfflinePlayer toRemoveOffline = Bukkit.getOfflinePlayer(player);
-                delete = removePlayerFromTeamPackets(fakeTeam, toRemoveOffline.getName());
-            }
-
-            if (delete) {
-                removeTeamPackets(fakeTeam);
-                TEAMS.remove(fakeTeam.getName());
+    public static void setTag(Player player, String tagName, String prefix, String suffix, int sortPriority) {
+        for (Team team : scoreboard.getTeams()) {
+            if (team.hasEntry(player.getName())) {
+                team.removeEntry(player.getName());
             }
         }
 
-        return fakeTeam;
-    }
-
-    private static void addPlayerToTeam(String player, String prefix, String suffix, int sortPriority) {
-        reset(player);
-        FakeTeam joining = getTeam(prefix, suffix);
-        if (joining != null) {
-            joining.addMember(player);
-        } else {
-            joining = new FakeTeam(prefix, suffix, getNameFromInput(sortPriority));
-            joining.addMember(player);
-            TEAMS.put(joining.getName(), joining);
-            addTeamPackets(joining);
+        String teamName = formatTeamName(tagName, sortPriority);
+        Team team = scoreboard.getTeam(teamName);
+        if (team == null) {
+            team = scoreboard.registerNewTeam(teamName);
+            team.setPrefix(prefix);
+            team.setSuffix(suffix);
         }
 
-        Player adding = Bukkit.getPlayerExact(player);
-        if (adding != null) {
-            addPlayerToTeamPackets(joining, adding.getName());
-            cache(adding.getName(), joining);
-        } else {
-            OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(player);
-            addPlayerToTeamPackets(joining, offlinePlayer.getName());
-            cache(offlinePlayer.getName(), joining);
-        }
-
+        team.addEntry(player.getName());
+        player.setScoreboard(scoreboard);
     }
 
-    private static FakeTeam getTeam(String prefix, String suffix) {
-        Iterator<FakeTeam> var2 = TEAMS.values().iterator();
-
-        FakeTeam team;
-        do {
-            if (!var2.hasNext()) {
-                return null;
+    public static void clear(Player player) {
+        for (Team team : scoreboard.getTeams()) {
+            if (team.hasEntry(player.getName())) {
+                team.removeEntry(player.getName());
             }
-
-            team = var2.next();
-        } while(!team.isSimilar(prefix, suffix));
-
-        return team;
+        }
     }
 
-    private static String getNameFromInput(int input) {
-        return input < 0 ? "" : String.valueOf((char)(input + 65));
+    private static String formatTeamName(String prefix, int sortedPriority) {
+        return String.format("%03d_%s", sortedPriority, prefix);
     }
-
-    private static void removeTeamPackets(FakeTeam fakeTeam) {
-        (new Wrapper(fakeTeam.getName(), fakeTeam.getPrefix(), fakeTeam.getSuffix(), 1, new ArrayList<>())).send();
-    }
-
-    private static boolean removePlayerFromTeamPackets(FakeTeam fakeTeam, String... players) {
-        return removePlayerFromTeamPackets(fakeTeam, Arrays.asList(players));
-    }
-
-    private static boolean removePlayerFromTeamPackets(FakeTeam fakeTeam, List<String> players) {
-        (new Wrapper(fakeTeam.getName(), 4, players)).send();
-        fakeTeam.getMembers().removeAll(players);
-        return fakeTeam.getMembers().isEmpty();
-    }
-
-    private static void addTeamPackets(FakeTeam fakeTeam) {
-        (new Wrapper(fakeTeam.getName(), fakeTeam.getPrefix(), fakeTeam.getSuffix(), 0, fakeTeam.getMembers())).send();
-    }
-
-    private static void addPlayerToTeamPackets(FakeTeam fakeTeam, String player) {
-        (new Wrapper(fakeTeam.getName(), 3, Collections.singletonList(player))).send();
-    }
-
 }

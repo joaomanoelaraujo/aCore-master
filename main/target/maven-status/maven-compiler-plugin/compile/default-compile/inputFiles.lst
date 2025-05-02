@@ -226,13 +226,10 @@ C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - E
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleRegistry.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleSelectionHandler.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleVisibilityHandler.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\Acessor.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\aUpdater.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\CubeID.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\Data.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\enums\EnumRarity.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\enums\EnumSound.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\FakeTeam.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\Language.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\LanguageManager.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\LanguageMessage.java
@@ -249,7 +246,6 @@ C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - E
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\TPSUtil.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\Utils.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\Validator.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\Wrapper.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\ItemList.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\JSONArray.java
 C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\JSONAware.java

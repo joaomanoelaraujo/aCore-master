@@ -99,6 +99,7 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
         if (split[0].split(":").length > 1) {
             stack.setDurability((short) Integer.parseInt(split[0].split(":")[1]));
         }
+
         ItemMeta meta = stack.getItemMeta();
 
         BookMeta book = meta instanceof BookMeta ? ((BookMeta) meta) : null;

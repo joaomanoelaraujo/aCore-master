@@ -151,6 +151,7 @@ public class Profile {
     if (this.hotbar != null) {
       this.hotbar.apply(this);
     }
+
     this.refreshPlayers();
   }
 

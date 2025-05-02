@@ -9,10 +9,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,5 +72,14 @@ public class NPCLibrary implements Listener {
     public void onPlayerLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
         NPCS.forEach(npc -> npc.kill(player));
+    }
+
+    @EventHandler
+    public void onPlayerWorldChange(PlayerChangedWorldEvent event) {
+        Player player = event.getPlayer();
+        NPCS.forEach(npc -> {
+            npc.spawn(player);
+            Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> npc.setShowNick(player), 20L);
+        });
     }
 }
