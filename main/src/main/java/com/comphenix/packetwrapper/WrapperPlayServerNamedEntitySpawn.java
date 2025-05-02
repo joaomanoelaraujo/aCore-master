@@ -19,7 +19,7 @@ import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.wrappers.WrappedDataWatcher;
 import java.util.UUID;
 
-import me.joaomanoel.d4rkk.dev.replay.VersionUtil;
+
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
@@ -116,9 +116,8 @@ extends AbstractPacket {
     }
 
     public void setMetadata(WrappedDataWatcher value) {
-        if (me.joaomanoel.d4rkk.dev.replay.VersionUtil.isBelow(VersionUtil.VersionEnum.V1_14)) {
             this.handle.getDataWatcherModifier().write(0, value);
-        }
+
     }
 }
 

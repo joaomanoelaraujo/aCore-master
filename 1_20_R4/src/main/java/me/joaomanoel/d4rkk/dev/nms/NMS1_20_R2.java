@@ -8,6 +8,7 @@ import com.comphenix.protocol.wrappers.BlockPosition;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import me.joaomanoel.d4rkk.dev.nms.enderdragon.PacketMountableDragon;
 import me.joaomanoel.d4rkk.dev.nms.hologram.HologramEntity;
 import me.joaomanoel.d4rkk.dev.nms.hologram.Hologram_20_R2;
 import me.joaomanoel.d4rkk.dev.nms.npc.NPC_20_R2;
@@ -46,6 +47,7 @@ public class NMS1_20_R2 implements NMS_Interface {
         this.plugin = plugin;
     }
 
+
     @Override
     public void sendActionBar(String text, Player player) {
         ProtocolManager protocolManager = NMSManager.getProtocolManager();
@@ -68,6 +70,10 @@ public class NMS1_20_R2 implements NMS_Interface {
     @Override
     public void sendTitle(Player player, String title, String subtitle) {
         sendTitle(player, title, subtitle, 20, 60, 20);
+    }
+    @Override
+    public void createMountableEnderDragon(Player player) {
+        new PacketMountableDragon(plugin, player, player.getLocation());
     }
 
     @Override

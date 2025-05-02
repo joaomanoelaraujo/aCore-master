@@ -30,7 +30,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public class Profile {
-  
+
   private static final Map<String, UUID> UUID_CACHE = new HashMap<>();
   private static final Map<String, Profile> PROFILES = new ConcurrentHashMap<>();
   private static final SimpleDateFormat COMPARE_SDF = new SimpleDateFormat("yyyy/MM/dd");
@@ -43,23 +43,23 @@ public class Profile {
   private Player player;
 
   private Object value;
-  
+
   public Profile(String name) throws ProfileLoadException {
     this.name = name;
     this.tableMap = Database.getInstance().load(name);
     this.getDataContainer("aCoreProfile", "lastlogin").set(System.currentTimeMillis());
   }
-  
+
   public static Profile createOrLoadProfile(String playerName) throws ProfileLoadException {
     Profile profile = PROFILES.getOrDefault(playerName.toLowerCase(), null);
     if (profile == null) {
       profile = new Profile(playerName);
       PROFILES.put(playerName.toLowerCase(), profile);
     }
-    
+
     return profile;
   }
-  
+
   public static Profile loadIfExists(String playerName) throws ProfileLoadException {
     Profile profile = PROFILES.getOrDefault(playerName.toLowerCase(), null);
     if (profile == null) {
@@ -68,28 +68,28 @@ public class Profile {
         profile = new Profile(playerName);
       }
     }
-    
+
     return profile;
   }
-  
+
   public static Profile getProfile(String playerName) {
     return PROFILES.get(playerName.toLowerCase());
   }
-  
+
   public static Profile unloadProfile(String playerName) {
     UUID_CACHE.remove(playerName.toLowerCase());
     return PROFILES.remove(playerName.toLowerCase());
   }
-  
+
   public static Player findCached(String playerName) {
     UUID uuid = UUID_CACHE.get(playerName.toLowerCase());
     return uuid == null ? null : Bukkit.getPlayer(uuid);
   }
-  
+
   public static boolean isOnline(String playerName) {
     return PROFILES.containsKey(playerName.toLowerCase());
   }
-  
+
   public static Collection<Profile> listProfiles() {
     return PROFILES.values();
   }
@@ -127,7 +127,7 @@ public class Profile {
     if (player == null) {
       return;
     }
-    
+
     player.setMaxHealth(20.0);
     player.setHealth(20.0);
     player.setFoodLevel(20);
@@ -139,15 +139,15 @@ public class Profile {
     for (PotionEffect pe : player.getActivePotionEffects()) {
       player.removePotionEffect(pe.getType());
     }
-    
+
     if (!playingGame()) {
       player.setGameMode(GameMode.ADVENTURE);
       player.teleport(Core.getLobby());
-      
+
       player.setAllowFlight(player.hasPermission("aCore.fly"));
       this.getDataContainer("aCoreProfile", "role").set(StringUtils.stripColors(Role.getPlayerRole(player, true).getName()));
     }
-    
+
     if (this.hotbar != null) {
       this.hotbar.apply(this);
     }
@@ -195,7 +195,7 @@ public class Profile {
     if (player == null) {
       return;
     }
-    
+
     if (this.hotbar != null) {
       this.hotbar.getButtons().forEach(button -> {
         if (button.getAction().getValue().equalsIgnoreCase("jogadores")) {
@@ -203,7 +203,7 @@ public class Profile {
         }
       });
     }
-    
+
     if (!this.playingGame()) {
       for (Player players : Bukkit.getOnlinePlayers()) {
         Profile profile = Profile.getProfile(players.getName());
@@ -211,7 +211,7 @@ public class Profile {
           if (!profile.playingGame()) {
             boolean friend = FriendsHook.isFriend(player.getName(), players.getName());
             if ((this.getPreferencesContainer().getPlayerVisibility() == PlayerVisibility.TODOS || Role.getPlayerRole(players).isAlwaysVisible() || friend) && !FriendsHook
-                .isBlacklisted(player.getName(), players.getName())) {
+                    .isBlacklisted(player.getName(), players.getName())) {
               if (!player.canSee(players)) {
                 TitleManager.show(this, profile);
               }
@@ -222,9 +222,9 @@ public class Profile {
               }
               player.hidePlayer(players);
             }
-            
+
             if ((profile.getPreferencesContainer().getPlayerVisibility() == PlayerVisibility.TODOS || Role.getPlayerRole(player).isAlwaysVisible() || friend) && !FriendsHook
-                .isBlacklisted(players.getName(), player.getName())) {
+                    .isBlacklisted(players.getName(), player.getName())) {
               if (!players.canSee(player)) {
                 TitleManager.show(profile, this);
               }
@@ -243,23 +243,23 @@ public class Profile {
       }
     }
   }
-  
+
   public void save() {
     if (this.name == null || this.tableMap == null) {
       return;
     }
-    
+
     Database.getInstance().save(this.name, this.tableMap);
   }
-  
+
   public void saveSync() {
     if (this.name == null || this.tableMap == null) {
       return;
     }
-    
+
     Database.getInstance().saveSync(this.name, this.tableMap);
   }
-  
+
   public void destroy() {
     this.name = null;
     this.game = null;
@@ -274,32 +274,32 @@ public class Profile {
     this.tableMap.clear();
     this.tableMap = null;
   }
-  
+
   public String getName() {
     return this.name;
   }
-  
+
   public boolean isOnline() {
     return this.name != null && isOnline(this.name);
   }
-  
+
   public Player getPlayer() {
     if (this.player == null) {
       this.player = this.name == null ? null : Bukkit.getPlayerExact(this.name);
     }
-    
+
     return this.player;
   }
-  
+
   public void setPlayer(Player player) {
     this.player = player;
     UUID_CACHE.put(this.name.toLowerCase(), player.getUniqueId());
   }
-  
+
   public Game<?> getGame() {
     return this.getGame(Game.class);
   }
-  
+
   public void setGame(Game<? extends GameTeam> game) {
     this.game = game;
     this.lastHit.clear();
@@ -313,50 +313,50 @@ public class Profile {
       }, 5);
     }
   }
-  
+
   @SuppressWarnings("unchecked")
   public <T extends Game<?>> T getGame(Class<T> gameClass) {
     return this.game != null && gameClass.isAssignableFrom(this.game.getClass()) ? (T) this.game : null;
   }
-  
+
   public Hotbar getHotbar() {
     return this.hotbar;
   }
-  
+
   public void setHotbar(Hotbar hotbar) {
     this.hotbar = hotbar;
   }
-  
+
   public boolean playingGame() {
     return this.game != null;
   }
-  
+
   public List<Profile> getLastHitters() {
     List<Profile> hitters = this.lastHit.entrySet().stream()
-        .filter(entry -> entry.getValue() > System.currentTimeMillis() && isOnline(entry.getKey()))
-        .sorted((e1, e2) -> Long.compare(e2.getValue(), e1.getValue()))
-        .map(entry -> getProfile(entry.getKey()))
-        .collect(Collectors.toList());
+            .filter(entry -> entry.getValue() > System.currentTimeMillis() && isOnline(entry.getKey()))
+            .sorted((e1, e2) -> Long.compare(e2.getValue(), e1.getValue()))
+            .map(entry -> getProfile(entry.getKey()))
+            .collect(Collectors.toList());
     // limpar após uso
     this.lastHit.clear();
     return hitters;
   }
-  
+
   public KScoreboard getScoreboard() {
     return this.scoreboard;
   }
-  
+
   public void setScoreboard(KScoreboard scoreboard) {
     if (this.scoreboard != null) {
       this.scoreboard.destroy();
     }
     this.scoreboard = scoreboard;
   }
-  
+
   public void addStats(String table, String... keys) {
     this.addStats(table, 1, keys);
   }
-  
+
   public void addStats(String table, long amount, String... keys) {
     for (String key : keys) {
       if (!table.toLowerCase().contains("murder")) {
@@ -374,17 +374,17 @@ public class Profile {
           }
         }
       }
-      
+
       this.getDataContainer(table, key).addLong(amount);
     }
   }
-  
+
   public void setStats(String table, long amount, String... keys) {
     for (String key : keys) {
       this.getDataContainer(table, key).set(amount);
     }
   }
-  
+
   public void updateDailyStats(String table, String date, long amount, String key) {
     long currentExpire = this.getStats(table, date);
     this.setStats(table, System.currentTimeMillis(), date);
@@ -392,7 +392,7 @@ public class Profile {
       this.setStats(table, 0, key);
       return;
     }
-    
+
     this.addStats(table, amount, key);
   }
 
@@ -413,39 +413,39 @@ public class Profile {
     // Atualiza a quantidade de moedas
     this.getDataContainer(table, "coins").addDouble(amount);
   }
-  
+
   // Com multiplicador
   public int addCoinsWM(String table, double amount) {
     amount = this.calculateWM(amount);
     this.addCoins(table, amount);
     return (int) amount;
   }
-  
+
   public double calculateWM(double amount) {
     double add = 0.0D;
     String booster = this.getBoostersContainer().getEnabled();
     if (booster != null) {
       add = amount * Double.parseDouble(booster.split(":")[0]);
     }
-    
+
     NetworkBooster nb = Booster.getNetworkBooster(Core.minigame);
     if (nb != null) {
       add += amount * nb.getMultiplier();
     }
-    
+
     return (amount > 0.0 && add == 0.0) ? amount : add;
   }
-  
+
   public void removeCoins(String table, double amount) {
     this.getDataContainer(table, "coins").removeDouble(amount);
   }
-  
+
   public long getStats(String table, String... keys) {
     long stat = 0;
     for (String key : keys) {
       stat += this.getDataContainer(table, key).getAsLong();
     }
-    
+
     return stat;
   }
 
@@ -478,11 +478,11 @@ public class Profile {
     if (!COMPARE_SDF.format(System.currentTimeMillis()).equals(COMPARE_SDF.format(currentExpire))) {
       this.setStats(table, 0, key);
     }
-    
+
     this.setStats(table, System.currentTimeMillis(), date);
     return this.getStats(table, key);
   }
-  
+
   public double getCoins(String table) {
     return this.getDataContainer(table, "coins").getAsDouble();
   }
@@ -493,7 +493,7 @@ public class Profile {
   public String getFormatedStats(String table, String... keys) {
     return StringUtils.formatNumber(this.getStats(table, keys));
   }
-  
+
   public String getFormatedStatsDouble(String table, String key) {
     return StringUtils.formatNumber(this.getDataContainer(table, key).getAsDouble());
   }
@@ -505,19 +505,19 @@ public class Profile {
   public PreferencesContainer getPreferencesContainer() {
     return this.getAbstractContainer("aCoreProfile", "preferences", PreferencesContainer.class);
   }
-  
+
   public TitlesContainer getTitlesContainer() {
     return this.getAbstractContainer("aCoreProfile", "titles", TitlesContainer.class);
   }
-  
+
   public BoostersContainer getBoostersContainer() {
     return this.getAbstractContainer("aCoreProfile", "boosters", BoostersContainer.class);
   }
-  
+
   public AchievementsContainer getAchievementsContainer() {
     return this.getAbstractContainer("aCoreProfile", "achievements", AchievementsContainer.class);
   }
-  
+
   public SelectedContainer getSelectedContainer() {
     return this.getAbstractContainer("aCoreProfile", "selected", SelectedContainer.class);
   }
@@ -525,15 +525,15 @@ public class Profile {
   public LanguageContainer getLanguageContainer() {
     return this.getAbstractContainer("aCoreProfile", "language", LanguageContainer.class);
   }
-  
+
   public DataContainer getDataContainer(String table, String key) {
     return this.tableMap.get(table).get(key);
   }
-  
+
   public <T extends AbstractContainer> T getAbstractContainer(String table, String key, Class<T> containerClass) {
     return this.getDataContainer(table, key).getContainer(containerClass);
   }
-  
+
   public Map<String, Map<String, DataContainer>> getTableMap() {
     return this.tableMap;
   }

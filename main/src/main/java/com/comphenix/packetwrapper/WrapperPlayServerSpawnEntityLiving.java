@@ -8,8 +8,6 @@ import com.comphenix.protocol.injector.PacketConstructor;
 import com.comphenix.protocol.wrappers.WrappedDataWatcher;
 import java.util.UUID;
 
-import me.joaomanoel.d4rkk.dev.replay.EntityMappings;
-import me.joaomanoel.d4rkk.dev.replay.VersionUtil;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -85,20 +83,16 @@ public class WrapperPlayServerSpawnEntityLiving
 
     public EntityType getType() {
         String type;
-        if (VersionUtil.isAbove(VersionUtil.VersionEnum.V1_17) && (type = EntityMappings.getInstance().getType(this.handle.getIntegers().read(1))) != null) {
-            return EntityType.valueOf(type);
-        }
+
         // Garantir que a conversão seja válida
         int id = (Integer) this.handle.getIntegers().read(1);
         return EntityType.fromId(id);
     }
 
     public void setType(EntityType value) {
-        if (VersionUtil.isAbove(VersionUtil.VersionEnum.V1_17)) {
-            this.handle.getIntegers().write(1, EntityMappings.getInstance().getTypeId(value.toString()));
-        } else {
+
             this.handle.getIntegers().write(1, (int) value.getTypeId());
-        }
+
     }
 
     public double getX() {
@@ -209,8 +203,7 @@ public class WrapperPlayServerSpawnEntityLiving
     }
 
     public void setMetadata(WrappedDataWatcher value) {
-        if (value != null && VersionUtil.isBelow(VersionUtil.VersionEnum.V1_14)) {
             this.handle.getDataWatcherModifier().write(0, value);
-        }
+
     }
 }

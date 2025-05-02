@@ -20,7 +20,6 @@ import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.wrappers.EnumWrappers;
 
-import me.joaomanoel.d4rkk.dev.replay.VersionUtil;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
@@ -55,9 +54,7 @@ extends AbstractPacket {
     }
 
     public EnumWrappers.EntityUseAction getType() {
-        if (VersionUtil.isAbove(VersionUtil.VersionEnum.V1_17)) {
-            return (this.handle.getEntityUseActions().read(0));
-        }
+
         return this.handle.getEntityUseActions().read(0);
     }
 

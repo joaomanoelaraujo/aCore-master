@@ -1,12 +1,13 @@
 package me.joaomanoel.d4rkk.dev.utils.enums;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 public enum EnumSound {
-  
+
   AMBIENCE_CAVE("AMBIENCE_CAVE", "AMBIENT_CAVE"),
   AMBIENCE_RAIN("AMBIENCE_RAIN", "WEATHER_RAIN"),
   AMBIENCE_THUNDER("AMBIENCE_THUNDER", "ENTITY_LIGHTNING_THUNDER"),
@@ -17,7 +18,7 @@ public enum EnumSound {
   BURP("BURP", "ENTITY_PLAYER_BURP"),
   CHEST_CLOSE("CHEST_CLOSE", "BLOCK_CHEST_CLOSE"),
   CHEST_OPEN("CHEST_OPEN", "BLOCK_CHEST_OPEN"),
-  CLICK("CLICK", "BLOCK_COMPARATOR_CLICK"),
+  CLICK("CLICK", "UI_BUTTON_CLICK"),
   DOOR_CLOSE("DOOR_CLOSE", "BLOCK_WOODEN_DOOR_CLOSE"),
   DOOR_OPEN("DOOR_OPEN", "BLOCK_WOODEN_DOOR_OPEN"),
   DRINK("DRINK", "ENTITY_GENERIC_DRINK"),
@@ -42,7 +43,7 @@ public enum EnumSound {
   NOTE_BASS_GUITAR("NOTE_BASS_GUITAR", "BLOCK_NOTE_BASS"),
   NOTE_SNARE_DRUM("NOTE_SNARE_DRUM", "BLOCK_NOTE_BASS"),
   NOTE_PLING("NOTE_PLING", "BLOCK_NOTE_PLING"),
-  ORB_PICKUP("ORB_PICKUP", "ENTITY_EXPERIENCE_ORB_PICKUP"),
+  ORB_PICKUP("ORB_PICKUP", "ENTITY_ITEM_PICKUP"),
   PISTON_EXTEND("PISTON_EXTEND", "BLOCK_PISTON_EXTEND"),
   PISTON_RETRACT("PISTON_RETRACT", "BLOCK_PISTON_CONTRACT"),
   PORTAL("PORTAL", "BLOCK_PORTAL_AMBIENT"),
@@ -87,12 +88,12 @@ public enum EnumSound {
   ENDERDRAGON_GROWL("ENDERDRAGON_GROWL", "ENTITY_ENDERDRAGON_GROWL"),
   ENDERDRAGON_HIT("ENDERDRAGON_HIT", "ENTITY_ENDERDRAGON_HURT"),
   ENDERDRAGON_WINGS("ENDERDRAGON_WINGS", "ENTITY_ENDERDRAGON_FLAP"),
-  ENDERMAN_DEATH("ENDERMAN_DEATH", "ENTITY_ENDERMEN_DEATH"),
-  ENDERMAN_HIT("ENDERMAN_HIT", "ENTITY_ENDERMEN_HURT"),
-  ENDERMAN_IDLE("ENDERMAN_IDLE", "ENTITY_ENDERMEN_AMBIENT"),
-  ENDERMAN_TELEPORT("ENDERMAN_TELEPORT", "ENTITY_ENDERMEN_TELEPORT"),
-  ENDERMAN_SCREAM("ENDERMAN_SCREAM", "ENTITY_ENDERMEN_SCREAM"),
-  ENDERMAN_STARE("ENDERMAN_STARE", "ENTITY_ENDERMEN_STARE"),
+  ENDERMAN_DEATH("ENDERMAN_DEATH", "ENTITY_ENDERMAN_DEATH"),
+  ENDERMAN_HIT("ENDERMAN_HIT", "ENTITY_ENDERMAN_HURT"),
+  ENDERMAN_IDLE("ENDERMAN_IDLE", "ENTITY_ENDERMAN_AMBIENT"),
+  ENDERMAN_TELEPORT("ENDERMAN_TELEPORT", "ENTITY_ENDERMAN_TELEPORT"),
+  ENDERMAN_SCREAM("ENDERMAN_SCREAM", "ENTITY_ENDERMAN_SCREAM"),
+  ENDERMAN_STARE("ENDERMAN_STARE", "ENTITY_ENDERMAN_STARE"),
   GHAST_SCREAM("GHAST_SCREAM", "ENTITY_GHAST_HURT"),
   GHAST_SCREAM2("GHAST_SCREAM2", "ENTITY_GHAST_SCREAM"),
   GHAST_CHARGE("GHAST_CHARGE", "ENTITY_GHAST_WARN"),
@@ -190,35 +191,51 @@ public enum EnumSound {
   VILLAGER_IDLE("VILLAGER_IDLE", "ENTITY_VILLAGER_AMBIENT"),
   VILLAGER_NO("VILLAGER_NO", "ENTITY_VILLAGER_NO"),
   VILLAGER_YES("VILLAGER_YES", "ENTITY_VILLAGER_YES");
-  
-  private final String oldSound;
-  private final String newSound;
-  
-  EnumSound(String oldSound, String newSound) {
-    this.oldSound = oldSound;
-    this.newSound = newSound;
+
+
+  private final String sound1_8;
+  private final String soundModern;
+  private static final boolean IS_LEGACY;
+
+  static {
+    String version = Bukkit.getBukkitVersion(); // Ex: 1.8.8-R0.1-SNAPSHOT ou 1.20.6
+    IS_LEGACY = version.startsWith("1.8");
   }
-  
-  public void play(Player player, float f1, float f2) {
-    play(player, player.getLocation(), f1, f2);
+
+  EnumSound(String legacyName, String modernName) {
+    this.sound1_8 = legacyName;
+    this.soundModern = modernName;
   }
-  
-  public void play(Player player, Location location, float f1, float f2) {
-    player.playSound(location, this.getSound(), f1, f2);
+
+  public void play(Player player, float volume, float pitch) {
+    play(player, player.getLocation(), volume, pitch);
   }
-  
-  public void play(World world, Location location, float f1, float f2) {
-    world.playSound(location, this.getSound(), f1, f2);
-  }
-  
-  public Sound getSound() {
-    Sound localSound;
-    try {
-      localSound = Sound.valueOf(this.oldSound);
-    } catch (Exception e) {
-      localSound = Sound.valueOf(this.newSound);
+
+  public void play(Player player, Location location, float volume, float pitch) {
+    Sound sound = getSound();
+    if (sound != null) {
+      player.playSound(location, sound, volume, pitch);
     }
-    
-    return localSound;
+  }
+
+  public void play(World world, Location location, float volume, float pitch) {
+    Sound sound = getSound();
+    if (sound != null) {
+      world.playSound(location, sound, volume, pitch);
+    }
+  }
+
+  public Sound getSound() {
+    try {
+      if (IS_LEGACY) {
+        return Sound.valueOf(this.sound1_8);
+      } else {
+        return Sound.valueOf(this.soundModern);
+      }
+    } catch (IllegalArgumentException e) {
+      Bukkit.getLogger().warning("[EnumSound] Som não encontrado para " + name() + ": " +
+              (IS_LEGACY ? this.sound1_8 : this.soundModern));
+      return null;
+    }
   }
 }

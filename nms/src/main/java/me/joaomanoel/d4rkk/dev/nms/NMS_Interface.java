@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public interface NMS_Interface {
 
     void setupListeners(JavaPlugin plugin);
+    void createMountableEnderDragon(Player player);
     void sendActionBar(String text, Player player);
     void sendTablist(String header, String footer, Player player);
     void sendTitle(Player player, String title, String subtitle, int fadeIn, int stay, int fadeOut);

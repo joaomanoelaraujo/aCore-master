@@ -117,13 +117,13 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
         for (int i = 2; i < split.length; i++) {
             String opt = split[i];
 
-            if (opt.startsWith("nome>")) {
+            if (opt.startsWith("name>")) {
                 meta.setDisplayName(StringUtils.formatColors(opt.split(">")[1]));
             } else if (opt.startsWith("desc>")) {
                 for (String lored : opt.split(">")[1].split("\n")) {
                     lore.add(StringUtils.formatColors(lored));
                 }
-            } else if (opt.startsWith("encantar>")) {
+            } else if (opt.startsWith("enchant>")) {
                 for (String enchanted : opt.split(">")[1].split("\n")) {
                     if (enchantment != null) {
                         enchantment.addStoredEnchant(Enchantment.getByName(enchanted.split(":")[0]), Integer.parseInt(enchanted.split(":")[1]), true);
@@ -132,7 +132,7 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
 
                     meta.addEnchant(Enchantment.getByName(enchanted.split(":")[0]), Integer.parseInt(enchanted.split(":")[1]), true);
                 }
-            } else if (opt.startsWith("pintar>") && (effect != null || armor != null)) {
+            } else if (opt.startsWith("paint>") && (effect != null || armor != null)) {
                 for (String color : opt.split(">")[1].split("\n")) {
                     if (color.split(":").length > 2) {
                         if (armor != null) {
@@ -155,26 +155,26 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
                         }
                     }
                 }
-            } else if (opt.startsWith("dono>") && skull != null) {
+            } else if (opt.startsWith("owner>") && skull != null) {
                 skull.setOwner(opt.split(">")[1]);
             } else if (opt.startsWith("skin>") && skull != null) {
                 GameProfile gp = new GameProfile(UUID.randomUUID(), null);
                 gp.getProperties().put("textures", new Property("textures", opt.split(">")[1]));
                 SKULL_META_PROFILE.set(skull, gp);
-            } else if (opt.startsWith("paginas>") && book != null) {
+            } else if (opt.startsWith("pages>") && book != null) {
                 book.setPages(opt.split(">")[1].split("\\{pular}"));
-            } else if (opt.startsWith("autor>") && book != null) {
+            } else if (opt.startsWith("author>") && book != null) {
                 book.setAuthor(opt.split(">")[1]);
-            } else if (opt.startsWith("titulo>") && book != null) {
+            } else if (opt.startsWith("title>") && book != null) {
                 book.setTitle(opt.split(">")[1]);
-            } else if (opt.startsWith("efeito>") && potion != null) {
+            } else if (opt.startsWith("effect>") && potion != null) {
                 for (String pe : opt.split(">")[1].split("\n")) {
                     potion.addCustomEffect(new PotionEffect(PotionEffectType.getByName(pe.split(":")[0]), Integer.parseInt(pe.split(":")[2]), Integer.parseInt(pe.split(":")[1])), false);
                 }
-            } else if (opt.startsWith("esconder>")) {
+            } else if (opt.startsWith("hide>")) {
                 String[] flags = opt.split(">")[1].split("\n");
                 for (String flag : flags) {
-                    if (flag.equalsIgnoreCase("tudo")) {
+                    if (flag.equalsIgnoreCase("all")) {
                         meta.addItemFlags(ItemFlag.values());
                         break;
                     } else {
@@ -204,7 +204,7 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
         EnchantmentStorageMeta enchantment = meta instanceof EnchantmentStorageMeta ? ((EnchantmentStorageMeta) meta) : null;
 
         if (meta.hasDisplayName()) {
-            sb.append(" : nome>").append(StringUtils.deformatColors(meta.getDisplayName()));
+            sb.append(" : name>").append(StringUtils.deformatColors(meta.getDisplayName()));
         }
 
         if (meta.hasLore()) {
@@ -216,7 +216,7 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
         }
 
         if (meta.hasEnchants() || (enchantment != null && enchantment.hasStoredEnchants())) {
-            sb.append(" : encantar>");
+            sb.append(" : enchant>");
             int size = 0;
             for (Map.Entry<Enchantment, Integer> entry : (enchantment != null ? enchantment.getStoredEnchants() : meta.getEnchants()).entrySet()) {
                 int level = entry.getValue();
@@ -226,28 +226,28 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
         }
 
         if (skull != null && !skull.getOwner().isEmpty()) {
-            sb.append(" : dono>").append(skull.getOwner());
+            sb.append(" : owner>").append(skull.getOwner());
         }
 
         if (book != null && book.hasPages()) {
-            sb.append(" : paginas>").append(StringUtils.join(book.getPages(), "{pular}"));
+            sb.append(" : pages>").append(StringUtils.join(book.getPages(), "{pular}"));
         }
 
         if (book != null && book.hasTitle()) {
-            sb.append(" : titulo>").append(book.getTitle());
+            sb.append(" : title>").append(book.getTitle());
         }
 
         if (book != null && book.hasAuthor()) {
-            sb.append(" : autor>").append(book.getAuthor());
+            sb.append(" : author>").append(book.getAuthor());
         }
 
         if ((effect != null && effect.hasEffect() && !effect.getEffect().getColors().isEmpty()) || (armor != null && armor.getColor() != null)) {
             Color color = effect != null ? effect.getEffect().getColors().get(0) : armor.getColor();
-            sb.append(" : pintar>").append(color.getRed()).append(":").append(color.getGreen()).append(":").append(color.getBlue());
+            sb.append(" : paint>").append(color.getRed()).append(":").append(color.getGreen()).append(":").append(color.getBlue());
         }
 
         if (potion != null && potion.hasCustomEffects()) {
-            sb.append(" : efeito>");
+            sb.append(" : effect>");
             int size = 0;
             for (PotionEffect pe : potion.getCustomEffects()) {
                 sb.append(pe.getType().getName()).append(":").append(pe.getAmplifier()).append(":").append(pe.getDuration()).append(++size == potion.getCustomEffects().size() ? "" : "\n");
@@ -255,7 +255,7 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
         }
 
         for (ItemFlag flag : meta.getItemFlags()) {
-            sb.append(" : esconder>").append(flag.name());
+            sb.append(" : hide>").append(flag.name());
         }
 
         return StringUtils.deformatColors(sb.toString()).replace("\n", "\\n");

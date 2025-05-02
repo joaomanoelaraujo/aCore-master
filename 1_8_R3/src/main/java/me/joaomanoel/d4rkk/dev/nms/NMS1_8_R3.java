@@ -7,6 +7,7 @@ import com.comphenix.protocol.wrappers.*;
 import com.comphenix.protocol.wrappers.BlockPosition;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import me.joaomanoel.d4rkk.dev.nms.enderdragon.MountableEnderDragon;
 import me.joaomanoel.d4rkk.dev.nms.hologram.HologramEntity;
 import me.joaomanoel.d4rkk.dev.nms.hologram.Hologram_8_R3;
 import me.joaomanoel.d4rkk.dev.nms.npc.NPC_8_R3;
@@ -55,6 +56,13 @@ public class NMS1_8_R3 implements NMS_Interface {
         packet.getChatComponents().write(0, WrappedChatComponent.fromText(header));
         packet.getChatComponents().write(1, WrappedChatComponent.fromText(footer));
         protocolManager.sendServerPacket(player, packet);
+    }
+
+    @Override
+    public void createMountableEnderDragon(Player player) {
+        MountableEnderDragon dragon = new MountableEnderDragon(player);
+        addToWorld(player.getWorld(), dragon.getBukkitEntity(), CreatureSpawnEvent.SpawnReason.CUSTOM);
+        dragon.getBukkitEntity().setPassenger(player);
     }
 
     @Override

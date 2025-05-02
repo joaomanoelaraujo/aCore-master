@@ -31,21 +31,12 @@ public abstract class KScoreboard {
   public void update() {}
 
   public void updateHealth() {
-    if ((this.healthTab || this.health) && this.scoreboard != null) {
-      for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-        int level = (int) player.getHealth();
-        if (this.healthTab) {
-          Objective objective = this.scoreboard.getObjective("healthPL");
-          if (objective != null) {
-            objective.getScore(player.getName()).setScore(level);
-          }
-        }
-
-        if (this.health) {
-          Objective objective = this.scoreboard.getObjective("healthBN");
-          if (objective != null && objective.getScore(player.getName()).getScore() == 0) {
-            objective.getScore(player.getName()).setScore(level);
-          }
+    if (this.healthTab && this.scoreboard != null) {
+      Objective tabObjective = this.scoreboard.getObjective("healthPL");
+      if (tabObjective != null) {
+        for (Player online : Bukkit.getOnlinePlayers()) {
+          int level = (int) online.getHealth();
+          tabObjective.getScore(online.getName()).setScore(level);
         }
       }
     }
@@ -56,9 +47,7 @@ public abstract class KScoreboard {
   }
 
   public KScoreboard add(int line, String name) {
-    if (line > 15 || line < 1 || this.teams == null) {
-      return this;
-    }
+    if (line > 15 || line < 1 || this.teams == null) return this;
 
     VirtualTeam team = getOrCreate(line);
     team.setValue(name);
@@ -69,16 +58,13 @@ public abstract class KScoreboard {
   }
 
   public KScoreboard remove(int line) {
-    if (line > 15 || line < 1 || this.teams == null) {
-      return this;
-    }
+    if (line > 15 || line < 1 || this.teams == null) return this;
 
     VirtualTeam team = this.teams[line - 1];
     if (team != null) {
       team.destroy();
       this.teams[line - 1] = null;
     }
-
     return this;
   }
 
@@ -89,10 +75,8 @@ public abstract class KScoreboard {
       if (lastPlayer != null) {
         lastPlayer.setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
       }
-
       player.setScoreboard(this.scoreboard);
     }
-
     return this;
   }
 
@@ -101,7 +85,6 @@ public abstract class KScoreboard {
     if (this.objective != null) {
       this.objective.setDisplayName(this.display.substring(0, Math.min(this.display.length(), 32)));
     }
-
     return this;
   }
 
@@ -111,31 +94,31 @@ public abstract class KScoreboard {
   }
 
   public KScoreboard health() {
-    this.health = !health;
+    this.health = !this.health;
     if (this.scoreboard != null) {
       if (!this.health) {
-        this.scoreboard.getObjective("healthBN").unregister();
+        Objective obj = this.scoreboard.getObjective("healthBN");
+        if (obj != null) obj.unregister();
       } else {
-        Objective health = this.scoreboard.registerNewObjective("healthBN", "health");
-        health.setDisplayName("§c❤");
-        health.setDisplaySlot(DisplaySlot.BELOW_NAME);
+        Objective healthObj = this.scoreboard.registerNewObjective("healthBN", "health");
+        healthObj.setDisplayName("§c❤");
+        healthObj.setDisplaySlot(DisplaySlot.BELOW_NAME);
       }
     }
-
     return this;
   }
 
   public KScoreboard healthTab() {
-    this.healthTab = !healthTab;
+    this.healthTab = !this.healthTab;
     if (this.scoreboard != null) {
       if (!this.healthTab) {
-        this.scoreboard.getObjective("healthPL").unregister();
+        Objective obj = this.scoreboard.getObjective("healthPL");
+        if (obj != null) obj.unregister();
       } else {
-        Objective health = this.scoreboard.registerNewObjective("healthPL", "dummy");
-        health.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+        Objective tab = this.scoreboard.registerNewObjective("healthPL", "dummy");
+        tab.setDisplaySlot(DisplaySlot.PLAYER_LIST);
       }
     }
-
     return this;
   }
 
@@ -150,14 +133,18 @@ public abstract class KScoreboard {
     }
 
     if (this.health) {
-      Objective health = this.scoreboard.registerNewObjective("healthBN", "health");
-      health.setDisplayName("§c❤");
-      health.setDisplaySlot(DisplaySlot.BELOW_NAME);
+      Objective healthObj = this.scoreboard.registerNewObjective("healthBN", "health");
+      healthObj.setDisplayName("§c❤");
+      healthObj.setDisplaySlot(DisplaySlot.BELOW_NAME);
     }
 
     if (this.healthTab) {
-      Objective health = this.scoreboard.registerNewObjective("healthPL", "dummy");
-      health.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+      Objective tab = this.scoreboard.registerNewObjective("healthPL", "dummy");
+      tab.setDisplaySlot(DisplaySlot.PLAYER_LIST);
+      // Preenche com health atual
+      for (Player online : Bukkit.getOnlinePlayers()) {
+        tab.getScore(online.getName()).setScore((int) online.getHealth());
+      }
     }
 
     for (VirtualTeam team : this.teams) {
@@ -170,14 +157,17 @@ public abstract class KScoreboard {
   }
 
   public void destroy() {
-    this.objective.unregister();
-    this.objective = null;
+    if (this.objective != null) this.objective.unregister();
     if (this.health) {
-      this.scoreboard.getObjective("healthBN").unregister();
+      Objective obj = this.scoreboard.getObjective("healthBN");
+      if (obj != null) obj.unregister();
     }
     if (this.healthTab) {
-      this.scoreboard.getObjective("healthPL").unregister();
+      Objective obj = this.scoreboard.getObjective("healthPL");
+      if (obj != null) obj.unregister();
     }
+
+    this.objective = null;
     this.scoreboard = null;
     this.teams = null;
     this.player = null;
@@ -185,18 +175,12 @@ public abstract class KScoreboard {
   }
 
   public VirtualTeam getTeam(int line) {
-    if (line > 15 || line < 1) {
-      return null;
-    }
-
+    if (line > 15 || line < 1) return null;
     return teams[line - 1];
   }
 
   public VirtualTeam getOrCreate(int line) {
-    if (line > 15 || line < 1) {
-      return null;
-    }
-
+    if (line > 15 || line < 1) return null;
     if (this.teams[line - 1] == null) {
       this.teams[line - 1] = new VirtualTeam(this, "score[" + line + "]", line);
     }

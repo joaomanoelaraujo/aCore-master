@@ -128,4 +128,3 @@ public class NPC_8_R3 extends EntityPlayer implements NpcEntity {
     }
 
 }
-
