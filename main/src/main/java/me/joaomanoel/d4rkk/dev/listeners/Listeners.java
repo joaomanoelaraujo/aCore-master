@@ -235,6 +235,7 @@ public class Listeners implements Listener {
 
     handleProfileCleanup(profile);
     cleanupPlayerData(playerId, playerName);
+    TagUtils.destroy(player);
   }
 
   private void handleProfileCleanup(Profile profile) {
