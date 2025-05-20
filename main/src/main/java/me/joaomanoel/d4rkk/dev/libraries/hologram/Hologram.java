@@ -19,9 +19,12 @@ public class Hologram implements Listener {
 
     private Location location;
     private List<HologramLine> lines = new ArrayList<>();
+    private static final List<Hologram> INSTANCES = new ArrayList<>();
+
 
     public Hologram(Location location) {
         this.location = location.clone();
+        INSTANCES.add(this);
     }
 
     public void registerHologramListener() {
@@ -45,6 +48,7 @@ public class Hologram implements Listener {
         this.lines.forEach(HologramLine::destroy);
         this.lines.clear();
         this.lines = null;
+        INSTANCES.remove(this);
         this.location = null;
     }
 
@@ -61,7 +65,7 @@ public class Hologram implements Listener {
 
     @EventHandler
     public void onEntityInteract(PlayerInteractAtEntityEvent event) {
-       Player player = event.getPlayer();
+        Player player = event.getPlayer();
         Entity entity = event.getRightClicked();
         if (entity instanceof ArmorStand) {
             Location entityLocation = entity.getLocation();
@@ -74,5 +78,26 @@ public class Hologram implements Listener {
                 Bukkit.getPluginManager().callEvent(instanceEvent);
             }
         }
+    }
+    public static Hologram getHologram(Entity entity) {
+        return INSTANCES.stream()
+                .filter(h -> h.lines.stream()
+                        .anyMatch(line -> line.getEntity().equals(entity)))
+                .findFirst()
+                .orElse(null);
+    }
+
+    /**
+     * Retorna a linha de holograma que corresponde a essa ArmorStand, ou null.
+     */
+    public static HologramLine getHologramLine(Entity entity) {
+        for (Hologram h : INSTANCES) {
+            for (HologramLine line : h.lines) {
+                if (line.getEntity().equals(entity)) {
+                    return line;
+                }
+            }
+        }
+        return null;
     }
 }

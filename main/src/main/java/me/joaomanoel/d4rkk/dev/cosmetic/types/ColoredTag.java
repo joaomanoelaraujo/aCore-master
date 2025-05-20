@@ -1,5 +1,11 @@
 package me.joaomanoel.d4rkk.dev.cosmetic.types;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.wrappers.EnumWrappers;
+import com.comphenix.protocol.wrappers.WrappedDataWatcher;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.cash.CashManager;
@@ -13,7 +19,15 @@ import me.joaomanoel.d4rkk.dev.plugin.logger.KLogger;
 import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumRarity;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
+
+import java.util.Collection;
+import java.util.Collections;
 
 public class ColoredTag extends Cosmetic {
 
@@ -51,7 +65,9 @@ public class ColoredTag extends Cosmetic {
       new ColoredTag(id, EnumRarity.fromName(config.getString(key + ".rarity")), cash, permission, name, icon, sound);
     }
   }
-  
+
+
+
   @Override
   public String getName() {
     return this.name;

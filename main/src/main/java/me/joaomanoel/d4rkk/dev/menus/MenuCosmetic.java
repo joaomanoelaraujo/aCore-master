@@ -6,6 +6,7 @@ import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.CosmeticType;
 import me.joaomanoel.d4rkk.dev.cosmetic.container.SelectedContainer;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.ColoredTag;
+import me.joaomanoel.d4rkk.dev.cosmetic.types.GlowCosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.JoinMessage;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PagedPlayerMenu;
@@ -73,6 +74,7 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
 
     this.removeSlotsWith(BukkitUtils.deserializeItemStack(joinMessageDesc), 5);
 
+
     List<ColoredTag> coloredtag = Cosmetic.listByType(ColoredTag.class);
     max = coloredtag.size();
     owned = coloredtag.stream().filter(coloredtags -> coloredtags.has(profile)).count();
@@ -108,7 +110,6 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
       }
     }
 
-    // Adicionando cosméticos ao menu
     List<ItemStack> items = new ArrayList<>();
     List<T> cosmetics = Cosmetic.listByType(cosmeticClass);
     for (T cosmetic : cosmetics) {
@@ -147,6 +148,9 @@ public class MenuCosmetic<T extends Cosmetic> extends PagedPlayerMenu {
               } else if (evt.getSlot() == 5) {
                 EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
                 new MenuCosmetic<>(profile, LanguageAPI.getConfig(profile).getString("cosmetic.join_message_name"), JoinMessage.class);
+            } else if (evt.getSlot() == 0) {
+              EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
+              new MenuCosmetic<>(profile, "Glow", GlowCosmetic.class);
             } else if (evt.getSlot() == 3) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuCosmetic<>(profile, LanguageAPI.getConfig(profile).getString("cosmetic.coloredtag_name"), ColoredTag.class);

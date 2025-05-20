@@ -28,17 +28,43 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         player.getInventory().setItemInHand(old);
         player.updateInventory();
     }
+
     private Material resolveMaterial(String name) {
-        switch (name.toUpperCase()) {
+        String upper = name.toUpperCase();
+
+        // 1) trata ID:SUBID (incluindo "159" sem subid) para terracota colorida
+        String[] parts = upper.split(":", 2);
+        String base = parts[0];
+        String sub  = parts.length > 1 ? parts[1] : null;
+
+        if ("159".equals(base)) {  // antigo ID de terracota
+            if (sub != null) {
+                return switch (sub) {
+                    case "13" -> Material.GREEN_TERRACOTTA;
+                    case "14" -> Material.RED_TERRACOTTA;
+                    // ...outras cores, se precisar
+                    default  -> Material.TERRACOTTA;
+                };
+            } else {
+                return Material.TERRACOTTA;
+            }
+        }
+
+        // 2) se não era terracota, joga fora o subid e continua
+        upper = base;
+
+        switch (upper) {
             case "373":
                 return Material.POTION;
             case "SKULL_ITEM":
                 return Material.PLAYER_HEAD;
+            case "369":
+                return Material.BLAZE_ROD;
             case "383":
                 return Material.ENDER_DRAGON_SPAWN_EGG;
             case "351":
             case "INK_SACK":
-                return Material.GRAY_DYE; // ou BLACK_DYE se for usado como tinta
+                return Material.GRAY_DYE;
             case "WOOD":
                 return Material.OAK_PLANKS;
             case "FIREWORK":
@@ -50,9 +76,9 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
             case "160":
             case "STAINED_GLASS_PANE":
                 return Material.WHITE_STAINED_GLASS_PANE;
-            case "299": // LEATHER_CHESTPLATE (ID 299 em 1.8)
+            case "299":
                 return Material.LEATHER_CHESTPLATE;
-            case "145": // ANVIL
+            case "145":
                 return Material.ANVIL;
             case "395":
                 return Material.WRITTEN_BOOK;
@@ -67,7 +93,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
             case "32":
                 return Material.DEAD_BUSH;
             case "294":
-                return Material.GOLDEN_PICKAXE; // encantado via meta
+                return Material.GOLDEN_PICKAXE;
             case "379":
                 return Material.BREWING_STAND;
             case "86":
@@ -77,12 +103,16 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
             case "38":
                 return Material.POPPY;
             case "BED":
-                return Material.RED_BED; // padrão, pode ajustar
+                return Material.RED_BED;
             case "259":
                 return Material.FLINT_AND_STEEL;
+            case "347":
+                return Material.CLOCK;
+            case "REDSTONE_COMPARATOR":
+                return Material.COMPARATOR;
             default:
                 try {
-                    return Material.valueOf(name.toUpperCase());
+                    return Material.valueOf(upper);
                 } catch (IllegalArgumentException e) {
                     Bukkit.getLogger().warning("[aCore] Material desconhecido ao desserializar: " + name);
                     return Material.BARRIER;

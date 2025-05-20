@@ -20,6 +20,7 @@ public abstract class DataTable {
     TABLES.add(new ThePitTable());
     TABLES.add(new TheBridgeTable());
     TABLES.add(new BatteryDashTable());
+    TABLES.add(new DuelsTable());
     TABLES.add(new SkyWarsTable());
   }
   

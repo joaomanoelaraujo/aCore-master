@@ -1,0 +1,8 @@
+red:
+  id: 1
+  name: 'Red'
+  rarity: EPIC
+  permission: ''
+  icon: '86 : 1'
+  cash: 25
+  color: RED

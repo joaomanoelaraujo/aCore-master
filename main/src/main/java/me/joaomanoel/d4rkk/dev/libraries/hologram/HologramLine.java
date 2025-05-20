@@ -3,6 +3,7 @@ package me.joaomanoel.d4rkk.dev.libraries.hologram;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.nms.hologram.HologramEntity;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 
 public class HologramLine {
 

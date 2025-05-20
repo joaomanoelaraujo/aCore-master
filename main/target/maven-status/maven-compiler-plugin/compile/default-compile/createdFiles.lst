@@ -70,6 +70,7 @@ me\joaomanoel\d4rkk\dev\servers\balancer\BaseBalancer.class
 me\joaomanoel\d4rkk\dev\database\exception\ProfileLoadException.class
 me\joaomanoel\d4rkk\dev\utils\queue\Queue$1.class
 me\joaomanoel\d4rkk\dev\utils\langs\LanguageManager.class
+me\joaomanoel\d4rkk\dev\cosmetic\types\GlowCosmetic.class
 me\joaomanoel\d4rkk\dev\titles\TitleManager.class
 me\joaomanoel\d4rkk\dev\achievements\types\ThePitAchievement$ThePitReward.class
 com\comphenix\packetwrapper\WrapperPlayClientWindowClick.class
@@ -97,6 +98,7 @@ me\joaomanoel\d4rkk\dev\database\data\container\TitlesContainer.class
 me\joaomanoel\d4rkk\dev\hook\protocollib\FakeAdapter.class
 me\joaomanoel\d4rkk\dev\servers\balancer\type\LeastConnection.class
 me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticlePacket$VersionIncompatibleException.class
+me\joaomanoel\d4rkk\dev\database\tables\DuelsTable.class
 me\joaomanoel\d4rkk\dev\player\hotbar\HotbarActionType$1.class
 me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticleVersionException.class
 me\joaomanoel\d4rkk\dev\servers\balancer\type\MostConnection.class
@@ -280,6 +282,7 @@ me\joaomanoel\d4rkk\dev\utils\particles\ReflectionUtils$DataType.class
 me\joaomanoel\d4rkk\dev\Achievements.class
 me\joaomanoel\d4rkk\dev\libraries\menu\UpdatablePlayerPagedMenu.class
 me\joaomanoel\d4rkk\dev\titles\TitleLoader.class
+me\joaomanoel\d4rkk\dev\utils\PacketAction.class
 com\comphenix\packetwrapper\v15\WrapperPlayServerRelEntityMoveLook.class
 me\joaomanoel\d4rkk\dev\menus\profile\MenuStatistics.class
 com\comphenix\packetwrapper\WrapperPlayServerUpdateHealth.class

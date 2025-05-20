@@ -129,6 +129,24 @@ public class aCoreExpansion extends PlaceholderExpansion {
       } else if (value.equals("coins")) {
         return StringUtils.formatNumber(profile.getCoins(table));
       }
+    } else if (params.startsWith("Duels_")) {
+      String table = "aCoreDuels";
+      String value = params.replace("Duels_", "");
+      if (value.equals("kills") || value.equals("deaths") || value.equals("games") || value.equals("points") || value.equals("wins")) {
+        return StringUtils.formatNumber(profile.getStats(table, "uhc" + value, "bow" + value, "classic" + value, "op" + value));
+      } else if (value.equals("uhckills") || value.equals("uhcdeaths") || value.equals("uhcgames") || value.equals("uhcwins")) {
+        return StringUtils.formatNumber(profile.getStats(table, value));
+      } else if (value.equals("bowkills") || value.equals("bowdeaths") || value.equals("bowgames") || value.equals("bowwins")) {
+        return StringUtils.formatNumber(profile.getStats(table, value));
+      } else if (value.equals("classickills") || value.equals("classicdeaths") || value.equals("classicgames") || value.equals("classicwins")) {
+        return StringUtils.formatNumber(profile.getStats(table, value));
+      } else if (value.equals("opkills") || value.equals("opdeaths") || value.equals("opgames") || value.equals("opwins")) {
+        return StringUtils.formatNumber(profile.getStats(table, value));
+      } else if (value.equals("winstreak")) {
+        return StringUtils.formatNumber(profile.getDailyStats(table, "laststreak", value));
+      } else if (value.equals("coins")) {
+        return StringUtils.formatNumber(profile.getCoins(table));
+      }
     } else if (params.startsWith("BatteryDash_")) {
       String table = "aCoreBatteryDash";
       String value = params.replace("BatteryDash_", "");

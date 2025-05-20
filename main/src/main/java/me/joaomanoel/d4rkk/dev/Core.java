@@ -54,7 +54,7 @@ import java.util.logging.Level;
 public class Core extends KPlugin {
   
   public static final List<String> warnings = new ArrayList<>();
-  public static final List<String> minigames = Arrays.asList("Block Sumo", "Sky Wars", "Bed Wars", "The Bridge", "The Pit");
+  public static final List<String> minigames = Arrays.asList("Block Sumo", "Sky Wars", "Bed Wars", "The Bridge", "The Pit", "Duels");
 
   public static boolean validInit;
   public static boolean aFriends;

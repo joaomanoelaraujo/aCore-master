@@ -3,10 +3,7 @@ package me.joaomanoel.d4rkk.dev.cosmetic;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.cosmetic.container.CosmeticsContainer;
 import me.joaomanoel.d4rkk.dev.cosmetic.container.SelectedContainer;
-import me.joaomanoel.d4rkk.dev.cosmetic.types.ColoredTag;
-import me.joaomanoel.d4rkk.dev.cosmetic.types.JoinMessage;
-import me.joaomanoel.d4rkk.dev.cosmetic.types.MvpColor;
-import me.joaomanoel.d4rkk.dev.cosmetic.types.PunchMessage;
+import me.joaomanoel.d4rkk.dev.cosmetic.types.*;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumRarity;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -42,6 +39,7 @@ public abstract class Cosmetic {
         PunchMessage.setupPunchMessages();
         MvpColor.setupColorMvp();
         ColoredTag.setupColoredTag();
+        GlowCosmetic.setupGlow();
     }
     public static void removeCosmetic(Cosmetic cosmetic) {
         COSMETICS.remove(cosmetic);
