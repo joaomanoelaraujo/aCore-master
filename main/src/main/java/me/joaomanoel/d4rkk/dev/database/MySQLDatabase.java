@@ -137,7 +137,7 @@ public class MySQLDatabase extends Database {
       select.append("`").append(column).append("`, ");
     }
     
-    try (CachedRowSet rs = query("SELECT " + select + "`name` FROM `" + table + "` ORDER BY " + add + " 0 DESC LIMIT 10")) {
+    try (CachedRowSet rs = query("SELECT " + select + "`name` FROM `" + table + "` ORDER BY " + add + " 0 DESC LIMIT 100")) {
       if (rs != null) {
         rs.beforeFirst();
         while (rs.next()) {

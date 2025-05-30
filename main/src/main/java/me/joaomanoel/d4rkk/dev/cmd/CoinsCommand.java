@@ -19,7 +19,7 @@ public class CoinsCommand extends Commands {
       player.sendMessage("\n§eYour Coins:");
 
       // Exibe os valores de Coins e Limites para cada modo
-      for (String name : new String[]{"BedWars", "SkyWars", "TheBridge", "ThePit"}) {
+      for (String name : new String[]{"BedWars", "SkyWars", "TheBridge", "ThePit", "Duels"}) {
         // Obtenha o valor de coins
         double coins = profile.getCoins("aCore" + name.replace(" ", ""));
 

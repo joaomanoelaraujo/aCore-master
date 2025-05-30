@@ -9,9 +9,28 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.*;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
+import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
+import org.bukkit.Material;
+
+import org.bukkit.inventory.meta.BookMeta;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
+import org.bukkit.inventory.meta.FireworkEffectMeta;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.profile.PlayerProfile;
+import org.bukkit.potion.PotionType;
+
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -30,26 +49,38 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
     }
 
     private Material resolveMaterial(String name) {
-        String upper = name.toUpperCase();
-
-        // 1) trata ID:SUBID (incluindo "159" sem subid) para terracota colorida
-        String[] parts = upper.split(":", 2);
-        String base = parts[0];
-        String sub  = parts.length > 1 ? parts[1] : null;
-
-        if ("159".equals(base)) {  // antigo ID de terracota
-            if (sub != null) {
-                return switch (sub) {
-                    case "13" -> Material.GREEN_TERRACOTTA;
-                    case "14" -> Material.RED_TERRACOTTA;
-                    // ...outras cores, se precisar
-                    default  -> Material.TERRACOTTA;
-                };
-            } else {
-                return Material.TERRACOTTA;
-            }
+        if (name == null || name.isEmpty()) {
+            return Material.BARRIER;
         }
 
+        // 1) separa nome/base do data legada
+        String upper = name.toUpperCase();
+        String[] parts = upper.split(":", 2);
+        String base  = parts[0].trim();
+        String subid = parts.length > 1 ? parts[1].trim() : null;
+
+        // 2) terracota colorida (ID 159)
+        if ("159".equals(base)) {
+            if (subid != null) {
+                return switch (subid) {
+                    case "13" -> Material.GREEN_TERRACOTTA;
+                    case "14" -> Material.RED_TERRACOTTA;
+                    default  -> Material.TERRACOTTA;
+                };
+            }
+            return Material.TERRACOTTA;
+        }
+
+        // 3) poções (ID 373 + data)
+        if ("373".equals(base)) {
+            if (subid != null) {
+                int d = Integer.parseInt(subid);
+                boolean splash   = (d & 0x4000) != 0;  // flag 16384
+                // já mapeamos o material, o meta virá depois
+                return splash ? Material.SPLASH_POTION : Material.POTION;
+            }
+            return Material.POTION;
+        }
         // 2) se não era terracota, joga fora o subid e continua
         upper = base;
 
@@ -106,6 +137,8 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
                 return Material.RED_BED;
             case "259":
                 return Material.FLINT_AND_STEEL;
+            case "323":
+                return Material.OAK_SIGN;
             case "347":
                 return Material.CLOCK;
             case "REDSTONE_COMPARATOR":
@@ -122,115 +155,185 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
 
 
     @Override
-    public ItemStack deserializeItemStack(String item) {
-        if (item == null || item.isEmpty()) {
-            return new ItemStack(Material.AIR);
+    public ItemStack deserializeItemStack(String raw) {
+        if (raw == null || raw.isEmpty()) {
+            return new ItemStack(Material.BARRIER);
         }
 
-        item = StringUtils.formatColors(item).replace("\\n", "\n");
-        String[] split = item.split(" : ");
-        String mat = split[0].split(":")[0];
+        raw = StringUtils.formatColors(raw).replace("\\n", "\n");
 
-        Material material = resolveMaterial(mat);
-        ItemStack stack = new ItemStack(material, 1);
-        ItemMeta meta = stack.getItemMeta();
-
-        BookMeta book = meta instanceof BookMeta ? ((BookMeta) meta) : null;
-        SkullMeta skull = meta instanceof SkullMeta ? ((SkullMeta) meta) : null;
-        PotionMeta potion = meta instanceof PotionMeta ? ((PotionMeta) meta) : null;
-        FireworkEffectMeta effect = meta instanceof FireworkEffectMeta ? ((FireworkEffectMeta) meta) : null;
-        LeatherArmorMeta armor = meta instanceof LeatherArmorMeta ? ((LeatherArmorMeta) meta) : null;
-        EnchantmentStorageMeta enchantment = meta instanceof EnchantmentStorageMeta ? ((EnchantmentStorageMeta) meta) : null;
-
-        if (split.length > 1) {
-            stack.setAmount(Math.min(Integer.parseInt(split[1]), 64));
+        String[] parts = raw.split("\\s* : \\s*", 3);
+        if (parts.length < 2) {
+            Bukkit.getLogger().warning("[aCore] Entrada inválida: " + raw);
+            return new ItemStack(Material.BARRIER);
         }
 
-        List<String> lore = new ArrayList<>();
-        for (int i = 2; i < split.length; i++) {
-            String opt = split[i];
+        String[] matSplit    = parts[0].split(":", 2);
+        String materialToken = matSplit[0].trim();
+        short  data          = 0;
+        if (matSplit.length > 1) {
+            try { data = Short.parseShort(matSplit[1].trim()); }
+            catch (NumberFormatException ignore) {}
+        }
+        Material mat = resolveMaterial(materialToken);
 
-            if (opt.startsWith("name>")) {
-                meta.setDisplayName(StringUtils.formatColors(opt.split(">")[1]));
-            } else if (opt.startsWith("desc>")) {
-                for (String lored : opt.split(">")[1].split("\n")) {
-                    lore.add(StringUtils.formatColors(lored));
-                }
-            } else if (opt.startsWith("enchant>")) {
-                for (String enchanted : opt.split(">")[1].split("\n")) {
-                    if (enchantment != null) {
-                        enchantment.addStoredEnchant(Enchantment.getByName(enchanted.split(":")[0]), Integer.parseInt(enchanted.split(":")[1]), true);
-                        continue;
+        int amount = 1;
+        try { amount = Integer.parseInt(parts[1].trim()); }
+        catch (NumberFormatException ignore) {}
+
+        ItemStack item;
+        if (mat == Material.POTION
+                || mat == Material.SPLASH_POTION
+                || mat == Material.LINGERING_POTION) {
+
+            boolean splash    = (mat == Material.SPLASH_POTION)
+                    || (mat == Material.POTION && (data & 0x4000) != 0);
+            Material potionMat = splash ? Material.SPLASH_POTION : Material.POTION;
+            item = new ItemStack(potionMat, amount);
+
+            PotionMeta pm = (PotionMeta) item.getItemMeta();
+            boolean upgraded  = (data & 0x20)   != 0;
+            boolean extended = (data & 0x2000) != 0;
+            int     baseId   = data & 0xF;
+
+            PotionType baseType = switch (baseId) {
+                case 1  -> PotionType.REGENERATION;
+                case 2  -> PotionType.SWIFTNESS;
+                case 9  -> PotionType.STRENGTH;
+                case 11 -> PotionType.AWKWARD;
+                default -> PotionType.NIGHT_VISION;
+            };
+
+            PotionType finalType = baseType;
+            if (upgraded) {
+                finalType = switch (baseType) {
+                    case REGENERATION     -> PotionType.STRONG_REGENERATION;
+                    case SWIFTNESS     -> PotionType.STRONG_SWIFTNESS;
+                    case STRENGTH  -> PotionType.STRONG_STRENGTH;
+                    case AWKWARD      -> PotionType.AWKWARD;
+                    default        -> baseType;
+                };
+            } else if (extended) {
+                finalType = switch (baseType) {
+                    case REGENERATION     -> PotionType.LONG_REGENERATION;
+                    case SWIFTNESS     -> PotionType.LONG_SWIFTNESS;
+                    case STRENGTH  -> PotionType.LONG_STRENGTH;
+                    case AWKWARD      -> PotionType.AWKWARD;
+                    default        -> baseType;
+                };
+            }
+
+            pm.setBasePotionType(finalType);
+            item.setItemMeta(pm);
+
+        } else {
+            if (data != 0) {
+                item = new ItemStack(mat, amount, data);
+            } else {
+                item = new ItemStack(mat, amount);
+            }
+        }
+
+        if (parts.length == 3) {
+            String[] props = parts[2].split("\\s+");
+            raw = StringUtils.formatColors(raw).replace("\\n", "\n");
+            String[] split = raw.split(" : ");
+            ItemMeta meta = item.getItemMeta();
+
+            BookMeta               book           = meta instanceof BookMeta               ? (BookMeta)               meta : null;
+            SkullMeta              skull          = meta instanceof SkullMeta              ? (SkullMeta)              meta : null;
+            PotionMeta             potion         = meta instanceof PotionMeta             ? (PotionMeta)             meta : null;
+            FireworkEffectMeta     effect         = meta instanceof FireworkEffectMeta     ? (FireworkEffectMeta)     meta : null;
+            LeatherArmorMeta       armor          = meta instanceof LeatherArmorMeta       ? (LeatherArmorMeta)       meta : null;
+            EnchantmentStorageMeta enchantment = meta instanceof EnchantmentStorageMeta ? (EnchantmentStorageMeta) meta : null;
+
+            List<String> lore = new ArrayList<>();
+            for (int i = 2; i < split.length; i++) {
+                String opt = split[i];
+
+                if (opt.startsWith("name>")) {
+                    meta.setDisplayName(StringUtils.formatColors(opt.split(">")[1]));
+                } else if (opt.startsWith("desc>")) {
+                    for (String lored : opt.split(">")[1].split("\n")) {
+                        lore.add(StringUtils.formatColors(lored));
                     }
-                    meta.addEnchant(Enchantment.getByName(enchanted.split(":")[0]), Integer.parseInt(enchanted.split(":")[1]), true);
-                }
-            } else if (opt.startsWith("paint>") && (effect != null || armor != null)) {
-                for (String color : opt.split(">")[1].split("\n")) {
-                    String[] rgb = color.split(":");
-                    if (rgb.length == 3) {
-                        Color c = Color.fromRGB(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2]));
-                        if (armor != null) {
-                            armor.setColor(c);
-                        } else if (effect != null) {
-                            effect.setEffect(FireworkEffect.builder().withColor(c).build());
+                } else if (opt.startsWith("enchant>")) {
+                    for (String enchanted : opt.split(">")[1].split("\n")) {
+                        if (enchantment != null) {
+                            enchantment.addStoredEnchant(Enchantment.getByName(enchanted.split(":")[0]), Integer.parseInt(enchanted.split(":")[1]), true);
+                            continue;
+                        }
+                        meta.addEnchant(Enchantment.getByName(enchanted.split(":")[0]), Integer.parseInt(enchanted.split(":")[1]), true);
+                    }
+                } else if (opt.startsWith("paint>") && (effect != null || armor != null)) {
+                    for (String color : opt.split(">")[1].split("\n")) {
+                        String[] rgb = color.split(":");
+                        if (rgb.length == 3) {
+                            Color c = Color.fromRGB(Integer.parseInt(rgb[0]), Integer.parseInt(rgb[1]), Integer.parseInt(rgb[2]));
+                            if (armor != null) {
+                                armor.setColor(c);
+                            } else if (effect != null) {
+                                effect.setEffect(FireworkEffect.builder().withColor(c).build());
+                            }
                         }
                     }
-                }
-            } else if (opt.startsWith("owner>") && skull != null) {
-                String playerName = opt.split(">")[1];
-                skull.setOwningPlayer(Bukkit.getOfflinePlayer(playerName));
-            } else if (opt.startsWith("skin>") && skull != null) {
-                String texture = opt.length() > 5 ? opt.substring(5) : null;
+                } else if (opt.startsWith("owner>") && skull != null) {
+                    String playerName = opt.split(">")[1];
+                    skull.setOwningPlayer(Bukkit.getOfflinePlayer(playerName));
+                } else if (opt.startsWith("skin>") && skull != null) {
+                    String texture = opt.length() > 5 ? opt.substring(5) : null;
 
-                if (texture != null && !texture.isEmpty()) {
-                    GameProfile gp = new GameProfile(UUID.randomUUID(), "Head");
-                    gp.getProperties().put("textures", new Property("textures", texture));
-                    try {
-                        Field profileField = meta.getClass().getDeclaredField("profile");
-                        profileField.setAccessible(true);
-                        profileField.set(meta, gp);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            } else if (opt.startsWith("pages>") && book != null) {
-                book.setPages(opt.split(">")[1].split("\\{pular}"));
-            } else if (opt.startsWith("author>") && book != null) {
-                book.setAuthor(opt.split(">")[1]);
-            } else if (opt.startsWith("title>") && book != null) {
-                book.setTitle(opt.split(">")[1]);
-            } else if (opt.startsWith("effect>") && potion != null) {
-                for (String pe : opt.split(">")[1].split("\n")) {
-                    String[] effectSplit = pe.split(":");
-                    PotionEffectType type = PotionEffectType.getByName(effectSplit[0]);
-                    int amplifier = Integer.parseInt(effectSplit[1]);
-                    int duration = Integer.parseInt(effectSplit[2]);
-                    potion.addCustomEffect(new PotionEffect(type, duration, amplifier), false);
-                }
-            } else if (opt.startsWith("hide>")) {
-                String[] flags = opt.split(">")[1].split("\n");
-                for (String flag : flags) {
-                    if (flag.equalsIgnoreCase("all")) {
-                        meta.addItemFlags(ItemFlag.values());
-                        break;
-                    } else {
+                    if (texture != null && !texture.isEmpty()) {
+                        GameProfile gp = new GameProfile(UUID.randomUUID(), "Head");
+                        gp.getProperties().put("textures", new Property("textures", texture));
                         try {
-                            meta.addItemFlags(ItemFlag.valueOf(flag.toUpperCase()));
-                        } catch (IllegalArgumentException ignored) {
+                            Field profileField = meta.getClass().getDeclaredField("profile");
+                            profileField.setAccessible(true);
+                            profileField.set(meta, gp);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                } else if (opt.startsWith("pages>") && book != null) {
+                    book.setPages(opt.split(">")[1].split("\\{pular}"));
+                } else if (opt.startsWith("author>") && book != null) {
+                    book.setAuthor(opt.split(">")[1]);
+                } else if (opt.startsWith("title>") && book != null) {
+                    book.setTitle(opt.split(">")[1]);
+                } else if (opt.startsWith("effect>") && potion != null) {
+                    for (String pe : opt.split(">")[1].split("\n")) {
+                        String[] effectSplit = pe.split(":");
+                        PotionEffectType type = PotionEffectType.getByName(effectSplit[0]);
+                        int amplifier = Integer.parseInt(effectSplit[1]);
+                        int duration = Integer.parseInt(effectSplit[2]);
+                        potion.addCustomEffect(new PotionEffect(type, duration, amplifier), false);
+                    }
+                } else if (opt.startsWith("hide>")) {
+                    String[] flags = opt.split(">")[1].split("\n");
+                    for (String flag : flags) {
+                        if (flag.equalsIgnoreCase("all")) {
+                            meta.addItemFlags(ItemFlag.values());
+                            break;
+                        } else {
+                            try {
+                                meta.addItemFlags(ItemFlag.valueOf(flag.toUpperCase()));
+                            } catch (IllegalArgumentException ignored) {
+                            }
                         }
                     }
                 }
             }
+            if (!lore.isEmpty()) {
+                meta.setLore(lore);
+            }
+
+            item.setItemMeta(meta);
         }
 
-        if (!lore.isEmpty()) {
-            meta.setLore(lore);
-        }
-
-        stack.setItemMeta(meta);
-        return stack;
+        return item;
     }
+
 
     public static Sound getSoundSafe(String name) {
         try {

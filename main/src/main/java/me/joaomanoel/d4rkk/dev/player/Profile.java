@@ -397,7 +397,7 @@ public class Profile {
   }
 
   public void addCoins(String table, double amount) {
-    if (Core.minigame.equals("The Pit") || Core.minigame.equals("The Bridge") || Core.minigame.equals("Bed Wars") || Core.minigame.equals("Block Sumo")) {
+    if (Core.minigame.equals("The Pit") || Core.minigame.equals("The Bridge") || Core.minigame.equals("Bed Wars") || Core.minigame.equals("Block Sumo") || Core.minigame.equals("Duels")) {
       this.getDataContainer(table, "coins").addDouble(amount);
       return;
     }

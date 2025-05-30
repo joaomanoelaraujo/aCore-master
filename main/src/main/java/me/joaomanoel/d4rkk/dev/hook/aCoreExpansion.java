@@ -129,7 +129,7 @@ public class aCoreExpansion extends PlaceholderExpansion {
       } else if (value.equals("coins")) {
         return StringUtils.formatNumber(profile.getCoins(table));
       }
-    } else if (params.startsWith("Duels_")) {
+    } else if (params.toLowerCase().startsWith("duels_")) {
       String table = "aCoreDuels";
       String value = params.replace("Duels_", "");
       if (value.equals("kills") || value.equals("deaths") || value.equals("games") || value.equals("points") || value.equals("wins")) {

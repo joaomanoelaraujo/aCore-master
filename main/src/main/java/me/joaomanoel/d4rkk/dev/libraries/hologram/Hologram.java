@@ -82,10 +82,13 @@ public class Hologram implements Listener {
     public static Hologram getHologram(Entity entity) {
         return INSTANCES.stream()
                 .filter(h -> h.lines.stream()
-                        .anyMatch(line -> line.getEntity().equals(entity)))
+                        .filter(line -> line.getEntity() != null)
+                        .anyMatch(line -> line.getEntity().equals(entity))
+                )
                 .findFirst()
                 .orElse(null);
     }
+
 
     /**
      * Retorna a linha de holograma que corresponde a essa ArmorStand, ou null.
