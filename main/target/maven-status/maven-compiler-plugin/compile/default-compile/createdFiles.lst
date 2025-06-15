@@ -282,7 +282,6 @@ me\joaomanoel\d4rkk\dev\utils\particles\ReflectionUtils$DataType.class
 me\joaomanoel\d4rkk\dev\Achievements.class
 me\joaomanoel\d4rkk\dev\libraries\menu\UpdatablePlayerPagedMenu.class
 me\joaomanoel\d4rkk\dev\titles\TitleLoader.class
-me\joaomanoel\d4rkk\dev\utils\PacketAction.class
 com\comphenix\packetwrapper\v15\WrapperPlayServerRelEntityMoveLook.class
 me\joaomanoel\d4rkk\dev\menus\profile\MenuStatistics.class
 com\comphenix\packetwrapper\WrapperPlayServerUpdateHealth.class

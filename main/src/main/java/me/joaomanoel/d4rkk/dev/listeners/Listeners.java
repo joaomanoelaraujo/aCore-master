@@ -12,6 +12,7 @@ import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.npc.NPCLibrary;
 import me.joaomanoel.d4rkk.dev.menus.others.MenuOtherProfile;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.enums.ChatMention;
@@ -48,6 +49,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.spigotmc.WatchdogThread;
 
@@ -107,6 +109,12 @@ public class Listeners implements Listener {
 //    if (firstTimePlayers.remove(playerId)) {
 //      handleFirstTimePlayer(player);
 //    }
+
+/*    ItemStack item = BukkitUtils.deserializeItemStack(Material.WRITTEN_BOOK.name() + " : 1");
+    BookMeta meta = (BookMeta) item.getItemMeta();
+    meta.addPage("SEXO");
+    item.setItemMeta(meta);
+    Bukkit.getScheduler().runTaskLater(Core.getInstance(), ()-> BukkitUtils.openBook(player, item), 20L);*/
   }
 
   //todo: fazer futuramente quando tiver diversidade de linguagens feitas.

@@ -2,8 +2,20 @@ package me.joaomanoel.d4rkk.dev.nms;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import de.tr7zw.nbtapi.*;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
+import net.md_5.bungee.chat.ComponentSerializer;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
+import net.minecraft.network.chat.IChatBaseComponent;
+import net.minecraft.server.MinecraftServer;
 import org.bukkit.*;
+import org.bukkit.craftbukkit.v1_20_R4.CraftServer;
+import org.bukkit.craftbukkit.v1_20_R4.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_20_R4.inventory.CraftMetaBook;
+import org.bukkit.craftbukkit.v1_20_R4.inventory.CraftMetaBookSigned;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
@@ -11,6 +23,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.*;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -446,6 +459,25 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
     }
 
     @Override
+    public ItemStack applyNTBTag(ItemStack item, List<Object> lines) {
+        try {
+            List<Object> pages = new ArrayList<>();
+            BookMeta meta = (BookMeta) item.getItemMeta();
+            Field field = meta.getClass().getDeclaredField("pages");
+            field.setAccessible(true);
+            IChatBaseComponent page = IChatBaseComponent.ChatSerializer.a((String) lines.get(0), getRegistryProvider());
+            pages.add(page);
+            field.set(meta, pages);
+
+            item.setItemMeta(meta);
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public void putGlowEnchantment(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         meta.addEnchant(Enchantment.LURE, 1, true);
@@ -453,4 +485,21 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         item.setItemMeta(meta);
     }
 
+
+    public static HolderLookup.a getRegistryProvider() {
+        MinecraftServer server = ((CraftServer) Bukkit.getServer()).getServer();
+        try {
+            Method registryAccessMethod = MinecraftServer.class.getDeclaredMethod("registryAccess");
+            registryAccessMethod.setAccessible(true);
+
+            Object registryAccess = registryAccessMethod.invoke(server);
+            if (registryAccess instanceof HolderLookup.a provider) {
+                return provider;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

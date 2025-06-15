@@ -12,6 +12,7 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.chat.ComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -83,7 +84,7 @@ public class FakeManager {
     meta.setAuthor("Nys");
     meta.setTitle("Escolher cargo");
     book.setItemMeta(meta);
-/*    book = BukkitUtils.setNBTList(book, "pages", Collections.singletonList(ComponentSerializer.toString(FAKE_ROLES)));*/
+    book = BukkitUtils.applyNTBTag(book, Collections.singletonList(ComponentSerializer.toString(FAKE_ROLES)));
     BukkitUtils.openBook(player, book);
   }
   
@@ -92,8 +93,9 @@ public class FakeManager {
     BookMeta meta = (BookMeta) book.getItemMeta();
     meta.setAuthor("Nys");
     meta.setTitle("Escolher cargo");
+    book = BukkitUtils.applyNTBTag(book, Collections.singletonList(ComponentSerializer.toString(FAKE_SKINS).replace("{role}", role)));
+    meta.addPage();
     book.setItemMeta(meta);
-/*    book = BukkitUtils.setNBTList(book, "pages", Collections.singletonList(ComponentSerializer.toString(FAKE_SKINS).replace("{role}", role)));*/
     BukkitUtils.openBook(player, book);
   }
   
@@ -101,6 +103,7 @@ public class FakeManager {
     if (!isBungeeSide()) {
       player.kickPlayer(StringUtils.formatColors(CONFIG.getString("fake.kick-apply")).replace("\\n", "\n"));
     }
+
     fakeNames.put(player.getName(), fakeName);
     fakeRoles.put(player.getName(), Role.getRoleByName(role));
     fakeSkins.put(player.getName(), skin);
