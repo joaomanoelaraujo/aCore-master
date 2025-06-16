@@ -109,12 +109,6 @@ public class Listeners implements Listener {
 //    if (firstTimePlayers.remove(playerId)) {
 //      handleFirstTimePlayer(player);
 //    }
-
-/*    ItemStack item = BukkitUtils.deserializeItemStack(Material.WRITTEN_BOOK.name() + " : 1");
-    BookMeta meta = (BookMeta) item.getItemMeta();
-    meta.addPage("SEXO");
-    item.setItemMeta(meta);
-    Bukkit.getScheduler().runTaskLater(Core.getInstance(), ()-> BukkitUtils.openBook(player, item), 20L);*/
   }
 
   //todo: fazer futuramente quando tiver diversidade de linguagens feitas.
