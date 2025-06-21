@@ -66,6 +66,7 @@ me\joaomanoel\d4rkk\dev\database\data\container\BoostersContainer.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\TeleportHereCommand.class
 me\joaomanoel\d4rkk\dev\player\events\ProfileChangePlayerVisibilityEvent.class
 me\joaomanoel\d4rkk\dev\hook\protocollib\fake\FakeAdapter_1_8_R3.class
+me\joaomanoel\d4rkk\dev\cmd\newcommands\BloodCommand.class
 me\joaomanoel\d4rkk\dev\servers\balancer\BaseBalancer.class
 me\joaomanoel\d4rkk\dev\database\exception\ProfileLoadException.class
 me\joaomanoel\d4rkk\dev\utils\queue\Queue$1.class
@@ -75,6 +76,7 @@ me\joaomanoel\d4rkk\dev\titles\TitleManager.class
 me\joaomanoel\d4rkk\dev\achievements\types\ThePitAchievement$ThePitReward.class
 com\comphenix\packetwrapper\WrapperPlayClientWindowClick.class
 me\joaomanoel\d4rkk\dev\libraries\menu\Menu.class
+me\joaomanoel\d4rkk\dev\menus\others\MenuCosmeticNoback.class
 me\joaomanoel\d4rkk\dev\utils\CubeID.class
 me\joaomanoel\d4rkk\dev\utils\Validator.class
 me\joaomanoel\d4rkk\dev\achievements\Achievement.class
@@ -245,6 +247,7 @@ org\json\simple\parser\ContainerFactory.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityHeadRotation.class
 com\comphenix\packetwrapper\WrapperPlayClientEntityAction.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\TellCommand.class
+me\joaomanoel\d4rkk\dev\cmd\newcommands\CsmCommand.class
 me\joaomanoel\d4rkk\dev\menus\MenuDeliveries.class
 com\comphenix\packetwrapper\WrapperStatusClientPing.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\ClearChatCommand.class

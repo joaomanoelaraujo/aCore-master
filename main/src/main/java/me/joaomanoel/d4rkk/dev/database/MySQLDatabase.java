@@ -127,7 +127,7 @@ public class MySQLDatabase extends Database {
     
     return preference;
   }
-  
+
   @Override
   public List<String[]> getLeaderBoard(String table, String... columns) {
     List<String[]> result = new ArrayList<>();
@@ -136,23 +136,50 @@ public class MySQLDatabase extends Database {
       add.append("`").append(column).append("` + ");
       select.append("`").append(column).append("`, ");
     }
-    
-    try (CachedRowSet rs = query("SELECT " + select + "`name` FROM `" + table + "` ORDER BY " + add + " 0 DESC LIMIT 100")) {
+
+    boolean showRole = Core.getInstance()
+            .getConfig()
+            .getBoolean("leaderboard.show-role", true);
+
+    String sql = "SELECT " + select + "`name` FROM `" + table +
+            "` ORDER BY " + add + " 0 DESC LIMIT 100";
+
+    try (CachedRowSet rs = query(sql)) {
       if (rs != null) {
         rs.beforeFirst();
         while (rs.next()) {
-          long count = 0;
-          for (String column : columns) {
-            count += rs.getLong(column);
+          long count   = 0;
+          String raw   = rs.getString("name");
+          for (String col : columns) {
+            count += rs.getLong(col);
           }
-          result.add(new String[]{Role.getColored(rs.getString("name"), true), StringUtils.formatNumber(count)});
+
+          String displayName;
+          if (showRole) {
+            displayName = Role.getPrefixed(raw);
+          } else {
+            Role roleObj = Role.getRoleByName(
+                    Database.getInstance()
+                            .getRankAndName(raw)
+                            .split(" : ")[0]
+            );
+            String colorOnly = roleObj != null
+                    ? StringUtils.getLastColor(roleObj.getPrefix())
+                    : "";
+            displayName = colorOnly + raw;
+          }
+
+          result.add(new String[]{
+                  displayName,
+                  StringUtils.formatNumber(count)
+          });
         }
       }
-    } catch (SQLException ignore) {
-    }
-    
+    } catch (SQLException ignore) {}
+
     return result;
   }
+
   
   @Override
   public void close() {

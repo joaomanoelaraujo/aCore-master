@@ -144,29 +144,82 @@ public class MongoDBDatabase extends Database {
     
     return preference;
   }
-  
+
   @Override
   public List<String[]> getLeaderBoard(String table, String... columns) {
     List<String[]> result = new ArrayList<>();
-    String name = columns[0].equals("insanekills") ? "totalkills" : columns[0].equals("insanewins") ? "totalwins" : columns[0].equals("insanepoints") ? "totalpoints" : columns[0];
+    Map<String, Long> totals = new HashMap<>();
+    Map<String, String> roles  = new HashMap<>();
+
+    // lê do config.yml se mostra o cargo completo ou só a cor
+    boolean showRole = Core.getInstance()
+            .getConfig()
+            .getBoolean("leaderboard.show-role", true);
+
     try {
       MongoCursor<Document> cursor = this.executor
-          .submit(() -> this.collection.find().projection(fields(include("_id", "role", table + "." + name))).sort(new BasicDBObject(table + "." + name, -1)).limit(10).cursor())
-          .get();
+              .submit(() -> this.collection.find().cursor())
+              .get();
+
       while (cursor.hasNext()) {
-        Document document = cursor.next();
-        Document subDocument = document.get(table, Document.class);
-        long count = (subDocument == null || !subDocument.containsKey(name) ? 0L : Long.parseLong(subDocument.get(name).toString()));
-        result
-            .add(new String[]{StringUtils.getLastColor(Role.getRoleByName(document.getString("role")).getPrefix()) +
-                document.getString("_id"), StringUtils.formatNumber(count)});
+        Document doc    = cursor.next();
+        String   player = doc.getString("_id");
+        String   role   = doc.getString("role");
+
+        Document sub = doc.get(table, Document.class);
+        long sum = 0;
+        if (sub != null) {
+          for (String col : columns) {
+            Object v = sub.get(col);
+            if (v != null) {
+              try { sum += Long.parseLong(v.toString()); }
+              catch (NumberFormatException ignored) {}
+            }
+          }
+        }
+
+        if (sum > 0) {
+          totals.put(player, sum);
+          roles.put(player, role);
+        }
       }
       cursor.close();
-    } catch (Exception ignore) {}
-    
+
+      totals.entrySet().stream()
+              .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
+              .limit(10)
+              .forEach(e -> {
+                String name  = e.getKey();
+                long   value = e.getValue();
+
+                String displayName;
+                if (showRole) {
+                  // exibe [Master]Name
+                  displayName = Role.getPrefixed(name);
+                } else {
+                  // exibe só a cor do cargo + name
+                  Role roleObj = Role.getRoleByName(roles.get(name));
+                  String colorOnly = roleObj != null
+                          ? StringUtils.getLastColor(roleObj.getPrefix())
+                          : "";
+                  displayName = colorOnly + name;
+                }
+
+                result.add(new String[]{
+                        displayName,
+                        StringUtils.formatNumber(value)
+                });
+              });
+
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+
     return result;
   }
-  
+
+
+
   @Override
   public void close() {
     this.executor.shutdownNow().forEach(Runnable::run);

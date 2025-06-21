@@ -12,10 +12,10 @@ import java.util.Map;
 
 @DataTableInfo(
     name = "aCoreDuels",
-    create = "CREATE TABLE IF NOT EXISTS `aCoreDuels` (`name` VARCHAR(32),`uhckills` LONG, `uhcdeaths` LONG, `uhcwins` LONG, `uhcgames` LONG, `bowkills` LONG, `bowdeaths` LONG, `bowwins` LONG, `bowgames` LONG, `classickills` LONG, `classicdeaths` LONG, `classicwins` LONG, `classicgames` LONG, `opkills` LONG, `opdeaths` LONG, `opwins` LONG, `opgames` LONG, `assists` LONG, `experience` LONG, `level` LONG, `monthlykills` LONG, `monthlydeaths` LONG, `monthlyassists` LONG, `monthlywins` LONG, `month` TEXT, `coins` DOUBLE, `laststreak` LONG, `killstreak` LONG, `kitconfig` TEXT, `lastmap` LONG, `cosmetics` TEXT, `selected` TEXT, PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
+    create = "CREATE TABLE IF NOT EXISTS `aCoreDuels` (`name` VARCHAR(32),`uhckills` LONG, `uhcdeaths` LONG, `uhcwins` LONG, `uhcgames` LONG, `bowkills` LONG, `bowdeaths` LONG, `bowwins` LONG, `bowgames` LONG, `classickills` LONG, `classicdeaths` LONG, `classicwins` LONG, `classicgames` LONG, `opkills` LONG, `opdeaths` LONG, `opwins` LONG, `opgames` LONG, `sumokills` LONG, `sumodeaths` LONG, `sumowins` LONG, `sumogames` LONG, `bedfightkills` LONG, `bedfightdeaths` LONG, `bedfightwins` LONG, `bedfightgames` LONG, `assists` LONG, `experience` LONG, `level` LONG, `monthlykills` LONG, `monthlydeaths` LONG, `monthlyassists` LONG, `monthlywins` LONG, `month` TEXT, `coins` DOUBLE, `laststreak` LONG, `bestkillstreak` LONG, `killstreak` LONG, `kitconfig` TEXT, `lastmap` LONG, `cosmetics` TEXT, `selected` TEXT, PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
     select = "SELECT * FROM `aCoreDuels` WHERE LOWER(`name`) = ?",
-    insert = "INSERT INTO `aCoreDuels` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    update = "UPDATE `aCoreDuels` SET `uhckills` = ?, `uhcdeaths` = ?, `uhcwins` = ?, `uhcgames` = ?, `bowkills` = ?, `bowdeaths` = ?, `bowwins` = ?, `bowgames` = ?, `classickills` = ?, `classicdeaths` = ?, `classicwins` = ?, `classicgames` = ?, `opkills` = ?, `opdeaths` = ?, `opwins` = ?, `opgames` = ?, `assists` = ?, `experience` = ?, `level` = ?, `monthlykills` = ?, `montlhydeaths` = ?, `monthlyassists` = ?, `monthlywins` = ?, `month` = ?, `coins` = ?, `laststreak` = ?, `killstreak` = ?, `kitconfig` = ?, `lastmap` = ?, `cosmetics` = ?, `selected` = ? WHERE LOWER(`name`) = ?"
+    insert = "INSERT INTO `aCoreDuels` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    update = "UPDATE `aCoreDuels` SET `uhckills` = ?, `uhcdeaths` = ?, `uhcwins` = ?, `uhcgames` = ?, `bowkills` = ?, `bowdeaths` = ?, `bowwins` = ?, `bowgames` = ?, `classickills` = ?, `classicdeaths` = ?, `classicwins` = ?, `classicgames` = ?, `opkills` = ?, `opdeaths` = ?, `opwins` = ?, `opgames` = ?, `sumokills` = ?, `sumodeaths` = ?, `sumowins` = ?, `sumogames` = ?, `bedfightkills` = ?, `bedfightdeaths` = ?, `bedfightwins` = ?, `bedfightgames` = ?, `assists` = ?, `experience` = ?, `level` = ?, `monthlykills` = ?, `montlhydeaths` = ?, `monthlyassists` = ?, `monthlywins` = ?, `month` = ?, `coins` = ?, `laststreak` = ?, `killstreak` = ?, `bestkillstreak` = ?, `kitconfig` = ?, `lastmap` = ?, `cosmetics` = ?, `selected` = ? WHERE LOWER(`name`) = ?"
 )
 public class DuelsTable extends DataTable {
   
@@ -31,7 +31,7 @@ public class DuelsTable extends DataTable {
   
   public Map<String, DataContainer> getDefaultValues() {
     Map<String, DataContainer> defaultValues = new LinkedHashMap<>();
-    for (String key : new String[]{"uhc","bow", "classic", "op"}) {
+    for (String key : new String[]{"uhc","bow", "classic", "op", "sumo", "bedfight"}) {
       defaultValues.put(key + "kills", new DataContainer(0L));
       defaultValues.put(key + "deaths", new DataContainer(0L));
       defaultValues.put(key + "games", new DataContainer(0L));
@@ -49,6 +49,7 @@ public class DuelsTable extends DataTable {
     defaultValues.put("coins", new DataContainer(0L));
     defaultValues.put("laststreak", new DataContainer(System.currentTimeMillis()));
     defaultValues.put("killstreak", new DataContainer(0L));
+    defaultValues.put("bestkillstreak", new DataContainer(0L));
     defaultValues.put("kitconfig", new DataContainer("{}"));
     defaultValues.put("lastmap", new DataContainer(0L));
     defaultValues.put("cosmetics", new DataContainer("{}"));

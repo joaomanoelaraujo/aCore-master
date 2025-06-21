@@ -21,7 +21,12 @@ public class aCoreExpansion extends PlaceholderExpansion {
   public boolean canRegister() {
     return true;
   }
-  
+
+  @Override
+  public boolean persist() {
+    return true;
+  }
+
   @Override
   public String getAuthor() {
     return "d4rkk";
@@ -132,18 +137,24 @@ public class aCoreExpansion extends PlaceholderExpansion {
     } else if (params.toLowerCase().startsWith("duels_")) {
       String table = "aCoreDuels";
       String value = params.replace("Duels_", "");
-      if (value.equals("kills") || value.equals("deaths") || value.equals("games") || value.equals("points") || value.equals("wins")) {
-        return StringUtils.formatNumber(profile.getStats(table, "uhc" + value, "bow" + value, "classic" + value, "op" + value));
+      if (value.equals("kills") || value.equals("deaths") || value.equals("games") || value.equals("wins")) {
+        return StringUtils.formatNumber(profile.getStats(table, "uhc" + value, "bow" + value, "classic" + value, "op" + value, "sumo" + value, "bedfight" + value));
       } else if (value.equals("uhckills") || value.equals("uhcdeaths") || value.equals("uhcgames") || value.equals("uhcwins")) {
         return StringUtils.formatNumber(profile.getStats(table, value));
       } else if (value.equals("bowkills") || value.equals("bowdeaths") || value.equals("bowgames") || value.equals("bowwins")) {
+        return StringUtils.formatNumber(profile.getStats(table, value));
+      } else if (value.equals("sumokills") || value.equals("sumodeaths") || value.equals("sumogames") || value.equals("sumowins")) {
+        return StringUtils.formatNumber(profile.getStats(table, value));
+      } else if (value.equals("bedfightkills") || value.equals("bedfightdeaths") || value.equals("bedfightgames") || value.equals("bedfightwins")) {
         return StringUtils.formatNumber(profile.getStats(table, value));
       } else if (value.equals("classickills") || value.equals("classicdeaths") || value.equals("classicgames") || value.equals("classicwins")) {
         return StringUtils.formatNumber(profile.getStats(table, value));
       } else if (value.equals("opkills") || value.equals("opdeaths") || value.equals("opgames") || value.equals("opwins")) {
         return StringUtils.formatNumber(profile.getStats(table, value));
-      } else if (value.equals("winstreak")) {
+      } else if (value.equals("killstreak")) {
         return StringUtils.formatNumber(profile.getDailyStats(table, "laststreak", value));
+      } else if (value.equals("bestkillstreak")) {
+        return StringUtils.formatNumber(profile.getStats("aCoreDuels", "bestkillstreak"));
       } else if (value.equals("coins")) {
         return StringUtils.formatNumber(profile.getCoins(table));
       }

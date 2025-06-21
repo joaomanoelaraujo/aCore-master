@@ -31,6 +31,8 @@ public abstract class Commands extends Command {
     new CoinsCommand();
     new ShopCommand();
     new ClearChatCommand();
+    new CsmCommand();
+    new BloodCommand();
     new FlyCommand();
     new TeleportCommand();
     new GameModeCommand();
