@@ -3,6 +3,8 @@ package me.joaomanoel.d4rkk.dev.nms;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.List;
+
 public interface BukkitUtilsItf {
 
     void openBook(Player player, ItemStack book);
@@ -10,6 +12,7 @@ public interface BukkitUtilsItf {
     String serializeItemStack(ItemStack item);
     ItemStack putProfileOnSkull(Player player, ItemStack head);
     ItemStack putProfileOnSkull(Object profile, ItemStack head);
+    ItemStack applyNTBTag(ItemStack item, List<Object> lines);
     void putGlowEnchantment(ItemStack item);
 
 }

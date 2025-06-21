@@ -7,6 +7,8 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.List;
+
 import static java.lang.Double.parseDouble;
 import static java.lang.Float.parseFloat;
 
@@ -97,6 +99,10 @@ public class BukkitUtils {
    */
   public static void putGlowEnchantment(ItemStack item) {
     instance.putGlowEnchantment(item);
+  }
+
+  public static ItemStack applyNTBTag(ItemStack item, List<Object> lines){
+    return instance.applyNTBTag(item, lines);
   }
 
   /**

@@ -3,7 +3,13 @@ package me.joaomanoel.d4rkk.dev.nms;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.network.chat.IChatBaseComponent;
+import net.minecraft.server.MinecraftServer;
 import org.bukkit.*;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.craftbukkit.v1_20_R4.CraftServer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
@@ -11,10 +17,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.*;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -32,7 +39,6 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
 
-import java.lang.reflect.Field;
 import java.util.*;
 
 public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
@@ -56,7 +62,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         // 1) separa nome/base do data legada
         String upper = name.toUpperCase();
         String[] parts = upper.split(":", 2);
-        String base  = parts[0].trim();
+        String base = parts[0].trim();
         String subid = parts.length > 1 ? parts[1].trim() : null;
 
         // 2) terracota colorida (ID 159)
@@ -65,7 +71,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
                 return switch (subid) {
                     case "13" -> Material.GREEN_TERRACOTTA;
                     case "14" -> Material.RED_TERRACOTTA;
-                    default  -> Material.TERRACOTTA;
+                    default -> Material.TERRACOTTA;
                 };
             }
             return Material.TERRACOTTA;
@@ -75,7 +81,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         if ("373".equals(base)) {
             if (subid != null) {
                 int d = Integer.parseInt(subid);
-                boolean splash   = (d & 0x4000) != 0;  // flag 16384
+                boolean splash = (d & 0x4000) != 0;  // flag 16384
                 // já mapeamos o material, o meta virá depois
                 return splash ? Material.SPLASH_POTION : Material.POTION;
             }
@@ -168,38 +174,42 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
             return new ItemStack(Material.BARRIER);
         }
 
-        String[] matSplit    = parts[0].split(":", 2);
+        String[] matSplit = parts[0].split(":", 2);
         String materialToken = matSplit[0].trim();
-        short  data          = 0;
+        short data = 0;
         if (matSplit.length > 1) {
-            try { data = Short.parseShort(matSplit[1].trim()); }
-            catch (NumberFormatException ignore) {}
+            try {
+                data = Short.parseShort(matSplit[1].trim());
+            } catch (NumberFormatException ignore) {
+            }
         }
         Material mat = resolveMaterial(materialToken);
 
         int amount = 1;
-        try { amount = Integer.parseInt(parts[1].trim()); }
-        catch (NumberFormatException ignore) {}
+        try {
+            amount = Integer.parseInt(parts[1].trim());
+        } catch (NumberFormatException ignore) {
+        }
 
         ItemStack item;
         if (mat == Material.POTION
                 || mat == Material.SPLASH_POTION
                 || mat == Material.LINGERING_POTION) {
 
-            boolean splash    = (mat == Material.SPLASH_POTION)
+            boolean splash = (mat == Material.SPLASH_POTION)
                     || (mat == Material.POTION && (data & 0x4000) != 0);
             Material potionMat = splash ? Material.SPLASH_POTION : Material.POTION;
             item = new ItemStack(potionMat, amount);
 
             PotionMeta pm = (PotionMeta) item.getItemMeta();
-            boolean upgraded  = (data & 0x20)   != 0;
+            boolean upgraded = (data & 0x20) != 0;
             boolean extended = (data & 0x2000) != 0;
-            int     baseId   = data & 0xF;
+            int baseId = data & 0xF;
 
             PotionType baseType = switch (baseId) {
-                case 1  -> PotionType.REGENERATION;
-                case 2  -> PotionType.SWIFTNESS;
-                case 9  -> PotionType.STRENGTH;
+                case 1 -> PotionType.REGENERATION;
+                case 2 -> PotionType.SWIFTNESS;
+                case 9 -> PotionType.STRENGTH;
                 case 11 -> PotionType.AWKWARD;
                 default -> PotionType.NIGHT_VISION;
             };
@@ -207,19 +217,19 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
             PotionType finalType = baseType;
             if (upgraded) {
                 finalType = switch (baseType) {
-                    case REGENERATION     -> PotionType.STRONG_REGENERATION;
-                    case SWIFTNESS     -> PotionType.STRONG_SWIFTNESS;
-                    case STRENGTH  -> PotionType.STRONG_STRENGTH;
-                    case AWKWARD      -> PotionType.AWKWARD;
-                    default        -> baseType;
+                    case REGENERATION -> PotionType.STRONG_REGENERATION;
+                    case SWIFTNESS -> PotionType.STRONG_SWIFTNESS;
+                    case STRENGTH -> PotionType.STRONG_STRENGTH;
+                    case AWKWARD -> PotionType.AWKWARD;
+                    default -> baseType;
                 };
             } else if (extended) {
                 finalType = switch (baseType) {
-                    case REGENERATION     -> PotionType.LONG_REGENERATION;
-                    case SWIFTNESS     -> PotionType.LONG_SWIFTNESS;
-                    case STRENGTH  -> PotionType.LONG_STRENGTH;
-                    case AWKWARD      -> PotionType.AWKWARD;
-                    default        -> baseType;
+                    case REGENERATION -> PotionType.LONG_REGENERATION;
+                    case SWIFTNESS -> PotionType.LONG_SWIFTNESS;
+                    case STRENGTH -> PotionType.LONG_STRENGTH;
+                    case AWKWARD -> PotionType.AWKWARD;
+                    default -> baseType;
                 };
             }
 
@@ -240,11 +250,11 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
             String[] split = raw.split(" : ");
             ItemMeta meta = item.getItemMeta();
 
-            BookMeta               book           = meta instanceof BookMeta               ? (BookMeta)               meta : null;
-            SkullMeta              skull          = meta instanceof SkullMeta              ? (SkullMeta)              meta : null;
-            PotionMeta             potion         = meta instanceof PotionMeta             ? (PotionMeta)             meta : null;
-            FireworkEffectMeta     effect         = meta instanceof FireworkEffectMeta     ? (FireworkEffectMeta)     meta : null;
-            LeatherArmorMeta       armor          = meta instanceof LeatherArmorMeta       ? (LeatherArmorMeta)       meta : null;
+            BookMeta book = meta instanceof BookMeta ? (BookMeta) meta : null;
+            SkullMeta skull = meta instanceof SkullMeta ? (SkullMeta) meta : null;
+            PotionMeta potion = meta instanceof PotionMeta ? (PotionMeta) meta : null;
+            FireworkEffectMeta effect = meta instanceof FireworkEffectMeta ? (FireworkEffectMeta) meta : null;
+            LeatherArmorMeta armor = meta instanceof LeatherArmorMeta ? (LeatherArmorMeta) meta : null;
             EnchantmentStorageMeta enchantment = meta instanceof EnchantmentStorageMeta ? (EnchantmentStorageMeta) meta : null;
 
             List<String> lore = new ArrayList<>();
@@ -311,16 +321,14 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
                     }
                 } else if (opt.startsWith("hide>")) {
                     String[] flags = opt.split(">")[1].split("\n");
+                    if (flags[0].equalsIgnoreCase("all")) {
+                        meta.addItemFlags(ItemFlag.values());
+                        hideAttributes(meta);
+                        break;
+                    }
+
                     for (String flag : flags) {
-                        if (flag.equalsIgnoreCase("all")) {
-                            meta.addItemFlags(ItemFlag.values());
-                            break;
-                        } else {
-                            try {
-                                meta.addItemFlags(ItemFlag.valueOf(flag.toUpperCase()));
-                            } catch (IllegalArgumentException ignored) {
-                            }
-                        }
+                        meta.addItemFlags(ItemFlag.valueOf(flag.toUpperCase()));
                     }
                 }
             }
@@ -334,6 +342,12 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         return item;
     }
 
+    public void hideAttributes(ItemMeta meta) {
+        if (meta == null) return;
+        AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "dummy", 0, AttributeModifier.Operation.ADD_NUMBER);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, modifier);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+    }
 
     public static Sound getSoundSafe(String name) {
         try {
@@ -446,6 +460,25 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
     }
 
     @Override
+    public ItemStack applyNTBTag(ItemStack item, List<Object> lines) {
+        try {
+            List<Object> pages = new ArrayList<>();
+            BookMeta meta = (BookMeta) item.getItemMeta();
+            Field field = meta.getClass().getDeclaredField("pages");
+            field.setAccessible(true);
+            IChatBaseComponent page = IChatBaseComponent.ChatSerializer.a((String) lines.get(0), getRegistryProvider());
+            pages.add(page);
+            field.set(meta, pages);
+
+            item.setItemMeta(meta);
+            return item;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
     public void putGlowEnchantment(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         meta.addEnchant(Enchantment.LURE, 1, true);
@@ -453,4 +486,21 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         item.setItemMeta(meta);
     }
 
+
+    public static HolderLookup.a getRegistryProvider() {
+        MinecraftServer server = ((CraftServer) Bukkit.getServer()).getServer();
+        try {
+            Method registryAccessMethod = MinecraftServer.class.getDeclaredMethod("registryAccess");
+            registryAccessMethod.setAccessible(true);
+
+            Object registryAccess = registryAccessMethod.invoke(server);
+            if (registryAccess instanceof HolderLookup.a provider) {
+                return provider;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

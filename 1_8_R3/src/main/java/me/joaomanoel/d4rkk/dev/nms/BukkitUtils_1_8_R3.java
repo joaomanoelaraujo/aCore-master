@@ -286,6 +286,19 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
     }
 
     @Override
+    public ItemStack applyNTBTag(ItemStack item, List<Object> lines) {
+        Object nmsStack = asNMSCopy(item);
+        Object compound = getTag.invoke(nmsStack);
+        Object compoundList = constructorTagList.newInstance();
+        for (Object string : lines) {
+            addList.invoke(compoundList, constructorTagString.newInstance(string));
+        }
+
+        setCompound.invoke(compound, "pages", compoundList);
+        return asCraftMirror(nmsStack);
+    }
+
+    @Override
     public void putGlowEnchantment(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         meta.addEnchant(Enchantment.LURE, 1, true);
