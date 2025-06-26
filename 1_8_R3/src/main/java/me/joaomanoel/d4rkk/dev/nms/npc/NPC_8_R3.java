@@ -15,6 +15,8 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NPC_8_R3 extends EntityPlayer implements NpcEntity {
 
@@ -22,6 +24,7 @@ public class NPC_8_R3 extends EntityPlayer implements NpcEntity {
     private final NMS_Interface nms;
     private boolean copySkin;
     private boolean showNick;
+    private final Map<String,String> data = new HashMap<>();
 
     public NPC_8_R3(Location location, NMS_Interface nms, GameProfile gp) {
         super(MinecraftServer.getServer(), ((CraftWorld) location.getWorld()).getHandle(), gp, new PlayerInteractManager(((CraftWorld) location.getWorld()).getHandle()));
@@ -31,6 +34,27 @@ public class NPC_8_R3 extends EntityPlayer implements NpcEntity {
         this.showNick = true;
         this.getBukkitEntity().setRemoveWhenFarAway(false);
         this.nms.addToWorld(this.location.getWorld(), getBukkitEntity(), CreatureSpawnEvent.SpawnReason.CUSTOM);
+    }
+
+    public NPC_8_R3 withData(String key, String value) {
+        data.put(key, value);
+        return this;
+    }
+
+    @Override
+    public NpcEntity setData(String key, String value) {
+        data.put(key, value);
+        return this;
+    }
+
+    @Override
+    public boolean hasData(String key) {
+        return data.containsKey(key);
+    }
+
+    @Override
+    public String getData(String key) {
+        return data.get(key);
     }
 
     @Override
@@ -114,7 +138,7 @@ public class NPC_8_R3 extends EntityPlayer implements NpcEntity {
 
     @Override
     public void interactAtPlayer(Player player) {
-        Bukkit.getPluginManager().callEvent(new PlayerInteractAtNPCEvent(player, this));
+        Bukkit.getPluginManager().callEvent(new PlayerInteractAtNpcEvent(player, this));
     }
 
     @Override

@@ -24,7 +24,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class NPC_20_R2 extends EntityPlayer implements NpcEntity {
@@ -33,6 +35,7 @@ public class NPC_20_R2 extends EntityPlayer implements NpcEntity {
     private final Location location;
     private boolean copySkin;
     private boolean showNick;
+    private final Map<String,String> data = new HashMap<>();
 
     public NPC_20_R2(NMS_Interface nms, Location location, GameProfile gp) {
         super(MinecraftServer.getServer(), ((CraftWorld) Objects.requireNonNull(location.getWorld())).getHandle(), gp, ClientInformation.a());
@@ -119,7 +122,21 @@ public class NPC_20_R2 extends EntityPlayer implements NpcEntity {
             throw new RuntimeException(e);
         }
     }
+    @Override
+    public NpcEntity setData(String key, String value) {
+        data.put(key, value);
+        return this;
+    }
 
+    @Override
+    public boolean hasData(String key) {
+        return data.containsKey(key);
+    }
+
+    @Override
+    public String getData(String key) {
+        return data.get(key);
+    }
     @Override
     public void setPlayerCopySkin(boolean playerCopySkin) {
         this.copySkin = playerCopySkin;
@@ -127,7 +144,7 @@ public class NPC_20_R2 extends EntityPlayer implements NpcEntity {
 
     @Override
     public void interactAtPlayer(Player player) {
-        Bukkit.getPluginManager().callEvent(new PlayerInteractAtNPCEvent(player, this));
+        Bukkit.getPluginManager().callEvent(new PlayerInteractAtNpcEvent(player, this));
     }
 
     @Override

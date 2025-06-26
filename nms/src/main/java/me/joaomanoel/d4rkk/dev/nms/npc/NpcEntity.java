@@ -19,5 +19,7 @@ public interface NpcEntity {
     void interactAtPlayer(Player player);
     boolean isCopySkin();
     Player getPlayer();
-
+    NpcEntity setData(String key, String value);
+    boolean hasData(String key);
+    String getData(String key);
 }
