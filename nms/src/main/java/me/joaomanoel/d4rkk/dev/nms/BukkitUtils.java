@@ -19,8 +19,14 @@ public class BukkitUtils {
 
   private static BukkitUtilsItf instance;
 
+
+
   public static void setInstance(BukkitUtilsItf instance) {
     BukkitUtils.instance = instance;
+  }
+
+  public static void displayParticle(Player viewer, String particleName, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count) {
+    instance.displayParticle(viewer, particleName, isFar, x, y, z, offSetX, offSetY, offSetZ, speed, count);
   }
 
   public static void openBook(Player player, ItemStack book) {

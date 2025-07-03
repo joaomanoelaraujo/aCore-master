@@ -30,6 +30,7 @@ import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import me.joaomanoel.d4rkk.dev.utils.TagUtils;
 import me.joaomanoel.d4rkk.dev.utils.aUpdater;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
+import me.joaomanoel.d4rkk.dev.utils.particles.ParticleEffect;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -37,6 +38,7 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
@@ -109,6 +111,11 @@ public class Listeners implements Listener {
 //    if (firstTimePlayers.remove(playerId)) {
 //      handleFirstTimePlayer(player);
 //    }
+
+    Location location = player.getLocation();
+    Bukkit.getScheduler().runTaskTimer(Core.getInstance(), ()-> {
+      ParticleEffect.HEART.display(player, false, (float) location.getX(), (float) location.getY(), (float) location.getZ(), 0,0,0, 1, 5);
+    }, 0L, 20L);
   }
 
   //todo: fazer futuramente quando tiver diversidade de linguagens feitas.

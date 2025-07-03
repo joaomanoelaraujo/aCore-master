@@ -14,5 +14,6 @@ public interface BukkitUtilsItf {
     ItemStack putProfileOnSkull(Object profile, ItemStack head);
     ItemStack applyNTBTag(ItemStack item, List<Object> lines);
     void putGlowEnchantment(ItemStack item);
+    void displayParticle(Player viewer, String particleName, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count);
 
 }

@@ -94,15 +94,12 @@ org\json\simple\JSONArray.class
 me\joaomanoel\d4rkk\dev\libraries\menu\UpdatableMenu$1.class
 com\comphenix\packetwrapper\WrapperPlayServerAttachEntity.class
 me\joaomanoel\d4rkk\dev\deliveries\DeliveryReward.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticlePacket$PacketSendingException.class
 com\comphenix\packetwrapper\old\WrapperPlayServerEntityHeadRotation.class
 me\joaomanoel\d4rkk\dev\database\data\container\TitlesContainer.class
 me\joaomanoel\d4rkk\dev\hook\protocollib\FakeAdapter.class
 me\joaomanoel\d4rkk\dev\servers\balancer\type\LeastConnection.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticlePacket$VersionIncompatibleException.class
 me\joaomanoel\d4rkk\dev\database\tables\DuelsTable.class
 me\joaomanoel\d4rkk\dev\player\hotbar\HotbarActionType$1.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticleVersionException.class
 me\joaomanoel\d4rkk\dev\servers\balancer\type\MostConnection.class
 me\joaomanoel\d4rkk\dev\utils\CubeID$CubeIterator.class
 com\comphenix\packetwrapper\WrapperPlayServerNamedEntitySpawn.class
@@ -130,7 +127,6 @@ com\comphenix\packetwrapper\WrapperPlayClientUseEntity.class
 me\joaomanoel\d4rkk\dev\utils\TimeUtils.class
 com\comphenix\packetwrapper\old\WrapperPlayServerSpawnEntityLiving.class
 me\joaomanoel\d4rkk\dev\player\scoreboard\VirtualTeam.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ItemData.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityStatus.class
 me\joaomanoel\d4rkk\dev\languages\LanguageAPI.class
 me\joaomanoel\d4rkk\dev\achievements\types\ThePitAchievement$CoinsReward.class
@@ -172,7 +168,6 @@ me\joaomanoel\d4rkk\dev\libraries\hologram\Hologram.class
 me\joaomanoel\d4rkk\dev\achievements\types\SkyWarsAchievement$SkyWarsReward.class
 me\joaomanoel\d4rkk\dev\utils\queue\QueuePlayer.class
 me\joaomanoel\d4rkk\dev\player\vanish\Vanish.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticlePacket.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityEquipment.class
 org\json\simple\parser\Yylex.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\VanishCommand.class
@@ -183,14 +178,12 @@ me\joaomanoel\d4rkk\dev\player\enums\PlayerVisibility.class
 me\joaomanoel\d4rkk\dev\Core.class
 me\joaomanoel\d4rkk\dev\cmd\FakeCommand.class
 me\joaomanoel\d4rkk\dev\plugin\config\KConfig.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$BlockData.class
 me\joaomanoel\d4rkk\dev\database\tables\BatteryDashTable.class
 me\joaomanoel\d4rkk\dev\database\cache\RoleCache$1.class
 me\joaomanoel\d4rkk\dev\utils\aUpdater.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\InventorySeeCommand.class
 com\comphenix\packetwrapper\WrapperPlayServerRelEntityMoveLook.class
 com\comphenix\packetwrapper\WrapperPlayClientLook.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$NoteColor.class
 me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect.class
 org\json\simple\JSONObject.class
 me\joaomanoel\d4rkk\dev\achievements\types\TheBridgeAchievement$CoinsReward.class
@@ -229,7 +222,6 @@ me\joaomanoel\d4rkk\dev\utils\PluginDependencyChecker.class
 me\joaomanoel\d4rkk\dev\listeners\Listeners.class
 me\joaomanoel\d4rkk\dev\api\StatsAPI.class
 me\joaomanoel\d4rkk\dev\menus\MenuServers.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticlePacket$PacketInstantiationException.class
 com\comphenix\packetwrapper\WrapperPlayServerGameStateChange.class
 me\joaomanoel\d4rkk\dev\achievements\types\TheBridgeAchievement.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\PartyChatCommand.class
@@ -258,7 +250,6 @@ me\joaomanoel\d4rkk\dev\database\data\DataContainer.class
 me\joaomanoel\d4rkk\dev\listeners\PluginMessageListener.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\TeleportCommand.class
 me\joaomanoel\d4rkk\dev\player\hotbar\HotbarActionType$4.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticleColor.class
 me\joaomanoel\d4rkk\dev\deliveries\Delivery.class
 me\joaomanoel\d4rkk\dev\libraries\hologram\listeners\HologramTouchEvent.class
 me\joaomanoel\d4rkk\dev\hook\protocollib\npc\NPCAdapter_1_20_R4.class
@@ -274,10 +265,8 @@ org\json\simple\ItemList.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\Commands.class
 com\comphenix\packetwrapper\WrapperPlayClientKeepAlive.class
 me\joaomanoel\d4rkk\dev\utils\langs\YamlLanguage.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticleProperty.class
 me\joaomanoel\d4rkk\dev\database\KitPvPTable.class
 me\joaomanoel\d4rkk\dev\plugin\config\KWriter.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticleData.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityDestroy.class
 me\joaomanoel\d4rkk\dev\utils\langs\LanguageMessage.class
 com\comphenix\packetwrapper\old\WrapperPlayServerEntityLook.class
@@ -290,8 +279,6 @@ com\comphenix\packetwrapper\v15\WrapperPlayServerRelEntityMoveLook.class
 me\joaomanoel\d4rkk\dev\menus\profile\MenuStatistics.class
 com\comphenix\packetwrapper\WrapperPlayServerUpdateHealth.class
 me\joaomanoel\d4rkk\dev\game\GameState.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticleColorException.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$ParticleDataException.class
 me\joaomanoel\d4rkk\dev\hook\protocollib\fake\FakeAdapter_1_20_R4.class
 me\joaomanoel\d4rkk\dev\menus\MenuCosmetic.class
 me\joaomanoel\d4rkk\dev\achievements\types\BedWarsAchievement$CoinsReward.class
@@ -314,6 +301,5 @@ me\joaomanoel\d4rkk\dev\database\data\container\PreferencesContainer.class
 me\joaomanoel\d4rkk\dev\player\hotbar\HotbarButton.class
 me\joaomanoel\d4rkk\dev\menus\apparence\MenuApparence.class
 me\joaomanoel\d4rkk\dev\menus\party\MenuParty.class
-me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect$OrdinaryColor.class
 me\joaomanoel\d4rkk\dev\cosmetic\container\CosmeticsContainer.class
 me\joaomanoel\d4rkk\dev\servers\ServerPing.class

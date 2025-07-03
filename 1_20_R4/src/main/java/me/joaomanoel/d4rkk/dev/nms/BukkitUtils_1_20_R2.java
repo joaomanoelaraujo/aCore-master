@@ -4,18 +4,24 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.Particles;
 import net.minecraft.network.chat.IChatBaseComponent;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.EntityPlayer;
+import net.minecraft.util.ParticleUtils;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.craftbukkit.v1_20_R4.CraftServer;
+import org.bukkit.craftbukkit.v1_20_R4.entity.CraftPlayer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.*;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -484,6 +490,39 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         meta.addEnchant(Enchantment.LURE, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(meta);
+    }
+
+    @Override
+    public void displayParticle(Player viewer, String particleName, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count) {
+        EntityPlayer cp = ((CraftPlayer) viewer).getHandle();
+        try {
+            Class<?> particlesClass = Class.forName("net.minecraft.core.particles.ParticleTypes");
+            Class<?> particleParamClass = Class.forName("net.minecraft.core.particles.ParticleParam");
+            Class<?> packetClass = Class.forName("net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket");
+
+            Field particleField = particlesClass.getField(particleName.toUpperCase());
+            Object particle = particleField.get(null);
+
+            Constructor<?> constructor = packetClass.getConstructor(
+                    particleParamClass, boolean.class,
+                    double.class, double.class, double.class,
+                    float.class, float.class, float.class,
+                    float.class, int.class
+            );
+
+            Object packet = constructor.newInstance(
+                    particle, isFar,
+                    x, y, z,
+                    offSetX, offSetY, offSetZ,
+                    speed, count
+            );
+
+            cp.transferCookieConnection.sendPacket((net.minecraft.network.protocol.Packet<?>) packet);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 

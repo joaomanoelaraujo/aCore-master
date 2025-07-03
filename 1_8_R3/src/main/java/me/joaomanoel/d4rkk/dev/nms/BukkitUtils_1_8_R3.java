@@ -8,9 +8,13 @@ import me.joaomanoel.d4rkk.dev.reflection.acessors.ConstructorAccessor;
 import me.joaomanoel.d4rkk.dev.reflection.acessors.FieldAccessor;
 import me.joaomanoel.d4rkk.dev.reflection.acessors.MethodAccessor;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
+import net.minecraft.server.v1_8_R3.EnumParticle;
+import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
 import org.bukkit.Color;
+import org.bukkit.Effect;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
@@ -304,6 +308,21 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
         meta.addEnchant(Enchantment.LURE, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(meta);
+    }
+
+    @Override
+    public void displayParticle(Player viewer, String particleName, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count) {
+        PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(
+                EnumParticle.valueOf(particleName.toUpperCase()),
+                isFar,
+                x, y, z,
+                offSetX, offSetY, offSetZ,
+                speed,
+                count,
+                null
+        );
+
+        ((CraftPlayer) viewer).getHandle().playerConnection.sendPacket(packet);
     }
 
     public static Object asNMSCopy(ItemStack item) {

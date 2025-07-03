@@ -1,5 +1,6 @@
 package me.joaomanoel.d4rkk.dev.utils.particles;
 
+import com.comphenix.protocol.ProtocolLibrary;
 import org.bukkit.Bukkit;
 
 import java.lang.reflect.Constructor;
@@ -142,7 +143,8 @@ public class ReflectionUtils {
     }
     
     public static String getServerVersion() {
-      return Bukkit.getServer().getClass().getPackage().getName().substring(23);
+      String response = ProtocolLibrary.getProtocolManager().getMinecraftVersion().toString().replace(".", "_");
+      return response.split(": ")[1].split("\\)")[0];
     }
     
     public String getPath() {
