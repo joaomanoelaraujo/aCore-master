@@ -14,6 +14,7 @@ import me.joaomanoel.d4rkk.dev.libraries.npc.NPCLibrary;
 import me.joaomanoel.d4rkk.dev.menus.others.MenuOtherProfile;
 import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
+import me.joaomanoel.d4rkk.dev.nms.particle.ParticleOptionsItem;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.enums.ChatMention;
 import me.joaomanoel.d4rkk.dev.player.enums.PrivateMessages;
@@ -36,6 +37,7 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.minecraft.server.v1_8_R3.EnumParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -112,10 +114,15 @@ public class Listeners implements Listener {
 //      handleFirstTimePlayer(player);
 //    }
 
-    Location location = player.getLocation();
-    Bukkit.getScheduler().runTaskTimer(Core.getInstance(), ()-> {
-      ParticleEffect.HEART.display(player, false, (float) location.getX(), (float) location.getY(), (float) location.getZ(), 0,0,0, 1, 5);
-    }, 0L, 20L);
+/*    Bukkit.getScheduler().runTaskTimer(Core.getInstance(), new Runnable() {
+
+      final Location location = player.getLocation();
+
+      @Override
+      public void run() {
+        ParticleEffect.ITEM_CRACK.display(player, new ParticleOptionsItem(new ItemStack(Material.DIAMOND)), false, (float) location.getX(), (float) location.getY(), (float) location.getZ(), 0, 0, 0, 1, 5);
+      }
+    }, 20L, 20L);*/
   }
 
   //todo: fazer futuramente quando tiver diversidade de linguagens feitas.

@@ -5,3 +5,5 @@ me\joaomanoel\d4rkk\dev\nms\npc\PlayerInteractAtNpcEvent.class
 me\joaomanoel\d4rkk\dev\nms\npc\NpcEntity.class
 me\joaomanoel\d4rkk\dev\nms\hologram\HologramEntity.class
 me\joaomanoel\d4rkk\dev\nms\NMS_Interface.class
+me\joaomanoel\d4rkk\dev\nms\particle\ParticleOptions.class
+me\joaomanoel\d4rkk\dev\nms\particle\ParticleOptionsItem.class

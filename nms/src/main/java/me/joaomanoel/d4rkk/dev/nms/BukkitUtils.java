@@ -1,6 +1,7 @@
 package me.joaomanoel.d4rkk.dev.nms;
 
 import com.mojang.authlib.GameProfile;
+import me.joaomanoel.d4rkk.dev.nms.particle.ParticleOptions;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
@@ -27,6 +28,10 @@ public class BukkitUtils {
 
   public static void displayParticle(Player viewer, String particleName, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count) {
     instance.displayParticle(viewer, particleName, isFar, x, y, z, offSetX, offSetY, offSetZ, speed, count);
+  }
+
+  public static void displayParticle(Player viewer, ParticleOptions option, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count) {
+    instance.displayParticle(viewer, option, isFar, x, y, z, offSetX, offSetY, offSetZ, speed, count);
   }
 
   public static void openBook(Player player, ItemStack book) {

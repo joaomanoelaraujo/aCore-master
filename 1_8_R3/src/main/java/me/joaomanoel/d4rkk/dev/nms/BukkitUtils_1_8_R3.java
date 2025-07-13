@@ -2,6 +2,7 @@ package me.joaomanoel.d4rkk.dev.nms;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import me.joaomanoel.d4rkk.dev.nms.particle.ParticleOptions;
 import me.joaomanoel.d4rkk.dev.reflection.Accessors;
 import me.joaomanoel.d4rkk.dev.reflection.MinecraftReflection;
 import me.joaomanoel.d4rkk.dev.reflection.acessors.ConstructorAccessor;
@@ -10,10 +11,7 @@ import me.joaomanoel.d4rkk.dev.reflection.acessors.MethodAccessor;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import net.minecraft.server.v1_8_R3.EnumParticle;
 import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
-import org.bukkit.Color;
-import org.bukkit.Effect;
-import org.bukkit.FireworkEffect;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -323,6 +321,11 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
         );
 
         ((CraftPlayer) viewer).getHandle().playerConnection.sendPacket(packet);
+    }
+
+    @Override
+    public void displayParticle(Player viewer, ParticleOptions options, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count) {
+
     }
 
     public static Object asNMSCopy(ItemStack item) {

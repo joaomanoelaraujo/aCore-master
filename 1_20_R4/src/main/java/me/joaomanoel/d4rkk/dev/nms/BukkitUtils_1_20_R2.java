@@ -2,6 +2,7 @@ package me.joaomanoel.d4rkk.dev.nms;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import me.joaomanoel.d4rkk.dev.nms.particle.ParticleOptions;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ParticleType;
@@ -499,7 +500,6 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
             Class<?> particlesClass = Class.forName("net.minecraft.core.particles.ParticleTypes");
             Class<?> particleParamClass = Class.forName("net.minecraft.core.particles.ParticleParam");
             Class<?> packetClass = Class.forName("net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket");
-
             Field particleField = particlesClass.getField(particleName.toUpperCase());
             Object particle = particleField.get(null);
 
@@ -523,6 +523,32 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public void displayParticle(Player viewer, ParticleOptions options, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count) {
+        EntityPlayer cp = ((CraftPlayer) viewer).getHandle();
+        try {
+            Class<?> particleParamClass = Class.forName("net.minecraft.core.particles.ParticleParam");
+            Class<?> packetClass = Class.forName("net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket");
+            Constructor<?> constructor = packetClass.getConstructor(
+                    particleParamClass, boolean.class,
+                    double.class, double.class, double.class,
+                    float.class, float.class, float.class,
+                    float.class, int.class
+            );
+
+            Object packet = constructor.newInstance(
+                    options.makeOption(), isFar,
+                    x, y, z,
+                    offSetX, offSetY, offSetZ,
+                    speed, count
+            );
+
+            cp.transferCookieConnection.sendPacket((net.minecraft.network.protocol.Packet<?>) packet);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

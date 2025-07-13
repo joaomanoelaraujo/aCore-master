@@ -82,6 +82,7 @@ me\joaomanoel\d4rkk\dev\utils\Validator.class
 me\joaomanoel\d4rkk\dev\achievements\Achievement.class
 me\joaomanoel\d4rkk\dev\cosmetic\CosmeticType.class
 me\joaomanoel\d4rkk\dev\database\cache\RoleCache.class
+me\joaomanoel\d4rkk\dev\listeners\Listeners$2.class
 me\joaomanoel\d4rkk\dev\utils\enums\EnumSound.class
 com\comphenix\packetwrapper\WrapperPlayServerCamera.class
 me\joaomanoel\d4rkk\dev\database\Database.class
