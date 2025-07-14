@@ -8,7 +8,11 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Locale;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Float.parseFloat;
@@ -21,17 +25,155 @@ public class BukkitUtils {
   private static BukkitUtilsItf instance;
 
 
-
   public static void setInstance(BukkitUtilsItf instance) {
     BukkitUtils.instance = instance;
   }
 
-  public static void displayParticle(Player viewer, String particleName, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count) {
-    instance.displayParticle(viewer, particleName, isFar, x, y, z, offSetX, offSetY, offSetZ, speed, count);
+  private static final boolean USE_API;
+  private static final Method M_SPAWN_PARTICLE;
+  private static final Class<?> BUKKIT_PARTICLE_ENUM;
+
+  static {
+    boolean api = false;
+    Method spawn = null;
+    Class<?> partEnum = null;
+    try {
+      partEnum = Class.forName("org.bukkit.Particle");
+      spawn = World.class.getMethod("spawnParticle",
+              partEnum,
+              Location.class,
+              int.class,
+              double.class, double.class, double.class,
+              double.class);
+      api = true;
+      Bukkit.getLogger().info("[Core] usando API nativa de partículas (1.9+)");
+    } catch (Exception ex) {
+      api = false;
+      Bukkit.getLogger().info("[Core] usando fallback NMS para partículas (1.8.8)");
+    }
+    USE_API = api;
+    M_SPAWN_PARTICLE = spawn;
+    BUKKIT_PARTICLE_ENUM = partEnum;
   }
 
-  public static void displayParticle(Player viewer, ParticleOptions option, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count) {
-    instance.displayParticle(viewer, option, isFar, x, y, z, offSetX, offSetY, offSetZ, speed, count);
+  /**
+   * Spawna a partícula tanto em 1.9+ (via World#spawnParticle) quanto em 1.8.8 (via PacketPlayOutWorldParticles).
+   */
+  public static void displayParticle(Player viewer,
+                                     String particleName,
+                                     boolean isFar,
+                                     float x, float y, float z,
+                                     float offSetX, float offSetY, float offSetZ,
+                                     float speed,
+                                     int count) {
+    if (USE_API) {
+      try {
+        // Particle.valueOf( “HAPPY_VILLAGER” ) espera undercores e uppercase
+        Object enumConst = Enum.valueOf(
+                (Class<Enum>)BUKKIT_PARTICLE_ENUM,
+                particleName.toUpperCase(Locale.ROOT)
+                        .replace("HAPPYVILLAGER", "VILLAGER_HAPPY")
+                        .replace("ANGRYVILLAGER", "VILLAGER_ANGRY")
+        );
+        // world.spawnParticle(enumConst, loc, count, offset..., speed)
+        M_SPAWN_PARTICLE.invoke(
+                viewer.getWorld(),
+                enumConst,
+                new Location(viewer.getWorld(), x, y, z),
+                count,
+                offSetX, offSetY, offSetZ,
+                speed
+        );
+        return;
+      } catch (Throwable t) {
+        t.printStackTrace();
+        // cai no fallback NMS
+      }
+    }
+
+    // ===== fallback NMS 1.8.8 =====
+    try {
+      String version = Bukkit.getServer()
+              .getClass()
+              .getPackage()
+              .getName()
+              .split("\\.")[3];
+
+      Class<?> packetClass = Class.forName(
+              "net.minecraft.server." + version + ".PacketPlayOutWorldParticles"
+      );
+      Class<?> enumParticleClass = Class.forName(
+              "net.minecraft.server." + version + ".EnumParticle"
+      );
+
+      // normaliza o nome: HAPPYVILLAGER → VILLAGER_HAPPY, remove "_" p/ comparação genérica
+      String name = particleName.toUpperCase(Locale.ROOT).replace("_","");
+      if (name.equals("HAPPYVILLAGER"))      name = "VILLAGER_HAPPY";
+      else if (name.equals("ANGRYVILLAGER")) name = "VILLAGER_ANGRY";
+      else {
+        for (Object c : enumParticleClass.getEnumConstants()) {
+          String cst = ((Enum<?>)c).name().replace("_","");
+          if (cst.equalsIgnoreCase(name)) {
+            name = ((Enum<?>)c).name();
+            break;
+          }
+        }
+      }
+
+      Object enumParticle = Enum.valueOf(
+              (Class<Enum>)enumParticleClass,
+              name
+      );
+
+      Constructor<?> cons = packetClass.getConstructor(
+              enumParticleClass, boolean.class,
+              float.class, float.class, float.class,
+              float.class, float.class, float.class,
+              float.class,    // speed
+              int.class,      // count
+              int[].class     // varargs data
+      );
+
+      Object packet = cons.newInstance(
+              enumParticle,
+              isFar,            // longDistance
+              x, y, z,
+              offSetX, offSetY, offSetZ,
+              speed,
+              count,
+              new int[0]
+      );
+
+      // envia só para este player
+      Method  mGetHandle = viewer.getClass().getMethod("getHandle");
+      Object  nmsPlayer  = mGetHandle.invoke(viewer);
+      Field fConn      = nmsPlayer.getClass().getField("playerConnection");
+      Object  conn       = fConn.get(nmsPlayer);
+
+      Class<?> packetIntf = Class.forName(
+              "net.minecraft.server." + version + ".Packet"
+      );
+      Method mSend = conn.getClass().getMethod("sendPacket", packetIntf);
+      mSend.invoke(conn, packet);
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  /** Sobrecarga que recebe ParticleOptions */
+  public static void displayParticle(Player viewer,
+                                     ParticleOptions option,
+                                     boolean isFar,
+                                     float x, float y, float z,
+                                     float offSetX, float offSetY, float offSetZ,
+                                     float speed,
+                                     int count) {
+    displayParticle(viewer,
+            option,
+            isFar, x, y, z,
+            offSetX, offSetY, offSetZ,
+            speed, count);
   }
 
   public static void openBook(Player player, ItemStack book) {

@@ -82,7 +82,6 @@ me\joaomanoel\d4rkk\dev\utils\Validator.class
 me\joaomanoel\d4rkk\dev\achievements\Achievement.class
 me\joaomanoel\d4rkk\dev\cosmetic\CosmeticType.class
 me\joaomanoel\d4rkk\dev\database\cache\RoleCache.class
-me\joaomanoel\d4rkk\dev\listeners\Listeners$2.class
 me\joaomanoel\d4rkk\dev\utils\enums\EnumSound.class
 com\comphenix\packetwrapper\WrapperPlayServerCamera.class
 me\joaomanoel\d4rkk\dev\database\Database.class
@@ -226,6 +225,7 @@ me\joaomanoel\d4rkk\dev\menus\MenuServers.class
 com\comphenix\packetwrapper\WrapperPlayServerGameStateChange.class
 me\joaomanoel\d4rkk\dev\achievements\types\TheBridgeAchievement.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\PartyChatCommand.class
+me\joaomanoel\d4rkk\dev\utils\particles\UniversalParticle.class
 me\joaomanoel\d4rkk\dev\player\role\Role.class
 me\joaomanoel\d4rkk\dev\libraries\profile\Mojang.class
 me\joaomanoel\d4rkk\dev\database\tables\CoreTable.class
