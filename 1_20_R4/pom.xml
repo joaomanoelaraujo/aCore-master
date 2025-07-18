@@ -10,6 +10,10 @@
     </parent>
     <repositories>
         <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
             <id>spigot-snapshots</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
             <releases><enabled>false</enabled></releases>
@@ -31,7 +35,6 @@
             <version>1.20.6-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>me.joaomanoel.d4rkk.dev</groupId>
             <artifactId>nms</artifactId>
