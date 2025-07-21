@@ -29,6 +29,8 @@ public class NPCLibrary implements Listener {
 
     public static NpcEntity createNPC(Location location, String name, String value, String signature) {
         NpcEntity npc = NMSManager.createNPC(location, name, value, signature);
+        npc.setData("yaw",   String.valueOf(location.getYaw()));
+        npc.setData("pitch", String.valueOf(location.getPitch()));
         NPCS.add(npc);
         return npc;
     }
@@ -61,11 +63,17 @@ public class NPCLibrary implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        NPCS.forEach(npc -> {
-            npc.spawn(player);
-            Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> npc.setShowNick(player), 20L);
-        });
+        Player viewer = event.getPlayer();
+        for (NpcEntity npc : NPCS) {
+            npc.spawn(viewer);
+            Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> npc.setShowNick(viewer), 20L);
+            Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
+                float yaw   = Float.parseFloat(npc.getData("yaw"));
+                float pitch = Float.parseFloat(npc.getData("pitch"));
+                NMSManager.look(npc.getPlayer(), yaw, pitch);
+                NMSManager.setHeadYaw(npc.getPlayer(), yaw);
+            }, 2L);
+        }
     }
 
     @EventHandler
@@ -76,10 +84,19 @@ public class NPCLibrary implements Listener {
 
     @EventHandler
     public void onPlayerWorldChange(PlayerChangedWorldEvent event) {
-        Player player = event.getPlayer();
-        NPCS.forEach(npc -> {
-            npc.spawn(player);
-            Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> npc.setShowNick(player), 20L);
-        });
+        Player viewer = event.getPlayer();
+        for (NpcEntity npc : NPCS) {
+            npc.spawn(viewer);
+            Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> npc.setShowNick(viewer), 20L);
+            Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
+                float yaw   = Float.parseFloat(npc.getData("yaw"));
+                float pitch = Float.parseFloat(npc.getData("pitch"));
+                NMSManager.look(npc.getPlayer(), yaw, pitch);
+                NMSManager.setHeadYaw(npc.getPlayer(), yaw);
+
+            }, 2L);
+
+        }
+
     }
-}
+    }

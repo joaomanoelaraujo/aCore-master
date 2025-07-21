@@ -22,4 +22,6 @@ public interface NpcEntity {
     NpcEntity setData(String key, String value);
     boolean hasData(String key);
     String getData(String key);
+
+
 }
