@@ -37,7 +37,7 @@ public enum ParticleEffect {
   LAVA("lava"),
   FOOTSTEP("footstep"),
   CLOUD("cloud"),
-  REDSTONE("reddust"),
+  REDSTONE("dust"),
   SNOWBALL("snowballpoof"),
   SNOW_SHOVEL("snowshovel"),
   SLIME("slime"),

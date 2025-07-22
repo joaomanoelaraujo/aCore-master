@@ -1,5 +1,11 @@
 package me.joaomanoel.d4rkk.dev.nms;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.reflect.StructureModifier;
+import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.mojang.authlib.GameProfile;
 import me.joaomanoel.d4rkk.dev.nms.particle.ParticleOptions;
 import org.bukkit.*;
@@ -8,6 +14,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 
+import java.awt.image.BufferedImage;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -160,6 +167,13 @@ public class BukkitUtils {
       e.printStackTrace();
     }
   }
+  private BufferedImage glyphImage;
+
+
+  public static void showIn(Player origin, Location location) {
+    instance.showIn(origin, location);
+  }
+
 
   /** Sobrecarga que recebe ParticleOptions */
   public static void displayParticle(Player viewer,

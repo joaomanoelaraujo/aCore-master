@@ -22,6 +22,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.*;
 
+import java.awt.image.BufferedImage;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -98,6 +99,30 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         upper = base;
 
         switch (upper) {
+            case "270":
+                return Material.WOODEN_PICKAXE;
+            case "271":
+                return Material.WOODEN_AXE;
+            case "285":
+                return Material.GOLDEN_PICKAXE;
+            case "286":
+                return Material.GOLDEN_AXE;
+            case "257":
+                return Material.IRON_PICKAXE;
+            case "258":
+                return Material.IRON_AXE;
+            case "278":
+                return Material.DIAMOND_PICKAXE;
+            case "279":
+                return Material.DIAMOND_AXE;
+            case "385":
+                return Material.LEGACY_FIREBALL;
+            case "121":
+                return Material.END_STONE;
+            case "76":
+                return Material.REDSTONE_TORCH;
+            case "159":
+                return Material.WHITE_TERRACOTTA;
             case "373":
                 return Material.POTION;
             case "SKULL_ITEM":
@@ -125,7 +150,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
             case "145":
                 return Material.ANVIL;
             case "395":
-                return Material.WRITTEN_BOOK;
+                return Material.FILLED_MAP;
             case "421":
                 return Material.NAME_TAG;
             case "416":
@@ -365,6 +390,49 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         }
     }
 
+    private BufferedImage glyphImage;
+
+    @Override
+    public void showIn(Player origin, Location location) {
+        if (glyphImage == null) return;
+
+        // distancia vertical acima do jogador
+        Location base = location.clone().add(0, 1.5, 0);
+
+        int w = glyphImage.getWidth();
+        int h = glyphImage.getHeight();
+        double scale = 0.1;
+
+        for (int ix = 0; ix < w; ix++) {
+            for (int iy = 0; iy < h; iy++) {
+                int argb = glyphImage.getRGB(ix, iy);
+                int alpha = (argb >>> 24) & 0xFF;
+                if (alpha < 128) continue;  // pixel transparente
+
+                // posição relativa à base
+                double fx = (ix - w / 2.0) * scale;
+                double fy = (iy - h / 2.0) * scale;
+                Location particleLoc = base.clone().add(fx, fy, 0);
+
+                // extrai componentes RGB (0–255)
+                int ri = (argb >> 16) & 0xFF;
+                int gi = (argb >> 8)  & 0xFF;
+                int bi =  argb        & 0xFF;
+
+                // cria as opções de pó colorido
+                Particle.DustOptions dust = new Particle.DustOptions(Color.fromRGB(ri, gi, bi), (float) scale);
+
+                // dispara somente para o jogador
+                origin.spawnParticle(
+                        Particle.DUST,    // tipo
+                        particleLoc,          // local
+                        1,                    // count
+                        0, 0, 0,              // offsets (não usados em DustOptions)
+                        dust                  // dados: cor e tamanho
+                );
+            }
+        }
+    }
     @Override
     public String serializeItemStack(ItemStack item) {
         StringBuilder sb = new StringBuilder(item.getType().name() + (item.getDurability() != 0 ? ":" + item.getDurability() : "") + " : " + item.getAmount());

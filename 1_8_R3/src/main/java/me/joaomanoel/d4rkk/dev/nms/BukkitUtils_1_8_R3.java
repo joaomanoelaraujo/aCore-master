@@ -1,5 +1,11 @@
 package me.joaomanoel.d4rkk.dev.nms;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.reflect.StructureModifier;
+import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.joaomanoel.d4rkk.dev.nms.particle.ParticleOptions;
@@ -21,6 +27,7 @@ import org.bukkit.inventory.meta.*;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.awt.image.BufferedImage;
 import java.lang.reflect.Field;
 import java.util.*;
 
@@ -308,6 +315,69 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
         item.setItemMeta(meta);
     }
 
+
+    private BufferedImage glyphImage;
+
+    @Override
+    public void showIn(Player origin, Location location) {
+        if (glyphImage == null) return;
+
+        ProtocolManager manager = ProtocolLibrary.getProtocolManager();
+        int w = glyphImage.getWidth();
+        int h = glyphImage.getHeight();
+
+        for (int ix = 0; ix < w; ix++) {
+            for (int iy = 0; iy < h; iy++) {
+                int argb = glyphImage.getRGB(ix, iy);
+                int alpha = (argb >>> 24) & 0xFF;
+                if (alpha < 128) continue;
+
+                // normaliza cores em [0–1]
+                float r = ((argb >> 16) & 0xFF) / 255f;
+                float g = ((argb >>  8) & 0xFF) / 255f;
+                float b = ( argb        & 0xFF) / 255f;
+
+                // posição centralizada
+                double fx = (ix - w/2.0) * 0.1;
+                double fy = (iy - h/2.0) * 0.1 + 1.5;
+                double px = location.getX() + fx;
+                double py = location.getY() + fy;
+                double pz = location.getZ();
+
+                PacketContainer packet = manager.createPacket(PacketType.Play.Server.WORLD_PARTICLES);
+                packet.getModifier().writeDefaults();  // garante que booleans, floats, ints exist
+
+                // 1) Tipo REDSTONE
+//                packet.getEnumModifier(EnumWrappers.Particle.class, 0).write(0, EnumWrappers.Particle.REDSTONE);
+                packet.getParticles().write(0, EnumWrappers.Particle.REDSTONE);
+                packet.getBooleans().writeSafely(0, false);
+                // 2) long‐distance = false
+                packet.getBooleans().write(0, false);
+
+                // 3) Escreve TODOS os floats na ordem: x,y,z, offsetX,offsetY,offsetZ, data
+                StructureModifier<Float> fm = packet.getFloat();
+                fm.write(0, (float) px);       // X
+                fm.write(1, (float) py);       // Y
+                fm.write(2, (float) pz);       // Z
+
+                // AQUI VEM O “HACK”:
+                // • Para ter cor exata, amount deve ser 0
+                // • data (índice 6) deve ser 1
+                // • e o RED offset (índice 3) precisa ser (r – 1), pois o servidor soma +1 antes de aplicar
+                fm.write(3, r - 1f);           // offsetX → R − 1
+                fm.write(4, g);                // offsetY → G
+                fm.write(5, b);                // offsetZ → B
+                fm.write(6, 1f);               // data  → 1 (tamanho fixo)
+
+                // 4) amount = 0 (para “unir” cor e data)
+                packet.getIntegers().write(0, 0);
+
+                // envia só para quem chamou showIn
+                manager.sendServerPacket(origin, packet);
+
+            }
+        }
+    }
     @Override
     public void displayParticle(Player viewer, String particleName, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count) {
         PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(
