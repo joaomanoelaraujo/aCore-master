@@ -1,268 +1,268 @@
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\AbstractPacket.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerEntityEquipment.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerEntityHeadRotation.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerEntityLook.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerEntityMoveLook.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerEntityTeleport.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerNamedEntitySpawn.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerRelEntityMoveLook.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerSpawnEntityLiving.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\v15\WrapperPlayServerRelEntityMove.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\v15\WrapperPlayServerRelEntityMoveLook.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientArmAnimation.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientBlockDig.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientBlockPlace.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientEntityAction.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientHeldItemSlot.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientKeepAlive.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientLook.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientPosition.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientPositionLook.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientSetCreativeSlot.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientSteerVehicle.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientUseEntity.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientVehicleMove.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientWindowClick.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerAnimation.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerAttachEntity.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerBed.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerBlockBreakAnimation.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerCamera.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityDestroy.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityEffect.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityEquipment.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityHeadRotation.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityLook.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityMetadata.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityStatus.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityTeleport.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityVelocity.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerGameStateChange.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerKeepAlive.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerNamedEntitySpawn.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerPlayerInfo.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerRelEntityMove.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerRelEntityMoveLook.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerSpawnEntityLiving.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerTitle.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerUpdateHealth.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperStatusClientPing.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\Achievements.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\achievements\Achievement.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\achievements\types\BedWarsAchievement.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\achievements\types\SkyWarsAchievement.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\achievements\types\TheBridgeAchievement.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\achievements\types\ThePitAchievement.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\api\StatsAPI.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\booster\Booster.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\booster\NetworkBooster.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bukkit\BukkitParty.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bukkit\BukkitPartyManager.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bukkit\BukkitPartySizer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\Bungee.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\Commands.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\FakeCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\FakeListCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\FakeResetCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\ReplyCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\StaffChatCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\TellCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\PartyChatCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\PartyCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\listener\Listeners.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\party\BungeeParty.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\party\BungeePartyManager.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\party\BungeePartySizer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\PluginMessageListenerExample.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cash\CashException.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cash\CashManager.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\CashCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\CoinsCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\Commands.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\CoreCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\FakeCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\BloodCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\ClearChatCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\CsmCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\DiscordCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\FlyCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\GameModeCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\InventorySeeCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\PingCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\ShopCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\TagCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\TeleportCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\TeleportHereCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\VanishCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\PartyCommand.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\Core.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\container\CosmeticsContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\container\SelectedContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\Cosmetic.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\CosmeticType.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\ColoredTag.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\GlowCosmetic.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\JoinMessage.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\MvpColor.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\PunchMessage.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\cache\RoleCache.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\conversor\MongoDBConversor.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\AchievementsContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\BoostersContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\DeliveriesContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\LanguageContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\PreferencesContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\SelectedContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\TitlesContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\DataContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\DataTable.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\interfaces\AbstractContainer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\interfaces\DataTableInfo.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\Database.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\exception\ProfileLoadException.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\HikariDatabase.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\KitPvPTable.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\MongoDBDatabase.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\MySQLDatabase.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\BatteryDashTable.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\BedWarsTable.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\BlockSumoTable.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\CoreTable.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\DuelsTable.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\extension\SkyWarsPlaceholder.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\SkyWarsTable.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\TheBridgeTable.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\ThePitTable.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\deliveries\Delivery.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\deliveries\DeliveryReward.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\game\FakeGame.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\game\Game.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\game\GameState.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\game\GameTeam.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\aCoreExpansion.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\FriendsHook.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\fake\FakeAdapter_1_20_R4.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\fake\FakeAdapter_1_8_R3.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\FakeAdapter.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\npc\NPCAdapter_1_20_R4.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\npc\NPCAdapter_1_8_R3.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\NPCAdapter.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\languages\LanguageAPI.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\hologram\Hologram.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\hologram\HologramLine.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\hologram\listeners\HologramTouchEvent.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\Menu.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\PagedMenu.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\PagedPlayerMenu.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\PlayerMenu.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\UpdatableMenu.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\UpdatablePagedMenu.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\UpdatablePlayerMenu.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\UpdatablePlayerPagedMenu.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\npc\NPCLibrary.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\npc\NPCLookTask.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\profile\api\MineToolsAPI.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\profile\api\MojangAPI.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\profile\InvalidMojangException.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\profile\Mojang.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\listeners\Listeners.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\listeners\PluginMessageListener.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\Manager.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\apparence\MenuApparence.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\apparence\select\MenuSelect.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\buy\MenuBuyCashCosmetic.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\language\MenuLanguages.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\MenuCosmetic.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\MenuDeliveries.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\MenuProfile.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\MenuServers.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\others\MenuCosmeticNoback.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\others\MenuOtherProfile.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\party\MenuKick.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\party\MenuParty.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\achievements\MenuAchievementsList.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\boosters\MenuBoostersList.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuAchievements.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuBoosters.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuIdiomas.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuPreferences.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuStatistics.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuTitles.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\party\Party.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\party\PartyPlayer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\party\PartyRole.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\enums\BloodAndGore.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\enums\ChatMention.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\enums\PlayerVisibility.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\enums\PrivateMessages.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\enums\ProtectionLobby.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\events\ProfileChangePlayerVisibilityEvent.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\fake\FakeManager.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\gamemode\GameMode.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\gamemode\GameModeType.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\hotbar\Hotbar.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\hotbar\HotbarAction.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\hotbar\HotbarActionType.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\hotbar\HotbarButton.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\Profile.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\role\Role.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\scoreboard\KScoreboard.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\scoreboard\scroller\ScoreboardScroller.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\scoreboard\VirtualTeam.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\vanish\Vanish.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\plugin\config\FileUtils.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\plugin\config\KConfig.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\plugin\config\KWriter.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\plugin\KPlugin.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\plugin\logger\KLogger.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\BaseBalancer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\elements\LoadBalancerObject.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\elements\NumberConnection.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\LoadBalancer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\Server.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\type\LeastConnection.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\type\MostConnection.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\ServerItem.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\ServerPing.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\Title.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleController.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleIconFactory.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleLoader.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleManager.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleRegistry.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleSelectionHandler.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleVisibilityHandler.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\aUpdater.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\CubeID.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\enums\EnumRarity.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\enums\EnumSound.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\Language.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\LanguageManager.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\LanguageMessage.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\YamlLanguage.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\LanguageIcons.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\PacketAction.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\particles\ReflectionUtils.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\particles\UniversalParticle.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\PlayerIPUtils.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\PluginDependencyChecker.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\queue\Queue.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\queue\QueuePlayer.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\TagUtils.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\TimeUtils.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\TPSUtil.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\Utils.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\Validator.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\ItemList.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\JSONArray.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\JSONAware.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\JSONObject.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\JSONStreamAware.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\JSONValue.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\parser\ContainerFactory.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\parser\ContentHandler.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\parser\JSONParser.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\parser\ParseException.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\parser\Yylex.java
-C:\Users\joaov\Área de Trabalho\ARQUIVOS DO JV\ARQUIVOS DO JV\SOLAR PLUGINS - ENCOMENDAS\iNextyz\aCore-master\main\src\main\java\org\json\simple\parser\Yytoken.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\AbstractPacket.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerEntityEquipment.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerEntityHeadRotation.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerEntityLook.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerEntityMoveLook.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerEntityTeleport.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerNamedEntitySpawn.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerRelEntityMoveLook.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\old\WrapperPlayServerSpawnEntityLiving.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\v15\WrapperPlayServerRelEntityMove.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\v15\WrapperPlayServerRelEntityMoveLook.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientArmAnimation.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientBlockDig.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientBlockPlace.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientEntityAction.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientHeldItemSlot.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientKeepAlive.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientLook.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientPosition.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientPositionLook.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientSetCreativeSlot.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientSteerVehicle.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientUseEntity.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientVehicleMove.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayClientWindowClick.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerAnimation.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerAttachEntity.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerBed.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerBlockBreakAnimation.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerCamera.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityDestroy.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityEffect.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityEquipment.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityHeadRotation.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityLook.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityMetadata.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityStatus.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityTeleport.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerEntityVelocity.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerGameStateChange.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerKeepAlive.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerNamedEntitySpawn.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerPlayerInfo.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerRelEntityMove.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerRelEntityMoveLook.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerSpawnEntityLiving.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerTitle.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperPlayServerUpdateHealth.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\com\comphenix\packetwrapper\WrapperStatusClientPing.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\Achievements.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\achievements\Achievement.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\achievements\types\BedWarsAchievement.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\achievements\types\SkyWarsAchievement.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\achievements\types\TheBridgeAchievement.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\achievements\types\ThePitAchievement.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\api\StatsAPI.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\booster\Booster.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\booster\NetworkBooster.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bukkit\BukkitParty.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bukkit\BukkitPartyManager.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bukkit\BukkitPartySizer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\Bungee.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\Commands.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\FakeCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\FakeListCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\FakeResetCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\ReplyCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\StaffChatCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\TellCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\PartyChatCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\PartyCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\listener\Listeners.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\party\BungeeParty.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\party\BungeePartyManager.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\party\BungeePartySizer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\PluginMessageListenerExample.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cash\CashException.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cash\CashManager.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\CashCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\CoinsCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\Commands.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\CoreCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\FakeCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\BloodCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\ClearChatCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\CsmCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\DiscordCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\FlyCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\GameModeCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\InventorySeeCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\PingCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\ShopCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\TagCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\TeleportCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\TeleportHereCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\newcommands\VanishCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\PartyCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\Core.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\container\CosmeticsContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\container\SelectedContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\Cosmetic.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\CosmeticType.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\ColoredTag.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\GlowCosmetic.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\JoinMessage.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\MvpColor.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\PunchMessage.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\cache\RoleCache.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\conversor\MongoDBConversor.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\AchievementsContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\BoostersContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\DeliveriesContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\LanguageContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\PreferencesContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\SelectedContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\TitlesContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\DataContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\DataTable.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\interfaces\AbstractContainer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\interfaces\DataTableInfo.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\Database.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\exception\ProfileLoadException.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\HikariDatabase.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\KitPvPTable.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\MongoDBDatabase.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\MySQLDatabase.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\BatteryDashTable.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\BedWarsTable.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\BlockSumoTable.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\CoreTable.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\DuelsTable.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\extension\SkyWarsPlaceholder.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\SkyWarsTable.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\TheBridgeTable.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\ThePitTable.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\deliveries\Delivery.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\deliveries\DeliveryReward.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\game\FakeGame.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\game\Game.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\game\GameState.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\game\GameTeam.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\aCoreExpansion.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\FriendsHook.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\fake\FakeAdapter_1_20_R4.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\fake\FakeAdapter_1_8_R3.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\FakeAdapter.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\npc\NPCAdapter_1_20_R4.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\npc\NPCAdapter_1_8_R3.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\hook\protocollib\NPCAdapter.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\languages\LanguageAPI.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\hologram\Hologram.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\hologram\HologramLine.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\hologram\listeners\HologramTouchEvent.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\Menu.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\PagedMenu.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\PagedPlayerMenu.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\PlayerMenu.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\UpdatableMenu.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\UpdatablePagedMenu.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\UpdatablePlayerMenu.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\menu\UpdatablePlayerPagedMenu.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\npc\NPCLibrary.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\npc\NPCLookTask.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\profile\api\MineToolsAPI.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\profile\api\MojangAPI.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\profile\InvalidMojangException.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\libraries\profile\Mojang.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\listeners\Listeners.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\listeners\PluginMessageListener.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\Manager.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\apparence\MenuApparence.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\apparence\select\MenuSelect.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\buy\MenuBuyCashCosmetic.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\language\MenuLanguages.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\MenuCosmetic.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\MenuDeliveries.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\MenuProfile.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\MenuServers.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\others\MenuCosmeticNoback.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\others\MenuOtherProfile.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\party\MenuKick.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\party\MenuParty.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\achievements\MenuAchievementsList.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\boosters\MenuBoostersList.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuAchievements.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuBoosters.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuIdiomas.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuPreferences.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuStatistics.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\menus\profile\MenuTitles.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\party\Party.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\party\PartyPlayer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\party\PartyRole.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\enums\BloodAndGore.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\enums\ChatMention.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\enums\PlayerVisibility.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\enums\PrivateMessages.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\enums\ProtectionLobby.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\events\ProfileChangePlayerVisibilityEvent.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\fake\FakeManager.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\gamemode\GameMode.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\gamemode\GameModeType.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\hotbar\Hotbar.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\hotbar\HotbarAction.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\hotbar\HotbarActionType.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\hotbar\HotbarButton.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\Profile.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\role\Role.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\scoreboard\KScoreboard.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\scoreboard\scroller\ScoreboardScroller.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\scoreboard\VirtualTeam.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\player\vanish\Vanish.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\plugin\config\FileUtils.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\plugin\config\KConfig.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\plugin\config\KWriter.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\plugin\KPlugin.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\plugin\logger\KLogger.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\BaseBalancer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\elements\LoadBalancerObject.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\elements\NumberConnection.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\LoadBalancer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\Server.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\type\LeastConnection.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\balancer\type\MostConnection.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\ServerItem.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\servers\ServerPing.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\Title.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleController.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleIconFactory.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleLoader.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleManager.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleRegistry.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleSelectionHandler.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\titles\TitleVisibilityHandler.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\aUpdater.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\CubeID.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\enums\EnumRarity.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\enums\EnumSound.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\Language.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\LanguageManager.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\LanguageMessage.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\langs\YamlLanguage.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\LanguageIcons.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\PacketAction.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\particles\ParticleEffect.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\particles\ReflectionUtils.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\particles\UniversalParticle.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\PlayerIPUtils.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\PluginDependencyChecker.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\queue\Queue.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\queue\QueuePlayer.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\TagUtils.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\TimeUtils.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\TPSUtil.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\Utils.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\utils\Validator.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\ItemList.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\JSONArray.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\JSONAware.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\JSONObject.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\JSONStreamAware.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\JSONValue.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\parser\ContainerFactory.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\parser\ContentHandler.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\parser\JSONParser.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\parser\ParseException.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\parser\Yylex.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\org\json\simple\parser\Yytoken.java
