@@ -131,6 +131,10 @@ public class NMSManager {
         return instance.createNPC(location, name, value, signature);
     }
 
+    public static void resendSkin(Player viewer, Player npc) {
+        instance.resendSkin(viewer, npc);
+    }
+
     public static void refreshPlayer(Player player) {
         instance.refreshPlayer(player);
     }

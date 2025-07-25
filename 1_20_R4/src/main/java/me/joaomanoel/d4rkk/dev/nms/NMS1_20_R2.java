@@ -202,6 +202,12 @@ public class NMS1_20_R2 implements NMS_Interface {
     }
 
     @Override
+    public void resendSkin(Player target, Player npc) {
+        target.hidePlayer(this.plugin, npc);
+        Bukkit.getScheduler().runTaskLater(this.plugin, () -> target.showPlayer(this.plugin, npc), 2L);
+    }
+
+    @Override
     public NpcEntity createNPC(Location location, String name, String value, String signature) {
         GameProfile profile = new GameProfile(UUID.randomUUID(), name);
         profile.getProperties().clear();
