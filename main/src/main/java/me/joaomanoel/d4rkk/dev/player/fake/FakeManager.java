@@ -47,10 +47,12 @@ public class FakeManager {
     if (CONFIG.get("fake.role") instanceof String) {
       CONFIG.set("fake.role", Arrays.asList(CONFIG.getString("fake.role")));
     }
+
     FAKE_ROLES = new TextComponent("");
     for (BaseComponent component : TextComponent.fromLegacyText("§5§lALTERAR NICKNAME\n \n§0Escolha o cargo que gostaria de utilizar enquanto está disfarçado:\n ")) {
       FAKE_ROLES.addExtra(component);
     }
+
     for (String roleName : CONFIG.getStringList("fake.role")) {
       Role role = Role.getRoleByName(roleName);
       if (role != null) {
@@ -60,10 +62,12 @@ public class FakeManager {
         FAKE_ROLES.addExtra(component);
       }
     }
+
     FAKE_SKINS = new TextComponent("");
     for (BaseComponent component : TextComponent.fromLegacyText("§5§lALTERAR NICKNAME\n \n§0Enquanto disfarçado, sua skin será alterada para ajudar a te camuflar.\n \n§0Escolha sua skin:\n ")) {
       FAKE_SKINS.addExtra(component);
     }
+
     TextComponent STEVE = new TextComponent("\n §0▪ §7Steve");
     STEVE.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText("§7Você irá obter a aparência de Steve.")));
     STEVE.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/fake {role} steve"));
@@ -93,9 +97,8 @@ public class FakeManager {
     BookMeta meta = (BookMeta) book.getItemMeta();
     meta.setAuthor("Nys");
     meta.setTitle("Escolher cargo");
-    book = BukkitUtils.applyNTBTag(book, Collections.singletonList(ComponentSerializer.toString(FAKE_SKINS).replace("{role}", role)));
-    meta.addPage();
     book.setItemMeta(meta);
+    book = BukkitUtils.applyNTBTag(book, Collections.singletonList(ComponentSerializer.toString(FAKE_SKINS).replace("{role}", role)));
     BukkitUtils.openBook(player, book);
   }
   
@@ -175,7 +178,7 @@ public class FakeManager {
         replaced = replaced.replaceFirst(Pattern.quote(matcher.group()), Matcher.quoteReplacement("aCorenotchange:" + name));
       }
     }
-    
+
     return replaced;
   }
   

@@ -113,6 +113,7 @@ public class TagUtils {
                 }
             }
         }
+
         return ChatColor.WHITE;
     }
 }

@@ -3,34 +3,21 @@ package me.joaomanoel.d4rkk.dev.hook.protocollib;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketAdapter;
-import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.utility.MinecraftVersion;
-import com.comphenix.protocol.wrappers.PlayerInfoData;
-import com.comphenix.protocol.wrappers.WrappedChatComponent;
-import com.comphenix.protocol.wrappers.WrappedGameProfile;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.fake.FakeAdapter_1_20_R4;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.fake.FakeAdapter_1_8_R3;
-import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.chat.ComponentSerializer;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 import static com.comphenix.protocol.PacketType.Play.Server.*;
 
-@SuppressWarnings("unchecked")
 public class FakeAdapter extends PacketAdapter {
 
   private final FakeAdapter_1_8_R3 adapter_1_8_r3 = new FakeAdapter_1_8_R3();
   private final FakeAdapter_1_20_R4 adapter_1_20_r4 = new FakeAdapter_1_20_R4();
 
   public FakeAdapter() {
-    super(params().plugin(Core.getInstance()).types(PacketType.Play.Client.CHAT, TAB_COMPLETE, PLAYER_INFO, CHAT, SCOREBOARD_OBJECTIVE, SCOREBOARD_SCORE, SCOREBOARD_TEAM));
+    super(params().plugin(Core.getInstance()).types(PacketType.Play.Client.CHAT, TAB_COMPLETE, PLAYER_INFO, CHAT, SYSTEM_CHAT, SCOREBOARD_OBJECTIVE, SCOREBOARD_SCORE, SCOREBOARD_TEAM));
   }
 
   @Override
