@@ -2,6 +2,7 @@ package me.joaomanoel.d4rkk.dev.titles;
 
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import org.bukkit.entity.Player;
+
 import java.util.HashMap;
 import java.util.Map;
 

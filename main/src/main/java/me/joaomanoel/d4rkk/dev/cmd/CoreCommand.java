@@ -1,22 +1,17 @@
 package me.joaomanoel.d4rkk.dev.cmd;
 
+import com.sun.management.OperatingSystemMXBean;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.booster.Booster;
 import me.joaomanoel.d4rkk.dev.database.Database;
-import me.joaomanoel.d4rkk.dev.libraries.npc.NPCLibrary;
-import me.joaomanoel.d4rkk.dev.nms.NMSManager;
-import me.joaomanoel.d4rkk.dev.nms.npc.NpcEntity;
 import me.joaomanoel.d4rkk.dev.player.Profile;
-
 import me.joaomanoel.d4rkk.dev.utils.PluginDependencyChecker;
 import me.joaomanoel.d4rkk.dev.utils.TPSUtil;
 import me.joaomanoel.d4rkk.dev.utils.aUpdater;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.lang.management.ManagementFactory;
-import com.sun.management.OperatingSystemMXBean;
 import java.util.List;
 
 public class CoreCommand extends Commands {

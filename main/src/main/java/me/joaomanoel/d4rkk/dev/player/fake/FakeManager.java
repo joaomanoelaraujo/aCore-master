@@ -4,9 +4,9 @@ import com.comphenix.protocol.wrappers.WrappedGameProfile;
 import com.comphenix.protocol.wrappers.WrappedSignedProperty;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.libraries.profile.Mojang;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
-import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -32,11 +32,11 @@ public class FakeManager {
   
   private static final KConfig CONFIG = Core.getInstance().getConfig("utils");
   private static final Pattern REAL_PATTERN = Pattern.compile("(?i)aCorefakereal:\\w*"), NOT_CHANGE_PATTERN = Pattern.compile("(?i)aCorenotchange:\\w*");
-  
+
   public static Map<String, String> fakeNames = new HashMap<>();
   public static Map<String, Role> fakeRoles = new HashMap<>();
   public static Map<String, String> fakeSkins = new HashMap<>();
-  
+
   private static TextComponent FAKE_ROLES;
   private static TextComponent FAKE_SKINS;
   
@@ -111,14 +111,14 @@ public class FakeManager {
     fakeRoles.put(player.getName(), Role.getRoleByName(role));
     fakeSkins.put(player.getName(), skin);
   }
-  
+
   public static void removeFake(Player player) {
-    if (!isBungeeSide()) {
-      player.kickPlayer(StringUtils.formatColors(CONFIG.getString("fake.kick-remove")).replace("\\n", "\n"));
-    }
     fakeNames.remove(player.getName());
     fakeRoles.remove(player.getName());
     fakeSkins.remove(player.getName());
+    if (!isBungeeSide()) {
+      player.kickPlayer(StringUtils.formatColors(CONFIG.getString("fake.kick-remove")).replace("\\n", "\n"));
+    }
   }
   
   public static String getCurrent(String playerName) {

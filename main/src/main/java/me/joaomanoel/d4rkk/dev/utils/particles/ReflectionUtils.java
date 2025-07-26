@@ -1,7 +1,6 @@
 package me.joaomanoel.d4rkk.dev.utils.particles;
 
 import com.comphenix.protocol.ProtocolLibrary;
-import org.bukkit.Bukkit;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

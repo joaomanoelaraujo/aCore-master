@@ -1,13 +1,13 @@
 package me.joaomanoel.d4rkk.dev.utils;
 
 import org.bukkit.entity.Player;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 public class PlayerIPUtils {

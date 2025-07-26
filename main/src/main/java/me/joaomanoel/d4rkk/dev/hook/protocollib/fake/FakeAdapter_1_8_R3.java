@@ -10,14 +10,12 @@ import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
-import org.bukkit.Bukkit;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import static com.comphenix.protocol.PacketType.Play.Server.*;
-import static com.comphenix.protocol.PacketType.Play.Server.SCOREBOARD_TEAM;
 
 public class FakeAdapter_1_8_R3 {
 

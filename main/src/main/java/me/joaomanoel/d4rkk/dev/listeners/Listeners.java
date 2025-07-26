@@ -12,15 +12,11 @@ import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.npc.NPCLibrary;
 import me.joaomanoel.d4rkk.dev.menus.others.MenuOtherProfile;
-import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
-import me.joaomanoel.d4rkk.dev.nms.npc.NpcEntity;
-import me.joaomanoel.d4rkk.dev.nms.particle.ParticleOptionsItem;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.enums.ChatMention;
 import me.joaomanoel.d4rkk.dev.player.enums.PrivateMessages;
 import me.joaomanoel.d4rkk.dev.player.enums.ProtectionLobby;
-import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import me.joaomanoel.d4rkk.dev.player.hotbar.HotbarButton;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.plugin.logger.KLogger;
@@ -32,16 +28,15 @@ import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import me.joaomanoel.d4rkk.dev.utils.TagUtils;
 import me.joaomanoel.d4rkk.dev.utils.aUpdater;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
-import me.joaomanoel.d4rkk.dev.utils.particles.ParticleEffect;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.minecraft.server.v1_8_R3.EnumParticle;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.command.SimpleCommandMap;
-import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -51,7 +46,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.spigotmc.WatchdogThread;
 
@@ -111,16 +105,6 @@ public class Listeners implements Listener {
 //    if (firstTimePlayers.remove(playerId)) {
 //      handleFirstTimePlayer(player);
 //    }
-
-/*    Bukkit.getScheduler().runTaskTimer(Core.getInstance(), new Runnable() {
-
-      final Location location = player.getLocation();
-
-      @Override
-      public void run() {
-        ParticleEffect.ITEM_CRACK.display(player, new ParticleOptionsItem(new ItemStack(Material.DIAMOND)), false, (float) location.getX(), (float) location.getY(), (float) location.getZ(), 0, 0, 0, 1, 5);
-      }
-    }, 20L, 20L);*/
   }
 
   //todo: fazer futuramente quando tiver diversidade de linguagens feitas.
@@ -269,9 +253,9 @@ public class Listeners implements Listener {
   }
 
   private void cleanupPlayerData(UUID playerId, String playerName) {
-    FakeManager.fakeNames.remove(playerName);
+/*    FakeManager.fakeNames.remove(playerName);
     FakeManager.fakeRoles.remove(playerName);
-    FakeManager.fakeSkins.remove(playerName);
+    FakeManager.fakeSkins.remove(playerName);*/
     DELAY_PLAYERS.remove(playerId);
     PROTECTION_LOBBY.remove(playerId);
     MESSAGE_COOLDOWNS.remove(playerId);

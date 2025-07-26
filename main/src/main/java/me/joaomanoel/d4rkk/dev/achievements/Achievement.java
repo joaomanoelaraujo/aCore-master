@@ -1,9 +1,9 @@
 package me.joaomanoel.d4rkk.dev.achievements;
 
 import me.joaomanoel.d4rkk.dev.achievements.types.BedWarsAchievement;
-import me.joaomanoel.d4rkk.dev.achievements.types.ThePitAchievement;
 import me.joaomanoel.d4rkk.dev.achievements.types.SkyWarsAchievement;
 import me.joaomanoel.d4rkk.dev.achievements.types.TheBridgeAchievement;
+import me.joaomanoel.d4rkk.dev.achievements.types.ThePitAchievement;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import org.bukkit.inventory.ItemStack;
 

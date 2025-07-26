@@ -1,24 +1,29 @@
 package me.joaomanoel.d4rkk.dev.hook.protocollib.fake;
 
-import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
-import com.comphenix.protocol.reflect.StructureModifier;
-import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.comphenix.protocol.wrappers.PlayerInfoData;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.comphenix.protocol.wrappers.WrappedGameProfile;
 import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 
-import java.util.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class FakeAdapter_1_20_R4 {
 
-    public void onPacketReceiving(PacketEvent evt) {}
+    public void onPacketReceiving(PacketEvent evt) {
+        PacketContainer packet = evt.getPacket();
+        if (packet.getType().name().equals("CHAT_COMMAND")) {
+            packet.getStrings().write(0, FakeManager.replaceNickedPlayers(packet.getStrings().read(0), false));
+        }
+    }
 
     public void onPacketSending(PacketEvent event) {
         PacketContainer packet = event.getPacket();
-        System.out.println(packet.getType().name());
         switch (packet.getType().name()) {
             case "SYSTEM_CHAT": {
                 WrappedChatComponent chatComponent = event.getPacket().getChatComponents().read(0);
@@ -26,8 +31,33 @@ public class FakeAdapter_1_20_R4 {
                     return;
                 }
 
+
                 String jsonOriginal = chatComponent.getJson();
                 event.getPacket().getChatComponents().write(0, WrappedChatComponent.fromJson(FakeManager.replaceNickedPlayers(jsonOriginal, true)));
+                break;
+            }
+
+            case "TAB_COMPLETE": {
+                List<Object> modifiedList = new ArrayList<>();
+                for (Object entry : packet.getSpecificModifier(List.class).read(0)) {
+                    try {
+                        Field textField = entry.getClass().getDeclaredField("text");
+                        textField.setAccessible(true);
+                        String text = (String) textField.get(entry);
+                        if (FakeManager.isFake(text)) {
+                            Constructor<?> constructor = entry.getClass().getDeclaredConstructor(String.class, Optional.class);
+                            constructor.setAccessible(true);
+
+                            Object newEntry = constructor.newInstance(FakeManager.getFake(text), Optional.empty());
+                            modifiedList.add(newEntry);
+                            continue;
+                        }
+
+                        modifiedList.add(entry);
+                    } catch (Exception ignored) {}
+                }
+
+                packet.getSpecificModifier(List.class).write(0, modifiedList);
                 break;
             }
 
@@ -37,45 +67,21 @@ public class FakeAdapter_1_20_R4 {
                 for (PlayerInfoData entry : entries) {
                     WrappedGameProfile old = entry.getProfile();
                     if (!FakeManager.isFake(old.getName())) {
-                        return;
+                        newEntries.add(entry);
+                        continue;
                     }
 
-                    WrappedGameProfile profile = new WrappedGameProfile(old.getId(), FakeManager.getFake(old.getName()));
                     PlayerInfoData newEntry = new PlayerInfoData(
-                            profile,
+                            FakeManager.cloneProfile(old),
                             entry.getLatency(),
                             entry.getGameMode(),
-                            WrappedChatComponent.fromJson(profile.getName())
+                            entry.getDisplayName()
                     );
 
                     newEntries.add(newEntry);
                 }
 
                 packet.getPlayerInfoDataLists().write(1, newEntries);
-                break;
-            }
-
-            case "SCOREBOARD_TEAM": {
-                List<String> members = new ArrayList<>();
-                for (String member : (Collection<String>) packet.getModifier().withType(Collection.class).read(0)) {
-                    if (FakeManager.isFake(member)) {
-                        member = FakeManager.getFake(member);
-                    }
-
-                    members.add(member);
-                }
-
-                packet.getModifier().withType(Collection.class).write(0, members);
-                break;
-            }
-
-            case "SCOREBOARD_SCORE": {
-                packet.getStrings().write(0, FakeManager.replaceNickedPlayers(packet.getStrings().read(0), true));
-                break;
-            }
-
-            case "SCOREBOARD_OBJECTIVE": {
-                packet.getStrings().write(1, FakeManager.replaceNickedPlayers(packet.getStrings().read(1), true));
                 break;
             }
         }

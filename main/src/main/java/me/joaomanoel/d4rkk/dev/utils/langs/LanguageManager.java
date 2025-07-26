@@ -2,7 +2,6 @@ package me.joaomanoel.d4rkk.dev.utils.langs;
 
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
-
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.io.File;

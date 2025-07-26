@@ -1,7 +1,7 @@
 package me.joaomanoel.d4rkk.dev.titles;
 
-import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
+import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import org.bukkit.inventory.ItemStack;
 

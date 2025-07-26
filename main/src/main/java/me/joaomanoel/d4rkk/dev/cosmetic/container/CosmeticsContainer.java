@@ -4,7 +4,6 @@ import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.CosmeticType;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.database.data.interfaces.AbstractContainer;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 

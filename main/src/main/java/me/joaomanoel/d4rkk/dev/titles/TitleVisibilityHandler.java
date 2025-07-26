@@ -4,6 +4,7 @@ import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
 import java.util.Map;
 
 public class TitleVisibilityHandler {

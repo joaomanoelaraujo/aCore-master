@@ -19,11 +19,11 @@ import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.wrappers.WrappedDataWatcher;
-import java.util.UUID;
-
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
+
+import java.util.UUID;
 
 public class WrapperPlayServerNamedEntitySpawn
 extends AbstractPacket {

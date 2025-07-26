@@ -1,5 +1,6 @@
 package me.joaomanoel.d4rkk.dev.hook;
 
+import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.cash.CashManager;
 import me.joaomanoel.d4rkk.dev.player.Profile;
@@ -7,7 +8,6 @@ import me.joaomanoel.d4rkk.dev.player.enums.PlayerVisibility;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.servers.ServerItem;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
-import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 
 import java.text.SimpleDateFormat;

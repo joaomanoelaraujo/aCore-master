@@ -7,7 +7,6 @@ import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-
 import javax.annotation.Nullable;
 
 public class SkyWarsPlaceholder extends PlaceholderExpansion {

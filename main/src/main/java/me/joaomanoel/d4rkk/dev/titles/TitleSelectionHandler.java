@@ -1,6 +1,7 @@
 package me.joaomanoel.d4rkk.dev.titles;
 
 import me.joaomanoel.d4rkk.dev.player.Profile;
+
 import java.util.Map;
 
 public class TitleSelectionHandler {

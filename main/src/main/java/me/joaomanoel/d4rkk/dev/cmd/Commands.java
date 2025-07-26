@@ -41,6 +41,7 @@ public abstract class Commands extends Command {
     new InventorySeeCommand();
     new PingCommand();
     new VanishCommand();
+    new TesteCmd();
     if (CashManager.CASH) {
       new CashCommand();
     }

@@ -1,7 +1,7 @@
 package me.joaomanoel.d4rkk.dev.deliveries;
 
-import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.booster.Booster;
+import me.joaomanoel.d4rkk.dev.player.Profile;
 import org.bukkit.Bukkit;
 
 public class DeliveryReward {

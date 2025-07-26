@@ -178,6 +178,7 @@ me\joaomanoel\d4rkk\dev\player\enums\PlayerVisibility.class
 me\joaomanoel\d4rkk\dev\Core.class
 me\joaomanoel\d4rkk\dev\cmd\FakeCommand.class
 me\joaomanoel\d4rkk\dev\plugin\config\KConfig.class
+me\joaomanoel\d4rkk\dev\cmd\TesteCmd.class
 me\joaomanoel\d4rkk\dev\database\tables\BatteryDashTable.class
 me\joaomanoel\d4rkk\dev\database\cache\RoleCache$1.class
 me\joaomanoel\d4rkk\dev\utils\aUpdater.class
@@ -219,6 +220,7 @@ me\joaomanoel\d4rkk\dev\player\fake\FakeManager.class
 me\joaomanoel\d4rkk\dev\libraries\npc\NPCLookTask.class
 me\joaomanoel\d4rkk\dev\servers\ServerItem$1.class
 me\joaomanoel\d4rkk\dev\cosmetic\types\MvpColor.class
+me\joaomanoel\d4rkk\dev\hook\protocollib\HologramAdapter.class
 me\joaomanoel\d4rkk\dev\utils\PluginDependencyChecker.class
 me\joaomanoel\d4rkk\dev\listeners\Listeners.class
 me\joaomanoel\d4rkk\dev\api\StatsAPI.class

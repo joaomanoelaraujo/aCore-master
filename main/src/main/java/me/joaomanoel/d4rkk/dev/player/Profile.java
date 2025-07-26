@@ -1,5 +1,6 @@
 package me.joaomanoel.d4rkk.dev.player;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.booster.Booster;
 import me.joaomanoel.d4rkk.dev.booster.NetworkBooster;
@@ -11,14 +12,13 @@ import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
 import me.joaomanoel.d4rkk.dev.game.Game;
 import me.joaomanoel.d4rkk.dev.game.GameTeam;
 import me.joaomanoel.d4rkk.dev.hook.FriendsHook;
+import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.player.enums.PlayerVisibility;
 import me.joaomanoel.d4rkk.dev.player.hotbar.Hotbar;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.player.scoreboard.KScoreboard;
 import me.joaomanoel.d4rkk.dev.titles.TitleManager;
-import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
-import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;

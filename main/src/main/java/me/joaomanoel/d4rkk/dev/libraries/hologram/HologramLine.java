@@ -1,11 +1,8 @@
 package me.joaomanoel.d4rkk.dev.libraries.hologram;
 
-import me.joaomanoel.d4rkk.dev.libraries.hologram.listeners.HologramTouchEvent;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.nms.hologram.HologramEntity;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.util.function.Consumer;

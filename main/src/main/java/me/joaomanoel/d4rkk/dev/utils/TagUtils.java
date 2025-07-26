@@ -6,6 +6,7 @@ import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.Manager;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.player.Profile;
+import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -36,12 +37,12 @@ public class TagUtils {
     public static void setTag(Player viewer, Player target, String prefix, String suffix, int sortPriority) {
         Scoreboard scoreboard = viewer.getScoreboard();
         for (Team team : scoreboard.getTeams()) {
-            if (team.hasEntry(target.getName())) {
-                team.removeEntry(target.getName());
+            if (team.hasEntry(getFinalName(target.getName()))) {
+                team.removeEntry(getFinalName(target.getName()));
             }
         }
 
-        String teamName = formatTeamName(sortPriority, target.getName());
+        String teamName = formatTeamName(sortPriority, getFinalName(target.getName()));
         if (teamName.length() > 16) teamName = teamName.substring(0, 16);
 
         Team team = scoreboard.getTeam(teamName);
@@ -51,7 +52,7 @@ public class TagUtils {
 
         team.setPrefix(prefix);
         team.setSuffix(suffix);
-        team.addEntry(target.getName());
+        team.addEntry(getFinalName(target.getName()));
 
         applyTeamColorIfSupported(team, extractColorFromPrefix(prefix));
     }
@@ -59,8 +60,8 @@ public class TagUtils {
     public static void destroy(Player player) {
         Scoreboard scoreboard = player.getScoreboard();
         for (Team team : scoreboard.getTeams()) {
-            if (team.hasEntry(player.getName())) {
-                team.removeEntry(player.getName());
+            if (team.hasEntry(getFinalName(player.getName()))) {
+                team.removeEntry(getFinalName(player.getName()));
             }
         }
     }
@@ -115,5 +116,9 @@ public class TagUtils {
         }
 
         return ChatColor.WHITE;
+    }
+
+    private static String getFinalName(String target) {
+        return FakeManager.isFake(target) ? FakeManager.getFake(target) : target;
     }
 }

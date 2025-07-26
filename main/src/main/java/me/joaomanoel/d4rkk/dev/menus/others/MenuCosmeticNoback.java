@@ -10,7 +10,6 @@ import me.joaomanoel.d4rkk.dev.cosmetic.types.GlowCosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.JoinMessage;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PagedPlayerMenu;
-import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.menus.buy.MenuBuyCashCosmetic;
 import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.player.Profile;
