@@ -1,15 +1,18 @@
 package me.joaomanoel.d4rkk.dev.hook.protocollib.fake;
 
 import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.events.PacketEvent;
 import com.comphenix.protocol.wrappers.PlayerInfoData;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.comphenix.protocol.wrappers.WrappedGameProfile;
+import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,7 +20,11 @@ import java.util.List;
 
 import static com.comphenix.protocol.PacketType.Play.Server.*;
 
-public class FakeAdapter_1_8_R3 {
+public class FakeAdapter_1_8_R3 extends PacketAdapter {
+
+    public FakeAdapter_1_8_R3() {
+        super(params().plugin(Core.getInstance()).types(PacketType.Play.Client.CHAT, TAB_COMPLETE, PLAYER_INFO, SCOREBOARD_OBJECTIVE, SCOREBOARD_SCORE, SCOREBOARD_TEAM));
+    }
 
     public void onPacketReceiving(PacketEvent evt) {
         PacketContainer packet = evt.getPacket();

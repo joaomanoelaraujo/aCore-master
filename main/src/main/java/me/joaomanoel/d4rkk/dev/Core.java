@@ -227,8 +227,9 @@ public class Core extends KPlugin {
     Listeners.setupListeners();
     LanguageIcons.load(this);
 
-    ProtocolLibrary.getProtocolManager().addPacketListener(new FakeAdapter());
+    FakeAdapter.setup();
     ProtocolLibrary.getProtocolManager().addPacketListener(new NPCAdapter());
+    ProtocolLibrary.getProtocolManager().addPacketListener(new HologramAdapter());
 
     getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessageListener());

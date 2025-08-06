@@ -10,6 +10,7 @@ import me.joaomanoel.d4rkk.dev.cosmetic.types.MvpColor;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.PunchMessage;
 import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
+import me.joaomanoel.d4rkk.dev.libraries.hologram.Hologram;
 import me.joaomanoel.d4rkk.dev.libraries.npc.NPCLibrary;
 import me.joaomanoel.d4rkk.dev.menus.others.MenuOtherProfile;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
@@ -105,6 +106,10 @@ public class Listeners implements Listener {
 //    if (firstTimePlayers.remove(playerId)) {
 //      handleFirstTimePlayer(player);
 //    }
+
+    Hologram hologram = new Hologram(player.getLocation());
+    hologram.appendLine("SEXO GOSTOSO {PLAYER}");
+    hologram.spawn();
   }
 
   //todo: fazer futuramente quando tiver diversidade de linguagens feitas.
