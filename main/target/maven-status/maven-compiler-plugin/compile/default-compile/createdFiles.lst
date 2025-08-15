@@ -220,7 +220,6 @@ me\joaomanoel\d4rkk\dev\player\fake\FakeManager.class
 me\joaomanoel\d4rkk\dev\libraries\npc\NPCLookTask.class
 me\joaomanoel\d4rkk\dev\servers\ServerItem$1.class
 me\joaomanoel\d4rkk\dev\cosmetic\types\MvpColor.class
-me\joaomanoel\d4rkk\dev\hook\protocollib\HologramAdapter.class
 me\joaomanoel\d4rkk\dev\utils\PluginDependencyChecker.class
 me\joaomanoel\d4rkk\dev\listeners\Listeners.class
 me\joaomanoel\d4rkk\dev\api\StatsAPI.class
@@ -234,6 +233,7 @@ me\joaomanoel\d4rkk\dev\libraries\profile\Mojang.class
 me\joaomanoel\d4rkk\dev\database\tables\CoreTable.class
 me\joaomanoel\d4rkk\dev\menus\party\MenuParty$1.class
 me\joaomanoel\d4rkk\dev\achievements\types\TheBridgeAchievement$TitleReward.class
+me\joaomanoel\d4rkk\dev\database\tables\MissionsTable.class
 me\joaomanoel\d4rkk\dev\bungee\party\BungeeParty.class
 me\joaomanoel\d4rkk\dev\database\conversor\MongoDBConversor.class
 me\joaomanoel\d4rkk\dev\libraries\menu\PagedMenu.class

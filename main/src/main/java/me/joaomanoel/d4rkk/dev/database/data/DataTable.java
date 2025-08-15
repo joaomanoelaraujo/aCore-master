@@ -21,6 +21,7 @@ public abstract class DataTable {
     TABLES.add(new TheBridgeTable());
     TABLES.add(new BatteryDashTable());
     TABLES.add(new DuelsTable());
+    TABLES.add(new MissionsTable());
     TABLES.add(new SkyWarsTable());
   }
   
