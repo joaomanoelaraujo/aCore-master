@@ -107,9 +107,6 @@ public class Listeners implements Listener {
 //      handleFirstTimePlayer(player);
 //    }
 
-    Hologram hologram = new Hologram(player.getLocation());
-    hologram.appendLine("SEXO GOSTOSO {PLAYER}");
-    hologram.spawn();
   }
 
   //todo: fazer futuramente quando tiver diversidade de linguagens feitas.

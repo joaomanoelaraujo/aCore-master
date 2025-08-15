@@ -4,8 +4,7 @@ import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.PacketContainer;
-import com.comphenix.protocol.wrappers.BlockPosition;
-import com.comphenix.protocol.wrappers.WrappedChatComponent;
+import com.comphenix.protocol.wrappers.*;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import me.joaomanoel.d4rkk.dev.nms.enderdragon.PacketMountableDragon;
@@ -32,11 +31,14 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
+
 
 public class NMS1_20_R2 implements NMS_Interface {
 
@@ -201,12 +203,12 @@ public class NMS1_20_R2 implements NMS_Interface {
         return entity;
     }
 
-    @Override
-    public void resendSkin(Player target, Player npc) {
-        target.hidePlayer(this.plugin, npc);
-        Bukkit.getScheduler().runTaskLater(this.plugin, () -> target.showPlayer(this.plugin, npc), 2L);
-    }
+    private static final ProtocolManager PROTO = ProtocolLibrary.getProtocolManager();
 
+    @Override
+    public void resendSkin(Player viewer, Player npcPlayer, NpcEntity entity) {
+
+    }
     @Override
     public NpcEntity createNPC(Location location, String name, String value, String signature) {
         GameProfile profile = new GameProfile(UUID.randomUUID(), name);

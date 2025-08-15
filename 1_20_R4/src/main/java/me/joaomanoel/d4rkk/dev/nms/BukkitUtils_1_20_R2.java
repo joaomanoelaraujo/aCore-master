@@ -307,6 +307,12 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
                         }
                         meta.addEnchant(Enchantment.getByName(enchanted.split(":")[0]), Integer.parseInt(enchanted.split(":")[1]), true);
                     }
+//                } else if (opt.startsWith("base>") && potion != null) {
+//                String[] bd = opt.split(">")[1].split(":");
+//                PotionType  type     = PotionType.valueOf(bd[0].toUpperCase());
+//                boolean     extended = Boolean.parseBoolean(bd[1]);
+//                boolean     upgraded = Boolean.parseBoolean(bd[2]);
+//                potion.setBasePotionData(new PotionData(type, extended, upgraded));
                 } else if (opt.startsWith("paint>") && (effect != null || armor != null)) {
                     for (String color : opt.split(">")[1].split("\n")) {
                         String[] rgb = color.split(":");
@@ -347,7 +353,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
                     for (String pe : opt.split(">")[1].split("\n")) {
                         String[] effectSplit = pe.split(":");
                         PotionEffectType type = PotionEffectType.getByName(effectSplit[0]);
-                        int amplifier = Integer.parseInt(effectSplit[1]);
+                        int amplifier = Integer.parseInt(effectSplit[1]) - 1;
                         int duration = Integer.parseInt(effectSplit[2]);
                         potion.addCustomEffect(new PotionEffect(type, duration, amplifier), false);
                     }

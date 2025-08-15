@@ -29,7 +29,7 @@ public interface NMS_Interface {
     void look(Object entity, float yaw, float pitch);
     void setHeadYaw(Object entity, float yaw);
     void refreshPlayer(Player player);
-    void resendSkin(Player target, Player npc); // método unificado
+    void resendSkin(Player target, Player npc, NpcEntity entity); // método unificado
     HologramEntity createHologram(Location location);
     NpcEntity createNPC(Location location, String name, String value, String signature);
 
