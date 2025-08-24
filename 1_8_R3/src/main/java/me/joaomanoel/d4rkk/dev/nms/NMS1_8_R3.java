@@ -184,6 +184,8 @@ public class NMS1_8_R3 implements NMS_Interface {
         }
     }
 
+
+
     @Override
     public void resendSkin(Player viewer, Player npcPlayer, NpcEntity entity) {
 
