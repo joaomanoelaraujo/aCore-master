@@ -25,9 +25,9 @@ menuprofile:
 profile:
   title: '个人资料'
   menu:
-    preferences: 'REDSTONE_COMPARATOR : 1 : hide>all : name>&a偏好设置 : desc>&7在我们的服务器中，您可以完全自定义\n&7您的游戏体验。\n&7根据您的喜好自定义各种独特的选项！\n \n&8选项包括启用或禁用私人消息、\n&8玩家和其他功能。\n \n&e点击自定义选项！'
-    titles: 'MAP : 1 : hide>all : name>&a称号 : desc>&7选择一个独特的称号显示在\n&7您的头顶上，让其他玩家看到。\n \n&8请注意，您自己看不到称号，\n&8只有其他玩家可以看到。\n \n&e点击选择称号！'
-    boosters: 'POTION:8232 : 1 : hide>all : name>&a金币加成 : desc>&7在我们的服务器中，有一个\n&7&6金币加成 &7系统，可以影响\n&7在游戏中获得的 &6金币 &7数量。\n \n&8加成可以是个人的或全服务器的，\n&8可以让您和其他玩家受益。\n \n&e点击查看您的加成！'
+    preferences: 'REDSTONE_COMPARATOR : 1 : name>&a偏好设置 : desc>&7在我们的服务器中，您可以完全自定义\n&7您的游戏体验。\n&7根据您的喜好自定义各种独特的选项！\n \n&8选项包括启用或禁用私人消息、\n&8玩家和其他功能。\n \n&e点击自定义选项！: hide>all'
+    titles: 'MAP : 1 : name>&a称号 : desc>&7选择一个独特的称号显示在\n&7您的头顶上，让其他玩家看到。\n \n&8请注意，您自己看不到称号，\n&8只有其他玩家可以看到。\n \n&e点击选择称号！: hide>all'
+    boosters: 'POTION:8232 : 1 : name>&a金币加成 : desc>&7在我们的服务器中，有一个\n&7&6金币加成 &7系统，可以影响\n&7在游戏中获得的 &6金币 &7数量。\n \n&8加成可以是个人的或全服务器的，\n&8可以让您和其他玩家受益。\n \n&e点击查看您的加成！: hide>all'
     challenges: 'GOLD_INGOT : 1 : name>&a挑战 : desc>&7在我们的服务器中，有一个\n&7&6挑战 &7系统，包含独特的任务，\n&7完成后可获得永久奖励。\n \n&8奖励包括称号、金币、声望图标\n&8和其他装饰物品。\n \n&e点击查看挑战！'
     statistics: 'PAPER : 1 : name>&a统计 : desc>&7查看您在服务器每个小游戏中\n&7的统计数据。\n \n&e点击查看统计！'
     cosmetics: '416 : 1 : name>&a装饰物品 : desc>&7查看您在每个服务器中\n&7可用的装饰物品。\n \n&e点击查看！'
@@ -195,12 +195,12 @@ menu:
     privateMessages: 'PAPER : 1 : name>&a私人消息 : desc>&7启用或禁用\n&7通过 /tell 发送的消息。'
     violence: 'REDSTONE : 1 : name>&a暴力 : desc>&7启用或禁用\n&7PvP 中的血液粒子。'
     protectionLobby: 'NETHER_STAR : 1 : name>&a/lobby 保护 : desc>&7启用或禁用\n&7使用 /lobby 时的确认请求。'
-    chatMention: 'MAP : 1 : hide>all : name>&a聊天提醒 : desc>&7启用或禁用聊天中的\n&7提醒。'
+    chatMention: 'MAP : 1 : name>&a聊天提醒 : desc>&7启用或禁用聊天中的\n&7提醒。: hide>all '
     state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&f状态: &7{state}\n \n&e点击修改！'
   boosters:
     title: '加成'
     personal: 'POTION : 1 : name>&a个人加成 : desc>&7在服务器的所有小游戏中\n&7为 &bVIP &7提供\n&7&6金币加成&7。\n \n&e点击查看您的加成！'
-    global: 'POTION:8232 : 1 : hide>all : name>&a全服加成 : desc>&7在一个小游戏中为\n&b所有 &7玩家提供\n&7&6金币加成&7。\n \n&e点击查看您的加成！'
+    global: 'POTION:8232 : 1 : name>&a全服加成 : desc>&7在一个小游戏中为\n&b所有 &7玩家提供\n&7&6金币加成&7。\n \n&e点击查看您的加成！: hide>all '
     active: '&f激活的个人加成:\n {activeMultiplier}'
     none: '&c您没有激活的加成。'
     calculation: '&8• &6加成 {multiplier}x &8({time})\n \n&f计算:\n &7当获得 50 金币时，激活加成后\n &7将获得总计 &6{total} 金币&7。'
@@ -247,7 +247,7 @@ booster:
   type: '全服'
   type2: '个人'
   list:
-    item: 'POTION{type} : 1 : hide>all : name>&a{boosterType} 加成 : desc>&f倍率: &6{multiplier}x\n&f持续时间: &7{duration}\n \n&e点击激活加成！'
+    item: 'POTION{type} : 1 : name>&a{boosterType} 加成 : desc>&f倍率: &6{multiplier}x\n&f持续时间: &7{duration}\n \n&e点击激活加成！: hide>all '
     empty: 'WEB : 1 : name>&c您没有任何加成！'
   network:
     notInMinigame: '&c您需要在小游戏服务器中才能激活此加成。'

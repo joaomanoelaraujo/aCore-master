@@ -25,9 +25,9 @@ menuprofile:
 profile:
  title: 'Profile'
  menu:
-  preferences: 'REDSTONE_COMPARATOR : 1 : hide>all : name>&aPreferences : desc>&7In our server, you can completely customize\n&7your gaming experience.\n&7Customize various exclusive options as\n&7you wish!\n \n&8Options include enabling or disabling\n&8private messages, players, and more.\n \n&eClick to customize options!'
-  titles: 'MAP : 1 : hide>all : name>&aTitles : desc>&7Show your style with an exclusive title\n&7that will be displayed above your head\n&7for other players.\n \n&8Remember that you won''t see the title,\n&8only other players will see it.\n \n&eClick to select a title!'
-  boosters: 'POTION:8232 : 1 : hide>all : name>&aCoin Multipliers : desc>&7In our server, there is a system of\n&7&6Coin Multipliers &7that affect\n&7the amount of &6Coins &7earned in matches.\n \n&8Multipliers can be personal or global,\n&8benefiting you and even other players.\n \n&eClick to view your multipliers!'
+  preferences: 'REDSTONE_COMPARATOR : 1 : name>&aPreferences : desc>&7In our server, you can completely customize\n&7your gaming experience.\n&7Customize various exclusive options as\n&7you wish!\n \n&8Options include enabling or disabling\n&8private messages, players, and more.\n \n&eClick to customize options! : hide>all'
+  titles: 'MAP : 1 : name>&aTitles : desc>&7Show your style with an exclusive title\n&7that will be displayed above your head\n&7for other players.\n \n&8Remember that you won''t see the title,\n&8only other players will see it.\n \n&eClick to select a title! : hide>all'
+  boosters: 'POTION:8232 : 1 : name>&aCoin Multipliers : desc>&7In our server, there is a system of\n&7&6Coin Multipliers &7that affect\n&7the amount of &6Coins &7earned in matches.\n \n&8Multipliers can be personal or global,\n&8benefiting you and even other players.\n \n&eClick to view your multipliers! : hide>all'
   challenges: 'GOLD_INGOT : 1 : name>&aChallenges : desc>&7In our server, there is a system of\n&7&6Challenges &7that consist of unique missions\n&7that grant various lifetime rewards.\n \n&8Rewards range from titles, coins,\n&8prestige icons, and other cosmetics.\n \n&eClick to view challenges!'
   statistics: 'PAPER : 1 : name>&aStatistics : desc>&7View your statistics for\n&7each Minigame on our server.\n \n&eClick to view statistics!'
   cosmetics: '416 : 1 : name>&aCosmetics : desc>&7View your cosmetics for\n&7each server.\n \n&eClick to view!'
@@ -195,12 +195,12 @@ menu:
   privateMessages: 'PAPER : 1 : name>&aPrivate Messages : desc>&7Enable or disable\n&7messages sent through /tell.'
   violence: 'REDSTONE : 1 : name>&aViolence : desc>&7Enable or disable\n&7blood particles in PvP.'
   protectionLobby: 'NETHER_STAR : 1 : name>&aProtection in /lobby : desc>&7Enable or disable\n&7confirmation request when using /lobby.'
-  chatMention: 'MAP : 1 : hide>all : name>&aChat Mention : desc>&7Enable or disable mentions in\n&7chat.'
+  chatMention: 'MAP : 1 : name>&aChat Mention : desc>&7Enable or disable mentions in\n&7chat. : hide>all'
   state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&fState: &7{state}\n \n&eClick to modify!'
  boosters:
   title: 'Multipliers'
   personal: 'POTION : 1 : name>&aPersonal Multipliers : desc>&7Grants a &6Coin Multiplier &7only\n&7for &bYOU &7in all server minigames\n&7for a short period of time.\n \n&eClick to view your multipliers!'
-  global: 'POTION:8232 : 1 : hide>all : name>&aGlobal Multipliers : desc>&7Grants a &6Coin Multiplier &7for\n&bALL &7players in just one minigame\n&7for a short period of time.\n \n&eClick to view your multipliers!'
+  global: 'POTION:8232 : 1 : name>&aGlobal Multipliers : desc>&7Grants a &6Coin Multiplier &7for\n&bALL &7players in just one minigame\n&7for a short period of time.\n \n&eClick to view your multipliers! : hide>all'
   active: '&fActive Personal Multiplier:\n {activeMultiplier}'
   none: '&cYou don''t have any active multiplier.'
   calculation: '&8• &6Multiplier {multiplier}x &8({time})\n \n&fCalculation:\n &7With the multiplier active when receiving &650 Coins &7the\n &7total received will be equivalent to &6{total} Coins&7.'
@@ -247,7 +247,7 @@ booster:
  type: 'Global'
  type2: 'Personal'
  list:
-  item: 'POTION{type} : 1 : hide>all : name>&aBooster {boosterType} : desc>&fMultiplier: &6{multiplier}x\n&fDuration: &7{duration}\n \n&eClick to activate the booster!'
+  item: 'POTION{type} : 1 : name>&aBooster {boosterType} : desc>&fMultiplier: &6{multiplier}x\n&fDuration: &7{duration}\n \n&eClick to activate the booster! : hide>all'
   empty: 'WEB : 1 : name>&cYou don''t have any Boosters!'
  network:
   notInMinigame: '&cYou need to be in a Minigame server to activate this Booster.'

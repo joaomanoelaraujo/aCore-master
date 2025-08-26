@@ -25,9 +25,9 @@ menuprofile:
 profile:
   title: 'プロフィール'
   menu:
-    preferences: 'REDSTONE_COMPARATOR : 1 : hide>all : name>&a設定 : desc>&7当サーバーでは、ゲーム体験を\n&7完全にカスタマイズできます。\n&7様々なユニークなオプションを\n&7お好みに合わせて設定できます！\n \n&8プライベートメッセージ、プレイヤー表示など\n&8の設定が可能です。\n \n&eクリックして設定を変更！'
-    titles: 'MAP : 1 : hide>all : name>&aタイトル : desc>&7ユニークなタイトルで自分らしさを表現し、\n&7他のプレイヤーの頭上に表示される\n&7タイトルを設定できます。\n \n&8自分自身にはタイトルは表示されず、\n&8他のプレイヤーにのみ表示されます。\n \n&eクリックしてタイトルを選択！'
-    boosters: 'POTION:8232 : 1 : hide>all : name>&aコインブースター : desc>&7当サーバーには\n&7&6コインブースター &7システムがあり、\n&7ゲームで獲得する &6コイン &7量に影響します。\n \n&8ブースターは個人用またはグローバルで、\n&8あなたや他のプレイヤーに恩恵をもたらします。\n \n&eクリックしてブースターを確認！'
+    preferences: 'REDSTONE_COMPARATOR : 1 : name>&a設定 : desc>&7当サーバーでは、ゲーム体験を\n&7完全にカスタマイズできます。\n&7様々なユニークなオプションを\n&7お好みに合わせて設定できます！\n \n&8プライベートメッセージ、プレイヤー表示など\n&8の設定が可能です。\n \n&eクリックして設定を変更！'
+    titles: 'MAP : 1 : name>&aタイトル : desc>&7ユニークなタイトルで自分らしさを表現し、\n&7他のプレイヤーの頭上に表示される\n&7タイトルを設定できます。\n \n&8自分自身にはタイトルは表示されず、\n&8他のプレイヤーにのみ表示されます。\n \n&eクリックしてタイトルを選択！'
+    boosters: 'POTION:8232 : 1 : name>&aコインブースター : desc>&7当サーバーには\n&7&6コインブースター &7システムがあり、\n&7ゲームで獲得する &6コイン &7量に影響します。\n \n&8ブースターは個人用またはグローバルで、\n&8あなたや他のプレイヤーに恩恵をもたらします。\n \n&eクリックしてブースターを確認！'
     challenges: 'GOLD_INGOT : 1 : name>&aチャレンジ : desc>&7当サーバーには\n&7&6チャレンジ &7システムがあり、\n&7永続的な報酬が得られる特別なミッションがあります。\n \n&8報酬にはタイトル、コイン、\n&8プレステージアイコンなどが含まれます。\n \n&eクリックしてチャレンジを確認！'
     statistics: 'PAPER : 1 : name>&a統計 : desc>&7当サーバーの各ミニゲームでの\n&7統計を確認できます。\n \n&eクリックして統計を表示！'
     cosmetics: '416 : 1 : name>&aコスメティック : desc>&7各サーバーで使用できる\n&7コスメティックアイテムを確認。\n \n&eクリックして表示！'
@@ -195,12 +195,12 @@ menu:
     privateMessages: 'PAPER : 1 : name>&aプライベートメッセージ : desc>&7/tellを通じて送信される\n&7メッセージをオン/オフ。'
     violence: 'REDSTONE : 1 : name>&a暴力表現 : desc>&7PvPでの\n&7血のパーティクルをオン/オフ。'
     protectionLobby: 'NETHER_STAR : 1 : name>&a/lobby保護 : desc>&7/lobby使用時の\n&7確認要求をオン/オフ。'
-    chatMention: 'MAP : 1 : hide>all : name>&aチャットでのメンション : desc>&7チャットでの\n&7メンションをオン/オフ。'
+    chatMention: 'MAP : 1 : name>&aチャットでのメンション : desc>&7チャットでの\n&7メンションをオン/オフ。 : hide>all'
     state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&f状態: &7{state}\n \n&eクリックして変更！'
   boosters:
     title: 'ブースター'
     personal: 'POTION : 1 : name>&a個人ブースター : desc>&7サーバーの全ミニゲームで\n&7&bあなた &7だけに適用される\n&7&6コインブースター &7を一定時間付与。\n \n&eクリックしてブースターを確認！'
-    global: 'POTION:8232 : 1 : hide>all : name>&aグローバルブースター : desc>&7特定のミニゲームで\n&b全プレイヤー &7に適用される\n&7&6コインブースター &7を一定時間付与。\n \n&eクリックしてブースターを確認！'
+    global: 'POTION:8232 : 1 : name>&aグローバルブースター : desc>&7特定のミニゲームで\n&b全プレイヤー &7に適用される\n&7&6コインブースター &7を一定時間付与。\n \n&eクリックしてブースターを確認！ : hide>all'
     active: '&f有効な個人ブースター:\n {activeMultiplier}'
     none: '&c有効なブースターがありません。'
     calculation: '&8• &6ブースター {multiplier}x &8({time})\n \n&f計算例:\n &7ブースター有効時に &650コイン &7獲得すると\n &7合計 &6{total}コイン &7を獲得。'
@@ -247,7 +247,7 @@ booster:
   type: 'グローバル'
   type2: '個人'
   list:
-    item: 'POTION{type} : 1 : hide>all : name>&aブースター {boosterType} : desc>&f倍率: &6{multiplier}x\n&f期間: &7{duration}\n \n&eクリックしてブースターを有効化！'
+    item: 'POTION{type} : 1 : name>&aブースター {boosterType} : desc>&f倍率: &6{multiplier}x\n&f期間: &7{duration}\n \n&eクリックしてブースターを有効化！'
     empty: 'WEB : 1 : name>&cブースターを所持していません！'
   network:
     notInMinigame: '&cこのブースターを有効化するにはミニゲームサーバーにいる必要があります。'

@@ -72,7 +72,7 @@ public class MenuIdiomas extends PagedPlayerMenu {
                             return;
                         }
 
-                        String key = IDIOMAS.getOrDefault(item, null);
+                        String key = findLanguageByIcon(item);
                         if (key != null) {
                             profile.getLanguageContainer().changeLanguage(key);
                             EnumSound.LEVEL_UP.play(this.player, 0.5F, 1.0F);
@@ -83,6 +83,28 @@ public class MenuIdiomas extends PagedPlayerMenu {
             }
         }
     }
+
+    private String findLanguageByIcon(ItemStack icon) {
+        if (icon == null) return null;
+        if (!IDIOMAS.isEmpty()) {
+            for (ItemStack keyItem : IDIOMAS.keySet()) {
+                if (keyItem == null) continue;
+
+                if (icon.getType() == keyItem.getType()) {
+                    if (icon.hasItemMeta() && keyItem.hasItemMeta()) {
+                        if (icon.getItemMeta().hasDisplayName() && keyItem.getItemMeta().hasDisplayName()
+                                && icon.getItemMeta().getDisplayName().equals(keyItem.getItemMeta().getDisplayName())
+                                && icon.getItemMeta().hasLore() && keyItem.getItemMeta().hasLore()
+                                && icon.getItemMeta().getLore().equals(keyItem.getItemMeta().getLore())) {
+                            return IDIOMAS.get(keyItem);
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
 
     public void cancel() {
         IDIOMAS.clear();
