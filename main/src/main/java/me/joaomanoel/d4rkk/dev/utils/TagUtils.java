@@ -4,6 +4,10 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.Manager;
+import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
+import me.joaomanoel.d4rkk.dev.cosmetic.CosmeticType;
+import me.joaomanoel.d4rkk.dev.cosmetic.container.SelectedContainer;
+import me.joaomanoel.d4rkk.dev.cosmetic.types.ColoredTag;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
@@ -20,19 +24,35 @@ import java.lang.reflect.Method;
 public class TagUtils {
 
     public static void setTag(Player player) {
+
         for (Player online : Bukkit.getOnlinePlayers()) {
             Role otherRole = Role.getPlayerRole(player);
             setTag(online, player, otherRole.getPrefix(), getPlayerSuffix(player), otherRole.getId());
         }
 
-        Bukkit.getScheduler().runTaskLater(Core.getInstance(), ()-> {
+        Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
             for (Player online : Bukkit.getOnlinePlayers()) {
                 Role otherRole = Role.getPlayerRole(online);
                 setTag(player, online, otherRole.getPrefix(), getPlayerSuffix(online), otherRole.getId());
             }
         }, 3L);
 
+
     }
+
+    private static String getSelectedTagColor(Player player) {
+        Profile profile = Profile.getProfile(player.getName());
+        if (profile == null) return null;
+
+        SelectedContainer selected = profile.getAbstractContainer("aCoreProfile", "cselected", SelectedContainer.class);
+        ColoredTag coloredTag = selected.getSelected(CosmeticType.COLORED_TAG, ColoredTag.class);
+
+        if (coloredTag != null && coloredTag.getId() != 0) {
+            return coloredTag.getColor(); // ex: "&a" ou "&c"
+        }
+        return null;
+    }
+
 
     public static void setTag(Player viewer, Player target, String prefix, String suffix, int sortPriority) {
         Scoreboard scoreboard = viewer.getScoreboard();
@@ -50,11 +70,21 @@ public class TagUtils {
             team = scoreboard.registerNewTeam(teamName);
         }
 
-        team.setPrefix(prefix);
+        String tagColor = getSelectedTagColor(target);
+        String finalPrefix;
+
+        if (tagColor != null) {
+            finalPrefix = tagColor + ChatColor.stripColor(prefix);
+            applyTeamColorIfSupported(team, ChatColor.getByChar(tagColor.replace("§", "").charAt(0)));
+        } else {
+            finalPrefix = prefix;
+            applyTeamColorIfSupported(team, extractColorFromPrefix(prefix));
+        }
+
+        team.setPrefix(finalPrefix);
         team.setSuffix(suffix);
         team.addEntry(getFinalName(target.getName()));
-
-        applyTeamColorIfSupported(team, extractColorFromPrefix(prefix));
+        applyTeamColorIfSupported(team, extractColorFromPrefix(finalPrefix));
     }
 
     public static void destroy(Player player) {
