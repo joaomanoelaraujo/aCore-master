@@ -55,30 +55,12 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
     private static final Map<String, Material> LEGACY_TO_NEW = new HashMap<>();
     static {
         LEGACY_IDS.put("383:99", Material.IRON_GOLEM_SPAWN_EGG);
-        LEGACY_IDS.put("383:50", Material.CREEPER_SPAWN_EGG);
-        LEGACY_IDS.put("383:51", Material.SKELETON_SPAWN_EGG);
-        LEGACY_IDS.put("383:52", Material.SPIDER_SPAWN_EGG);
-        LEGACY_IDS.put("383:54", Material.ZOMBIE_SPAWN_EGG);
-        LEGACY_IDS.put("383:55", Material.SLIME_SPAWN_EGG);
-        LEGACY_IDS.put("383:57", Material.ENDERMAN_SPAWN_EGG);
-        LEGACY_IDS.put("383:61", Material.BLAZE_SPAWN_EGG);
-        LEGACY_IDS.put("383:62", Material.MAGMA_CUBE_SPAWN_EGG);
-        LEGACY_IDS.put("383:65", Material.BAT_SPAWN_EGG);
-        LEGACY_IDS.put("383:66", Material.WITCH_SPAWN_EGG);
-        LEGACY_IDS.put("383:90", Material.PIG_SPAWN_EGG);
-        LEGACY_IDS.put("383:91", Material.SHEEP_SPAWN_EGG);
-        LEGACY_IDS.put("383:92", Material.COW_SPAWN_EGG);
-        LEGACY_IDS.put("383:93", Material.CHICKEN_SPAWN_EGG);
-        LEGACY_IDS.put("383:94", Material.SQUID_SPAWN_EGG);
-        LEGACY_IDS.put("383:95", Material.WOLF_SPAWN_EGG);
-        LEGACY_IDS.put("383:96", Material.MOOSHROOM_SPAWN_EGG);
-        LEGACY_IDS.put("383:98", Material.OCELOT_SPAWN_EGG);
-        LEGACY_IDS.put("383:100", Material.HORSE_SPAWN_EGG);
-        LEGACY_IDS.put("383:101", Material.RABBIT_SPAWN_EGG);
-        LEGACY_IDS.put("383:120", Material.VILLAGER_SPAWN_EGG);
         LEGACY_IDS.put("35:0", Material.WHITE_WOOL);
         LEGACY_IDS.put("35:1", Material.ORANGE_WOOL);
         LEGACY_IDS.put("35:2", Material.MAGENTA_WOOL);
+        LEGACY_IDS.put("LIT_PUMPKIN", Material.JACK_O_LANTERN);
+        LEGACY_IDS.put("WEB", Material.COBWEB);
+        LEGACY_IDS.put("91", Material.JACK_O_LANTERN);
         LEGACY_IDS.put("35:3", Material.LIGHT_BLUE_WOOL);
         LEGACY_IDS.put("35:4", Material.YELLOW_WOOL);
         LEGACY_IDS.put("35:5", Material.LIME_WOOL);
@@ -113,6 +95,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         LEGACY_IDS.put("WOOL:10", Material.PURPLE_WOOL);
         LEGACY_IDS.put("WOOL:11", Material.BLUE_WOOL);
         LEGACY_IDS.put("WOOL:12", Material.BROWN_WOOL);
+
         LEGACY_IDS.put("351:1", Material.RED_DYE);
         LEGACY_IDS.put("351:8", Material.GRAY_DYE);
         LEGACY_IDS.put("351:11", Material.YELLOW_DYE);
@@ -125,7 +108,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         LEGACY_IDS.put("258", Material.IRON_AXE);
         LEGACY_IDS.put("278", Material.DIAMOND_PICKAXE);
         LEGACY_IDS.put("279", Material.DIAMOND_AXE);
-        LEGACY_IDS.put("385", Material.FIRE_CHARGE); // era LEGACY_FIREBALL
+        LEGACY_IDS.put("385", Material.FIRE_CHARGE);
         LEGACY_IDS.put("121", Material.END_STONE);
         LEGACY_IDS.put("76", Material.REDSTONE_TORCH);
         LEGACY_IDS.put("159", Material.WHITE_TERRACOTTA);
@@ -283,26 +266,33 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         player.updateInventory();
     }
 
-    private Material resolveMaterial(String name) {
+    private Material resolveMaterial(String name, short data) {
         if (name == null || name.isEmpty()) {
             return Material.BARRIER;
         }
 
         String upper = name.toUpperCase();
 
-        // tenta pelos ids legados
+        // 1) tenta pelo mapa legado completo (tipo "35:4", "383:99")
+        String legacyKey = upper + (data > 0 ? ":" + data : "");
+        if (LEGACY_IDS.containsKey(legacyKey)) {
+            return LEGACY_IDS.get(legacyKey);
+        }
+
+        // 2) tenta pelo nome simples no mapa legado
         if (LEGACY_IDS.containsKey(upper)) {
             return LEGACY_IDS.get(upper);
         }
 
-        // tenta por nome moderno
+        // 3) tenta pelo enum moderno
         try {
             return Material.valueOf(upper);
         } catch (IllegalArgumentException e) {
-            Bukkit.getLogger().warning("[aCore] Material desconhecido ao desserializar: " + name);
+            Bukkit.getLogger().warning("[aCore] Material desconhecido: " + name + (data > 0 ? ":" + data : ""));
             return Material.BARRIER;
         }
     }
+
 
 
 
@@ -325,20 +315,17 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         String leftToken = parts[0].trim().toUpperCase();
 
         // ✅ 1) tenta RESOLVER PRIMEIRO PELO MAPA LEGADO usando o token COMPLETO
-        Material mat = LEGACY_IDS.get(leftToken);
-        short data = 0;
 
-        if (mat == null) {
-            // 2) senão, quebra em material[:data] e resolve pelo nome/material
-            String[] matSplit = leftToken.split(":", 2);
-            String materialToken = matSplit[0].trim();
-            if (matSplit.length > 1) {
-                try {
-                    data = Short.parseShort(matSplit[1].trim());
-                } catch (NumberFormatException ignore) { }
-            }
-            mat = resolveMaterial(materialToken);
+        String[] matSplit = leftToken.split(":", 2);
+        String materialToken = matSplit[0].trim();
+        short data = 0;
+        if (matSplit.length > 1) {
+            try {
+                data = Short.parseShort(matSplit[1].trim());
+            } catch (NumberFormatException ignore) {}
         }
+
+        Material mat = resolveMaterial(materialToken, data);
 
         // quantidade
         int amount = 1;

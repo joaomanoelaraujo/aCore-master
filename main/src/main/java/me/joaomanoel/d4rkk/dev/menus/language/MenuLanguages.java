@@ -92,15 +92,16 @@ public class MenuLanguages<T extends Cosmetic> extends PagedPlayerMenu {
   }
 
   private Cosmetic findByICON(ItemStack icon) {
-    ItemMeta meta = icon.getItemMeta();
-    ItemStack key = this.cosmetics.keySet().stream().filter(item ->
-            icon.getType().equals(item.getType()) && meta != null &&
-                    item.getItemMeta().getDisplayName().equals(meta.getDisplayName()) &&
-                    item.getItemMeta().getLore().equals(meta.getLore())
-    ).findFirst().orElse(null);
+    if (icon == null) return null;
 
-    return this.cosmetics.get(key);
+    for (ItemStack key : this.cosmetics.keySet()) {
+      if (key.isSimilar(icon)) {
+        return this.cosmetics.get(key);
+      }
+    }
+    return null;
   }
+
   @EventHandler
   public void onInventoryClick(InventoryClickEvent evt) {
     if (!evt.getInventory().equals(this.getCurrentInventory())) return;
