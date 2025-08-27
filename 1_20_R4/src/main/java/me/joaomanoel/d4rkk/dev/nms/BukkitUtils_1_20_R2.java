@@ -46,7 +46,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
-
 import java.util.*;
 
 public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
