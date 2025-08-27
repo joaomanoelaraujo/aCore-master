@@ -33,6 +33,7 @@ com\comphenix\packetwrapper\WrapperPlayClientHeldItemSlot.class
 me\joaomanoel\d4rkk\dev\party\PartyRole.class
 me\joaomanoel\d4rkk\dev\player\hotbar\Hotbar.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityLook.class
+me\joaomanoel\d4rkk\dev\utils\VersionAPI.class
 me\joaomanoel\d4rkk\dev\libraries\menu\UpdatableMenu.class
 org\json\simple\JSONValue.class
 me\joaomanoel\d4rkk\dev\booster\NetworkBooster.class
@@ -41,6 +42,7 @@ me\joaomanoel\d4rkk\dev\utils\queue\Queue.class
 me\joaomanoel\d4rkk\dev\database\tables\extension\SkyWarsPlaceholder.class
 com\comphenix\packetwrapper\WrapperPlayClientBlockDig.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityMetadata.class
+me\joaomanoel\d4rkk\dev\cosmetic\GlowUtils.class
 me\joaomanoel\d4rkk\dev\database\HikariDatabase.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityVelocity.class
 me\joaomanoel\d4rkk\dev\utils\langs\Language.class

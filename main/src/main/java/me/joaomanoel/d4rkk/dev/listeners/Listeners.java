@@ -6,6 +6,7 @@ import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.CosmeticType;
 import me.joaomanoel.d4rkk.dev.cosmetic.container.CosmeticsContainer;
 import me.joaomanoel.d4rkk.dev.cosmetic.container.SelectedContainer;
+import me.joaomanoel.d4rkk.dev.cosmetic.types.GlowCosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.MvpColor;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.PunchMessage;
 import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
@@ -24,10 +25,7 @@ import me.joaomanoel.d4rkk.dev.plugin.logger.KLogger;
 import me.joaomanoel.d4rkk.dev.reflection.Accessors;
 import me.joaomanoel.d4rkk.dev.reflection.acessors.FieldAccessor;
 import me.joaomanoel.d4rkk.dev.titles.TitleManager;
-import me.joaomanoel.d4rkk.dev.utils.PlayerIPUtils;
-import me.joaomanoel.d4rkk.dev.utils.StringUtils;
-import me.joaomanoel.d4rkk.dev.utils.TagUtils;
-import me.joaomanoel.d4rkk.dev.utils.aUpdater;
+import me.joaomanoel.d4rkk.dev.utils.*;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -103,6 +101,15 @@ public class Listeners implements Listener {
     if (player.isOp()) {
       sendUpdateNotification(player);
     }
+
+
+//      GlowCosmetic.onPlayerJoin(player);
+//      Profile newProfile = Profile.getProfile(player.getName());
+//      if (newProfile != null && GlowCosmetic.hasGlowSelected(newProfile)) {
+//        GlowCosmetic.applyGlowForAllViewers(newProfile);
+//      }
+
+
 //    if (firstTimePlayers.remove(playerId)) {
 //      handleFirstTimePlayer(player);
 //    }
@@ -141,6 +148,10 @@ public class Listeners implements Listener {
     Cosmetic.listByType(MvpColor.class).stream()
             .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))
             .forEach(cosmetic -> cosmetic.give(profile));
+
+//    Cosmetic.listByType(GlowCosmetic.class).stream()
+//            .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))
+//            .forEach(cosmetic -> cosmetic.give(profile));
 
     Cosmetic.listByType(PunchMessage.class).stream()
             .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))

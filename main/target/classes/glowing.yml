@@ -1,8 +1,16 @@
-red:
+white:
   id: 1
+  name: 'White'
+  rarity: EPIC
+  permission: ''
+  icon: 'IRON_INGOT : 1'
+  cash: 25
+  color: "WHITE"
+red:
+  id: 2
   name: 'Red'
   rarity: EPIC
   permission: ''
-  icon: '86 : 1'
+  icon: 'REDSTONE : 1'
   cash: 25
-  color: RED
+  color: "RED"

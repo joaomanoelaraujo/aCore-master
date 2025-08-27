@@ -55,6 +55,8 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
     private static final Map<String, Material> LEGACY_TO_NEW = new HashMap<>();
     static {
         LEGACY_IDS.put("383:99", Material.IRON_GOLEM_SPAWN_EGG);
+        LEGACY_IDS.put("386", Material.WRITABLE_BOOK);
+        LEGACY_IDS.put("160:0", Material.GRAY_STAINED_GLASS_PANE);
         LEGACY_IDS.put("35:0", Material.WHITE_WOOL);
         LEGACY_IDS.put("35:1", Material.ORANGE_WOOL);
         LEGACY_IDS.put("35:2", Material.MAGENTA_WOOL);
