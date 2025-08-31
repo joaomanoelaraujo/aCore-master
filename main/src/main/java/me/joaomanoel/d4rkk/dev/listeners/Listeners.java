@@ -35,6 +35,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.block.BlockFace;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
@@ -46,6 +47,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 import org.spigotmc.WatchdogThread;
 
 import java.util.*;
@@ -114,6 +116,17 @@ public class Listeners implements Listener {
 //      handleFirstTimePlayer(player);
 //    }
 
+  }
+  @EventHandler(priority = EventPriority.MONITOR)
+  public void onPlayerMove(PlayerMoveEvent evt) {
+    Player player = evt.getPlayer();
+    if (evt.getTo().getBlock().getRelative(BlockFace.DOWN).getType() == Material.SLIME_BLOCK) {
+      EnumSound.FIREWORK_LAUNCH.play(player, 1.0F, 1.0F);
+      Vector vector = player.getEyeLocation().getDirection();
+      vector.multiply(3.35F);
+      vector.setY(2.15F);
+      player.setVelocity(vector);
+    }
   }
 
   //todo: fazer futuramente quando tiver diversidade de linguagens feitas.

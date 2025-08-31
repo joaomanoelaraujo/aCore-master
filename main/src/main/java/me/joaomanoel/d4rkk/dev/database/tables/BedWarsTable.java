@@ -29,6 +29,14 @@ import java.util.Map;
                 " `2v2finalkills` LONG," +
                 " `2v2finaldeaths` LONG," +
                 " `2v2wins` LONG," +
+                " `3v3kills` LONG," +
+                " `3v3deaths` LONG," +
+                " `3v3games` LONG," +
+                " `3v3bedsdestroyeds` LONG," +
+                " `3v3bedslosteds` LONG," +
+                " `3v3finalkills` LONG," +
+                " `3v3finaldeaths` LONG," +
+                " `3v3wins` LONG,"+
                 " `4v4kills` LONG," +
                 " `4v4deaths` LONG," +
                 " `4v4games` LONG," +
@@ -53,7 +61,7 @@ import java.util.Map;
                 " `experience` LONG," +
                 " PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
         select = "SELECT * FROM `aCoreBedWars` WHERE LOWER(`name`) = ?",
-        insert = "INSERT INTO `aCoreBedWars` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        insert = "INSERT INTO `aCoreBedWars` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         update = "UPDATE `aCoreBedWars` SET `1v1kills` = ?," +
                 " `1v1deaths` = ?," +
                 " `1v1games` = ?," +
@@ -70,6 +78,14 @@ import java.util.Map;
                 " `2v2finalkills` = ?," +
                 " `2v2finaldeaths` = ?," +
                 " `2v2wins` = ?`," +
+                " `3v3kills` = ?," +
+                " `3v3deaths` = ?," +
+                " `3v3games` = ?," +
+                " `3v3bedsdestroyeds` = ?," +
+                " `3v3bedslosteds` = ?," +
+                " `3v3finalkills` = ?," +
+                " `3v3finaldeaths` = ?," +
+                " `3v3wins` = ?`," +
                 " `4v4kills` = ?," +
                 " `4v4deaths` = ?," +
                 " `4v4games` = ?," +
@@ -112,7 +128,7 @@ public class BedWarsTable extends DataTable {
 
   public Map<String, DataContainer> getDefaultValues() {
     Map<String, DataContainer> defaultValues = new LinkedHashMap<>();
-    for (String key : new String[]{"1v1", "2v2", "4v4"}) {
+    for (String key : new String[]{"1v1", "2v2", "3v3", "4v4"}) {
       defaultValues.put(key + "kills", new DataContainer(0L));
       defaultValues.put(key + "deaths", new DataContainer(0L));
       defaultValues.put(key + "games", new DataContainer(0L));

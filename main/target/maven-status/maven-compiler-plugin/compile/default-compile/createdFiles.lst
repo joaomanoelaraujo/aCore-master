@@ -195,6 +195,7 @@ me\joaomanoel\d4rkk\dev\achievements\types\SkyWarsAchievement.class
 me\joaomanoel\d4rkk\dev\database\data\container\AchievementsContainer.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\FakeListCommand.class
 me\joaomanoel\d4rkk\dev\menus\party\MenuKick.class
+me\joaomanoel\d4rkk\dev\cmd\LobbyCommand.class
 me\joaomanoel\d4rkk\dev\utils\enums\EnumRarity.class
 me\joaomanoel\d4rkk\dev\database\MySQLDatabase.class
 me\joaomanoel\d4rkk\dev\libraries\hologram\HologramLine.class
