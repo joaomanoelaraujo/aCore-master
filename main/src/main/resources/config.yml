@@ -26,6 +26,11 @@ database:
    # https://docs.mongodb.com/manual/reference/connection-string/
    url: ''
 
+stats-skywars: true
+stats-bedwars: true
+stats-thebridge: true
+stats-thepit: true
+
 messages:
  invite: "&a%leader% &7convidou você para a Party dele!\n&rVocê pode "
  accept: "&aClique para aceitar o convite de Party de %leader%&r"

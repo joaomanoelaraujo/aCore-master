@@ -190,7 +190,7 @@ public class Core extends KPlugin {
       getLogger().severe("Ocorreu um erro ao carregar as linguagens padrão.");
       throw new RuntimeException(ex);
     }
-
+    Language.setupLanguage();
     GameState.loadLanguage(getConfig());
     aFriends = Bukkit.getPluginManager().getPlugin("aFriends") != null;
     Database.setupDatabase(

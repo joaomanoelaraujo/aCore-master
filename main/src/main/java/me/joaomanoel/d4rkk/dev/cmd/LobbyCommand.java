@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 public class LobbyCommand extends Commands {
    public LobbyCommand() {
-      super("lobby");
+      super("lobby", "l");
    }
 
    public void perform(CommandSender sender, String label, String[] args) {
@@ -20,20 +20,9 @@ public class LobbyCommand extends Commands {
          Profile profile = Profile.getProfile(player.getName());
          Game<?> game = profile.getGame();
          if (game != null && !(game instanceof FakeGame)) {
-            player.sendMessage("§aConecting...");
-            if (Core.minigame.equals("Sky Wars")) {
-               Core.sendServer(profile, "skywars");
-            }
-            if (Core.minigame.equals("Bed Wars")) {
-               Core.sendServer(profile, "bedwars");
-            }
-            if (Core.minigame.equals("Duels")) {
-               Core.sendServer(profile, "duels");
-            }
-            if (Core.minigame.equals("The Bridge")) {
-               Core.sendServer(profile, "thebridge");
-            }
-
+               if (profile.playingGame()){
+                  game.leave(profile, null);
+               }
          } else {
             Core.sendServer(profile, "lobby");
          }

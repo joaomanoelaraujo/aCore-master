@@ -210,6 +210,7 @@ com\comphenix\packetwrapper\WrapperPlayServerEntityEffect.class
 me\joaomanoel\d4rkk\dev\servers\balancer\LoadBalancer.class
 me\joaomanoel\d4rkk\dev\game\FakeGame.class
 me\joaomanoel\d4rkk\dev\cmd\Commands.class
+me\joaomanoel\d4rkk\dev\Language.class
 me\joaomanoel\d4rkk\dev\player\hotbar\HotbarActionType.class
 me\joaomanoel\d4rkk\dev\plugin\KPlugin.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\PartyCommand.class
