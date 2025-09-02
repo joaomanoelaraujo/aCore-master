@@ -41,10 +41,11 @@ public class Queue {
               qp.destroy();
               continue;
             }
-            String message = LanguageAPI.getConfig(profile).getString("actionBar.queueMessage")
+
+            String message = LanguageAPI.getConfig(qp.profile).getString("actionBar.queueMessage")
                     .replace("{server}", qp.server)
                     .replace("{position}", String.valueOf(id));
-            NMSManager.sendActionBar(message, qp.player);
+
             id++;
           }
           

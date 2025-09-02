@@ -1,5 +1,6 @@
 package me.joaomanoel.d4rkk.dev.player.hotbar;
 
+import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.listeners.Listeners;
 import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
@@ -18,6 +19,7 @@ public abstract class HotbarActionType {
   private static final Map<String, HotbarActionType> actionTypes = new HashMap<>();
 
   static {
+
     actionTypes.put("comando", new HotbarActionType() {
 
       @Override
@@ -36,6 +38,11 @@ public abstract class HotbarActionType {
 
       @Override
       public void execute(Profile profile, String action) {
+        if (Core.getInstance().getConfig().getBoolean("interact-hotbar-world")){
+        if (!profile.getPlayer().getWorld().equals(Core.getLobby().getWorld())) {
+          return;
+        }
+    }
         if (action.equalsIgnoreCase("jogos")) {
           new MenuServers(profile);
         } else if (action.equalsIgnoreCase("perfil")) {

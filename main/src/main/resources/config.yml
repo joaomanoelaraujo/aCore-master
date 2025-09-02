@@ -31,6 +31,9 @@ stats-bedwars: true
 stats-thebridge: true
 stats-thepit: true
 
+#If true, a hotbar will only work in the lobby world
+interact-hotbar-world: true
+
 messages:
  invite: "&a%leader% &7convidou você para a Party dele!\n&rVocê pode "
  accept: "&aClique para aceitar o convite de Party de %leader%&r"
