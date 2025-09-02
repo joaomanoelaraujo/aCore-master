@@ -69,11 +69,15 @@ C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\TellCommand.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\PartyChatCommand.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\cmd\PartyCommand.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\LanguageBungee.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\listener\Listeners.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\logger\BungeeLogger.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\methods\BungeeWriter.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\party\BungeeParty.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\party\BungeePartyManager.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\party\BungeePartySizer.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\PluginMessageListenerExample.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\bungee\utils\StringUtils.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cash\CashException.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cash\CashManager.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cmd\CashCommand.java

@@ -18,11 +18,9 @@ public class PluginMessageListenerExample implements PluginMessageListener {
         try (DataInputStream in = new DataInputStream(new ByteArrayInputStream(message))) {
             String subchannel = in.readUTF();
             if (subchannel.equals("GetServer")) {
-                String serverName = in.readUTF();  // Aqui recebemos o nome do servidor
+                String serverName = in.readUTF();
                 player.sendMessage("Você está no servidor: " + serverName);
 
-                // Agora você pode usar o nome do servidor como desejar
-                // Por exemplo, atualizar o status do jogador no menu de amigos
                 updatePlayerServerInfo(player, serverName);
             }
         } catch (IOException e) {
@@ -31,7 +29,6 @@ public class PluginMessageListenerExample implements PluginMessageListener {
     }
 
     private void updatePlayerServerInfo(Player player, String serverName) {
-        // Atualize as informações do menu ou qualquer outro dado com o nome do servidor
         player.sendMessage("O servidor do jogador foi atualizado para: " + serverName);
     }
 }

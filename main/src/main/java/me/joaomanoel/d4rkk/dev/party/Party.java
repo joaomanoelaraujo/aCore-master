@@ -2,6 +2,7 @@ package me.joaomanoel.d4rkk.dev.party;
 
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.Manager;
+import me.joaomanoel.d4rkk.dev.bungee.LanguageBungee;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -16,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 public abstract class Party {
-  
+
   /**
    * O tempo em minutos que demora até deletar uma Party caso todos os jogadores dela estejam offline.
    */
@@ -31,7 +32,7 @@ public abstract class Party {
   private int slots;
   private boolean isOpen;
   private long lastOnlineTime;
-  
+
   public Party(String leader, int slots) {
     this.slots = slots;
     this.leader = new PartyPlayer(leader, PartyRole.LEADER);
@@ -39,7 +40,7 @@ public abstract class Party {
     this.invitesMap = new ConcurrentHashMap<>();
     this.members.add(this.leader);
   }
-  
+
   public void setIsOpen(boolean flag) {
     this.isOpen = flag;
   }
@@ -48,8 +49,8 @@ public abstract class Party {
     String leader = Role.getPrefixed(this.getLeader());
     this.invitesMap.put(Manager.getName(target).toLowerCase(), System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(MINUTES_UNTIL_EXPIRE_INVITE));
 
-
-    String message = Core.getInstance().getConfig().getString("messages.invite").replace("%leader%", leader);
+    // Usando o sistema LanguageBungee
+    String message = LanguageBungee.party$invite.replace("%leader%", leader);
     message = ChatColor.translateAlternateColorCodes('&', message);
 
     BaseComponent component = new TextComponent("");
@@ -58,29 +59,28 @@ public abstract class Party {
     }
 
     // Botão de Aceitar
-    String acceptMessage = Core.getInstance().getConfig().getString("messages.invite_buttons.accept");
+    String acceptMessage = LanguageBungee.party$invite_buttons$accept;
     acceptMessage = ChatColor.translateAlternateColorCodes('&', acceptMessage);
     BaseComponent accept = new TextComponent(acceptMessage);
     accept.setColor(ChatColor.GREEN);
     accept.setBold(true);
     accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party accept " + this.getLeader()));
-    accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', Core.getInstance().getConfig().getString("messages.hover_accept").replace("%leader%", leader)))));
+    accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', LanguageBungee.party$hover_accept.replace("%leader%", leader)))));
     component.addExtra(accept);
 
     // Adicionando o "ou" entre os botões
-    String orMessage = Core.getInstance().getConfig().getString("messages.or");  // Pega o valor de "ou"
-    orMessage = ChatColor.translateAlternateColorCodes('&', orMessage); // Aplica as cores
+    String orMessage = LanguageBungee.party$or;
+    orMessage = ChatColor.translateAlternateColorCodes('&', orMessage);
     component.addExtra(new TextComponent(orMessage));
 
-
     // Botão de Negar
-    String rejectMessage = Core.getInstance().getConfig().getString("messages.invite_buttons.reject");
+    String rejectMessage = LanguageBungee.party$invite_buttons$reject;
     rejectMessage = ChatColor.translateAlternateColorCodes('&', rejectMessage);
     BaseComponent reject = new TextComponent(rejectMessage);
     reject.setColor(ChatColor.RED);
     reject.setBold(true);
     reject.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party deny " + this.getLeader()));
-    reject.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', Core.getInstance().getConfig().getString("messages.hover_reject").replace("%leader%", leader)))));
+    reject.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', LanguageBungee.party$hover_reject.replace("%leader%", leader)))));
     component.addExtra(reject);
 
     // Finaliza o convite
@@ -98,15 +98,15 @@ public abstract class Party {
   public void reject(String member) {
     this.invitesMap.remove(member.toLowerCase());
 
-    // Mensagem de negação
-    String message = Core.getInstance().getConfig().getString("messages.reject").replace("%member%", Role.getPrefixed(member));
+    // Mensagem de negação usando LanguageBungee
+    String message = LanguageBungee.party$reject.replace("%member%", Role.getPrefixed(member));
     message = ChatColor.translateAlternateColorCodes('&', message);
     this.leader.sendMessage(message);
   }
 
-
   public void join(String member) {
-    String message = Core.getInstance().getConfig().getString("messages.join").replace("%member%", Role.getPrefixed(member));
+    // Usando LanguageBungee
+    String message = LanguageBungee.party$join.replace("%member%", Role.getPrefixed(member));
     message = ChatColor.translateAlternateColorCodes('&', message);
     this.broadcast(message);
 
@@ -128,28 +128,29 @@ public abstract class Party {
       this.leader = this.members.get(0);
       this.leader.setRole(PartyRole.LEADER);
 
-      // Mensagem de mudança de líder
-      String message = Core.getInstance().getConfig().getString("messages.transfer").replace("%member%", prefixed);
+      // Mensagem de mudança de líder usando LanguageBungee
+      String message = LanguageBungee.party$transfer.replace("%member%", prefixed);
       message = ChatColor.translateAlternateColorCodes('&', message);
       this.broadcast(message);
     }
 
-    // Mensagem de saída
-    String message = Core.getInstance().getConfig().getString("messages.leave").replace("%member%", prefixed);
+    // Mensagem de saída usando LanguageBungee
+    String message = LanguageBungee.party$leave.replace("%member%", prefixed);
     message = ChatColor.translateAlternateColorCodes('&', message);
     this.broadcast(message);
   }
 
   public void kick(String member) {
     this.members.stream().filter(pp -> pp.getName().equalsIgnoreCase(member)).findFirst().ifPresent(pp -> {
-      // Mensagem de expulsão
-      String message = Core.getInstance().getConfig().getString("messages.kick").replace("%leader%", Role.getPrefixed(this.getLeader()));
+      // Mensagem de expulsão usando LanguageBungee
+      String message = LanguageBungee.party$kick.replace("%leader%", Role.getPrefixed(this.getLeader()));
       message = ChatColor.translateAlternateColorCodes('&', message);
       pp.sendMessage(message);
 
       this.members.removeIf(pap -> pap.equals(pp));
     });
   }
+
   public void transfer(String name) {
     PartyPlayer newLeader = this.getPlayer(name);
     if (newLeader == null) {
@@ -159,30 +160,30 @@ public abstract class Party {
     newLeader.setRole(PartyRole.LEADER);
     this.leader = newLeader;
   }
-  
+
   public void broadcast(String message) {
     this.broadcast(message, false);
   }
-  
+
   public void broadcast(String message, boolean ignoreLeader) {
     this.members.stream().filter(pp -> !ignoreLeader || !pp.equals(this.leader)).forEach(pp -> pp.sendMessage(message));
   }
-  
+
   public void update() {
     if (onlineCount() == 0) {
       if (this.lastOnlineTime + (TimeUnit.MINUTES.toMillis(MINUTES_UNTIL_DELETE)) < System.currentTimeMillis()) {
         this.delete();
       }
-      
+
       return;
     }
-    
+
     this.lastOnlineTime = System.currentTimeMillis();
     this.invitesMap.entrySet().removeIf(entry -> entry.getValue() < System.currentTimeMillis());
   }
-  
+
   public abstract void delete();
-  
+
   public void destroy() {
     this.slots = 0;
     this.leader = null;
@@ -192,47 +193,47 @@ public abstract class Party {
     this.invitesMap = null;
     this.lastOnlineTime = 0L;
   }
-  
+
   public int getSlots() {
     return this.slots;
   }
-  
+
   public long onlineCount() {
     return this.members.stream().filter(PartyPlayer::isOnline).count();
   }
-  
+
   public String getLeader() {
     return this.leader.getName();
   }
-  
+
   public String getName(String name) {
     return this.members.stream().map(PartyPlayer::getName).filter(ppName -> ppName.equalsIgnoreCase(name)).findAny().orElse(name);
   }
-  
+
   public PartyPlayer getPlayer(String name) {
     return this.members.stream().filter(pp -> pp.getName().equalsIgnoreCase(name)).findAny().orElse(null);
   }
-  
+
   public boolean isOpen() {
     return this.isOpen;
   }
-  
+
   public boolean canJoin() {
     return this.members.size() < this.slots;
   }
-  
+
   public boolean isInvited(String name) {
     return this.invitesMap.containsKey(name.toLowerCase());
   }
-  
+
   public boolean isMember(String name) {
     return this.members.stream().anyMatch(pp -> pp.getName().equalsIgnoreCase(name));
   }
-  
+
   public boolean isLeader(String name) {
     return this.leader.getName().equalsIgnoreCase(name);
   }
-  
+
   public List<PartyPlayer> listMembers() {
     return this.members;
   }

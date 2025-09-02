@@ -175,7 +175,7 @@ public class Bungee extends Plugin {
     );
     
     setupRoles();
-    
+    LanguageBungee.setupLanguage();
     Commands.setupCommands();
     getProxy().getPluginManager().registerListener(this, new Listeners());
     
@@ -210,7 +210,7 @@ public class Bungee extends Plugin {
       }
     }
   }
-  
+
   public Configuration getConfig() {
     return utils;
   }
