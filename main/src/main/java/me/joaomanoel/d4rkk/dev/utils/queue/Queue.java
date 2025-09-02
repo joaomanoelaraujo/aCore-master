@@ -65,7 +65,7 @@ public class Queue {
                 if (player.isOnline()) {
                   player.closeInventory();
                   NMSManager.sendActionBar("", player);
-                  player.sendMessage(LanguageAPI.getConfig(profile).getString("connection.message"));
+                  player.sendMessage(LanguageAPI.getConfig(this.current.profile).getString("connection.message"));
                   ByteArrayDataOutput out = ByteStreams.newDataOutput();
                   out.writeUTF("Connect");
                   out.writeUTF(server);
