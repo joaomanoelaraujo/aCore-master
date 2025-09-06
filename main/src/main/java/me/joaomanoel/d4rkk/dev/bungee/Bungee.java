@@ -48,7 +48,7 @@ public class Bungee extends Plugin {
     if (sound != null) {
       out.writeUTF(sound);
     }
-    player.getServer().sendData("aCore", out.toByteArray());
+    player.getServer().sendData("acore:main", out.toByteArray());
   }
 
   public static void sendSkin(ProxiedPlayer player, String roleName, String sound) {
@@ -57,7 +57,7 @@ public class Bungee extends Plugin {
     out.writeUTF(player.getName());
     out.writeUTF(roleName);
     out.writeUTF(sound);
-    player.getServer().sendData("aCore", out.toByteArray());
+    player.getServer().sendData("acore:main", out.toByteArray());
   }
 
   public static void applyFake(ProxiedPlayer player, String fakeName, String role, String skin) {
@@ -179,7 +179,7 @@ public class Bungee extends Plugin {
     Commands.setupCommands();
     getProxy().getPluginManager().registerListener(this, new Listeners());
     
-    getProxy().registerChannel("aCore");
+    getProxy().registerChannel("acore:main");
     
     this.getLogger().info("The plugin has been activated.");
   }

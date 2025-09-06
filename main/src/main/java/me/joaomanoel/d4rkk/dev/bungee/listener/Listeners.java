@@ -49,7 +49,7 @@ public class Listeners implements Listener {
   @EventHandler
   public void onPluginMessage(PluginMessageEvent evt) {
     if (evt.getSender() instanceof ServerConnection && evt.getReceiver() instanceof ProxiedPlayer) {
-      if (evt.getTag().equalsIgnoreCase("aCore")) {
+      if (evt.getTag().equalsIgnoreCase("acore:main")) {
         ProxiedPlayer player = (ProxiedPlayer) evt.getReceiver();
 
         ByteArrayDataInput in = ByteStreams.newDataInput(evt.getData());
@@ -91,7 +91,7 @@ public class Listeners implements Listener {
       out.writeUTF(Bungee.getFake(player.getName()));
       out.writeUTF(StringUtils.stripColors(Bungee.getRole(player.getName()).getName()));
       out.writeUTF(skin);
-      evt.getServer().sendData("aCore", out.toByteArray());
+      evt.getServer().sendData("acore:main", out.toByteArray());
 
 
       LoginResult profile = ((InitialHandler) player.getPendingConnection()).getLoginProfile();

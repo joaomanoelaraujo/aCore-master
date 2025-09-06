@@ -20,7 +20,6 @@ import me.joaomanoel.d4rkk.dev.game.GameState;
 import me.joaomanoel.d4rkk.dev.hook.aCoreExpansion;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.EntityAdapter;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.FakeAdapter;
-import me.joaomanoel.d4rkk.dev.hook.protocollib.HologramAdapter;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.NPCAdapter;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.npc.NPCLibrary;
@@ -231,7 +230,6 @@ public class Core extends KPlugin {
 
     FakeAdapter.setup();
     ProtocolLibrary.getProtocolManager().addPacketListener(new NPCAdapter());
-    ProtocolLibrary.getProtocolManager().addPacketListener(new HologramAdapter());
     ProtocolLibrary.getProtocolManager().addPacketListener(new EntityAdapter());
 
     getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");

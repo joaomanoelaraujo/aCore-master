@@ -102,8 +102,6 @@ public class Listeners implements Listener {
       sendUpdateNotification(player);
     }
 
-    TagUtils.setTag(player);
-
 //      GlowCosmetic.onPlayerJoin(player);
 //      Profile newProfile = Profile.getProfile(player.getName());
 //      if (newProfile != null && GlowCosmetic.hasGlowSelected(newProfile)) {
