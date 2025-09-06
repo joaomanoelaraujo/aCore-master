@@ -527,6 +527,9 @@ public class Profile {
   }
 
   public DataContainer getDataContainer(String table, String key) {
+    if (tableMap == null) {
+      tableMap = new HashMap<>();
+    }
     return this.tableMap.get(table).get(key);
   }
 

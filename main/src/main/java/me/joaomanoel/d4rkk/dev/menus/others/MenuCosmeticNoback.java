@@ -6,7 +6,6 @@ import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.CosmeticType;
 import me.joaomanoel.d4rkk.dev.cosmetic.container.SelectedContainer;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.ColoredTag;
-import me.joaomanoel.d4rkk.dev.cosmetic.types.GlowCosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.JoinMessage;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
 import me.joaomanoel.d4rkk.dev.libraries.menu.PagedPlayerMenu;
@@ -127,14 +126,13 @@ public class MenuCosmeticNoback<T extends Cosmetic> extends PagedPlayerMenu {
                 new MenuCosmeticNoback<>(profile, LanguageAPI.getConfig(profile).getString("cosmetic.join_message_name"), JoinMessage.class);
             } else if (evt.getSlot() == 0) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
-              new MenuCosmeticNoback<>(profile, "Glow", GlowCosmetic.class);
               } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("menu.cosmetic_slot.back")) {
                 EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
                 player.closeInventory();
             } else if (evt.getSlot() == this.nextPage) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               this.openNext();
-            } else {
+            }else {
               T cosmetic = this.cosmetics.get(item);
               if (cosmetic != null) {
                 if (evt.isRightClick()) {

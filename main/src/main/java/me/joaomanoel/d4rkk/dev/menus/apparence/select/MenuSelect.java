@@ -20,6 +20,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -83,7 +84,7 @@ public class MenuSelect<T extends Cosmetic> extends PagedPlayerMenu {
 
               new MenuProfile(profile);
             } else {
-              T cosmetic = this.cosmetics.get(item);
+              T cosmetic = (T)  findByICON(item);
               if (cosmetic != null) {
                 if (evt.isRightClick()) {
                   if (cosmetic.getType() == CosmeticType.PUNCH) {
@@ -112,7 +113,16 @@ public class MenuSelect<T extends Cosmetic> extends PagedPlayerMenu {
       }
     }
   }
-  
+  private Cosmetic findByICON(ItemStack icon) {
+    ItemMeta meta = icon.getItemMeta();
+    ItemStack key = this.cosmetics.keySet().stream().filter(item ->
+            icon.getType().equals(item.getType()) && meta != null &&
+                    item.getItemMeta().getDisplayName().equals(meta.getDisplayName()) &&
+                    item.getItemMeta().getLore().equals(meta.getLore())
+    ).findFirst().orElse(null);
+
+    return this.cosmetics.get(key);
+  }
   public void cancel() {
     HandlerList.unregisterAll(this);
     this.cosmeticClass = null;

@@ -36,7 +36,7 @@ public class MenuOtherProfile extends PlayerMenu {
 
     // Preenchendo o restante dos itens com traduções
     for (int i = 9; i < 18; i++) {
-      this.getInventory().setItem(i, BukkitUtils.deserializeItemStack("160:0"));
+      this.getInventory().setItem(i, BukkitUtils.deserializeItemStack("GLASS"));
     }
 
     // Usando tradução para o botão de fechar

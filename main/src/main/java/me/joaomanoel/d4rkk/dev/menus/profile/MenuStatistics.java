@@ -21,17 +21,25 @@ public class MenuStatistics extends PlayerMenu {
   public MenuStatistics(Profile profile) {
     super(profile.getPlayer(), LanguageAPI.getConfig(profile).getString("menu.statistics.title"), 4);
 
-    this.setItem(10, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
-            LanguageAPI.getConfig(profile).getString("menu.statistics.skywars"))));
+    if (Core.getInstance().getConfig().getBoolean("stats-skywars")) {
+      this.setItem(10, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
+              LanguageAPI.getConfig(profile).getString("menu.statistics.skywars"))));
+    }
 
-    this.setItem(12, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
-            LanguageAPI.getConfig(profile).getString("menu.statistics.bedwars"))));
+    if (Core.getInstance().getConfig().getBoolean("stats-bedwars")) {
+      this.setItem(12, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
+              LanguageAPI.getConfig(profile).getString("menu.statistics.bedwars"))));
+    }
 
-    this.setItem(14, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
-            LanguageAPI.getConfig(profile).getString("menu.statistics.thebridge"))));
+    if (Core.getInstance().getConfig().getBoolean("stats-thebridge")) {
+      this.setItem(14, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
+              LanguageAPI.getConfig(profile).getString("menu.statistics.thebridge"))));
+    }
 
-    this.setItem(16, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
-            LanguageAPI.getConfig(profile).getString("menu.statistics.thepit"))));
+    if (Core.getInstance().getConfig().getBoolean("stats-thepit")){
+      this.setItem(16, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
+              LanguageAPI.getConfig(profile).getString("menu.statistics.thepit"))));
+  }
 
     this.setItem(31, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")));
 

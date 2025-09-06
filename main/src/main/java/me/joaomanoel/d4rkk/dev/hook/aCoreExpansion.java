@@ -176,10 +176,12 @@ public class aCoreExpansion extends PlaceholderExpansion {
       String table = "aCoreBedWars";
       String value = params.replace("BedWars_", "");
       if (value.equals("kills") || value.equals("deaths") || value.equals("bedslosteds") || value.equals("finalkills") || value.equals("finaldeaths") || value.equals("bedsdestroyeds") || value.equals("games") || value.equals("wins")) {
-        return StringUtils.formatNumber(profile.getStats(table, "1v1" + value, "2v2" + value, "4v4" + value));
+        return StringUtils.formatNumber(profile.getStats(table, "1v1" + value, "2v2" + value, "3v3" + value, "4v4" + value));
       } else if (value.equals("1v1kills") || value.equals("1v1deaths") || value.equals("1v1") || value.equals("1v1games") || value.equals("1v1finalkills") || value.equals("1v1finaldeaths") || value.equals("1v1bedsdestroyeds") || value.equals("1v1bedslosteds") || value.equals("1v1wins")) {
         return StringUtils.formatNumber(profile.getStats(table, value));
       } else if (value.equals("2v2kills") || value.equals("2v2deaths") || value.equals("2v2") || value.equals("2v2games") || value.equals("2v2finalkills") || value.equals("2v2finaldeaths") || value.equals("2v2bedsdestroyeds") || value.equals("2v2bedslosteds") || value.equals("2v2wins")) {
+        return StringUtils.formatNumber(profile.getStats(table, value));
+      } else if (value.equals("3v3kills") || value.equals("3v3deaths") || value.equals("3v3") || value.equals("3v3games") || value.equals("3v3finalkills") || value.equals("3v3finaldeaths") || value.equals("3v3bedsdestroyeds") || value.equals("3v3bedslosteds") || value.equals("3v3wins")) {
         return StringUtils.formatNumber(profile.getStats(table, value));
       } else if (value.equals("4v4kills") || value.equals("4v4deaths") || value.equals("4v4") || value.equals("4v4games") || value.equals("4v4finalkills") || value.equals("4v4finaldeaths") || value.equals("4v4bedsdestroyeds") || value.equals("4v4bedslosteds") || value.equals("4v4wins")) {
         return StringUtils.formatNumber(profile.getStats(table, value));

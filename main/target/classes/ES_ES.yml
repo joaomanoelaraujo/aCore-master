@@ -25,9 +25,9 @@ menuprofile:
 profile:
   title: 'Perfil'
   menu:
-    preferences: 'REDSTONE_COMPARATOR : 1 : hide>all : name>&aPreferencias : desc>&7En nuestro servidor, puedes personalizar completamente\n&7tu experiencia de juego.\n&7¡Personaliza varias opciones exclusivas como\n&7desees!\n \n&8Las opciones incluyen habilitar o deshabilitar\n&8mensajes privados, jugadores y más.\n \n&e¡Haz clic para personalizar opciones!'
-    titles: 'MAP : 1 : hide>all : name>&aTítulos : desc>&7Muestra tu estilo con un título exclusivo\n&7que se mostrará sobre tu cabeza\n&7para otros jugadores.\n \n&8Recuerda que no verás el título,\n&8solo otros jugadores lo verán.\n \n&e¡Haz clic para seleccionar un título!'
-    boosters: 'POTION:8232 : 1 : hide>all : name>&aMultiplicadores de Monedas : desc>&7En nuestro servidor, hay un sistema de\n&7&6Multiplicadores de Monedas &7que afectan\n&7la cantidad de &6Monedas &7ganadas en partidas.\n \n&8Los multiplicadores pueden ser personales o globales,\n&8beneficiándote a ti y a otros jugadores.\n \n&e¡Haz clic para ver tus multiplicadores!'
+    preferences: 'REDSTONE_COMPARATOR : 1 : name>&aPreferencias : desc>&7En nuestro servidor, puedes personalizar completamente\n&7tu experiencia de juego.\n&7¡Personaliza varias opciones exclusivas como\n&7desees!\n \n&8Las opciones incluyen habilitar o deshabilitar\n&8mensajes privados, jugadores y más.\n \n&e¡Haz clic para personalizar opciones! : hide>all'
+    titles: 'MAP : 1 : name>&aTítulos : desc>&7Muestra tu estilo con un título exclusivo\n&7que se mostrará sobre tu cabeza\n&7para otros jugadores.\n \n&8Recuerda que no verás el título,\n&8solo otros jugadores lo verán.\n \n&e¡Haz clic para seleccionar un título! : hide>all'
+    boosters: 'POTION:8232 : 1 : name>&aMultiplicadores de Monedas : desc>&7En nuestro servidor, hay un sistema de\n&7&6Multiplicadores de Monedas &7que afectan\n&7la cantidad de &6Monedas &7ganadas en partidas.\n \n&8Los multiplicadores pueden ser personales o globales,\n&8beneficiándote a ti y a otros jugadores.\n \n&e¡Haz clic para ver tus multiplicadores! : hide>all'
     challenges: 'GOLD_INGOT : 1 : name>&aDesafíos : desc>&7En nuestro servidor, hay un sistema de\n&7&6Desafíos &7que consisten en misiones únicas\n&7que otorgan varias recompensas permanentes.\n \n&8Las recompensas incluyen títulos, monedas,\n&8iconos de prestigio y otros cosméticos.\n \n&e¡Haz clic para ver los desafíos!'
     statistics: 'PAPER : 1 : name>&aEstadísticas : desc>&7Mira tus estadísticas para\n&7cada Minijuego en nuestro servidor.\n \n&e¡Haz clic para ver las estadísticas!'
     cosmetics: '416 : 1 : name>&aCosméticos : desc>&7Mira tus cosméticos para\n&7cada servidor.\n \n&e¡Haz clic para ver!'
@@ -195,12 +195,12 @@ menu:
     privateMessages: 'PAPER : 1 : name>&aMensajes Privados : desc>&7Activa o desactiva\n&7mensajes enviados a través de /tell.'
     violence: 'REDSTONE : 1 : name>&aViolencia : desc>&7Activa o desactiva\n&7partículas de sangre en PvP.'
     protectionLobby: 'NETHER_STAR : 1 : name>&aProtección en /lobby : desc>&7Activa o desactiva\n&7solicitud de confirmación al usar /lobby.'
-    chatMention: 'MAP : 1 : hide>all : name>&aMención en Chat : desc>&7Activa o desactiva menciones en\n&7chat.'
+    chatMention: 'MAP : 1 : name>&aMención en Chat : desc>&7Activa o desactiva menciones en\n&7chat.'
     state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&fEstado: &7{state}\n \n&e¡Haz clic para modificar!'
   boosters:
     title: 'Multiplicadores'
     personal: 'POTION : 1 : name>&aMultiplicadores Personales : desc>&7Otorga un &6Multiplicador de Monedas &7solo\n&7para &bTI &7en todos los minijuegos del servidor\n&7por un corto período de tiempo.\n \n&e¡Haz clic para ver tus multiplicadores!'
-    global: 'POTION:8232 : 1 : hide>all : name>&aMultiplicadores Globales : desc>&7Otorga un &6Multiplicador de Monedas &7para\n&bTODOS &7los jugadores en solo un minijuego\n&7por un corto período de tiempo.\n \n&e¡Haz clic para ver tus multiplicadores!'
+    global: 'POTION:8232 : 1 : name>&aMultiplicadores Globales : desc>&7Otorga un &6Multiplicador de Monedas &7para\n&bTODOS &7los jugadores en solo un minijuego\n&7por un corto período de tiempo.\n \n&e¡Haz clic para ver tus multiplicadores! : hide>all'
     active: '&fMultiplicador Personal Activo:\n {activeMultiplier}'
     none: '&cNo tienes ningún multiplicador activo.'
     calculation: '&8• &6Multiplicador {multiplier}x &8({time})\n \n&fCálculo:\n &7Con el multiplicador activo al recibir &650 Monedas &7el\n &7total recibido será equivalente a &6{total} Monedas&7.'
@@ -247,7 +247,7 @@ booster:
   type: 'Global'
   type2: 'Personal'
   list:
-    item: 'POTION{type} : 1 : hide>all : name>&aBooster {boosterType} : desc>&fMultiplicador: &6{multiplier}x\n&fDuración: &7{duration}\n \n&e¡Haz clic para activar el booster!'
+    item: 'POTION{type} : 1 : name>&aBooster {boosterType} : desc>&fMultiplicador: &6{multiplier}x\n&fDuración: &7{duration}\n \n&e¡Haz clic para activar el booster! : hide>all '
     empty: 'WEB : 1 : name>&c¡No tienes ningún Booster!'
   network:
     notInMinigame: '&cNecesitas estar en un servidor de Minijuego para activar este Booster.'

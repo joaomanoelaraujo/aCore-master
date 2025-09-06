@@ -39,7 +39,6 @@ public abstract class Cosmetic {
         PunchMessage.setupPunchMessages();
         MvpColor.setupColorMvp();
         ColoredTag.setupColoredTag();
-        GlowCosmetic.setupGlow();
     }
     public static void removeCosmetic(Cosmetic cosmetic) {
         COSMETICS.remove(cosmetic);

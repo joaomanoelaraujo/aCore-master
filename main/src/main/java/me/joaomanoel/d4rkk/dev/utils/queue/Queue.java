@@ -41,10 +41,12 @@ public class Queue {
               qp.destroy();
               continue;
             }
-            String message = LanguageAPI.getConfig(profile).getString("actionBar.queueMessage")
+
+            String message = LanguageAPI.getConfig(qp.profile).getString("actionBar.queueMessage")
                     .replace("{server}", qp.server)
                     .replace("{position}", String.valueOf(id));
             NMSManager.sendActionBar(message, qp.player);
+
             id++;
           }
           
@@ -55,21 +57,25 @@ public class Queue {
               this.current = null;
               return;
             }
-            
+
             if (this.send) {
               final Player player = this.current.player;
               final String server = this.current.server;
+              final Profile profile = this.current.profile;
+
               Bukkit.getScheduler().runTask(Core.getInstance(), () -> {
                 if (player.isOnline()) {
                   player.closeInventory();
                   NMSManager.sendActionBar("", player);
                   player.sendMessage(LanguageAPI.getConfig(profile).getString("connection.message"));
+
                   ByteArrayDataOutput out = ByteStreams.newDataOutput();
                   out.writeUTF("Connect");
                   out.writeUTF(server);
                   player.sendPluginMessage(Core.getInstance(), "BungeeCord", out.toByteArray());
                 }
               });
+
               players.remove(this.current);
               this.current.destroy();
               this.current = null;

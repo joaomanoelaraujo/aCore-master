@@ -30,6 +30,7 @@ public abstract class Commands extends Command {
     new CoreCommand();
     new CoinsCommand();
     new ShopCommand();
+    new LobbyCommand();
     new ClearChatCommand();
     new CsmCommand();
     new BloodCommand();

@@ -3,6 +3,7 @@ package me.joaomanoel.d4rkk.dev.bungee.party;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
 import me.joaomanoel.d4rkk.dev.Manager;
+import me.joaomanoel.d4rkk.dev.bungee.LanguageBungee;
 import me.joaomanoel.d4rkk.dev.party.Party;
 import me.joaomanoel.d4rkk.dev.party.PartyPlayer;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
@@ -21,19 +22,19 @@ import static me.joaomanoel.d4rkk.dev.party.PartyRole.LEADER;
 
 @SuppressWarnings("unchecked")
 public class BungeeParty extends Party {
-  
+
   public BungeeParty(String leader, int slots) {
     super(leader, slots);
     this.sendData();
   }
-  
+
   @Override
   public void delete() {
     this.sendData("delete", "true");
     BungeePartyManager.listParties().remove(this);
     this.destroy();
   }
-  
+
   @Override
   public void transfer(String name) {
     PartyPlayer newLeader = this.getPlayer(name);
@@ -41,14 +42,17 @@ public class BungeeParty extends Party {
     this.leader.setRole(newLeader.getRole());
     newLeader.setRole(LEADER);
     this.leader = newLeader;
+
+    this.broadcast(LanguageBungee.party$transfer_leader
+            .replace("{player}", Role.getPrefixed(newLeader.getName())));
   }
-  
+
   @Override
   public void join(String member) {
     super.join(member);
     this.sendData();
   }
-  
+
   @Override
   public void leave(String member) {
     String leader = this.getLeader();
@@ -56,37 +60,43 @@ public class BungeeParty extends Party {
       this.delete();
       return;
     }
-    
+
     this.members.removeIf(pp -> pp.getName().equalsIgnoreCase(member));
     this.sendData("remove", member);
     if (leader.equals(member)) {
       this.sendData("newLeader", this.members.get(0).getName());
       this.leader = this.members.get(0);
       this.leader.setRole(LEADER);
-      this.broadcast(" \n" + Role.getPrefixed(this.leader.getName()) + " §ahas become the new Party Leader!\n ");
 
+      this.broadcast(LanguageBungee.party$new_leader
+              .replace("{player}", Role.getPrefixed(this.leader.getName())));
     }
-    this.broadcast(" \n" + Role.getPrefixed(member) + " §ahas left the Party!\n ");
+
+    this.broadcast(LanguageBungee.party$member_left
+            .replace("{player}", Role.getPrefixed(member)));
   }
-  
+
   @Override
   public void kick(String member) {
     super.kick(member);
     this.sendData("remove", member);
+
+    this.broadcast(LanguageBungee.party$member_kicked
+            .replace("{player}", Role.getPrefixed(member)));
   }
-  
+
   public void sendData(ServerInfo serverInfo) {
     this.sendData(null, null, Collections.singleton(serverInfo));
   }
-  
+
   private void sendData() {
     this.sendData(null, null);
   }
-  
+
   private void sendData(String extraKey, String extraValue) {
     this.sendData(extraKey, extraValue, ProxyServer.getInstance().getServers().values());
   }
-  
+
   private void sendData(String extraKey, String extraValue, Collection<ServerInfo> serverInfos) {
     JSONObject changes = new JSONObject();
     changes.put("leader", this.leader.getName());
@@ -96,23 +106,23 @@ public class BungeeParty extends Party {
     JSONArray members = new JSONArray();
     listMembers().forEach(member -> members.add(member.getName()));
     changes.put("members", members);
-    
+
     ByteArrayDataOutput out = ByteStreams.newDataOutput();
     out.writeUTF("PARTY");
     out.writeUTF(changes.toString());
     serverInfos.forEach(info -> info.sendData("aCore", out.toByteArray()));
   }
-  
+
   public void summonMembers(ServerInfo serverInfo) {
     this.summonMembers(serverInfo, this.members.stream().map(PartyPlayer::getName).collect(Collectors.toList()), true);
   }
-  
+
   private void summonMembers(ServerInfo serverInfo, Collection<String> members, boolean warn) {
     if (serverInfo == null) {
       ProxiedPlayer leader = (ProxiedPlayer) Manager.getPlayer(this.getLeader());
       serverInfo = leader != null && leader.getServer() != null ? leader.getServer().getInfo() : null;
     }
-    
+
     if (serverInfo != null) {
       String leader = Role.getPrefixed(this.getLeader());
       ServerInfo finalServerInfo = serverInfo;
@@ -120,21 +130,13 @@ public class BungeeParty extends Party {
         ProxiedPlayer player = (ProxiedPlayer) Manager.getPlayer(member);
         if (player != null && (player.getServer() == null || !player.getServer().getInfo().getName().equals(finalServerInfo.getName()))) {
           player.connect(finalServerInfo);
-          ByteArrayDataOutput out = ByteStreams.newDataOutput();
-          /*
-          // SEND TO GAME
-          out.writeUTF("SEND_PARTY");
-          out.writeUTF(player.getName());
-          out.writeUTF(this.getLeader());
-          player.getServer().sendData("aCore", out.toByteArray());
-
-           */
           if (warn) {
-            player.sendMessage(TextComponent.fromLegacyText(" \n" + leader + " §apulled all party members.\n "));
+            player.sendMessage(TextComponent.fromLegacyText(
+                    LanguageBungee.party$pull_members.replace("{leader}", leader)
+            ));
           }
         }
       });
     }
   }
-  
 }

@@ -33,6 +33,7 @@ com\comphenix\packetwrapper\WrapperPlayClientHeldItemSlot.class
 me\joaomanoel\d4rkk\dev\party\PartyRole.class
 me\joaomanoel\d4rkk\dev\player\hotbar\Hotbar.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityLook.class
+me\joaomanoel\d4rkk\dev\utils\VersionAPI.class
 me\joaomanoel\d4rkk\dev\libraries\menu\UpdatableMenu.class
 org\json\simple\JSONValue.class
 me\joaomanoel\d4rkk\dev\booster\NetworkBooster.class
@@ -71,7 +72,6 @@ me\joaomanoel\d4rkk\dev\servers\balancer\BaseBalancer.class
 me\joaomanoel\d4rkk\dev\database\exception\ProfileLoadException.class
 me\joaomanoel\d4rkk\dev\utils\queue\Queue$1.class
 me\joaomanoel\d4rkk\dev\utils\langs\LanguageManager.class
-me\joaomanoel\d4rkk\dev\cosmetic\types\GlowCosmetic.class
 me\joaomanoel\d4rkk\dev\titles\TitleManager.class
 me\joaomanoel\d4rkk\dev\achievements\types\ThePitAchievement$ThePitReward.class
 com\comphenix\packetwrapper\WrapperPlayClientWindowClick.class
@@ -107,6 +107,8 @@ me\joaomanoel\d4rkk\dev\cmd\CoinsCommand.class
 me\joaomanoel\d4rkk\dev\libraries\menu\UpdatablePagedMenu$1.class
 me\joaomanoel\d4rkk\dev\servers\balancer\elements\LoadBalancerObject.class
 com\comphenix\packetwrapper\WrapperPlayServerTitle.class
+me\joaomanoel\d4rkk\dev\bungee\LanguageBungee.class
+me\joaomanoel\d4rkk\dev\bungee\methods\BungeeWriter.class
 me\joaomanoel\d4rkk\dev\game\GameTeam.class
 com\comphenix\packetwrapper\old\WrapperPlayServerEntityEquipment.class
 com\comphenix\packetwrapper\old\WrapperPlayServerEntityMoveLook.class
@@ -190,9 +192,11 @@ org\json\simple\JSONObject.class
 me\joaomanoel\d4rkk\dev\achievements\types\TheBridgeAchievement$CoinsReward.class
 me\joaomanoel\d4rkk\dev\cosmetic\types\JoinMessage.class
 me\joaomanoel\d4rkk\dev\achievements\types\SkyWarsAchievement.class
+me\joaomanoel\d4rkk\dev\bungee\utils\StringUtils.class
 me\joaomanoel\d4rkk\dev\database\data\container\AchievementsContainer.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\FakeListCommand.class
 me\joaomanoel\d4rkk\dev\menus\party\MenuKick.class
+me\joaomanoel\d4rkk\dev\cmd\LobbyCommand.class
 me\joaomanoel\d4rkk\dev\utils\enums\EnumRarity.class
 me\joaomanoel\d4rkk\dev\database\MySQLDatabase.class
 me\joaomanoel\d4rkk\dev\libraries\hologram\HologramLine.class
@@ -207,6 +211,7 @@ com\comphenix\packetwrapper\WrapperPlayServerEntityEffect.class
 me\joaomanoel\d4rkk\dev\servers\balancer\LoadBalancer.class
 me\joaomanoel\d4rkk\dev\game\FakeGame.class
 me\joaomanoel\d4rkk\dev\cmd\Commands.class
+me\joaomanoel\d4rkk\dev\Language.class
 me\joaomanoel\d4rkk\dev\player\hotbar\HotbarActionType.class
 me\joaomanoel\d4rkk\dev\plugin\KPlugin.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\PartyCommand.class
@@ -224,6 +229,7 @@ me\joaomanoel\d4rkk\dev\hook\protocollib\HologramAdapter.class
 me\joaomanoel\d4rkk\dev\utils\PluginDependencyChecker.class
 me\joaomanoel\d4rkk\dev\listeners\Listeners.class
 me\joaomanoel\d4rkk\dev\api\StatsAPI.class
+me\joaomanoel\d4rkk\dev\bungee\logger\BungeeLogger.class
 me\joaomanoel\d4rkk\dev\menus\MenuServers.class
 com\comphenix\packetwrapper\WrapperPlayServerGameStateChange.class
 me\joaomanoel\d4rkk\dev\achievements\types\TheBridgeAchievement.class
@@ -258,6 +264,7 @@ me\joaomanoel\d4rkk\dev\player\hotbar\HotbarActionType$4.class
 me\joaomanoel\d4rkk\dev\deliveries\Delivery.class
 me\joaomanoel\d4rkk\dev\libraries\hologram\listeners\HologramTouchEvent.class
 me\joaomanoel\d4rkk\dev\hook\protocollib\npc\NPCAdapter_1_20_R4.class
+me\joaomanoel\d4rkk\dev\hook\protocollib\EntityAdapter.class
 me\joaomanoel\d4rkk\dev\Manager.class
 me\joaomanoel\d4rkk\dev\titles\TitleIconFactory.class
 me\joaomanoel\d4rkk\dev\achievements\types\ThePitAchievement$TitleReward.class

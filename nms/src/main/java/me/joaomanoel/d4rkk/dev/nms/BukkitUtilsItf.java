@@ -19,4 +19,5 @@ public interface BukkitUtilsItf {
     void showIn(Player origin, Location location);
     void displayParticle(Player viewer, String particleName, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count);
     void displayParticle(Player viewer, ParticleOptions options, boolean isFar, float x, float y, float z, float offSetX, float offSetY, float offSetZ, float speed, int count);
+    void setGlow(Player player, boolean glow);
 }

@@ -82,6 +82,8 @@ public class MenuProfile extends PlayerMenu {
     this.setItem(LanguageAPI.getConfig(profile).getInt("profile.challenges.slot5"),
             BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profile.menu.challenges")));
 
+    this.setItem(24, BukkitUtils.deserializeItemStack("DIRT : 1 : name>&aAtivar glow : desc>" + (profile.getSelectedContainer().isGlowed() ? "§eClique para desativar!" : "§eClique para ativar!")));
+
     this.register(Core.getInstance());
     this.open();
   }
@@ -124,7 +126,11 @@ public class MenuProfile extends PlayerMenu {
               } else {
                 EnumSound.ENDERMAN_TELEPORT.play(this.player, 0.5F, 2.0F);
               }
-            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.pslot")) {
+            } else if (evt.getSlot() == 24) {
+              profile.getSelectedContainer().changeGlow(player);
+              player.sendMessage("§aAlterou essa porra ai filho da puta");
+              new MenuProfile(profile);
+            }  else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.pslot")) {
               //todo: fazer o menu de party.
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuParty(profile);

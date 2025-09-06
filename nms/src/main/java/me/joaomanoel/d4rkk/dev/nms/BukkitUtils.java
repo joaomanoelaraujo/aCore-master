@@ -268,6 +268,10 @@ public class BukkitUtils {
     instance.putGlowEnchantment(item);
   }
 
+  public static void setGlow(Player player, boolean glow) {
+    instance.setGlow(player, glow);
+  }
+
   public static ItemStack applyNTBTag(ItemStack item, List<Object> lines){
     return instance.applyNTBTag(item, lines);
   }

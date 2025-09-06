@@ -46,11 +46,216 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
-
 import java.util.*;
 
 public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
+    private static final Map<String, Material> LEGACY_IDS = new HashMap<>();
+    private static final Map<Material, String> MATERIAL_TO_ID = new HashMap<>();
+    private static final Map<String, Material> LEGACY_TO_NEW = new HashMap<>();
+    static {
+        LEGACY_IDS.put("383:99", Material.IRON_GOLEM_SPAWN_EGG);
+        LEGACY_IDS.put("386", Material.WRITABLE_BOOK);
+        LEGACY_IDS.put("160:0", Material.GRAY_STAINED_GLASS_PANE);
+        LEGACY_IDS.put("35:0", Material.WHITE_WOOL);
+        LEGACY_IDS.put("35:1", Material.ORANGE_WOOL);
+        LEGACY_IDS.put("35:2", Material.MAGENTA_WOOL);
+        LEGACY_IDS.put("LIT_PUMPKIN", Material.JACK_O_LANTERN);
+        LEGACY_IDS.put("WEB", Material.COBWEB);
+        LEGACY_IDS.put("91", Material.JACK_O_LANTERN);
+        LEGACY_IDS.put("35:3", Material.LIGHT_BLUE_WOOL);
+        LEGACY_IDS.put("35:4", Material.YELLOW_WOOL);
+        LEGACY_IDS.put("35:5", Material.LIME_WOOL);
+        LEGACY_IDS.put("35:6", Material.PINK_WOOL);
+        LEGACY_IDS.put("35:7", Material.GRAY_WOOL);
+        LEGACY_IDS.put("35:8", Material.LIGHT_GRAY_WOOL);
+        LEGACY_IDS.put("35:9", Material.CYAN_WOOL);
+        LEGACY_IDS.put("35:10", Material.PURPLE_WOOL);
+        LEGACY_IDS.put("35:11", Material.BLUE_WOOL);
+        LEGACY_IDS.put("35:12", Material.BROWN_WOOL);
+        LEGACY_IDS.put("339", Material.PAPER);
+        LEGACY_IDS.put("WOOD:1", Material.SPRUCE_PLANKS);
+        LEGACY_IDS.put("WOOD:2", Material.BIRCH_PLANKS);
+        LEGACY_IDS.put("WOOD:3", Material.JUNGLE_PLANKS);
+        LEGACY_IDS.put("WOOD:4", Material.ACACIA_PLANKS);
+        LEGACY_IDS.put("WOOD:5", Material.DARK_OAK_PLANKS);
+        LEGACY_IDS.put("5:1", Material.SPRUCE_PLANKS);
+        LEGACY_IDS.put("5:2", Material.BIRCH_PLANKS);
+        LEGACY_IDS.put("5:3", Material.JUNGLE_PLANKS);
+        LEGACY_IDS.put("5:4", Material.ACACIA_PLANKS);
+        LEGACY_IDS.put("5:5", Material.DARK_OAK_PLANKS);
+        LEGACY_IDS.put("WOOL:0", Material.WHITE_WOOL);
+        LEGACY_IDS.put("WOOL:1", Material.ORANGE_WOOL);
+        LEGACY_IDS.put("WOOL:2", Material.MAGENTA_WOOL);
+        LEGACY_IDS.put("WOOL:3", Material.LIGHT_BLUE_WOOL);
+        LEGACY_IDS.put("WOOL:4", Material.YELLOW_WOOL);
+        LEGACY_IDS.put("WOOL:5", Material.LIME_WOOL);
+        LEGACY_IDS.put("WOOL:6", Material.PINK_WOOL);
+        LEGACY_IDS.put("WOOL:7", Material.GRAY_WOOL);
+        LEGACY_IDS.put("WOOL:8", Material.LIGHT_GRAY_WOOL);
+        LEGACY_IDS.put("WOOL:9", Material.CYAN_WOOL);
+        LEGACY_IDS.put("WOOL:10", Material.PURPLE_WOOL);
+        LEGACY_IDS.put("WOOL:11", Material.BLUE_WOOL);
+        LEGACY_IDS.put("WOOL:12", Material.BROWN_WOOL);
 
+        LEGACY_IDS.put("351:1", Material.RED_DYE);
+        LEGACY_IDS.put("351:8", Material.GRAY_DYE);
+        LEGACY_IDS.put("351:11", Material.YELLOW_DYE);
+        LEGACY_IDS.put("351:10", Material.LIME_DYE);
+        LEGACY_IDS.put("270", Material.WOODEN_PICKAXE);
+        LEGACY_IDS.put("271", Material.WOODEN_AXE);
+        LEGACY_IDS.put("285", Material.GOLDEN_PICKAXE);
+        LEGACY_IDS.put("286", Material.GOLDEN_AXE);
+        LEGACY_IDS.put("257", Material.IRON_PICKAXE);
+        LEGACY_IDS.put("258", Material.IRON_AXE);
+        LEGACY_IDS.put("278", Material.DIAMOND_PICKAXE);
+        LEGACY_IDS.put("279", Material.DIAMOND_AXE);
+        LEGACY_IDS.put("385", Material.FIRE_CHARGE);
+        LEGACY_IDS.put("121", Material.END_STONE);
+        LEGACY_IDS.put("76", Material.REDSTONE_TORCH);
+        LEGACY_IDS.put("159", Material.WHITE_TERRACOTTA);
+        LEGACY_IDS.put("373", Material.POTION);
+        LEGACY_IDS.put("SKULL_ITEM", Material.PLAYER_HEAD);
+        LEGACY_IDS.put("369", Material.BLAZE_ROD);
+        LEGACY_IDS.put("383", Material.ENDER_DRAGON_SPAWN_EGG);
+        LEGACY_IDS.put("351", Material.GRAY_DYE);
+        LEGACY_IDS.put("INK_SACK", Material.GRAY_DYE);
+        LEGACY_IDS.put("WOOD", Material.OAK_PLANKS);
+        LEGACY_IDS.put("FIREWORK", Material.FIREWORK_ROCKET);
+        LEGACY_IDS.put("WOOL", Material.WHITE_WOOL);
+        LEGACY_IDS.put("BOOK_AND_QUILL", Material.WRITABLE_BOOK);
+        LEGACY_IDS.put("160", Material.WHITE_STAINED_GLASS_PANE);
+        LEGACY_IDS.put("STAINED_GLASS_PANE", Material.WHITE_STAINED_GLASS_PANE);
+        LEGACY_IDS.put("299", Material.LEATHER_CHESTPLATE);
+        LEGACY_IDS.put("145", Material.ANVIL);
+        LEGACY_IDS.put("395", Material.FILLED_MAP);
+        LEGACY_IDS.put("421", Material.NAME_TAG);
+        LEGACY_IDS.put("416", Material.LEAD);
+        LEGACY_IDS.put("268", Material.WOODEN_SWORD);
+        LEGACY_IDS.put("322", Material.GOLDEN_APPLE);
+        LEGACY_IDS.put("32", Material.DEAD_BUSH);
+        LEGACY_IDS.put("294", Material.GOLDEN_PICKAXE);
+        LEGACY_IDS.put("379", Material.BREWING_STAND);
+        LEGACY_IDS.put("86", Material.PUMPKIN);
+        LEGACY_IDS.put("332", Material.SNOWBALL);
+        LEGACY_IDS.put("38", Material.POPPY);
+        LEGACY_IDS.put("BED", Material.RED_BED);
+        LEGACY_IDS.put("259", Material.FLINT_AND_STEEL);
+        LEGACY_IDS.put("323", Material.OAK_SIGN);
+        LEGACY_IDS.put("347", Material.CLOCK);
+    }
+    static {
+        LEGACY_TO_NEW.put("383:99", Material.IRON_GOLEM_SPAWN_EGG);
+        LEGACY_TO_NEW.put("383:50", Material.CREEPER_SPAWN_EGG);
+        LEGACY_TO_NEW.put("383:51", Material.SKELETON_SPAWN_EGG);
+        LEGACY_TO_NEW.put("383:52", Material.SPIDER_SPAWN_EGG);
+        LEGACY_TO_NEW.put("383:54", Material.ZOMBIE_SPAWN_EGG);
+        LEGACY_TO_NEW.put("383:55", Material.SLIME_SPAWN_EGG);
+
+        LEGACY_TO_NEW.put("35:14", Material.RED_WOOL);
+        LEGACY_TO_NEW.put("35:6", Material.PINK_WOOL);
+        LEGACY_TO_NEW.put("35:9", Material.CYAN_WOOL);
+        LEGACY_TO_NEW.put("35:11", Material.BLUE_WOOL);
+        LEGACY_TO_NEW.put("35:0", Material.WHITE_WOOL);
+        LEGACY_TO_NEW.put("35:1", Material.ORANGE_WOOL);
+        LEGACY_TO_NEW.put("35:10", Material.PURPLE_WOOL);
+        LEGACY_TO_NEW.put("35:13", Material.LIME_WOOL);
+    }
+    static {
+        register("383:99", Material.IRON_GOLEM_SPAWN_EGG);
+        register("270", Material.WOODEN_PICKAXE);
+        register("271", Material.WOODEN_AXE);
+        register("285", Material.GOLDEN_PICKAXE);
+        register("286", Material.GOLDEN_AXE);
+        register("257", Material.IRON_PICKAXE);
+        register("258", Material.IRON_AXE);
+        register("278", Material.DIAMOND_PICKAXE);
+        register("279", Material.DIAMOND_AXE);
+        register("385", Material.FIRE_CHARGE); // era LEGACY_FIREBALL
+        register("121", Material.END_STONE);
+        register("76", Material.REDSTONE_TORCH);
+        register("159", Material.WHITE_TERRACOTTA);
+        register("373", Material.POTION);
+        register("SKULL_ITEM", Material.PLAYER_HEAD);
+        register("369", Material.BLAZE_ROD);
+        register("383", Material.ENDER_DRAGON_SPAWN_EGG);
+        register("351", Material.GRAY_DYE);
+        register("INK_SACK", Material.GRAY_DYE);
+        register("WOOD", Material.OAK_PLANKS);
+        register("FIREWORK", Material.FIREWORK_ROCKET);
+        register("WOOL", Material.WHITE_WOOL);
+        register("BOOK_AND_QUILL", Material.WRITABLE_BOOK);
+        register("160", Material.WHITE_STAINED_GLASS_PANE);
+        register("STAINED_GLASS_PANE", Material.WHITE_STAINED_GLASS_PANE);
+        register("299", Material.LEATHER_CHESTPLATE);
+        register("145", Material.ANVIL);
+        register("395", Material.FILLED_MAP);
+        register("421", Material.NAME_TAG);
+        register("416", Material.LEAD);
+        register("268", Material.WOODEN_SWORD);
+        register("322", Material.GOLDEN_APPLE);
+        register("32", Material.DEAD_BUSH);
+        register("294", Material.GOLDEN_PICKAXE);
+        register("379", Material.BREWING_STAND);
+        register("86", Material.PUMPKIN);
+        register("332", Material.SNOWBALL);
+        register("38", Material.POPPY);
+        register("BED", Material.RED_BED);
+        register("259", Material.FLINT_AND_STEEL);
+        register("323", Material.OAK_SIGN);
+        register("347", Material.CLOCK);
+        register("REDSTONE_COMPARATOR", Material.COMPARATOR);
+        register("383:99", Material.IRON_GOLEM_SPAWN_EGG);
+        register("383:50", Material.CREEPER_SPAWN_EGG);
+        register("383:51", Material.SKELETON_SPAWN_EGG);
+        register("383:54", Material.ZOMBIE_SPAWN_EGG);
+        register("383:55", Material.SLIME_SPAWN_EGG);
+        register("383:57", Material.SPIDER_SPAWN_EGG);
+        register("383:58", Material.CAVE_SPIDER_SPAWN_EGG);
+        register("383:61", Material.BLAZE_SPAWN_EGG);
+        register("383:62", Material.MAGMA_CUBE_SPAWN_EGG);
+        register("383:65", Material.BAT_SPAWN_EGG);
+        register("383:66", Material.WITCH_SPAWN_EGG);
+        register("383:90", Material.PIG_SPAWN_EGG);
+        register("383:91", Material.SHEEP_SPAWN_EGG);
+        register("383:92", Material.COW_SPAWN_EGG);
+        register("383:93", Material.CHICKEN_SPAWN_EGG);
+        register("383:95", Material.WOLF_SPAWN_EGG);
+        register("383:96", Material.MOOSHROOM_SPAWN_EGG);
+        register("383:98", Material.OCELOT_SPAWN_EGG);
+    }
+
+    public static ItemStack translate(String legacyId, int amount) {
+        Material mat = LEGACY_TO_NEW.get(legacyId);
+        if (mat != null) {
+            return new ItemStack(mat, amount);
+        }
+
+        // fallback → tenta direto
+        String[] split = legacyId.split(":");
+        Material fallback = Material.matchMaterial(split[0]);
+        if (fallback == null) {
+            fallback = Material.STONE;
+        }
+        return new ItemStack(fallback, amount);
+    }
+
+    private static void register(String id, Material mat) {
+        LEGACY_IDS.put(id.toUpperCase(), mat);
+        MATERIAL_TO_ID.put(mat, id.toUpperCase());
+    }
+
+    private static void register(Material mat, String id) {
+        register(id, mat); // chama o primeiro corretamente
+    }
+
+
+    public static Material getMaterial(String legacyId) {
+        return LEGACY_IDS.get(legacyId);
+    }
+
+    public static String getLegacyId(Material mat) {
+        return MATERIAL_TO_ID.get(mat);
+    }
     @Override
     public void openBook(Player player, ItemStack book) {
         ItemStack old = player.getInventory().getItemInHand();
@@ -62,134 +267,35 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         player.updateInventory();
     }
 
-    private Material resolveMaterial(String name) {
+    private Material resolveMaterial(String name, short data) {
         if (name == null || name.isEmpty()) {
             return Material.BARRIER;
         }
 
-        // 1) separa nome/base do data legada
         String upper = name.toUpperCase();
-        String[] parts = upper.split(":", 2);
-        String base = parts[0].trim();
-        String subid = parts.length > 1 ? parts[1].trim() : null;
 
-        // 2) terracota colorida (ID 159)
-        if ("159".equals(base)) {
-            if (subid != null) {
-                return switch (subid) {
-                    case "13" -> Material.GREEN_TERRACOTTA;
-                    case "14" -> Material.RED_TERRACOTTA;
-                    default -> Material.TERRACOTTA;
-                };
-            }
-            return Material.TERRACOTTA;
+        // 1) tenta pelo mapa legado completo (tipo "35:4", "383:99")
+        String legacyKey = upper + (data > 0 ? ":" + data : "");
+        if (LEGACY_IDS.containsKey(legacyKey)) {
+            return LEGACY_IDS.get(legacyKey);
         }
 
-        // 3) poções (ID 373 + data)
-        if ("373".equals(base)) {
-            if (subid != null) {
-                int d = Integer.parseInt(subid);
-                boolean splash = (d & 0x4000) != 0;  // flag 16384
-                // já mapeamos o material, o meta virá depois
-                return splash ? Material.SPLASH_POTION : Material.POTION;
-            }
-            return Material.POTION;
+        // 2) tenta pelo nome simples no mapa legado
+        if (LEGACY_IDS.containsKey(upper)) {
+            return LEGACY_IDS.get(upper);
         }
-        // 2) se não era terracota, joga fora o subid e continua
-        upper = base;
 
-        switch (upper) {
-            case "270":
-                return Material.WOODEN_PICKAXE;
-            case "271":
-                return Material.WOODEN_AXE;
-            case "285":
-                return Material.GOLDEN_PICKAXE;
-            case "286":
-                return Material.GOLDEN_AXE;
-            case "257":
-                return Material.IRON_PICKAXE;
-            case "258":
-                return Material.IRON_AXE;
-            case "278":
-                return Material.DIAMOND_PICKAXE;
-            case "279":
-                return Material.DIAMOND_AXE;
-            case "385":
-                return Material.LEGACY_FIREBALL;
-            case "121":
-                return Material.END_STONE;
-            case "76":
-                return Material.REDSTONE_TORCH;
-            case "159":
-                return Material.WHITE_TERRACOTTA;
-            case "373":
-                return Material.POTION;
-            case "SKULL_ITEM":
-                return Material.PLAYER_HEAD;
-            case "369":
-                return Material.BLAZE_ROD;
-            case "383":
-                return Material.ENDER_DRAGON_SPAWN_EGG;
-            case "351":
-            case "INK_SACK":
-                return Material.GRAY_DYE;
-            case "WOOD":
-                return Material.OAK_PLANKS;
-            case "FIREWORK":
-                return Material.FIREWORK_ROCKET;
-            case "WOOL":
-                return Material.WHITE_WOOL;
-            case "BOOK_AND_QUILL":
-                return Material.WRITABLE_BOOK;
-            case "160":
-            case "STAINED_GLASS_PANE":
-                return Material.WHITE_STAINED_GLASS_PANE;
-            case "299":
-                return Material.LEATHER_CHESTPLATE;
-            case "145":
-                return Material.ANVIL;
-            case "395":
-                return Material.FILLED_MAP;
-            case "421":
-                return Material.NAME_TAG;
-            case "416":
-                return Material.LEAD;
-            case "268":
-                return Material.WOODEN_SWORD;
-            case "322":
-                return Material.GOLDEN_APPLE;
-            case "32":
-                return Material.DEAD_BUSH;
-            case "294":
-                return Material.GOLDEN_PICKAXE;
-            case "379":
-                return Material.BREWING_STAND;
-            case "86":
-                return Material.PUMPKIN;
-            case "332":
-                return Material.SNOWBALL;
-            case "38":
-                return Material.POPPY;
-            case "BED":
-                return Material.RED_BED;
-            case "259":
-                return Material.FLINT_AND_STEEL;
-            case "323":
-                return Material.OAK_SIGN;
-            case "347":
-                return Material.CLOCK;
-            case "REDSTONE_COMPARATOR":
-                return Material.COMPARATOR;
-            default:
-                try {
-                    return Material.valueOf(upper);
-                } catch (IllegalArgumentException e) {
-                    Bukkit.getLogger().warning("[aCore] Material desconhecido ao desserializar: " + name);
-                    return Material.BARRIER;
-                }
+        // 3) tenta pelo enum moderno
+        try {
+            return Material.valueOf(upper);
+        } catch (IllegalArgumentException e) {
+            Bukkit.getLogger().warning("[aCore] Material desconhecido: " + name + (data > 0 ? ":" + data : ""));
+            return Material.BARRIER;
         }
     }
+
+
+
 
 
     @Override
@@ -200,36 +306,39 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
 
         raw = StringUtils.formatColors(raw).replace("\\n", "\n");
 
+        // token completo da esquerda (pode ser "383:99", "WOOL:14", "IRON_GOLEM_SPAWN_EGG", etc.)
         String[] parts = raw.split("\\s* : \\s*", 3);
         if (parts.length < 2) {
             Bukkit.getLogger().warning("[aCore] Entrada inválida: " + raw);
             return new ItemStack(Material.BARRIER);
         }
 
-        String[] matSplit = parts[0].split(":", 2);
+        String leftToken = parts[0].trim().toUpperCase();
+
+        // ✅ 1) tenta RESOLVER PRIMEIRO PELO MAPA LEGADO usando o token COMPLETO
+
+        String[] matSplit = leftToken.split(":", 2);
         String materialToken = matSplit[0].trim();
         short data = 0;
         if (matSplit.length > 1) {
             try {
                 data = Short.parseShort(matSplit[1].trim());
-            } catch (NumberFormatException ignore) {
-            }
+            } catch (NumberFormatException ignore) {}
         }
-        Material mat = resolveMaterial(materialToken);
 
+        Material mat = resolveMaterial(materialToken, data);
+
+        // quantidade
         int amount = 1;
         try {
             amount = Integer.parseInt(parts[1].trim());
-        } catch (NumberFormatException ignore) {
-        }
+        } catch (NumberFormatException ignore) { }
 
         ItemStack item;
-        if (mat == Material.POTION
-                || mat == Material.SPLASH_POTION
-                || mat == Material.LINGERING_POTION) {
 
-            boolean splash = (mat == Material.SPLASH_POTION)
-                    || (mat == Material.POTION && (data & 0x4000) != 0);
+        // poções antigas ainda suportadas pela sua sintaxe
+        if (mat == Material.POTION || mat == Material.SPLASH_POTION || mat == Material.LINGERING_POTION) {
+            boolean splash = (mat == Material.SPLASH_POTION) || (mat == Material.POTION && (data & 0x4000) != 0);
             Material potionMat = splash ? Material.SPLASH_POTION : Material.POTION;
             item = new ItemStack(potionMat, amount);
 
@@ -269,6 +378,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
             item.setItemMeta(pm);
 
         } else {
+            // mantém compatibilidade com dados quando ainda for relevante pro seu remapper
             if (data != 0) {
                 item = new ItemStack(mat, amount, data);
             } else {
@@ -307,6 +417,12 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
                         }
                         meta.addEnchant(Enchantment.getByName(enchanted.split(":")[0]), Integer.parseInt(enchanted.split(":")[1]), true);
                     }
+//                } else if (opt.startsWith("base>") && potion != null) {
+//                String[] bd = opt.split(">")[1].split(":");
+//                PotionType  type     = PotionType.valueOf(bd[0].toUpperCase());
+//                boolean     extended = Boolean.parseBoolean(bd[1]);
+//                boolean     upgraded = Boolean.parseBoolean(bd[2]);
+//                potion.setBasePotionData(new PotionData(type, extended, upgraded));
                 } else if (opt.startsWith("paint>") && (effect != null || armor != null)) {
                     for (String color : opt.split(">")[1].split("\n")) {
                         String[] rgb = color.split(":");
@@ -347,7 +463,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
                     for (String pe : opt.split(">")[1].split("\n")) {
                         String[] effectSplit = pe.split(":");
                         PotionEffectType type = PotionEffectType.getByName(effectSplit[0]);
-                        int amplifier = Integer.parseInt(effectSplit[1]);
+                        int amplifier = Integer.parseInt(effectSplit[1]) - 1;
                         int duration = Integer.parseInt(effectSplit[2]);
                         potion.addCustomEffect(new PotionEffect(type, duration, amplifier), false);
                     }
@@ -617,6 +733,11 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setGlow(Player player, boolean glow) {
+        player.setGlowing(glow);
     }
 
 

@@ -43,7 +43,7 @@ public class CoreTable extends DataTable {
     defaultValues.put("boosters", new DataContainer("{}"));
     defaultValues.put("cosmetics", new DataContainer("{}"));
     defaultValues.put("achievements", new DataContainer("[]"));
-    defaultValues.put("selected", new DataContainer("{\"title\": \"0\", \"icon\": \"0\"}"));
+    defaultValues.put("selected", new DataContainer("{}"));
     defaultValues.put("cselected", new DataContainer("{}"));
     defaultValues.put("language", new DataContainer(""));
     defaultValues.put("created", new DataContainer(System.currentTimeMillis()));

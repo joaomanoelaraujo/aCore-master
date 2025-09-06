@@ -1,7 +1,6 @@
 package me.joaomanoel.d4rkk.dev.menus.apparence;
 
 import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.cosmetic.types.GlowCosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.MvpColor;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.PunchMessage;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
@@ -10,6 +9,7 @@ import me.joaomanoel.d4rkk.dev.menus.MenuProfile;
 import me.joaomanoel.d4rkk.dev.menus.apparence.select.MenuSelect;
 import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.player.Profile;
+import me.joaomanoel.d4rkk.dev.utils.VersionAPI;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -29,7 +29,7 @@ public class MenuApparence extends PlayerMenu {
     this.setItem(LanguageAPI.getConfig(profile).getInt("apparence.color.slot"), BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.apparence.color")));
     this.setItem(LanguageAPI.getConfig(profile).getInt("apparence.punch.slot"), BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.apparence.punch")));
     this.setItem(LanguageAPI.getConfig(profile).getInt("apparence.status.slot"), BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.apparence.status")));
-    this.setItem(0, BukkitUtils.deserializeItemStack("PRISMARINE_CRYSTALS : 1 : name>§aGlow : desc>§eClique para selecionar"));
+//    this.setItem(0, BukkitUtils.deserializeItemStack("PRISMARINE_CRYSTALS : 1 : name>§aGlow : desc>§eClique para selecionar"));
 
     this.setItem(31, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")));
 
@@ -69,8 +69,10 @@ public class MenuApparence extends PlayerMenu {
                 EnumSound.ENDERMAN_TELEPORT.play(player, 1.0F, 2.0F);
               }
             } else if (evt.getSlot() == 0){
-                EnumSound.CLICK.play(player, 1.0F, 2.0F);
-                new MenuSelect<>(profile, "Glow", GlowCosmetic.class);
+              if (VersionAPI.is1_20_6()) {
+//                EnumSound.CLICK.play(player, 1.0F, 2.0F);
+//                new MenuSelect<>(profile, "Glow", GlowCosmetic.class);
+              }
             } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("apparence.status.slot")){
               EnumSound.ENDERMAN_TELEPORT.play(player, 1.0F, 2.0F);
             } else if (evt.getSlot() == 31){

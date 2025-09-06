@@ -16,6 +16,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,7 +59,7 @@ public class MenuLanguages<T extends Cosmetic> extends PagedPlayerMenu {
     this.onlySlots(10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34);
 
     // Back button
-    ItemStack backButton = BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu$cosmetic$back")
+    ItemStack backButton = BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.cosmetic.back")
     );
     this.removeSlotsWith(backButton, (this.rows * 9) - 5);
   }
@@ -90,6 +91,16 @@ public class MenuLanguages<T extends Cosmetic> extends PagedPlayerMenu {
     return icon;
   }
 
+  private Cosmetic findByICON(ItemStack icon) {
+    ItemMeta meta = icon.getItemMeta();
+    ItemStack key = this.cosmetics.keySet().stream().filter(item ->
+            icon.getType().equals(item.getType()) && meta != null &&
+                    item.getItemMeta().getDisplayName().equals(meta.getDisplayName()) &&
+                    item.getItemMeta().getLore().equals(meta.getLore())
+    ).findFirst().orElse(null);
+
+    return this.cosmetics.get(key);
+  }
 
   @EventHandler
   public void onInventoryClick(InventoryClickEvent evt) {
@@ -113,6 +124,7 @@ public class MenuLanguages<T extends Cosmetic> extends PagedPlayerMenu {
   }
 
   private void handleMenuClick(int slot, ItemStack item, Profile profile) {
+
     if (slot == this.previousPage) {
       playClickSound();
       this.openPrevious();
@@ -128,8 +140,8 @@ public class MenuLanguages<T extends Cosmetic> extends PagedPlayerMenu {
   }
 
   private void handleCosmeticSelection(ItemStack item, Profile profile) {
-    T cosmetic = this.cosmetics.get(item);
-    if (cosmetic == null) return;
+    T cosmetic = (T) findByICON(item);
+    if (cosmetic != null) {
 
     playPickupSound();
 
@@ -145,8 +157,8 @@ public class MenuLanguages<T extends Cosmetic> extends PagedPlayerMenu {
       selectedContainer.setSelected(cosmetic);
     }
 
-    // Refresh menu
     new MenuLanguages<>(profile, this.name, this.cosmeticClass);
+    }
   }
 
   private void playClickSound() {

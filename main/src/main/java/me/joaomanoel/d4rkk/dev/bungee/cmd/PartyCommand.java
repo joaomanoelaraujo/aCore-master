@@ -1,6 +1,7 @@
 package me.joaomanoel.d4rkk.dev.bungee.cmd;
 
 import me.joaomanoel.d4rkk.dev.Manager;
+import me.joaomanoel.d4rkk.dev.bungee.LanguageBungee;
 import me.joaomanoel.d4rkk.dev.bungee.party.BungeeParty;
 import me.joaomanoel.d4rkk.dev.bungee.party.BungeePartyManager;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
@@ -24,14 +25,13 @@ public class PartyCommand extends Commands {
   @Override
   public void perform(CommandSender sender, String[] args) {
     if (!(sender instanceof ProxiedPlayer)) {
-      sender.sendMessage(TextComponent.fromLegacyText("§cOnly players can use this command."));
+      sender.sendMessage(TextComponent.fromLegacyText(LanguageBungee.general$only_players));
       return;
     }
 
     ProxiedPlayer player = (ProxiedPlayer) sender;
     if (args.length == 0) {
-      player.sendMessage(TextComponent.fromLegacyText(
-              " \n§6/p [message] §f- §7Communicate with party members.\n§6/party open §f- §7Make the party public.\n§6/party close §f- §7Make the party private.\n§6/party join [player] §f- §7Join a public party.\n§6/party accept [player] §f- §7Accept an invitation.\n§6/party help §f- §7Show this help message.\n§6/party invite [player] §f- §7Invite a player.\n§6/party delete §f- §7Delete the party.\n§6/party kick [player] §f- §7Kick a member.\n§6/party info §f- §7Information about your Party.\n§6/party deny [player] §f- §7Deny an invitation.\n§6/party leave §f- §7Leave the Party.\n§6/party transfer [player] §f- §7Transfer Party leadership to another member.\n "));
+      player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$help));
       return;
     }
 
@@ -39,270 +39,306 @@ public class PartyCommand extends Commands {
     if (action.equalsIgnoreCase("open")) {
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou don't belong to a Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_in_party));
         return;
       }
 
       if (!party.isLeader(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou are not the Party Leader."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_leader));
         return;
       }
 
       if (party.isOpen()) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYour party is already public."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$already_public));
         return;
       }
 
       party.setIsOpen(true);
-      player.sendMessage(TextComponent.fromLegacyText("§aYou've opened the party to any player."));
+      player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$opened));
+
     } else if (action.equalsIgnoreCase("close")) {
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou don't belong to a Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_in_party));
         return;
       }
 
       if (!party.isLeader(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou are not the Party Leader."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_leader));
         return;
       }
 
       if (!party.isOpen()) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYour party is already private."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$already_private));
         return;
       }
 
       party.setIsOpen(false);
-      player.sendMessage(TextComponent.fromLegacyText("§cYou've closed the party to invited members only."));
+      player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$closed));
+
     } else if (action.equalsIgnoreCase("join")) {
       if (args.length == 1) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUse /party join [player]"));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$usage_join));
         return;
       }
 
       String target = args[1];
       if (target.equalsIgnoreCase(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou cannot join your own party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$cannot_join_self));
         return;
       }
 
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party != null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou already belong to a Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$already_in_party));
         return;
       }
 
       party = BungeePartyManager.getLeaderParty(target);
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§c" + Manager.getCurrent(target) + " is not a Party Leader."));
+        String message = LanguageBungee.party$target_not_leader.replace("{player}", Manager.getCurrent(target));
+        player.sendMessage(TextComponent.fromLegacyText(message));
         return;
       }
 
       target = party.getName(target);
       if (!party.isOpen()) {
-        player.sendMessage(TextComponent.fromLegacyText("§c" + Manager.getCurrent(target) + "'s Party is closed to invited members only."));
+        String message = LanguageBungee.party$party_closed.replace("{player}", Manager.getCurrent(target));
+        player.sendMessage(TextComponent.fromLegacyText(message));
         return;
       }
 
       if (!party.canJoin()) {
-        player.sendMessage(TextComponent.fromLegacyText("§c" + Manager.getCurrent(target) + "'s Party is full."));
+        String message = LanguageBungee.party$party_full.replace("{player}", Manager.getCurrent(target));
+        player.sendMessage(TextComponent.fromLegacyText(message));
         return;
       }
 
       party.join(player.getName());
-      player.sendMessage(TextComponent.fromLegacyText(" \n§aYou've joined " + Role.getPrefixed(target) + "'s Party!\n "));
+      String message = LanguageBungee.party$joined_party.replace("{player}", Role.getPrefixed(target));
+      player.sendMessage(TextComponent.fromLegacyText(message));
+
     } else if (action.equalsIgnoreCase("accept")) {
       if (args.length == 1) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUse /party accept [player]"));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$usage_accept));
         return;
       }
 
       String target = args[1];
       if (target.equalsIgnoreCase(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou cannot accept invitations from yourself."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$cannot_accept_self));
         return;
       }
 
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party != null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou already belong to a Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$already_in_party));
         return;
       }
 
       party = BungeePartyManager.getLeaderParty(target);
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§c" + Manager.getCurrent(target) + " is not a Party Leader."));
+        String message = LanguageBungee.party$target_not_leader.replace("{player}", Manager.getCurrent(target));
+        player.sendMessage(TextComponent.fromLegacyText(message));
         return;
       }
 
       target = party.getName(target);
       if (!party.isInvited(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§c" + Manager.getCurrent(target) + " did not invite you to their Party."));
+        String message = LanguageBungee.party$not_invited.replace("{player}", Manager.getCurrent(target));
+        player.sendMessage(TextComponent.fromLegacyText(message));
         return;
       }
 
       if (!party.canJoin()) {
-        player.sendMessage(TextComponent.fromLegacyText("§c" + Manager.getCurrent(target) + "'s Party is full."));
+        String message = LanguageBungee.party$party_full.replace("{player}", Manager.getCurrent(target));
+        player.sendMessage(TextComponent.fromLegacyText(message));
         return;
       }
 
       party.join(player.getName());
-      player.sendMessage(TextComponent.fromLegacyText(" \n§aYou've joined " + Role.getPrefixed(target) + "'s Party!\n "));
+      String message = LanguageBungee.party$joined_party.replace("{player}", Role.getPrefixed(target));
+      player.sendMessage(TextComponent.fromLegacyText(message));
+
     } else if (action.equalsIgnoreCase("help")) {
-      player.sendMessage(TextComponent.fromLegacyText(
-              " \n§6/p [message] §f- §7Communicate with party members.\n§6/party open §f- §7Make the party public.\n§6/party close §f- §7Make the party private.\n§6/party join [player] §f- §7Join a public party.\n§6/party accept [player] §f- §7Accept an invitation.\n§6/party help §f- §7Show this help message.\n§6/party invite [player] §f- §7Invite a player.\n§6/party delete §f- §7Delete the party.\n§6/party kick [player] §f- §7Kick a member.\n§6/party info §f- §7Information about your Party.\n§6/party deny [player] §f- §7Deny an invitation.\n§6/party leave §f- §7Leave the Party.\n§6/party transfer [player] §f- §7Transfer Party leadership to another member.\n "));
+      player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$help));
+
     } else if (action.equalsIgnoreCase("summon")) {
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou don't belong to a Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_in_party));
         return;
       }
 
       if (!party.isLeader(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou are not the Party Leader."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_leader));
         return;
       }
 
       party.summonMembers(player.getServer().getInfo());
-      player.sendMessage(TextComponent.fromLegacyText("§aYou've summoned all players to your server."));
+      player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$summoned));
+
     } else if (action.equalsIgnoreCase("delete")) {
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou don't belong to a Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_in_party));
         return;
       }
 
       if (!party.isLeader(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou are not the Party Leader."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_leader));
         return;
       }
 
-      party.broadcast(" \n" + Role.getPrefixed(player.getName()) + " §adeleted the Party!\n ", true);
+      String message = LanguageBungee.party$deleted.replace("{leader}", Role.getPrefixed(player.getName()));
+      party.broadcast(message, true);
       party.delete();
-      player.sendMessage(TextComponent.fromLegacyText("§aYou've deleted the Party."));
+      player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$party_deleted));
+
     } else if (action.equalsIgnoreCase("kick")) {
       if (args.length == 1) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUse /party kick [player]"));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$usage_kick));
         return;
       }
 
       BungeeParty party = BungeePartyManager.getLeaderParty(player.getName());
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou are not a Party Leader."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_party_leader));
         return;
       }
 
       String target = args[1];
       if (target.equalsIgnoreCase(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou cannot kick yourself."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$cannot_kick_self));
         return;
       }
 
       if (!party.isMember(target)) {
-        player.sendMessage(TextComponent.fromLegacyText("§cThat player does not belong to your Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$player_not_in_party));
         return;
       }
 
       target = party.getName(target);
       party.kick(target);
-      party.broadcast(" \n" + Role.getPrefixed(player.getName()) + " §akicked " + Role.getPrefixed(target) + " §afrom the Party!\n ");
+      String message = LanguageBungee.party$player_kicked
+              .replace("{leader}", Role.getPrefixed(player.getName()))
+              .replace("{player}", Role.getPrefixed(target));
+      party.broadcast(message);
+
     } else if (action.equalsIgnoreCase("info")) {
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou don't belong to a Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_in_party));
         return;
       }
 
-      List<String> members = party.listMembers().stream().filter(pp -> pp.getRole() != LEADER).map(pp -> (pp.isOnline() ? "§a" : "§c") + pp.getName()).collect(Collectors.toList());
-      player.sendMessage(TextComponent.fromLegacyText(
-              " \n§6Leader: " + Role.getPrefixed(party.getLeader()) + "\n§6Public: " + (party.isOpen() ? "§aYes" : "§cNo") + "\n§6Member Limit: §f" + party.listMembers()
-                      .size() + "/" + party.getSlots() + "\n§6Members: " + StringUtils.join(members, "§7, ") + "\n "));
+      List<String> members = party.listMembers().stream()
+              .filter(pp -> pp.getRole() != LEADER)
+              .map(pp -> (pp.isOnline() ? "§a" : "§c") + pp.getName())
+              .collect(Collectors.toList());
+
+      String message = LanguageBungee.party$info
+              .replace("{leader}", Role.getPrefixed(party.getLeader()))
+              .replace("{public}", party.isOpen() ? "§aYes" : "§cNo")
+              .replace("{current}", String.valueOf(party.listMembers().size()))
+              .replace("{max}", String.valueOf(party.getSlots()))
+              .replace("{members}", StringUtils.join(members, "§7, "));
+      player.sendMessage(TextComponent.fromLegacyText(message));
+
     } else if (action.equalsIgnoreCase("deny")) {
       if (args.length == 1) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUse /party deny [player]"));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$usage_deny));
         return;
       }
 
       String target = args[1];
       if (target.equalsIgnoreCase(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou cannot deny invitations from yourself."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$cannot_deny_self));
         return;
       }
 
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party != null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou already belong to a Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$already_in_party));
         return;
       }
 
       party = BungeePartyManager.getLeaderParty(target);
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§c" + Manager.getCurrent(target) + " is not a Party Leader."));
+        String message = LanguageBungee.party$target_not_leader.replace("{player}", Manager.getCurrent(target));
+        player.sendMessage(TextComponent.fromLegacyText(message));
         return;
       }
 
       target = party.getName(target);
       if (!party.isInvited(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§c" + Manager.getCurrent(target) + " did not invite you to their Party."));
+        String message = LanguageBungee.party$not_invited.replace("{player}", Manager.getCurrent(target));
+        player.sendMessage(TextComponent.fromLegacyText(message));
         return;
       }
 
       party.reject(player.getName());
-      player.sendMessage(TextComponent.fromLegacyText(" \n§aYou've denied the invitation from " + Role.getPrefixed(target) + "§a!\n "));
+      String message = LanguageBungee.party$denied_invitation.replace("{player}", Role.getPrefixed(target));
+      player.sendMessage(TextComponent.fromLegacyText(message));
+
     } else if (action.equalsIgnoreCase("leave")) {
       BungeeParty party = BungeePartyManager.getMemberParty(player.getName());
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou don't belong to a Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_in_party));
         return;
       }
 
       party.leave(player.getName());
-      player.sendMessage(TextComponent.fromLegacyText("§aYou've left the Party!"));
+      player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$left_party));
+
     } else if (action.equalsIgnoreCase("transfer")) {
       if (args.length == 1) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUse /party transfer [player]"));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$usage_transfer));
         return;
       }
 
       BungeeParty party = BungeePartyManager.getLeaderParty(player.getName());
       if (party == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou are not a Party Leader."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$not_party_leader));
         return;
       }
 
       String target = args[1];
       if (target.equalsIgnoreCase(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou cannot transfer Party leadership to yourself."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$cannot_transfer_self));
         return;
       }
 
       if (!party.isMember(target)) {
-        player.sendMessage(TextComponent.fromLegacyText("§cThat player does not belong to your Party."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$player_not_in_party));
         return;
       }
 
       target = party.getName(target);
       party.transfer(target);
-      party.broadcast(" \n" + Role.getPrefixed(player.getName()) + " §atransferred Party leadership to " + Role.getPrefixed(target) + "§a!\n ");
+      String message = LanguageBungee.party$leadership_transferred
+              .replace("{old_leader}", Role.getPrefixed(player.getName()))
+              .replace("{new_leader}", Role.getPrefixed(target));
+      party.broadcast(message);
+
     } else {
       if (action.equalsIgnoreCase("invite")) {
         if (args.length == 1) {
-          player.sendMessage(TextComponent.fromLegacyText("§cUse /party invite [player]"));
+          player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$usage_invite));
           return;
         }
-
         action = args[1];
       }
 
       ProxiedPlayer target = ProxyServer.getInstance().getPlayer(action);
       if (target == null) {
-        player.sendMessage(TextComponent.fromLegacyText("§cUser not found."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.general$user_not_found));
         return;
       }
 
       action = target.getName();
       if (action.equalsIgnoreCase(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou cannot send invitations to yourself."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$cannot_invite_self));
         return;
       }
 
@@ -312,28 +348,30 @@ public class PartyCommand extends Commands {
       }
 
       if (!party.isLeader(player.getName())) {
-        player.sendMessage(TextComponent.fromLegacyText("§cOnly the Party Leader can send invitations!"));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$only_leader_invite));
         return;
       }
 
       if (!party.canJoin()) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYour Party is full."));
+        player.sendMessage(TextComponent.fromLegacyText(LanguageBungee.party$party_full.replace("{player}", "Your Party")));
         return;
       }
 
       if (party.isInvited(action)) {
-        player.sendMessage(TextComponent.fromLegacyText("§cYou've already sent an invitation to " + Manager.getCurrent(action) + "."));
+        String message = LanguageBungee.party$already_invited.replace("{player}", Manager.getCurrent(action));
+        player.sendMessage(TextComponent.fromLegacyText(message));
         return;
       }
 
       if (BungeePartyManager.getMemberParty(action) != null) {
-        player.sendMessage(TextComponent.fromLegacyText("§c" + Manager.getCurrent(action) + " already belongs to a Party."));
+        String message = LanguageBungee.party$target_in_party.replace("{player}", Manager.getCurrent(action));
+        player.sendMessage(TextComponent.fromLegacyText(message));
         return;
       }
 
       party.invite(target);
-      player.sendMessage(
-              TextComponent.fromLegacyText(" \n" + Role.getPrefixed(action) + " §awas invited to the Party. They have 60 seconds to accept or deny this request.\n "));
+      String message = LanguageBungee.party$invitation_sent.replace("{player}", Role.getPrefixed(action));
+      player.sendMessage(TextComponent.fromLegacyText(message));
     }
   }
 }

@@ -10,7 +10,6 @@ import me.joaomanoel.d4rkk.dev.cosmetic.types.MvpColor;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.PunchMessage;
 import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
 import me.joaomanoel.d4rkk.dev.languages.LanguageAPI;
-import me.joaomanoel.d4rkk.dev.libraries.hologram.Hologram;
 import me.joaomanoel.d4rkk.dev.libraries.npc.NPCLibrary;
 import me.joaomanoel.d4rkk.dev.menus.others.MenuOtherProfile;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
@@ -24,10 +23,7 @@ import me.joaomanoel.d4rkk.dev.plugin.logger.KLogger;
 import me.joaomanoel.d4rkk.dev.reflection.Accessors;
 import me.joaomanoel.d4rkk.dev.reflection.acessors.FieldAccessor;
 import me.joaomanoel.d4rkk.dev.titles.TitleManager;
-import me.joaomanoel.d4rkk.dev.utils.PlayerIPUtils;
-import me.joaomanoel.d4rkk.dev.utils.StringUtils;
-import me.joaomanoel.d4rkk.dev.utils.TagUtils;
-import me.joaomanoel.d4rkk.dev.utils.aUpdater;
+import me.joaomanoel.d4rkk.dev.utils.*;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -37,6 +33,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.block.BlockFace;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
@@ -48,6 +45,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 import org.spigotmc.WatchdogThread;
 
 import java.util.*;
@@ -103,13 +101,31 @@ public class Listeners implements Listener {
     if (player.isOp()) {
       sendUpdateNotification(player);
     }
+
+    TagUtils.setTag(player);
+
+//      GlowCosmetic.onPlayerJoin(player);
+//      Profile newProfile = Profile.getProfile(player.getName());
+//      if (newProfile != null && GlowCosmetic.hasGlowSelected(newProfile)) {
+//        GlowCosmetic.applyGlowForAllViewers(newProfile);
+//      }
+
+
 //    if (firstTimePlayers.remove(playerId)) {
 //      handleFirstTimePlayer(player);
 //    }
 
-    Hologram hologram = new Hologram(player.getLocation());
-    hologram.appendLine("SEXO GOSTOSO {PLAYER}");
-    hologram.spawn();
+  }
+  @EventHandler(priority = EventPriority.MONITOR)
+  public void onPlayerMove(PlayerMoveEvent evt) {
+    Player player = evt.getPlayer();
+    if (evt.getTo().getBlock().getRelative(BlockFace.DOWN).getType() == Material.SLIME_BLOCK) {
+      EnumSound.FIREWORK_LAUNCH.play(player, 1.0F, 1.0F);
+      Vector vector = player.getEyeLocation().getDirection();
+      vector.multiply(3.35F);
+      vector.setY(2.15F);
+      player.setVelocity(vector);
+    }
   }
 
   //todo: fazer futuramente quando tiver diversidade de linguagens feitas.
@@ -144,6 +160,10 @@ public class Listeners implements Listener {
     Cosmetic.listByType(MvpColor.class).stream()
             .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))
             .forEach(cosmetic -> cosmetic.give(profile));
+
+//    Cosmetic.listByType(GlowCosmetic.class).stream()
+//            .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))
+//            .forEach(cosmetic -> cosmetic.give(profile));
 
     Cosmetic.listByType(PunchMessage.class).stream()
             .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))

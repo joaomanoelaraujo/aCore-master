@@ -183,22 +183,15 @@ public class NMS1_8_R3 implements NMS_Interface {
             nmsEntity.pitch = pitch;
         }
     }
+
+
+
     @Override
-    public void resendSkin(Player target, Player npc) {
-        EntityPlayer ep = ((CraftPlayer) npc).getHandle();
+    public void resendSkin(Player viewer, Player npcPlayer, NpcEntity entity) {
 
-        PacketPlayOutPlayerInfo remove = new PacketPlayOutPlayerInfo(
-                PacketPlayOutPlayerInfo.EnumPlayerInfoAction.REMOVE_PLAYER, ep);
-        PacketPlayOutPlayerInfo add = new PacketPlayOutPlayerInfo(
-                PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER, ep);
-        PacketPlayOutNamedEntitySpawn spawn = new PacketPlayOutNamedEntitySpawn(ep);
-        PacketPlayOutEntityHeadRotation head = new PacketPlayOutEntityHeadRotation(ep, (byte) (ep.yaw * 256F / 360F));
-
-        ((CraftPlayer) target).getHandle().playerConnection.sendPacket(remove);
-        ((CraftPlayer) target).getHandle().playerConnection.sendPacket(add);
-        ((CraftPlayer) target).getHandle().playerConnection.sendPacket(spawn);
-        ((CraftPlayer) target).getHandle().playerConnection.sendPacket(head);
     }
+
+
     @Override
     public void setHeadYaw(Object entity, float yaw) {
         net.minecraft.server.v1_8_R3.Entity nmsEntity = ((CraftEntity) entity).getHandle();

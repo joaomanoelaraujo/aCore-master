@@ -18,6 +18,7 @@ import me.joaomanoel.d4rkk.dev.database.tables.extension.SkyWarsPlaceholder;
 import me.joaomanoel.d4rkk.dev.deliveries.Delivery;
 import me.joaomanoel.d4rkk.dev.game.GameState;
 import me.joaomanoel.d4rkk.dev.hook.aCoreExpansion;
+import me.joaomanoel.d4rkk.dev.hook.protocollib.EntityAdapter;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.FakeAdapter;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.HologramAdapter;
 import me.joaomanoel.d4rkk.dev.hook.protocollib.NPCAdapter;
@@ -191,7 +192,7 @@ public class Core extends KPlugin {
       getLogger().severe("Ocorreu um erro ao carregar as linguagens padrão.");
       throw new RuntimeException(ex);
     }
-
+    Language.setupLanguage();
     GameState.loadLanguage(getConfig());
     aFriends = Bukkit.getPluginManager().getPlugin("aFriends") != null;
     Database.setupDatabase(
@@ -231,6 +232,7 @@ public class Core extends KPlugin {
     FakeAdapter.setup();
     ProtocolLibrary.getProtocolManager().addPacketListener(new NPCAdapter());
     ProtocolLibrary.getProtocolManager().addPacketListener(new HologramAdapter());
+    ProtocolLibrary.getProtocolManager().addPacketListener(new EntityAdapter());
 
     getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessageListener());

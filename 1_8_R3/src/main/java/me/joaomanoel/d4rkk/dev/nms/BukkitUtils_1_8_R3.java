@@ -398,6 +398,11 @@ public class BukkitUtils_1_8_R3 implements BukkitUtilsItf {
 
     }
 
+    @Override
+    public void setGlow(Player player, boolean glow) {
+
+    }
+
     public static Object asNMSCopy(ItemStack item) {
         return asNMSCopy.invoke(null, item);
     }

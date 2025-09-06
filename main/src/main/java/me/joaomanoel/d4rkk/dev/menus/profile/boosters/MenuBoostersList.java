@@ -8,6 +8,7 @@ import me.joaomanoel.d4rkk.dev.libraries.menu.PagedPlayerMenu;
 import me.joaomanoel.d4rkk.dev.menus.profile.MenuBoosters;
 import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.player.Profile;
+import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.utils.TimeUtils;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import org.bukkit.Material;
@@ -89,7 +90,7 @@ public class MenuBoostersList<T extends Achievement> extends PagedPlayerMenu {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuBoosters(profile);
             } else {
-              Booster booster = this.boosters.get(item);
+              Booster booster = findBoosterByIcon(item);
               if (booster != null) {
                 if (type == Booster.BoosterType.NETWORK) {
                   if (!Core.minigames.contains(Core.minigame)) {
@@ -99,13 +100,14 @@ public class MenuBoostersList<T extends Achievement> extends PagedPlayerMenu {
 
                   if (!Booster.setNetworkBooster(Core.minigame, profile, booster)) {
                     EnumSound.ENDERMAN_TELEPORT.play(this.player, 0.5F, 1.0F);
-                    this.player.sendMessage(LanguageAPI.getConfig(profile).getString("booster.network.alreadyActive").replace("{minigame}", Core.minigame));
+                    this.player.sendMessage(LanguageAPI.getConfig(profile).getString("booster.network.alreadyActive").replace("{roleColor}", Role.getColored(player.getName())).replace("{minigame}", Core.minigame));
                     this.player.closeInventory();
                     return;
                   }
 
                   EnumSound.LEVEL_UP.play(this.player, 0.5F, 1.0F);
                   Profile.listProfiles().forEach(pf -> pf.getPlayer().sendMessage(LanguageAPI.getConfig(profile).getString("booster.network.activated")
+                          .replace("{roleColor}", Role.getColored(player.getName()))
                           .replace("{player}", this.player.getName())
                           .replace("{multiplier}", String.valueOf(booster.getMultiplier()))
                           .replace("{minigame}", Core.minigame)));
@@ -120,6 +122,7 @@ public class MenuBoostersList<T extends Achievement> extends PagedPlayerMenu {
 
                   this.player.sendMessage(
                           LanguageAPI.getConfig(profile).getString("booster.personal.activated")
+                                  .replace("{roleColor}", Role.getColored(player.getName()))
                                   .replace("{multiplier}", String.valueOf(booster.getMultiplier()))
                                   .replace("{duration}", TimeUtils.getTime(TimeUnit.HOURS.toMillis(booster.getHours()))));
                   new MenuBoosters(profile);
@@ -130,6 +133,26 @@ public class MenuBoostersList<T extends Achievement> extends PagedPlayerMenu {
         }
       }
     }
+  }
+  private Booster findBoosterByIcon(ItemStack icon) {
+    if (icon == null) return null;
+
+    for (Map.Entry<ItemStack, Booster> entry : boosters.entrySet()) {
+      ItemStack keyItem = entry.getKey();
+
+      if (keyItem == null) continue;
+      if (icon.getType() != keyItem.getType()) continue;
+
+      if (icon.hasItemMeta() && keyItem.hasItemMeta()) {
+        if (icon.getItemMeta().hasDisplayName() && keyItem.getItemMeta().hasDisplayName()
+                && icon.getItemMeta().getDisplayName().equals(keyItem.getItemMeta().getDisplayName())
+                && icon.getItemMeta().hasLore() && keyItem.getItemMeta().hasLore()
+                && icon.getItemMeta().getLore().equals(keyItem.getItemMeta().getLore())) {
+          return entry.getValue();
+        }
+      }
+    }
+    return null;
   }
 
   public void cancel() {
