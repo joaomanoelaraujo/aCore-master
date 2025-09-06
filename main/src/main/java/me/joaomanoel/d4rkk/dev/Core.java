@@ -95,7 +95,7 @@ public class Core extends KPlugin {
             qp.server = name;
           }
           return;
-        }
+        } //teste
         
         queue.queue(player, profile, name);
       }

@@ -15,7 +15,7 @@ import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hologram implements Listener {
+public class  Hologram implements Listener {
 
     private Location location;
     private List<HologramLine> lines = new ArrayList<>();
