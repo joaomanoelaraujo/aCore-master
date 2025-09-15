@@ -193,11 +193,14 @@ party:
  invited: ' \n{prefix} &ahas been invited to the Party. They have 60 seconds to accept or deny this invitation.\n '
 menu:
  apparence:
+  active: '§eClique para ativar!'
+  disable: '§eClique para desativar!'
   title: 'Personalizar aparência'
   rows: 4
   color: '351:0 : 1 : name>&aCor do Rank MVP+ : desc>&7Jogadores &bMVP&c+&7 podem\n&7desbloquear e alterar a cor\n&7do +.\n\n&eClique para alterar!'
   punch: '395 : 1 : name>&aSoco Mensagens : desc>&7Personalize a mensagem ao usar\n&7sua habilidade de soco!\n\n&cOs Socos nos lobbies são\n&cexclusivos para &bMVP&c+ ou para\n&caqueles que possuem o item Socar\n&camigos.\n\n&eClique para alterar!'
   status: '421 : 1 : name>&aStatus : desc>&7Defina um status a ser exibido acima\n&7de sua cabeça nos lobbies.\n\n&eClique para alterar!'
+  glow: 'PRISMARINE_CRYSTALS : 1 : name>&aGlow : desc>§7Dá ao seu personagem no jogo um\n§7contorno na cor da sua classificação\n\n§cObservação: §7O efeito brilhante só será\n§7visível para jogadores que usam Minecraft 1.9\n§7ou posterior!\n\n{click}'
  ptitle: 'Party'
  # Menu Profile and Menu Party Rows, Recommended Rows: 6
  prows: 6
@@ -245,11 +248,13 @@ menu:
   back: 'ARROW : 1 : name>&aVoltar'
 apparence:
  status:
-  slot: 15
+  slot: 16
+ glow:
+  slot: 14
  color:
-  slot: 11
+  slot: 10
  punch:
-  slot: 13
+  slot: 12
 actionBar:
  queueMessage: '&aVocê está na fila para entrar no servidor &8{server} &7(Posição #{position})'
 connection:

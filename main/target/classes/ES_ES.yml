@@ -174,11 +174,14 @@ party:
   invited: ' \n{prefix} &aha sido invitado al Grupo. Tiene 60 segundos para aceptar o rechazar esta invitación.\n '
 menu:
   apparence:
+    active: '§e¡Haga clic para activar!'
+    disable: '§e¡Haga clic para deshabilitar!'
     title: 'Personalizar apariencia'
     rows: 4
     color: '351:0 : 1 : name>&aColor del Rango MVP+ : desc>&7Los jugadores &bMVP&c+&7 pueden\n&7desbloquear y cambiar el color\n&7del +.\n\n&e¡Haz clic para cambiar!'
     punch: '395 : 1 : name>&aMensajes de Golpe : desc>&7¡Personaliza el mensaje al usar\n&7tu habilidad de golpe!\n\n&cLos Golpes en los lobbies son\n&cexclusivos para &bMVP&c+ o para\n&caquellos que tienen el ítem Golpear\n&camigos.\n\n&e¡Haz clic para cambiar!'
     status: '421 : 1 : name>&aEstado : desc>&7Establece un estado para mostrar sobre\n&7tu cabeza en los lobbies.\n\n&e¡Haz clic para cambiar!'
+    glow: 'PRISMARINE_CRYSTALS : 1 : name>&aGlow : desc>§7Le da a tu personaje del juego un\n§7contorno del color de tu rango\n\n§cNota: §7¡El efecto brillante solo será\n§7visible para los jugadores que usen Minecraft 1.9\n§7o posterior!\n\n{click}'
   ptitle: 'Grupo'
   prows: 6
   kcrows: 5
@@ -224,11 +227,13 @@ menu:
     back: 'ARROW : 1 : name>&aVolver'
 apparence:
   status:
-    slot: 15
+    slot: 16
+  glow:
+    slot: 14
   color:
-    slot: 11
+    slot: 10
   punch:
-    slot: 13
+    slot: 12
 actionBar:
   queueMessage: '&aEstás en la cola para entrar al servidor &8{server} &7(Posición #{position})'
 connection:

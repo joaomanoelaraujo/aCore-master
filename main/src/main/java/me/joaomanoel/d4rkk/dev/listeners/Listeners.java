@@ -231,7 +231,7 @@ public class Listeners implements Listener {
     long timeLeft = 20000 - (currentTime - lastMessageTime);
 
     if (timeLeft > 0) {
-      attacker.sendMessage(LanguageAPI.getConfig(Profile.getProfile(attacker.getName())).getString("waiting$timer").replace("{more}", StringUtils.formatNumber(timeLeft / 1000)));
+      attacker.sendMessage(LanguageAPI.getConfig(Profile.getProfile(attacker.getName())).getString("waiting.timer").replace("{more}", StringUtils.formatNumber(timeLeft / 1000)));
       return;
     }
 
