@@ -174,11 +174,14 @@ party:
   invited: ' \n{prefix} &a已被邀请加入组队。他们有 60 秒时间接受或拒绝此邀请。\n '
 menu:
   apparence:
+    active: '点击激活！'
+    disable: '点击禁用！'
     title: '自定义外观'
     rows: 4
     color: '351:0 : 1 : name>&aMVP+ 等级颜色 : desc>&7&bMVP&c+ &7玩家可以\n&7解锁和更改\n&7+ 的颜色。\n\n&e点击更改！'
     punch: '395 : 1 : name>&a击打消息 : desc>&7自定义使用击打能力时\n&7显示的消息！\n\n&c大厅中的击打仅限\n&c&bMVP&c+ 或拥有击打\n&c好友物品的玩家使用。\n\n&e点击更改！'
     status: '421 : 1 : name>&a状态 : desc>&7设置在大厅中头顶显示的\n&7状态。\n\n&e点击更改！'
+    glow: 'PRISMARINE_CRYSTALS : 1 : name>&aGlow : desc>§7为你的游戏角色\n§7赋予与你的等级颜色对应的轮廓\n\n§c注意：§7发光效果仅对\n§7使用 Minecraft 1.9\n§7或更高版本的玩家可见！\n\n{click}'
   ptitle: '组队'
   prows: 6
   kcrows: 5
@@ -224,11 +227,13 @@ menu:
     back: 'ARROW : 1 : name>&a返回'
 apparence:
   status:
-    slot: 15
+    slot: 16
+  glow:
+    slot: 14
   color:
-    slot: 11
+    slot: 10
   punch:
-    slot: 13
+    slot: 12
 actionBar:
   queueMessage: '&a您正在等待加入服务器 &8{server} &7(位置 #{position})'
 connection:

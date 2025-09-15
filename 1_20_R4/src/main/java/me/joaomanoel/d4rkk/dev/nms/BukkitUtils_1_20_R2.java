@@ -55,6 +55,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
     static {
         LEGACY_IDS.put("383:99", Material.IRON_GOLEM_SPAWN_EGG);
         LEGACY_IDS.put("386", Material.WRITABLE_BOOK);
+        LEGACY_IDS.put("GLASS", Material.WHITE_STAINED_GLASS_PANE);
         LEGACY_IDS.put("160:0", Material.GRAY_STAINED_GLASS_PANE);
         LEGACY_IDS.put("35:0", Material.WHITE_WOOL);
         LEGACY_IDS.put("35:1", Material.ORANGE_WOOL);
@@ -169,6 +170,7 @@ public class BukkitUtils_1_20_R2 implements BukkitUtilsItf {
         register("257", Material.IRON_PICKAXE);
         register("258", Material.IRON_AXE);
         register("278", Material.DIAMOND_PICKAXE);
+        register("GLASS", Material.WHITE_STAINED_GLASS_PANE);
         register("279", Material.DIAMOND_AXE);
         register("385", Material.FIRE_CHARGE); // era LEGACY_FIREBALL
         register("121", Material.END_STONE);

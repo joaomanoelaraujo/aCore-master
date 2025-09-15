@@ -174,11 +174,14 @@ party:
  invited: ' \n{prefix} &ahas been invited to the Party. They have 60 seconds to accept or deny this invitation.\n '
 menu:
  apparence:
+  active: '§eClick to active!'
+  disable: '§eClick to disable!'
   title: 'Customize appearance'
   rows: 4
   color: '351:0 : 1 : name>&aMVP+ Rank Color : desc>&7&bMVP&c+ &7players can\n&7unlock and change the color\n&7of the +.\n\n&eClick to change!'
   punch: '395 : 1 : name>&aPunch Messages : desc>&7Customize the message when using\n&7your punch ability!\n\n&cPunches in lobbies are\n&cexclusive to &bMVP&c+ or to\n&cthose who have the Punch Friends\n&citem.\n\n&eClick to change!'
   status: '421 : 1 : name>&aStatus : desc>&7Set a status to be displayed above\n&7your head in lobbies.\n\n&eClick to change!'
+  glow: 'PRISMARINE_CRYSTALS : 1 : name>&aGlow : desc>§7Gives your in-game character an\n§7outline in the color of your rank\n\n§cNote: §7The glowing effect will only be\n§7visible to players using Minecraft 1.9\n§7or later!\n\n{click}'
  ptitle: 'Party'
  prows: 6
  kcrows: 5
@@ -224,11 +227,13 @@ menu:
   back: 'ARROW : 1 : name>&aBack'
 apparence:
  status:
-  slot: 15
+  slot: 16
+ glow:
+  slot: 14
  color:
-  slot: 11
+  slot: 10
  punch:
-  slot: 13
+  slot: 12
 actionBar:
  queueMessage: '&aYou are in queue to join server &8{server} &7(Position #{position})'
 connection:

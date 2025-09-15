@@ -174,11 +174,14 @@ party:
   invited: ' \n{prefix} &aをパーティに招待しました。60秒以内に承諾または拒否する必要があります。\n '
 menu:
   apparence:
+    active: '§eクリックして有効にしてください!'
+    disable: '§eクリックして無効にしてください!'
     title: '外観をカスタマイズ'
     rows: 4
     color: '351:0 : 1 : name>&aMVP+ランクの色 : desc>&7&bMVP&c+&7プレイヤーは\n&7+の色を解除して\n&7変更できます。\n\n&eクリックして変更！'
     punch: '395 : 1 : name>&aパンチメッセージ : desc>&7パンチ能力使用時の\n&7メッセージをカスタマイズ！\n\n&cロビーでのパンチは\n&c&bMVP&c+または\n&cフレンドパンチアイテムを\n&c所持している場合のみ使用可能です。\n\n&eクリックして変更！'
     status: '421 : 1 : name>&aステータス : desc>&7ロビーで頭上に表示される\n&7ステータスを設定します。\n\n&eクリックして変更！'
+    glow: 'PRISMARINE_CRYSTALS : 1 : name>&aグロー : desc>§7ゲームキャラクターにランクの色でアウトラインを表示します\n\n§c注: §7グロー効果はMinecraft 1.9を使用しているプレイヤーにのみ表示されます。\n§7後ほど！\n\n{click}'
   ptitle: 'パーティ'
   prows: 6
   kcrows: 5
@@ -224,11 +227,13 @@ menu:
     back: 'ARROW : 1 : name>&a戻る'
 apparence:
   status:
-    slot: 15
+    slot: 16
+  glow:
+    slot: 14
   color:
-    slot: 11
+    slot: 10
   punch:
-    slot: 13
+    slot: 12
 actionBar:
   queueMessage: '&aサーバー &8{server} &7の待機列に参加中です &7(順番 #{position})'
 connection:

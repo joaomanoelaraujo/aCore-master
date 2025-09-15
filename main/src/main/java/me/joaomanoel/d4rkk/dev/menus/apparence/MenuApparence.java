@@ -11,6 +11,7 @@ import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.utils.VersionAPI;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
@@ -29,7 +30,11 @@ public class MenuApparence extends PlayerMenu {
     this.setItem(LanguageAPI.getConfig(profile).getInt("apparence.color.slot"), BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.apparence.color")));
     this.setItem(LanguageAPI.getConfig(profile).getInt("apparence.punch.slot"), BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.apparence.punch")));
     this.setItem(LanguageAPI.getConfig(profile).getInt("apparence.status.slot"), BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.apparence.status")));
-//    this.setItem(0, BukkitUtils.deserializeItemStack("PRISMARINE_CRYSTALS : 1 : name>§aGlow : desc>§eClique para selecionar"));
+
+      this.setItem(LanguageAPI.getConfig(profile).getInt("apparence.glow.slot"), BukkitUtils.deserializeItemStack(
+              LanguageAPI.getConfig(profile).getString("menu.apparence.glow").replace("{click}", (profile.getSelectedContainer().isGlowed() ?  LanguageAPI.getConfig(profile).getString("menu.apparence.disable") : LanguageAPI.getConfig(profile).getString("menu.apparence.active")))
+      ));
+
 
     this.setItem(31, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")));
 
@@ -61,17 +66,20 @@ public class MenuApparence extends PlayerMenu {
               } else {
                 EnumSound.ENDERMAN_TELEPORT.play(player, 1.0F, 2.0F);
               }
-            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("apparence.punch.slot")){
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("apparence.punch.slot")) {
               if (player.hasPermission("role.mvpplus")) {
                 EnumSound.CLICK.play(player, 1.0F, 2.0F);
                 new MenuSelect<>(profile, LanguageAPI.getConfig(profile).getString("menu.apparence.title"), PunchMessage.class);
               } else {
                 EnumSound.ENDERMAN_TELEPORT.play(player, 1.0F, 2.0F);
               }
-            } else if (evt.getSlot() == 0){
+            } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("apparence.glow.slot")){
               if (VersionAPI.is1_20_6()) {
-//                EnumSound.CLICK.play(player, 1.0F, 2.0F);
-//                new MenuSelect<>(profile, "Glow", GlowCosmetic.class);
+              EnumSound.LEVEL_UP.play(player, 1.0F, 2.0F);
+              profile.getSelectedContainer().changeGlow(player);
+              new MenuApparence(profile);
+              } else {
+                EnumSound.ENDERMAN_TELEPORT.play(this.player, 1.0f, 1.0f);
               }
             } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("apparence.status.slot")){
               EnumSound.ENDERMAN_TELEPORT.play(player, 1.0F, 2.0F);

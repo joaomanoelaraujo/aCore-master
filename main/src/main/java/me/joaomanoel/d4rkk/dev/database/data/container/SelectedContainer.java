@@ -15,7 +15,7 @@ public class SelectedContainer extends AbstractContainer {
 
     public SelectedContainer(DataContainer dataContainer) {
         super(dataContainer);
-        this.dataContainer.set(check(this.dataContainer.getAsJsonObject()));
+        this.dataContainer.set(check(this.dataContainer.getAsJsonObject()).toString()); //builda e reseta o
     }
 
     public void setIcon(String id) {

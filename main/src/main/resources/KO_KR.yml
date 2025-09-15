@@ -174,11 +174,14 @@ party:
   invited: ' \n{prefix} &a님을 파티에 초대했습니다. 60초 안에 수락하거나 거절해야 합니다.\n '
 menu:
   apparence:
+    active: '§e클릭하여 활성화!'
+    disable: '§e클릭하여 비활성화!'
     title: '외형 커스터마이즈'
     rows: 4
     color: '351:0 : 1 : name>&aMVP+ 랭크 색상 : desc>&7&bMVP&c+ &7플레이어는\n&7+ 색상을 잠금 해제하고\n&7변경할 수 있습니다.\n\n&e클릭하여 변경!'
     punch: '395 : 1 : name>&a펀치 메시지 : desc>&7펀치 능력을 사용할 때\n&7메시지를 커스터마이즈하세요!\n\n&c로비에서의 펀치는\n&c&bMVP&c+ 또는\n&c친구 펀치 아이템을 가진\n&c플레이어만 사용할 수 있습니다.\n\n&e클릭하여 변경!'
     status: '421 : 1 : name>&a상태 : desc>&7로비에서 머리 위에 표시될\n&7상태를 설정하세요.\n\n&e클릭하여 변경!'
+    glow: 'PRISMARINE_CRYSTALS : 1 : name>&aGlow : desc>§7게임 내 캐릭터에 계급에 맞는 색상으로 윤곽선이 표시됩니다.\n§7참고: §7빛나는 효과는 Minecraft 1.9 이상을 사용하는 플레이어에게만 표시됩니다.\n§7!\n\n{click}'
   ptitle: '파티'
   prows: 6
   kcrows: 5
@@ -224,11 +227,13 @@ menu:
     back: 'ARROW : 1 : name>&a뒤로'
 apparence:
   status:
-    slot: 15
+    slot: 16
+  glow:
+    slot: 14
   color:
-    slot: 11
+    slot: 10
   punch:
-    slot: 13
+    slot: 12
 actionBar:
   queueMessage: '&a서버 &8{server}&a에 입장하기 위해 대기 중입니다 &7(#{position}번째)'
 connection:
