@@ -178,16 +178,16 @@ public class Listeners implements Listener {
     if (NPCLibrary.isNPC(evt.getRightClicked())) {
       return;
     }
-
-    Profile profile = Profile.getProfile(evt.getPlayer().getName());
-    if (profile == null || Core.minigame.equals("The Pit")) {
-      return;
-    }
-    if (!evt.getPlayer().getItemInHand().hasItemMeta()) {
-      if (!profile.playingGame()) {
-        new MenuOtherProfile(profile, clickedPlayer);
+      Profile profile = Profile.getProfile(evt.getPlayer().getName());
+      if (profile == null || Core.minigame.equals("The Pit")) {
+        return;
       }
-    }
+      if (!evt.getPlayer().getItemInHand().hasItemMeta()) {
+        if (!profile.playingGame()) {
+          new MenuOtherProfile(profile, clickedPlayer);
+        }
+      }
+
   }
 
   @EventHandler

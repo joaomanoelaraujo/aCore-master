@@ -199,6 +199,7 @@ menu:
     violence: 'REDSTONE : 1 : name>&aViolencia : desc>&7Activa o desactiva\n&7partículas de sangre en PvP.'
     protectionLobby: 'NETHER_STAR : 1 : name>&aProtección en /lobby : desc>&7Activa o desactiva\n&7solicitud de confirmación al usar /lobby.'
     chatMention: 'MAP : 1 : name>&aMención en Chat : desc>&7Activa o desactiva menciones en\n&7chat.'
+    matchMaking: 'FISHING_ROD : 1 : name>&aMatchMaking : desc>&7Habilitar o deshabilitar el equilibrio\n§7al buscar coincidencias.'
     state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&fEstado: &7{state}\n \n&e¡Haz clic para modificar!'
   boosters:
     title: 'Multiplicadores'
@@ -257,7 +258,7 @@ booster:
   network:
     notInMinigame: '&cNecesitas estar en un servidor de Minijuego para activar este Booster.'
     alreadyActive: '&cYa hay un Booster Global activo para {minigame}.'
-    activated: ' \n {roleColor}{player} &7ha activado un &6Booster Global de Monedas&7.\n &bTODOS &7los jugadores reciben un bono de {multiplier}x &7en juegos de &6{minigame}&7.\n '
+    activated: ' \n {player} &7ha activado un &6Booster Global de Monedas&7.\n &bTODOS &7los jugadores reciben un bono de {multiplier}x &7en juegos de &6{minigame}&7.\n '
   personal:
     alreadyActive: '&cYa tienes un Booster Personal activo.'
     activated: '&aHas activado un &6Booster de Monedas {multiplier}x &8({duration})&a.'

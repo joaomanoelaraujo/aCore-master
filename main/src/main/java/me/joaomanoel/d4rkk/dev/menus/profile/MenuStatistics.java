@@ -41,6 +41,11 @@ public class MenuStatistics extends PlayerMenu {
               LanguageAPI.getConfig(profile).getString("menu.statistics.thepit"))));
   }
 
+    if (Core.getInstance().getConfig().getBoolean("stats-duels")){
+      this.setItem(13, BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(this.player,
+              LanguageAPI.getConfig(profile).getString("menu.statistics.duels"))));
+    }
+
     this.setItem(31, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")));
 
     this.register(Core.getInstance());
@@ -63,7 +68,7 @@ public class MenuStatistics extends PlayerMenu {
           ItemStack item = evt.getCurrentItem();
 
           if (item != null && item.getType() != Material.AIR) {
-            if (evt.getSlot() == 10 || evt.getSlot() == 12 || evt.getSlot() == 14 || evt.getSlot() == 16 || evt.getSlot() == 22) {
+            if (evt.getSlot() == 10 || evt.getSlot() == 12 || evt.getSlot() == 13 || evt.getSlot() == 14 || evt.getSlot() == 16 || evt.getSlot() == 22) {
               EnumSound.ITEM_PICKUP.play(this.player, 0.5F, 2.0F);
             } else if (evt.getSlot() == 31) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);

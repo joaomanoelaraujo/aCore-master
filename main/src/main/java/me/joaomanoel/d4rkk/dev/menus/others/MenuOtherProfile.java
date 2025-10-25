@@ -27,22 +27,18 @@ public class MenuOtherProfile extends PlayerMenu {
     StatsAPI levelAPI = new StatsAPI();
     Profile profile1 = Profile.getProfile(player2.getName());
 
-    // Usando o sistema de tradução para o nível e guilda
     String levelInfo = String.format(LanguageAPI.getConfig(profile).getString("profileo.menu.levelInfo"),
             Role.getPrefixed(player2.getName()), levelAPI.getLevel(profile1), levelAPI.getGuild(),
             Role.getRoleByName(profile1.getDataContainer("aCoreProfile", "role").getAsString()).getName());
 
     this.setItem(0, BukkitUtils.putProfileOnSkull(player2, BukkitUtils.deserializeItemStack(levelInfo)));
 
-    // Preenchendo o restante dos itens com traduções
     for (int i = 9; i < 18; i++) {
       this.getInventory().setItem(i, BukkitUtils.deserializeItemStack("GLASS"));
     }
 
-    // Usando tradução para o botão de fechar
     this.setItem(49, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profileo.menu.close")));
 
-    // Tradução para os outros botões
     this.setItem(21, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("profileo.menu.socialMedia")));
     this.setItem(23, BukkitUtils.deserializeItemStack(String.format(LanguageAPI.getConfig(profile).getString("profileo.menu.statistics"),
             Role.getColored(player2.getName()))));

@@ -199,6 +199,7 @@ menu:
     violence: 'REDSTONE : 1 : name>&a폭력성 : desc>&7PvP 시 피 입자를\n&7활성화하거나 비활성화합니다.'
     protectionLobby: 'NETHER_STAR : 1 : name>&a/lobby 보호 : desc>&7/lobby 사용 시\n&7확인 요청을 활성화하거나 비활성화합니다.'
     chatMention: 'MAP : 1 : name>&a채팅 멘션 : desc>&7채팅에서 멘션을\n&7활성화하거나 비활성화합니다.'
+    matchMaking: 'FISHING_ROD : 1 : name>&a결혼 중매 : desc>&7잔액 활성화 또는 비활성화\n&7일치하는 항목 검색. '
     state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&f상태: &7{state}\n \n&e클릭하여 수정!'
   boosters:
     title: '부스터'
@@ -216,7 +217,8 @@ menu:
     bedwars: 'SKULL_ITEM:3 : 1 : name>&a베드워즈 : desc>&e전체: \n  &f승리: &7%aCore_BedWars_wins%\n  &f게임: &7%aCore_BedWars_games%\n \n&f코인: &6%aCore_BedWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmZiMjkwYTEzZGY4ODI2N2VhNWY1ZmNmNzk2YjYxNTdmZjY0Y2NlZTVjZDM5ZDQ2OTcyNDU5MWJhYmVlZDFmNiJ9fX0='
     skywars: 'SKULL_ITEM:3 : 1 : name>&a스카이워즈 : desc>&e전체: \n  &f승리: &7%aCore_SkyWars_wins%\n  &f게임: &7%aCore_SkyWars_games%\n  &f포인트: &7%aCore_SkyWars_rankedpoints%\n \n&f코인: &6%aCore_SkyWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDUyOGVkNDU4MDI0MDBmNDY1YjVjNGUzYTZiN2E5ZjJiNmE1YjNkNDc4YjZmZDg0OTI1Y2M1ZDk4ODM5MWM3ZCJ9fX0='
     thebridge: 'SKULL_ITEM:3 : 1 : name>&a더 브릿지 : desc>&e1v1:\n  &f처치: &7%aCore_TheBridge_1v1kills%\n  &f사망: &7%aCore_TheBridge_1v1deaths%\n  &f포인트: &7%aCore_TheBridge_1v1points%\n  &f승리: &7%aCore_TheBridge_1v1wins%\n  &f게임: &7%aCore_TheBridge_1v1games%\n&e2v2:\n  &f처치: &7%aCore_TheBridge_2v2kills%\n  &f사망: &7%aCore_TheBridge_2v2deaths%\n  &f포인트: &7%aCore_TheBridge_2v2points%\n  &f승리: &7%aCore_TheBridge_2v2wins%\n  &f게임: &7%aCore_TheBridge_2v2games%\n \n&e연승:\n  &f일일: &7%aCore_TheBridge_winstreak%\n \n&f코인: &6%aCore_TheBridge_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRhZjg1MzVjNTQ3ZTFkNjhmMmEyMGRkOGVlZTk5YzE2NTAzMTU3N2FhZTYwZWEyZTJlMmNjMTgzMDkwZjU3ZSJ9fX0='
-    thepit: 'SKULL_ITEM:3 : 1 : name>&a더 피트 : desc>&e전체: \n  &f처치: &7%aCore_ThePit_kills%\n  &f사망: &7%aCore_ThePit_deaths%\n  &f도움: &7%aCore_ThePit_assists%\n \n&f코인: &6%aCore_BedWars_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNDVkNzI1NTg3Mjk4YWRhYTc5NmU3MjRkNDhlZmIyOThkNzA2YWE4MjhhN2E0YzJhZjBjYmM5YzNjMiJ9fX0='
+    thepit: 'SKULL_ITEM:3 : 1 : name>&a더 피트 : desc>&e전체: \n  &f처치: &7%aCore_ThePit_kills%\n  &f사망: &7%aCore_ThePit_deaths%\n  &f도움: &7%aCore_ThePit_assists%\n \n&f코인: &6%aCore_ThePit_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNDVkNzI1NTg3Mjk4YWRhYTc5NmU3MjRkNDhlZmIyOThkNzA2YWE4MjhhN2E0YzJhZjBjYmM5YzNjMiJ9fX0='
+    duels: 'SKULL_ITEM:3 : 1 : name>&aDuels : desc>&e전체: \n  &f처치: &7%aCore_Duels_kills%\n  &f사망: &7%aCore_Duels_deaths%\n  &f도움: &7%aCore_Duels_assists%\n \n&f코인: &6%aCore_Duels_coins% : skin>eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODQ4OGIwMzQzOTgwZmNmMjE3ZDdjYmI3NWQ3MzBhZGNhMDRhOGI2YTdiMTM4Mzg2YWNhYTdmYzk5NGE4NThhMiJ9fX0='
   minigames:
     contribute: 'BOOK : 1 : name>&b서버에 기여하기 : desc>&7&eVIP&7가 되어 서버를\n&7지원할 수 있습니다!\n\n&7서버 유지를 돕는 것 외에도\n&7다양한 독점 혜택을\n&7이용할 수 있습니다!'
     slot: 32
@@ -257,7 +259,7 @@ booster:
   network:
     notInMinigame: '&c이 부스터를 활성화하려면 미니게임 서버에 있어야 합니다.'
     alreadyActive: '&c{minigame}에 이미 전체 부스터가 활성화되어 있습니다.'
-    activated: ' \n {roleColor}{player} &7님이 &6전체 코인 부스터&7를 활성화했습니다.\n &b모든 &7플레이어가 &6{minigame}&7에서 {multiplier}x 보너스를 받습니다.\n '
+    activated: ' \n {player} &7님이 &6전체 코인 부스터&7를 활성화했습니다.\n &b모든 &7플레이어가 &6{minigame}&7에서 {multiplier}x 보너스를 받습니다.\n '
   personal:
     alreadyActive: '&c이미 개인 부스터가 활성화되어 있습니다.'
     activated: '&a{multiplier}x &6코인 부스터&7를 활성화했습니다 &8({duration})&a.'

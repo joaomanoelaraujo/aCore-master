@@ -30,7 +30,9 @@ stats-skywars: true
 stats-bedwars: true
 stats-thebridge: true
 stats-thepit: true
+stats-duels: true
 
 #If true, a hotbar will only work in the lobby world
 interact-hotbar-world: true
-
+#If you want click in other player and open menu statistics turn to true
+click-player-menu: true

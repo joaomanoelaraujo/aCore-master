@@ -254,6 +254,7 @@ me\joaomanoel\d4rkk\dev\menus\MenuDeliveries.class
 com\comphenix\packetwrapper\WrapperStatusClientPing.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\ClearChatCommand.class
 me\joaomanoel\d4rkk\dev\player\gamemode\GameMode.class
+me\joaomanoel\d4rkk\dev\player\enums\MatchMaking.class
 me\joaomanoel\d4rkk\dev\menus\profile\achievements\MenuAchievementsList.class
 me\joaomanoel\d4rkk\dev\Core$1.class
 me\joaomanoel\d4rkk\dev\database\data\DataContainer.class

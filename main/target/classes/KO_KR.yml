@@ -199,6 +199,7 @@ menu:
     violence: 'REDSTONE : 1 : name>&a폭력성 : desc>&7PvP 시 피 입자를\n&7활성화하거나 비활성화합니다.'
     protectionLobby: 'NETHER_STAR : 1 : name>&a/lobby 보호 : desc>&7/lobby 사용 시\n&7확인 요청을 활성화하거나 비활성화합니다.'
     chatMention: 'MAP : 1 : name>&a채팅 멘션 : desc>&7채팅에서 멘션을\n&7활성화하거나 비활성화합니다.'
+    matchMaking: 'FISHING_ROD : 1 : name>&a결혼 중매 : desc>&7잔액 활성화 또는 비활성화\n&7일치하는 항목 검색. '
     state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&f상태: &7{state}\n \n&e클릭하여 수정!'
   boosters:
     title: '부스터'
@@ -257,7 +258,7 @@ booster:
   network:
     notInMinigame: '&c이 부스터를 활성화하려면 미니게임 서버에 있어야 합니다.'
     alreadyActive: '&c{minigame}에 이미 전체 부스터가 활성화되어 있습니다.'
-    activated: ' \n {roleColor}{player} &7님이 &6전체 코인 부스터&7를 활성화했습니다.\n &b모든 &7플레이어가 &6{minigame}&7에서 {multiplier}x 보너스를 받습니다.\n '
+    activated: ' \n {player} &7님이 &6전체 코인 부스터&7를 활성화했습니다.\n &b모든 &7플레이어가 &6{minigame}&7에서 {multiplier}x 보너스를 받습니다.\n '
   personal:
     alreadyActive: '&c이미 개인 부스터가 활성화되어 있습니다.'
     activated: '&a{multiplier}x &6코인 부스터&7를 활성화했습니다 &8({duration})&a.'

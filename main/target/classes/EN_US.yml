@@ -199,6 +199,7 @@ menu:
   violence: 'REDSTONE : 1 : name>&aViolence : desc>&7Enable or disable\n&7blood particles in PvP.'
   protectionLobby: 'NETHER_STAR : 1 : name>&aProtection in /lobby : desc>&7Enable or disable\n&7confirmation request when using /lobby.'
   chatMention: 'MAP : 1 : name>&aChat Mention : desc>&7Enable or disable mentions in\n&7chat. : hide>all'
+  matchMaking: 'FISHING_ROD : 1 : name>&aMatchMaking : desc>&7Enable or disable balancing when\n&7searching for matches.'
   state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&fState: &7{state}\n \n&eClick to modify!'
  boosters:
   title: 'Multipliers'
@@ -208,7 +209,7 @@ menu:
   none: '&cYou don''t have any active multiplier.'
   calculation: '&8• &6Multiplier {multiplier}x &8({time})\n \n&fCalculation:\n &7With the multiplier active when receiving &650 Coins &7the\n &7total received will be equivalent to &6{total} Coins&7.'
   network: ' &8• &b{minigame}: {status}'
-  networkActive: '&6{multiplier}x &7for {player} &8({time})'
+  networkActive: '&6{multiplier}x &7by {player} &8({time})'
   networkDisabled: '&cDisabled'
   credits: 'PAPER : 1 : name>&aCredit Multipliers : desc>&7Multipliers are cumulative. The more\n&7active multipliers, the higher the bonus received.\n \n&fGlobal Multipliers:\n{network}\n \n{result}'
  statistics:
@@ -257,7 +258,7 @@ booster:
  network:
   notInMinigame: '&cYou need to be in a Minigame server to activate this Booster.'
   alreadyActive: '&cThere is already an active Global Booster for {minigame}.'
-  activated: ' \n {roleColor}{player} &7activated a &6Global Coin Booster&7.\n &bALL &7players receive a {multiplier}x &7bonus in &6{minigame}&7 games.\n '
+  activated: ' \n {player} &7activated a &6Global Coin Booster&7.\n &bALL &7players receive a {multiplier}x &7bonus in &6{minigame}&7 games.\n '
  personal:
   alreadyActive: '&cYou already have an active Personal Booster.'
   activated: '&aYou activated a &6{multiplier}x Coin Booster &8({duration})&a.'

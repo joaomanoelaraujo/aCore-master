@@ -64,6 +64,15 @@ public class MenuPreferences extends PlayerMenu {
                     .replace("{inkSack}", cm.getInkSack())
                     .replace("{name}", cm.getName())
                     .replace("{state}", StringUtils.stripColors(cm.getName()))));
+
+    MatchMaking mm = pc.getMatchMaking();
+    this.setItem(10, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.preferences.matchMaking")));
+    this.setItem(19, BukkitUtils.deserializeItemStack(
+            LanguageAPI.getConfig(profile).getString("menu.preferences.state")
+                    .replace("{inkSack}", mm.getInkSack())
+                    .replace("{name}", mm.getName())
+                    .replace("{state}", StringUtils.stripColors(mm.getName()))));
+
     this.setItem(40, BukkitUtils.deserializeItemStack(LanguageAPI.getConfig(profile).getString("menu.back")));
 
     this.register(Core.getInstance());
@@ -98,6 +107,10 @@ public class MenuPreferences extends PlayerMenu {
             } else if (evt.getSlot() == 21) {
               EnumSound.ITEM_PICKUP.play(this.player, 0.5F, 2.0F);
               profile.getPreferencesContainer().changePrivateMessages();
+              new MenuPreferences(profile);
+            } else if (evt.getSlot() == 19) {
+              EnumSound.ITEM_PICKUP.play(this.player, 0.5F, 2.0F);
+              profile.getPreferencesContainer().changeMatchMaking();
               new MenuPreferences(profile);
             } else if (evt.getSlot() == 23) {
               EnumSound.ITEM_PICKUP.play(this.player, 0.5F, 2.0F);

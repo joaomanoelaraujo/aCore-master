@@ -42,11 +42,23 @@ public class PreferencesContainer extends AbstractContainer {
 
   public void changeChatMention() {
     JSONObject preferences = this.dataContainer.getAsJsonObject();
-    preferences.put("cm", ProtectionLobby.getByOrdinal((Long)preferences.get("cm")).next().ordinal());
+    preferences.put("cm", ChatMention.getByOrdinal((Long)preferences.get("cm")).next().ordinal());
     this.dataContainer.set(preferences.toString());
     preferences.clear();
   }
 
+  public void changeMatchMaking() {
+    JSONObject preferences = this.dataContainer.getAsJsonObject();
+    preferences.put("mm", MatchMaking.getByOrdinal((Long)preferences.get("mm")).next().ordinal());
+    this.dataContainer.set(preferences.toString());
+    preferences.clear();
+  }
+
+
+
+  public MatchMaking getMatchMaking() {
+    return MatchMaking.getByOrdinal((long) this.dataContainer.getAsJsonObject().get("mm"));
+  }
 
   public PlayerVisibility getPlayerVisibility() {
     return PlayerVisibility.getByOrdinal((long) this.dataContainer.getAsJsonObject().get("pv"));

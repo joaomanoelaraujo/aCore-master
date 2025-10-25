@@ -107,8 +107,7 @@ public class MenuBoostersList<T extends Achievement> extends PagedPlayerMenu {
 
                   EnumSound.LEVEL_UP.play(this.player, 0.5F, 1.0F);
                   Profile.listProfiles().forEach(pf -> pf.getPlayer().sendMessage(LanguageAPI.getConfig(profile).getString("booster.network.activated")
-                          .replace("{roleColor}", Role.getColored(player.getName()))
-                          .replace("{player}", this.player.getName())
+                          .replace("{player}", Role.getPrefixed(player.getName()))
                           .replace("{multiplier}", String.valueOf(booster.getMultiplier()))
                           .replace("{minigame}", Core.minigame)));
                   this.player.closeInventory();
@@ -122,7 +121,7 @@ public class MenuBoostersList<T extends Achievement> extends PagedPlayerMenu {
 
                   this.player.sendMessage(
                           LanguageAPI.getConfig(profile).getString("booster.personal.activated")
-                                  .replace("{roleColor}", Role.getColored(player.getName()))
+                                  .replace("{roleColor}", Role.getPrefixed(player.getName()))
                                   .replace("{multiplier}", String.valueOf(booster.getMultiplier()))
                                   .replace("{duration}", TimeUtils.getTime(TimeUnit.HOURS.toMillis(booster.getHours()))));
                   new MenuBoosters(profile);

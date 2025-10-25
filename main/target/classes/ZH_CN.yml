@@ -199,6 +199,7 @@ menu:
     violence: 'REDSTONE : 1 : name>&a暴力 : desc>&7启用或禁用\n&7PvP 中的血液粒子。'
     protectionLobby: 'NETHER_STAR : 1 : name>&a/lobby 保护 : desc>&7启用或禁用\n&7使用 /lobby 时的确认请求。'
     chatMention: 'MAP : 1 : name>&a聊天提醒 : desc>&7启用或禁用聊天中的\n&7提醒。: hide>all '
+    matchMaking: 'FISHING_ROD : 1 : name>&a对接会 : desc>&7启用或禁用平衡\n&7搜索匹配项. '
     state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&f状态: &7{state}\n \n&e点击修改！'
   boosters:
     title: '加成'
@@ -257,7 +258,7 @@ booster:
   network:
     notInMinigame: '&c您需要在小游戏服务器中才能激活此加成。'
     alreadyActive: '&c{minigame} 已经有一个激活的全服加成。'
-    activated: ' \n {roleColor}{player} &7激活了一个 &6全服金币加成&7。\n &b所有 &7玩家在 &6{minigame}&7 中获得 {multiplier}x 奖励。\n '
+    activated: ' \n {player} &7激活了一个 &6全服金币加成&7。\n &b所有 &7玩家在 &6{minigame}&7 中获得 {multiplier}x 奖励。\n '
   personal:
     alreadyActive: '&c您已经有一个激活的个人加成。'
     activated: '&a您激活了一个 {multiplier}x &6金币加成 &8({duration})&a。'

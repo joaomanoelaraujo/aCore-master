@@ -199,6 +199,7 @@ menu:
     violence: 'REDSTONE : 1 : name>&a暴力表現 : desc>&7PvPでの\n&7血のパーティクルをオン/オフ。'
     protectionLobby: 'NETHER_STAR : 1 : name>&a/lobby保護 : desc>&7/lobby使用時の\n&7確認要求をオン/オフ。'
     chatMention: 'MAP : 1 : name>&aチャットでのメンション : desc>&7チャットでの\n&7メンションをオン/オフ。 : hide>all'
+    matchMaking: 'FISHING_ROD : 1 : name>&aマッチメイキング : desc>&7バランスを有効または無効にするには\n&7一致するものを検索する. '
     state: 'INK_SACK:{inkSack} : 1 : name>{name} : desc>&f状態: &7{state}\n \n&eクリックして変更！'
   boosters:
     title: 'ブースター'
@@ -257,7 +258,7 @@ booster:
   network:
     notInMinigame: '&cこのブースターを有効化するにはミニゲームサーバーにいる必要があります。'
     alreadyActive: '&c{minigame} には既にグローバルブースターが有効です。'
-    activated: ' \n {roleColor}{player} &7が &6グローバルコインブースター&7を有効化しました。\n &bすべての &7プレイヤーが &6{minigame}&7 で {multiplier}x &7のボーナスを受け取ります。\n '
+    activated: ' \n {player} &7が &6グローバルコインブースター&7を有効化しました。\n &bすべての &7プレイヤーが &6{minigame}&7 で {multiplier}x &7のボーナスを受け取ります。\n '
   personal:
     alreadyActive: '&c既に個人ブースターが有効です。'
     activated: '&a&6コインブースター {multiplier}x &8({duration})&a を有効化しました。'

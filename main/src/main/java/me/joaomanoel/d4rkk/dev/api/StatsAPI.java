@@ -19,6 +19,9 @@ public class StatsAPI {
                 case "The Bridge":
                     level = String.valueOf(profile.getStats("aCoreTheBridge", "level"));
                     break;
+                case "Duels":
+                    level = String.valueOf(profile.getStats("aCoreDuels", "level"));
+                    break;
             }
 
             return StringUtils.formatNumber(Long.parseLong(level)) + " §7(" + Core.minigame + ")";
