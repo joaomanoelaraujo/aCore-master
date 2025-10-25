@@ -178,6 +178,7 @@ public class Listeners implements Listener {
     if (NPCLibrary.isNPC(evt.getRightClicked())) {
       return;
     }
+    if (Core.getInstance().getConfig().getBoolean("click-player-menu")) {
       Profile profile = Profile.getProfile(evt.getPlayer().getName());
       if (profile == null || Core.minigame.equals("The Pit")) {
         return;
@@ -187,7 +188,7 @@ public class Listeners implements Listener {
           new MenuOtherProfile(profile, clickedPlayer);
         }
       }
-
+    }
   }
 
   @EventHandler

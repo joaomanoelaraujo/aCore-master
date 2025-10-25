@@ -4,46 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Fixed bug on waiting$timer -&gt; waiting.timer">
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/player/enums/MatchMaking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/api/StatsAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/api/StatsAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/data/container/PreferencesContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/data/container/PreferencesContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/tables/CoreTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/tables/CoreTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/listeners/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/listeners/Listeners.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/others/MenuOtherProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/others/MenuOtherProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/profile/MenuPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/profile/MenuPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/profile/MenuStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/profile/MenuStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/profile/boosters/MenuBoostersList.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/profile/boosters/MenuBoostersList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/EN_US.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/EN_US.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/ES_ES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/ES_ES.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/JA_JP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/JA_JP.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/KO_KR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/KO_KR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/PT_BR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/PT_BR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/ZH_CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/ZH_CN.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/bungee.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/EN_US.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/EN_US.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/ES_ES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/ES_ES.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/JA_JP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/JA_JP.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/KO_KR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/KO_KR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/PT_BR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/PT_BR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/ZH_CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/ZH_CN.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/api/StatsAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/api/StatsAPI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/data/container/PreferencesContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/data/container/PreferencesContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/tables/CoreTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/tables/CoreTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/others/MenuOtherProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/others/MenuOtherProfile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/profile/MenuPreferences.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/profile/MenuPreferences.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/profile/boosters/MenuBoostersList.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/profile/boosters/MenuBoostersList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/original-aCore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/original-aCore.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nms/target/nms-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/nms/target/nms-2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/utils-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/utils-2.1.jar" afterDir="false" />
+    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="Added click-player-menu: true to config.yml if you want to open a menu when interacting with a player;&#10;Added stats-duels: true to config.yml if you want to disable the duels statistics icon;&#10;Added MatchMaking to MenuPreferences;&#10;Added MatchMaking system (Currently only compatible with Duels and BedWars in future updates);&#10;Improved error detection system;&#10;&#10;Fixed an issue when trying to interact with another player and opening the stats menu;&#10;Fixed a bug in the universal booster message;&#10;Fixed translation errors in all languages;&#10;Fixed the coin display in the profile menu stats;&#10;Minor fixes to some methods.">
+      <change beforePath="$PROJECT_DIR$/main/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,12 +105,21 @@
       <option name="project" value="LOCAL" />
       <updated>1757896537181</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added click-player-menu: true to config.yml if you want to open a menu when interacting with a player;&#10;Added stats-duels: true to config.yml if you want to disable the duels statistics icon;&#10;Added MatchMaking to MenuPreferences;&#10;Added MatchMaking system (Currently only compatible with Duels and BedWars in future updates);&#10;Improved error detection system;&#10;&#10;Fixed an issue when trying to interact with another player and opening the stats menu;&#10;Fixed a bug in the universal booster message;&#10;Fixed translation errors in all languages;&#10;Fixed the coin display in the profile menu stats;&#10;Minor fixes to some methods.">
+      <option name="closed" value="true" />
+      <created>1761406896918</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1761406896919</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Added glowing effect on MenuApparence&#10;- Added translates on Glowing&#10;- Fixed bug on glass item register" />
     <MESSAGE value="- Fixed bug on waiting$timer -&gt; waiting.timer" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixed bug on waiting$timer -&gt; waiting.timer" />
+    <MESSAGE value="Added click-player-menu: true to config.yml if you want to open a menu when interacting with a player;&#10;Added stats-duels: true to config.yml if you want to disable the duels statistics icon;&#10;Added MatchMaking to MenuPreferences;&#10;Added MatchMaking system (Currently only compatible with Duels and BedWars in future updates);&#10;Improved error detection system;&#10;&#10;Fixed an issue when trying to interact with another player and opening the stats menu;&#10;Fixed a bug in the universal booster message;&#10;Fixed translation errors in all languages;&#10;Fixed the coin display in the profile menu stats;&#10;Minor fixes to some methods." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added click-player-menu: true to config.yml if you want to open a menu when interacting with a player;&#10;Added stats-duels: true to config.yml if you want to disable the duels statistics icon;&#10;Added MatchMaking to MenuPreferences;&#10;Added MatchMaking system (Currently only compatible with Duels and BedWars in future updates);&#10;Improved error detection system;&#10;&#10;Fixed an issue when trying to interact with another player and opening the stats menu;&#10;Fixed a bug in the universal booster message;&#10;Fixed translation errors in all languages;&#10;Fixed the coin display in the profile menu stats;&#10;Minor fixes to some methods." />
   </component>
 </project>
