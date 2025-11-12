@@ -3,5 +3,8 @@ name: aCore
 version: 2.6
 api-version: 1.14
 depend: [ProtocolLib, PlaceholderAPI]
-
+commands:
+  replay:
+    description: Main Replay command
+    aliases: [rp]
 main: me.joaomanoel.d4rkk.dev.Core

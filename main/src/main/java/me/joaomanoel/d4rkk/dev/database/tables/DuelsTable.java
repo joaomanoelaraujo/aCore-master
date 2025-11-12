@@ -12,10 +12,10 @@ import java.util.Map;
 
 @DataTableInfo(
     name = "aCoreDuels",
-    create = "CREATE TABLE IF NOT EXISTS `aCoreDuels` (`name` VARCHAR(32),`uhckills` LONG, `uhcdeaths` LONG, `uhcwins` LONG, `uhcgames` LONG, `bowkills` LONG, `bowdeaths` LONG, `bowwins` LONG, `bowgames` LONG, `classickills` LONG, `classicdeaths` LONG, `classicwins` LONG, `classicgames` LONG, `opkills` LONG, `opdeaths` LONG, `opwins` LONG, `opgames` LONG, `sumokills` LONG, `sumodeaths` LONG, `sumowins` LONG, `sumogames` LONG, `bedfightkills` LONG, `bedfightdeaths` LONG, `bedfightwins` LONG, `bedfightgames` LONG, `assists` LONG, `experience` LONG, `level` LONG, `monthlykills` LONG, `monthlydeaths` LONG, `monthlyassists` LONG, `monthlywins` LONG, `month` TEXT, `coins` DOUBLE, `laststreak` LONG, `bestkillstreak` LONG, `killstreak` LONG, `kitconfig` TEXT, `lastmap` LONG, `cosmetics` TEXT, `selected` TEXT, PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
+    create = "CREATE TABLE IF NOT EXISTS `aCoreDuels` (`name` VARCHAR(32),`uhckills` LONG, `uhcdeaths` LONG, `uhcwins` LONG, `uhcgames` LONG, `bowkills` LONG, `bowdeaths` LONG, `bowwins` LONG, `bowgames` LONG, `classickills` LONG, `classicdeaths` LONG, `classicwins` LONG, `classicgames` LONG, `opkills` LONG, `opdeaths` LONG, `opwins` LONG, `opgames` LONG, `sumokills` LONG, `sumodeaths` LONG, `sumowins` LONG, `sumogames` LONG, `bedfightkills` LONG, `bedfightdeaths` LONG, `bedfightwins` LONG, `bedfightgames` LONG, `pearlkills` LONG, `pearldeaths` LONG, `pearlwins` LONG, `pearlgames` LONG, `assists` LONG, `experience` LONG, `level` LONG, `monthlykills` LONG, `monthlydeaths` LONG, `monthlyassists` LONG, `monthlywins` LONG, `month` TEXT, `coins` DOUBLE, `laststreak` LONG, `bestkillstreak` LONG, `killstreak` LONG, `kitconfig` TEXT, `lastmap` LONG, `cosmetics` TEXT, `selected` TEXT, PRIMARY KEY(`name`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;",
     select = "SELECT * FROM `aCoreDuels` WHERE LOWER(`name`) = ?",
-    insert = "INSERT INTO `aCoreDuels` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    update = "UPDATE `aCoreDuels` SET `uhckills` = ?, `uhcdeaths` = ?, `uhcwins` = ?, `uhcgames` = ?, `bowkills` = ?, `bowdeaths` = ?, `bowwins` = ?, `bowgames` = ?, `classickills` = ?, `classicdeaths` = ?, `classicwins` = ?, `classicgames` = ?, `opkills` = ?, `opdeaths` = ?, `opwins` = ?, `opgames` = ?, `sumokills` = ?, `sumodeaths` = ?, `sumowins` = ?, `sumogames` = ?, `bedfightkills` = ?, `bedfightdeaths` = ?, `bedfightwins` = ?, `bedfightgames` = ?, `assists` = ?, `experience` = ?, `level` = ?, `monthlykills` = ?, `monthlydeaths` = ?, `monthlyassists` = ?, `monthlywins` = ?, `month` = ?, `coins` = ?, `laststreak` = ?, `killstreak` = ?, `bestkillstreak` = ?, `kitconfig` = ?, `lastmap` = ?, `cosmetics` = ?, `selected` = ? WHERE LOWER(`name`) = ?"
+    insert = "INSERT INTO `aCoreDuels` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    update = "UPDATE `aCoreDuels` SET `uhckills` = ?, `uhcdeaths` = ?, `uhcwins` = ?, `uhcgames` = ?, `bowkills` = ?, `bowdeaths` = ?, `bowwins` = ?, `bowgames` = ?, `classickills` = ?, `classicdeaths` = ?, `classicwins` = ?, `classicgames` = ?, `opkills` = ?, `opdeaths` = ?, `opwins` = ?, `opgames` = ?, `sumokills` = ?, `sumodeaths` = ?, `sumowins` = ?, `sumogames` = ?, `bedfightkills` = ?, `bedfightdeaths` = ?, `bedfightwins` = ?, `bedfightgames` = ?, `pearlkills` = ?, `pearldeaths` = ?, `pearlwins` = ?, `pearlgames` = ?, `assists` = ?, `experience` = ?, `level` = ?, `monthlykills` = ?, `monthlydeaths` = ?, `monthlyassists` = ?, `monthlywins` = ?, `month` = ?, `coins` = ?, `laststreak` = ?, `killstreak` = ?, `bestkillstreak` = ?, `kitconfig` = ?, `lastmap` = ?, `cosmetics` = ?, `selected` = ? WHERE LOWER(`name`) = ?"
 )
 public class DuelsTable extends DataTable {
   
@@ -31,7 +31,7 @@ public class DuelsTable extends DataTable {
   
   public Map<String, DataContainer> getDefaultValues() {
     Map<String, DataContainer> defaultValues = new LinkedHashMap<>();
-    for (String key : new String[]{"uhc","bow", "classic", "op", "sumo", "bedfight"}) {
+    for (String key : new String[]{"uhc", "bow", "classic", "op", "sumo", "bedfight", "pearl"}) {
       defaultValues.put(key + "kills", new DataContainer(0L));
       defaultValues.put(key + "deaths", new DataContainer(0L));
       defaultValues.put(key + "games", new DataContainer(0L));
@@ -39,7 +39,7 @@ public class DuelsTable extends DataTable {
     }
     defaultValues.put("assists", new DataContainer(0L));
     defaultValues.put("experience", new DataContainer(0L));
-    defaultValues.put("level", new DataContainer(0L));
+    defaultValues.put("level", new DataContainer(1L));
 
     for (String key : new String[]{"kills", "deaths", "assists", "wins"}) {
       defaultValues.put("monthly" + key, new DataContainer(0L));

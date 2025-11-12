@@ -31,6 +31,7 @@ import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.plugin.KPlugin;
 import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
+import me.joaomanoel.d4rkk.dev.replay.*;
 import me.joaomanoel.d4rkk.dev.servers.ServerItem;
 import me.joaomanoel.d4rkk.dev.titles.TitleLoader;
 import me.joaomanoel.d4rkk.dev.utils.LanguageIcons;
@@ -60,6 +61,7 @@ public class Core extends KPlugin {
   public static boolean aFriends;
 
   public static String minigame = "";
+  public static Metrics metrics;
 
   private static Core instance;
   private static Location lobby;
@@ -217,17 +219,18 @@ public class Core extends KPlugin {
     Achievement.setupAchievements();
 
     NPCLibrary.setupNPCManager();
-
-    //Setup cosmetics
     Cosmetic.setupCosmetics();
 
-    //carrega os ultimos logins
-    loadLastLogins();
-
+    ConfigManager.loadConfigs();
     Commands.setupCommands();
     Listeners.setupListeners();
     LanguageIcons.load(this);
-
+    ReplayManager.register();
+    ReplaySaver.register(new DatabaseReplaySaver());
+    metrics = new Metrics(this, 2188);
+    if (ConfigManager.CLEANUP_REPLAYS > 0) {
+      ReplayCleanup.cleanupReplays();
+    }
     FakeAdapter.setup();
     ProtocolLibrary.getProtocolManager().addPacketListener(new NPCAdapter());
     ProtocolLibrary.getProtocolManager().addPacketListener(new EntityAdapter());
@@ -247,27 +250,6 @@ public class Core extends KPlugin {
   public Map<String, Long> ultimoLoginMap = new HashMap<>();
   private final File dataFile = new File(Core.getInstance().getDataFolder(), "last_logins.json");
 
-  public void loadLastLogins() {
-    if (dataFile.exists()) {
-      try (Reader reader = new FileReader(dataFile)) {
-        Gson gson = new Gson();
-        Type type = new TypeToken<Map<String, Long>>(){}.getType();
-        ultimoLoginMap = gson.fromJson(reader, type);
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
-    }
-  }
-
-  public void saveLastLogins() {
-    try (Writer writer = new FileWriter(dataFile)) {
-      Gson gson = new Gson();
-      gson.toJson(ultimoLoginMap, writer);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
   @Override
   public void disable() {
     if (validInit) {
@@ -279,7 +261,10 @@ public class Core extends KPlugin {
           profile.destroy();
         }
       });
-
+      for (Replay replay : new HashMap<String, Replay>(ReplayManager.activeReplays).values()) {
+        if (!replay.isRecording() || replay.getRecorder().getData().getActions().isEmpty()) continue;
+        replay.getRecorder().stop(ConfigManager.SAVE_STOP);
+      }
       Database.getInstance().close();
     }
     
@@ -294,7 +279,6 @@ public class Core extends KPlugin {
         ex.printStackTrace();
       }
     }
-    saveLastLogins();
     this.getLogger().info("The plugin has been deactivated..");
   }
   

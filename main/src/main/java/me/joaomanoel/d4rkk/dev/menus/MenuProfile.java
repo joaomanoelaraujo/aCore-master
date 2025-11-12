@@ -10,6 +10,7 @@ import me.joaomanoel.d4rkk.dev.menus.profile.*;
 import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
+import me.joaomanoel.d4rkk.dev.replay.Replays;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import me.joaomanoel.d4rkk.dev.utils.enums.EnumSound;
 import org.bukkit.Material;
@@ -40,6 +41,8 @@ public class MenuProfile extends PlayerMenu {
             .replace("{cash}", StringUtils.formatNumber(profile.getStats("aCoreProfile", "cash")))
             .replace("{created}", dateFormat.format(profile.getDataContainer("aCoreProfile", "created").getAsLong()))
             .replace("{last}", dateFormat.format(profile.getDataContainer("aCoreProfile", "lastlogin").getAsLong()));
+
+    this.setItem(0, BukkitUtils.deserializeItemStack("PAPER : 1 : name>§aReplays"));
 
     this.setItem(LanguageAPI.getConfig(profile).getInt("profile.slot"), BukkitUtils.putProfileOnSkull(this.player, BukkitUtils.deserializeItemStack(profileInfo)));
 
@@ -102,8 +105,15 @@ public class MenuProfile extends PlayerMenu {
           ItemStack item = evt.getCurrentItem();
           
           if (item != null && item.getType() != Material.AIR) {
-            if (evt.getSlot() == 10) {
+            if (evt.getSlot() == 0) {
               EnumSound.ITEM_PICKUP.play(this.player, 0.5F, 2.0F);
+              if (Core.minigame.equals("Bed Wars")){
+                new MenuReplays(profile, "Bed Wars");
+              }
+
+              if (Core.minigame.equals("Duels")){
+                new MenuReplays(profile, "Duels");
+              }
             } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.statistics.slot1")) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuStatistics(profile);

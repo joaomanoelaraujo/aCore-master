@@ -138,7 +138,7 @@ public class aCoreExpansion extends PlaceholderExpansion {
       String table = "aCoreDuels";
       String value = params.replace("Duels_", "");
       if (value.equals("kills") || value.equals("deaths") || value.equals("games") || value.equals("wins")) {
-        return StringUtils.formatNumber(profile.getStats(table, "uhc" + value, "bow" + value, "classic" + value, "op" + value, "sumo" + value, "bedfight" + value));
+        return StringUtils.formatNumber(profile.getStats(table, "uhc" + value, "bow" + value, "classic" + value, "op" + value, "sumo" + value, "bedfight" + value, "pearl" + value));
       } else if (value.equals("uhckills") || value.equals("uhcdeaths") || value.equals("uhcgames") || value.equals("uhcwins")) {
         return StringUtils.formatNumber(profile.getStats(table, value));
       } else if (value.equals("bowkills") || value.equals("bowdeaths") || value.equals("bowgames") || value.equals("bowwins")) {
@@ -150,6 +150,8 @@ public class aCoreExpansion extends PlaceholderExpansion {
       } else if (value.equals("classickills") || value.equals("classicdeaths") || value.equals("classicgames") || value.equals("classicwins")) {
         return StringUtils.formatNumber(profile.getStats(table, value));
       } else if (value.equals("opkills") || value.equals("opdeaths") || value.equals("opgames") || value.equals("opwins")) {
+        return StringUtils.formatNumber(profile.getStats(table, value));
+      } else if (value.equals("pearlkills") || value.equals("pearldeaths") || value.equals("pearlgames") || value.equals("pearlwins")) {
         return StringUtils.formatNumber(profile.getStats(table, value));
       } else if (value.equals("killstreak")) {
         return StringUtils.formatNumber(profile.getDailyStats(table, "laststreak", value));

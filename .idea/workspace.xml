@@ -4,8 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="Added click-player-menu: true to config.yml if you want to open a menu when interacting with a player;&#10;Added stats-duels: true to config.yml if you want to disable the duels statistics icon;&#10;Added MatchMaking to MenuPreferences;&#10;Added MatchMaking system (Currently only compatible with Duels and BedWars in future updates);&#10;Improved error detection system;&#10;&#10;Fixed an issue when trying to interact with another player and opening the stats menu;&#10;Fixed a bug in the universal booster message;&#10;Fixed translation errors in all languages;&#10;Fixed the coin display in the profile menu stats;&#10;Minor fixes to some methods.">
+    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Added verification on onPlayerInteractAtPlayer">
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/MenuReplays.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/replay/WrapperPlayServerScoreboardTeam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/replay/WrapperPlayServerSpawnEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/tables/DuelsTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/tables/DuelsTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/hook/aCoreExpansion.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/hook/aCoreExpansion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/MenuProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/MenuProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/EN_US.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/EN_US.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/ES_ES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/ES_ES.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/JA_JP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/JA_JP.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/KO_KR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/KO_KR.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/PT_BR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/PT_BR.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/ZH_CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/ZH_CN.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/bungee.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/tables/DuelsTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/tables/DuelsTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/hook/aCoreExpansion.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/hook/aCoreExpansion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/MenuProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/MenuProfile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/profile/MenuStatistics.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/profile/MenuStatistics.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/original-aCore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/original-aCore.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nms/target/nms-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/nms/target/nms-2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/utils-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/utils-2.1.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,13 +147,22 @@
       <option name="project" value="LOCAL" />
       <updated>1761406896919</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- Added verification on onPlayerInteractAtPlayer">
+      <option name="closed" value="true" />
+      <created>1761407188547</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1761407188547</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Added glowing effect on MenuApparence&#10;- Added translates on Glowing&#10;- Fixed bug on glass item register" />
     <MESSAGE value="- Fixed bug on waiting$timer -&gt; waiting.timer" />
     <MESSAGE value="Added click-player-menu: true to config.yml if you want to open a menu when interacting with a player;&#10;Added stats-duels: true to config.yml if you want to disable the duels statistics icon;&#10;Added MatchMaking to MenuPreferences;&#10;Added MatchMaking system (Currently only compatible with Duels and BedWars in future updates);&#10;Improved error detection system;&#10;&#10;Fixed an issue when trying to interact with another player and opening the stats menu;&#10;Fixed a bug in the universal booster message;&#10;Fixed translation errors in all languages;&#10;Fixed the coin display in the profile menu stats;&#10;Minor fixes to some methods." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added click-player-menu: true to config.yml if you want to open a menu when interacting with a player;&#10;Added stats-duels: true to config.yml if you want to disable the duels statistics icon;&#10;Added MatchMaking to MenuPreferences;&#10;Added MatchMaking system (Currently only compatible with Duels and BedWars in future updates);&#10;Improved error detection system;&#10;&#10;Fixed an issue when trying to interact with another player and opening the stats menu;&#10;Fixed a bug in the universal booster message;&#10;Fixed translation errors in all languages;&#10;Fixed the coin display in the profile menu stats;&#10;Minor fixes to some methods." />
+    <MESSAGE value="- Added verification on onPlayerInteractAtPlayer" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added verification on onPlayerInteractAtPlayer" />
   </component>
 </project>
