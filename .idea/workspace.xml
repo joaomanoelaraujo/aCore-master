@@ -4,37 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Added verification on onPlayerInteractAtPlayer">
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/MenuReplays.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/replay/WrapperPlayServerScoreboardTeam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/replay/WrapperPlayServerSpawnEntity.java" afterDir="false" />
+    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Added Replay System!&#10;- Fixed bugs">
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/utils/MaterialBridge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/resources/items.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/Core.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/tables/DuelsTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/tables/DuelsTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/hook/aCoreExpansion.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/hook/aCoreExpansion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/MenuProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/MenuProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/EN_US.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/EN_US.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/ES_ES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/ES_ES.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/JA_JP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/JA_JP.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/KO_KR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/KO_KR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/PT_BR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/PT_BR.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/ZH_CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/ZH_CN.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/bungee.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/com/comphenix/packetwrapper/WrapperPlayServerNamedEntitySpawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/comphenix/packetwrapper/WrapperPlayServerNamedEntitySpawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/com/comphenix/packetwrapper/WrapperPlayServerTitle.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/comphenix/packetwrapper/WrapperPlayServerTitle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/MenuReplays.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/menus/MenuReplays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/replay/WrapperPlayServerSpawnEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/replay/WrapperPlayServerSpawnEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/com/comphenix/packetwrapper/WrapperPlayServerNamedEntitySpawn.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/com/comphenix/packetwrapper/WrapperPlayServerNamedEntitySpawn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/com/comphenix/packetwrapper/WrapperPlayServerTitle.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/com/comphenix/packetwrapper/WrapperPlayServerTitle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/tables/DuelsTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/tables/DuelsTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/hook/aCoreExpansion.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/hook/aCoreExpansion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/MenuProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/MenuProfile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/profile/MenuStatistics.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/menus/profile/MenuStatistics.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/original-aCore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/original-aCore.jar" afterDir="false" />
@@ -155,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761407188547</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Added Replay System!&#10;- Fixed bugs">
+      <option name="closed" value="true" />
+      <created>1762980028448</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1762980028448</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -163,6 +154,7 @@
     <MESSAGE value="- Fixed bug on waiting$timer -&gt; waiting.timer" />
     <MESSAGE value="Added click-player-menu: true to config.yml if you want to open a menu when interacting with a player;&#10;Added stats-duels: true to config.yml if you want to disable the duels statistics icon;&#10;Added MatchMaking to MenuPreferences;&#10;Added MatchMaking system (Currently only compatible with Duels and BedWars in future updates);&#10;Improved error detection system;&#10;&#10;Fixed an issue when trying to interact with another player and opening the stats menu;&#10;Fixed a bug in the universal booster message;&#10;Fixed translation errors in all languages;&#10;Fixed the coin display in the profile menu stats;&#10;Minor fixes to some methods." />
     <MESSAGE value="- Added verification on onPlayerInteractAtPlayer" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added verification on onPlayerInteractAtPlayer" />
+    <MESSAGE value="- Added Replay System!&#10;- Fixed bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added Replay System!&#10;- Fixed bugs" />
   </component>
 </project>

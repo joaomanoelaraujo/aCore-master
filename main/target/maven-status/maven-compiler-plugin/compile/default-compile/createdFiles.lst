@@ -393,7 +393,6 @@ me\joaomanoel\d4rkk\dev\listeners\Listeners.class
 me\joaomanoel\d4rkk\dev\bungee\logger\BungeeLogger.class
 me\joaomanoel\d4rkk\dev\replay\JsonData.class
 me\joaomanoel\d4rkk\dev\menus\MenuServers.class
-me\joaomanoel\d4rkk\dev\replay\MySQLService$2.class
 me\joaomanoel\d4rkk\dev\replay\ReplayListener$1.class
 me\joaomanoel\d4rkk\dev\achievements\types\TheBridgeAchievement.class
 me\joaomanoel\d4rkk\dev\replay\ItemConfig.class
@@ -403,6 +402,7 @@ me\joaomanoel\d4rkk\dev\replay\Replay.class
 me\joaomanoel\d4rkk\dev\replay\Recorder$2.class
 me\joaomanoel\d4rkk\dev\menus\party\MenuParty$1.class
 me\joaomanoel\d4rkk\dev\bungee\party\BungeeParty.class
+me\joaomanoel\d4rkk\dev\utils\MaterialBridge.class
 me\joaomanoel\d4rkk\dev\replay\ReplayStartCommand.class
 org\json\simple\parser\ContainerFactory.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityHeadRotation.class
@@ -410,7 +410,6 @@ me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\TellCommand.class
 me\joaomanoel\d4rkk\dev\replay\ActionType.class
 me\joaomanoel\d4rkk\dev\replay\ItemData.class
 me\joaomanoel\d4rkk\dev\replay\AnimationData.class
-me\joaomanoel\d4rkk\dev\Core$1.class
 me\joaomanoel\d4rkk\dev\replay\WebsiteFetcher$1.class
 me\joaomanoel\d4rkk\dev\listeners\PluginMessageListener.class
 me\joaomanoel\d4rkk\dev\replay\ReplayStopCommand.class

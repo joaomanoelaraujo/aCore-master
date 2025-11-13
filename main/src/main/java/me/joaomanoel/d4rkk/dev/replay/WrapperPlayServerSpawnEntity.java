@@ -1,28 +1,28 @@
 package me.joaomanoel.d4rkk.dev.replay;
 
 import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.wrappers.WrappedDataWatcher;
+import com.comphenix.packetwrapper.AbstractPacket;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
-public class WrapperPlayServerSpawnEntity {
+public class WrapperPlayServerSpawnEntity extends AbstractPacket {
 
-    private final PacketContainer handle;
+    public static final PacketType TYPE = PacketType.Play.Server.SPAWN_ENTITY;
 
     public WrapperPlayServerSpawnEntity() {
-        this.handle = new PacketContainer(PacketType.Play.Server.SPAWN_ENTITY);
+        super(new PacketContainer(TYPE), TYPE);
         this.handle.getModifier().writeDefaults();
     }
 
     public WrapperPlayServerSpawnEntity(PacketContainer packet) {
-        this.handle = packet;
-    }
-
-    public PacketContainer getHandle() {
-        return this.handle;
+        super(packet, TYPE);
     }
 
     public int getEntityID() {
@@ -47,6 +47,10 @@ public class WrapperPlayServerSpawnEntity {
 
     public void setType(int value) {
         this.handle.getIntegers().writeSafely(1, value);
+    }
+
+    public void setType(EntityType type) {
+        this.setType(type.getTypeId());
     }
 
     public double getX() {
@@ -165,5 +169,17 @@ public class WrapperPlayServerSpawnEntity {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public WrappedDataWatcher getMetadata() {
+        return this.handle.getDataWatcherModifier().readSafely(0);
+    }
+
+    public void setMetadata(WrappedDataWatcher value) {
+        this.handle.getDataWatcherModifier().writeSafely(0, value);
+    }
+
+    public void sendPacket(Player player) {
+        ProtocolLibrary.getProtocolManager().sendServerPacket(player, this.handle);
     }
 }

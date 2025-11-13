@@ -1,16 +1,3 @@
-/*
- * Decompiled with CFR 0.153-SNAPSHOT (d6f6758-dirty).
- * 
- * Could not load the following classes:
- *  com.comphenix.protocol.PacketType
- *  com.comphenix.protocol.PacketType$Play$Server
- *  com.comphenix.protocol.events.PacketContainer
- *  com.comphenix.protocol.events.PacketEvent
- *  com.comphenix.protocol.wrappers.WrappedDataWatcher
- *  org.bukkit.World
- *  org.bukkit.entity.Entity
- *  org.bukkit.util.Vector
- */
 package com.comphenix.packetwrapper;
 
 import com.comphenix.protocol.PacketType;
@@ -21,11 +8,26 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 
+import java.lang.reflect.Field;
 import java.util.UUID;
 
-public class WrapperPlayServerNamedEntitySpawn
-extends AbstractPacket {
-    public static final PacketType TYPE = PacketType.Play.Server.NAMED_ENTITY_SPAWN;
+public class WrapperPlayServerNamedEntitySpawn extends AbstractPacket {
+
+    private static final PacketType TYPE = getPacketType();
+
+    private static PacketType getPacketType() {
+        try {
+            Field field = PacketType.Play.Server.class.getField("NAMED_ENTITY_SPAWN");
+            return (PacketType) field.get(null);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            try {
+                Field field = PacketType.Play.Server.class.getField("SPAWN_PLAYER");
+                return (PacketType) field.get(null);
+            } catch (NoSuchFieldException | IllegalAccessException ex) {
+                throw new RuntimeException("Unable to find player spawn packet type", ex);
+            }
+        }
+    }
 
     public WrapperPlayServerNamedEntitySpawn() {
         super(new PacketContainer(TYPE), TYPE);
@@ -37,7 +39,7 @@ extends AbstractPacket {
     }
 
     public int getEntityID() {
-        return (Integer)this.handle.getIntegers().read(0);
+        return this.handle.getIntegers().read(0);
     }
 
     public void setEntityID(int value) {
@@ -45,7 +47,7 @@ extends AbstractPacket {
     }
 
     public Entity getEntity(World world) {
-        return (Entity)this.handle.getEntityModifier(world).read(0);
+        return this.handle.getEntityModifier(world).read(0);
     }
 
     public Entity getEntity(PacketEvent event) {
@@ -53,7 +55,7 @@ extends AbstractPacket {
     }
 
     public UUID getPlayerUUID() {
-        return (UUID)this.handle.getUUIDs().read(0);
+        return this.handle.getUUIDs().read(0);
     }
 
     public void setPlayerUUID(UUID value) {
@@ -71,7 +73,7 @@ extends AbstractPacket {
     }
 
     public double getX() {
-        return (Double)this.handle.getDoubles().read(0);
+        return this.handle.getDoubles().read(0);
     }
 
     public void setX(double value) {
@@ -79,7 +81,7 @@ extends AbstractPacket {
     }
 
     public double getY() {
-        return (Double)this.handle.getDoubles().read(1);
+        return this.handle.getDoubles().read(1);
     }
 
     public void setY(double value) {
@@ -87,7 +89,7 @@ extends AbstractPacket {
     }
 
     public double getZ() {
-        return (Double)this.handle.getDoubles().read(2);
+        return this.handle.getDoubles().read(2);
     }
 
     public void setZ(double value) {
@@ -95,28 +97,26 @@ extends AbstractPacket {
     }
 
     public float getYaw() {
-        return (float)((Byte)this.handle.getBytes().read(0)).byteValue() * 360.0f / 256.0f;
+        return (float) this.handle.getBytes().read(0).byteValue() * 360.0f / 256.0f;
     }
 
     public void setYaw(float value) {
-        this.handle.getBytes().write(0, ((byte)(value * 256.0f / 360.0f)));
+        this.handle.getBytes().write(0, ((byte) (value * 256.0f / 360.0f)));
     }
 
     public float getPitch() {
-        return (float)((Byte)this.handle.getBytes().read(1)).byteValue() * 360.0f / 256.0f;
+        return (float) this.handle.getBytes().read(1).byteValue() * 360.0f / 256.0f;
     }
 
     public void setPitch(float value) {
-        this.handle.getBytes().write(1, ((byte)(value * 256.0f / 360.0f)));
+        this.handle.getBytes().write(1, ((byte) (value * 256.0f / 360.0f)));
     }
 
     public WrappedDataWatcher getMetadata() {
-        return (WrappedDataWatcher)this.handle.getDataWatcherModifier().read(0);
+        return this.handle.getDataWatcherModifier().read(0);
     }
 
     public void setMetadata(WrappedDataWatcher value) {
-            this.handle.getDataWatcherModifier().write(0, value);
-
+        this.handle.getDataWatcherModifier().write(0, value);
     }
 }
-
