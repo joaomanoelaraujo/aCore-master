@@ -107,13 +107,7 @@ public class MenuProfile extends PlayerMenu {
           if (item != null && item.getType() != Material.AIR) {
             if (evt.getSlot() == 0) {
               EnumSound.ITEM_PICKUP.play(this.player, 0.5F, 2.0F);
-              if (Core.minigame.equals("Bed Wars")){
-                new MenuReplays(profile, "Bed Wars");
-              }
-
-              if (Core.minigame.equals("Duels")){
-                new MenuReplays(profile, "Duels");
-              }
+                new MenuReplays(profile);
             } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.statistics.slot1")) {
               EnumSound.CLICK.play(this.player, 0.5F, 2.0F);
               new MenuStatistics(profile);

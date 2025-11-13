@@ -26,16 +26,17 @@ import java.util.*;
 public class MenuReplays extends PagedPlayerMenu {
     private final Map<ItemStack, String> replayIds = new HashMap<>();
 
-    public MenuReplays(Profile profile, String name) {
-        super(profile.getPlayer(), name, 5);
+    public MenuReplays(Profile profile) {
+        super(profile.getPlayer(), "Recent Games", 5);
         this.onlySlots(10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29);
         this.previousPage = this.rows * 9 - 9;
         this.nextPage = this.rows * 9 - 1;
 
+        this.removeSlotsWith(BukkitUtils.deserializeItemStack("351:1 : 1 : name>§cVoltar"), this.rows * 9 - 5);
+
         List<ItemStack> items = getItemsFromDatabase(profile.getPlayer());
         this.setItems(items);
 
-        this.removeSlotsWith(BukkitUtils.deserializeItemStack("351:1 : 1 : name>§cVoltar"), this.rows * 9 - 5);
 
         this.register(Core.getInstance());
         this.open();
@@ -56,7 +57,7 @@ public class MenuReplays extends PagedPlayerMenu {
 
             ResultSet rs = database.query(pst);
             while (rs.next()) {
-                String id = rs.getString("id");
+                String id = Objects.equals(rs.getString("game_name"), "bw") ? "Bed Wars" : Objects.equals(rs.getString("game_name"), "dl") ? "Duels" : "Sky Wars";
                 String creator = rs.getString("creator");
                 int duration = rs.getInt("duration");
                 long time = rs.getLong("time");
@@ -71,18 +72,9 @@ public class MenuReplays extends PagedPlayerMenu {
                 Material icon = getIconForGame(gameName);
                 String formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new Date(time));
 
-                String desc = "&7Game: &e" + (gameName != null ? gameName : "Desconhecido")
-                        + (mode != null ? "\n&7Mode: &e" + mode : "")
-                        + (map != null ? "\n&7Map: &e" + map : "")
-                        + (server != null ? "\n&7Server: &e" + server : "")
-                        + "\n&7Players: &e" + players
-                        + "\n&7Duration: &e" + (duration / 20) + "s"
-                        + "\n&7Date: &e" + formattedDate
-                        + "\n\n&eClick to watch!";
-
                 ItemStack item = BukkitUtils.deserializeItemStack(
-                        icon.name() + " : 1 : name>&aReplay #" + id + " : desc>" + desc
-                );
+                        icon.name() + " : 1 : name>&a" + id + " : desc>§8" + formattedDate + " | §8" + duration + "\n\n§7Mode: §a" + mode + "\n§7Map: §a" + map +
+                                "\n\n§7Server: §a" + server + "\n§7Players: §a" + players + "\n\n§eClick to view replay!");
 
                 items.add(item);
                 replayIds.put(item, id);
