@@ -57,7 +57,8 @@ public class MenuReplays extends PagedPlayerMenu {
 
             ResultSet rs = database.query(pst);
             while (rs.next()) {
-                String id = Objects.equals(rs.getString("game_name"), "bw") ? "Bed Wars" : Objects.equals(rs.getString("game_name"), "dl") ? "Duels" : "Sky Wars";
+                String id2 = Objects.equals(rs.getString("game_name"), "bw") ? "Bed Wars" : Objects.equals(rs.getString("game_name"), "dl") ? "Duels" : "Sky Wars";
+                String id = rs.getString("id");
                 String creator = rs.getString("creator");
                 int duration = rs.getInt("duration");
                 long time = rs.getLong("time");
@@ -73,7 +74,7 @@ public class MenuReplays extends PagedPlayerMenu {
                 String formattedDate = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(new Date(time));
 
                 ItemStack item = BukkitUtils.deserializeItemStack(
-                        icon.name() + " : 1 : name>&a" + id + " : desc>§8" + formattedDate + " | §8" + duration + "\n\n§7Mode: §a" + mode + "\n§7Map: §a" + map +
+                        icon.name() + " : 1 : name>&a" + id2 + " : desc>§8" + formattedDate + " | §8" + duration + "\n\n§7Mode: §a" + mode + "\n§7Map: §a" + map +
                                 "\n\n§7Server: §a" + server + "\n§7Players: §a" + players + "\n\n§eClick to view replay!");
 
                 items.add(item);

@@ -272,6 +272,7 @@ me\joaomanoel\d4rkk\dev\player\enums\PrivateMessages.class
 me\joaomanoel\d4rkk\dev\replay\Metrics$AdvancedPie.class
 com\comphenix\packetwrapper\AbstractPacket.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\TeleportHereCommand.class
+me\joaomanoel\d4rkk\dev\database\data\DataTable$ColumnDefinition.class
 me\joaomanoel\d4rkk\dev\replay\AbstractCommand.class
 me\joaomanoel\d4rkk\dev\servers\balancer\BaseBalancer.class
 me\joaomanoel\d4rkk\dev\utils\queue\Queue$1.class

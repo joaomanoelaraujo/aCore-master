@@ -7,6 +7,8 @@ import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.database.data.DataTable;
 import me.joaomanoel.d4rkk.dev.database.data.interfaces.DataTableInfo;
 
+import javax.sql.rowset.CachedRowSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -69,7 +71,7 @@ import java.util.Map;
                 " `1v1bedslosteds` = ?," +
                 " `1v1finalkills` = ?," +
                 " `1v1finaldeaths` = ?," +
-                " `1v1wins` = ?`," +
+                " `1v1wins` = ?," +
                 " `2v2kills` = ?," +
                 " `2v2deaths` = ?," +
                 " `2v2games` = ?," +
@@ -77,7 +79,7 @@ import java.util.Map;
                 " `2v2bedslosteds` = ?," +
                 " `2v2finalkills` = ?," +
                 " `2v2finaldeaths` = ?," +
-                " `2v2wins` = ?`," +
+                " `2v2wins` = ?," +
                 " `3v3kills` = ?," +
                 " `3v3deaths` = ?," +
                 " `3v3games` = ?," +
@@ -85,7 +87,7 @@ import java.util.Map;
                 " `3v3bedslosteds` = ?," +
                 " `3v3finalkills` = ?," +
                 " `3v3finaldeaths` = ?," +
-                " `3v3wins` = ?`," +
+                " `3v3wins` = ?," +
                 " `4v4kills` = ?," +
                 " `4v4deaths` = ?," +
                 " `4v4games` = ?," +
@@ -93,9 +95,9 @@ import java.util.Map;
                 " `4v4bedslosteds` = ?," +
                 " `4v4finalkills` = ?," +
                 " `4v4finaldeaths` = ?," +
-                " `4v4wins` = ?`," +
+                " `4v4wins` = ?," +
                 " `monthlykills` = ?," +
-                " `montlhydeaths` = ?," +
+                " `monthlydeaths` = ?," +
                 " `monthlyassists` = ?," +
                 " `monthlybeds` = ?," +
                 " `monthlywins` = ?," +
@@ -114,15 +116,35 @@ public class BedWarsTable extends DataTable {
   @Override
   public void init(Database database) {
     if (database instanceof MySQLDatabase) {
-      if (((MySQLDatabase) database).query("SHOW COLUMNS FROM `aCoreBedWars` LIKE 'lastmap'") == null) {
-        ((MySQLDatabase) database).execute(
-                "ALTER TABLE `aCoreBedWars` ADD `lastmap` LONG DEFAULT 0 AFTER `coins`, ADD `favorites` TEXT AFTER `selected`");
-      }
+      checkAndAddColumn((MySQLDatabase) database, "lastmap", "ALTER TABLE `aCoreBedWars` ADD `lastmap` LONG DEFAULT 0 AFTER `coins`");
+      checkAndAddColumn((MySQLDatabase) database, "favorites", "ALTER TABLE `aCoreBedWars` ADD `favorites` TEXT AFTER `selected`");
+      checkAndAddColumn((MySQLDatabase) database, "level", "ALTER TABLE `aCoreBedWars` ADD `level` LONG DEFAULT 0 AFTER `favorites`");
+      checkAndAddColumn((MySQLDatabase) database, "experience", "ALTER TABLE `aCoreBedWars` ADD `experience` LONG DEFAULT 0 AFTER `level`");
     } else if (database instanceof HikariDatabase) {
-      if (((HikariDatabase) database).query("SHOW COLUMNS FROM `aCoreBedWars` LIKE 'lastmap'") == null) {
-        ((HikariDatabase) database).execute(
-                "ALTER TABLE `aCoreBedWars` ADD `lastmap` LONG DEFAULT 0 AFTER `coins`, ADD `favorites` TEXT AFTER `selected`");
+      checkAndAddColumn((HikariDatabase) database, "lastmap", "ALTER TABLE `aCoreBedWars` ADD `lastmap` LONG DEFAULT 0 AFTER `coins`");
+      checkAndAddColumn((HikariDatabase) database, "favorites", "ALTER TABLE `aCoreBedWars` ADD `favorites` TEXT AFTER `selected`");
+      checkAndAddColumn((HikariDatabase) database, "level", "ALTER TABLE `aCoreBedWars` ADD `level` LONG DEFAULT 0 AFTER `favorites`");
+      checkAndAddColumn((HikariDatabase) database, "experience", "ALTER TABLE `aCoreBedWars` ADD `experience` LONG DEFAULT 0 AFTER `level`");
+    }
+  }
+
+  private void checkAndAddColumn(MySQLDatabase database, String columnName, String alterSQL) {
+    try (CachedRowSet rs = database.query("SHOW COLUMNS FROM `aCoreBedWars` LIKE ?", columnName)) {
+      if (rs == null) {
+        database.execute(alterSQL);
       }
+    } catch (SQLException ex) {
+      Database.LOGGER.warning("Error checking column " + columnName + ": " + ex.getMessage());
+    }
+  }
+
+  private void checkAndAddColumn(HikariDatabase database, String columnName, String alterSQL) {
+    try (CachedRowSet rs = database.query("SHOW COLUMNS FROM `aCoreBedWars` LIKE ?", columnName)) {
+      if (rs == null) {
+        database.execute(alterSQL);
+      }
+    } catch (SQLException ex) {
+      Database.LOGGER.warning("Error checking column " + columnName + ": " + ex.getMessage());
     }
   }
 
