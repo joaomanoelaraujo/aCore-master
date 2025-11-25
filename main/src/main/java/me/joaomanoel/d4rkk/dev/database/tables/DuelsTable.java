@@ -1,12 +1,14 @@
 package me.joaomanoel.d4rkk.dev.database.tables;
 
 import me.joaomanoel.d4rkk.dev.database.Database;
+import me.joaomanoel.d4rkk.dev.database.HikariDatabase;
 import me.joaomanoel.d4rkk.dev.database.MySQLDatabase;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.database.data.DataTable;
 import me.joaomanoel.d4rkk.dev.database.data.interfaces.DataTableInfo;
 
 import javax.sql.rowset.CachedRowSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,20 +25,35 @@ public class DuelsTable extends DataTable {
   @Override
   public void init(Database database) {
     if (database instanceof MySQLDatabase) {
-      checkAndAddColumn((MySQLDatabase) database, "lastmap", "LONG DEFAULT 0 AFTER `coins`");
-      checkAndAddColumn((MySQLDatabase) database, "kitconfig", "TEXT DEFAULT '{}' AFTER `selected`");
-      checkAndAddColumn((MySQLDatabase) database, "cosmetics", "TEXT DEFAULT '{}' AFTER `kitconfig`");
-      checkAndAddColumn((MySQLDatabase) database, "selected", "TEXT DEFAULT '{}' AFTER `cosmetics`");
+      checkAndAddColumn((MySQLDatabase) database, "lastmap", "ALTER TABLE `aCoreDuels` ADD `lastmap` LONG DEFAULT 0 AFTER `coins`");
+      checkAndAddColumn((MySQLDatabase) database, "kitconfig", "ALTER TABLE `aCoreDuels` ADD `kitconfig` TEXT DEFAULT '{}' AFTER `selected`");
+      checkAndAddColumn((MySQLDatabase) database, "cosmetics", "ALTER TABLE `aCoreDuels` ADD `cosmetics` TEXT DEFAULT '{}' AFTER `kitconfig`");
+      checkAndAddColumn((MySQLDatabase) database, "selected", "ALTER TABLE `aCoreDuels` ADD `selected` TEXT DEFAULT '{}' AFTER `cosmetics`");
+    } else if (database instanceof HikariDatabase) {
+      checkAndAddColumn((HikariDatabase) database, "lastmap", "ALTER TABLE `aCoreDuels` ADD `lastmap` LONG DEFAULT 0 AFTER `coins`");
+      checkAndAddColumn((HikariDatabase) database, "kitconfig", "ALTER TABLE `aCoreDuels` ADD `kitconfig` TEXT DEFAULT '{}' AFTER `selected`");
+      checkAndAddColumn((HikariDatabase) database, "cosmetics", "ALTER TABLE `aCoreDuels` ADD `cosmetics` TEXT DEFAULT '{}' AFTER `kitconfig`");
+      checkAndAddColumn((HikariDatabase) database, "selected", "ALTER TABLE `aCoreDuels` ADD `selected` TEXT DEFAULT '{}' AFTER `cosmetics`");
     }
   }
 
-  private void checkAndAddColumn(MySQLDatabase mysql, String column, String definition) {
-    try (CachedRowSet rs = mysql.query("SHOW COLUMNS FROM `aCoreDuels` LIKE '" + column + "'")) {
-      if (rs == null || !rs.next()) {
-        mysql.execute("ALTER TABLE `aCoreDuels` ADD `" + column + "` " + definition);
+  private void checkAndAddColumn(MySQLDatabase database, String columnName, String alterSQL) {
+    try (CachedRowSet rs = database.query("SHOW COLUMNS FROM `aCoreDuels` LIKE ?", columnName)) {
+      if (rs == null) {
+        database.execute(alterSQL);
       }
-    } catch (Exception e) {
-      e.printStackTrace();
+    } catch (SQLException ex) {
+      Database.LOGGER.warning("Error checking column " + columnName + ": " + ex.getMessage());
+    }
+  }
+
+  private void checkAndAddColumn(HikariDatabase database, String columnName, String alterSQL) {
+    try (CachedRowSet rs = database.query("SHOW COLUMNS FROM `aCoreDuels` LIKE ?", columnName)) {
+      if (rs == null) {
+        database.execute(alterSQL);
+      }
+    } catch (SQLException ex) {
+      Database.LOGGER.warning("Error checking column " + columnName + ": " + ex.getMessage());
     }
   }
 
