@@ -3,11 +3,14 @@ package me.joaomanoel.d4rkk.dev.database.tables;
 import me.joaomanoel.d4rkk.dev.database.Database;
 import me.joaomanoel.d4rkk.dev.database.HikariDatabase;
 import me.joaomanoel.d4rkk.dev.database.MySQLDatabase;
+import me.joaomanoel.d4rkk.dev.database.SQLiteDatabase;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.database.data.DataTable;
 import me.joaomanoel.d4rkk.dev.database.data.interfaces.DataTableInfo;
 
 import javax.sql.rowset.CachedRowSet;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
@@ -125,6 +128,11 @@ public class BedWarsTable extends DataTable {
       checkAndAddColumn((HikariDatabase) database, "favorites", "ALTER TABLE `aCoreBedWars` ADD `favorites` TEXT AFTER `selected`");
       checkAndAddColumn((HikariDatabase) database, "level", "ALTER TABLE `aCoreBedWars` ADD `level` LONG DEFAULT 0 AFTER `favorites`");
       checkAndAddColumn((HikariDatabase) database, "experience", "ALTER TABLE `aCoreBedWars` ADD `experience` LONG DEFAULT 0 AFTER `level`");
+    } else if (database instanceof SQLiteDatabase) {
+      checkAndAddColumnSQLite((SQLiteDatabase) database, "lastmap", "ALTER TABLE `aCoreBedWars` ADD `lastmap` LONG DEFAULT 0");
+      checkAndAddColumnSQLite((SQLiteDatabase) database, "favorites", "ALTER TABLE `aCoreBedWars` ADD `favorites` TEXT");
+      checkAndAddColumnSQLite((SQLiteDatabase) database, "level", "ALTER TABLE `aCoreBedWars` ADD `level` LONG DEFAULT 0");
+      checkAndAddColumnSQLite((SQLiteDatabase) database, "experience", "ALTER TABLE `aCoreBedWars` ADD `experience` LONG DEFAULT 0");
     }
   }
 
@@ -148,6 +156,23 @@ public class BedWarsTable extends DataTable {
     }
   }
 
+  private void checkAndAddColumnSQLite(SQLiteDatabase database, String columnName, String alterSQL) {
+    try (PreparedStatement ps = database.prepareStatement("PRAGMA table_info(aCoreBedWars)");
+         ResultSet rs = ps.executeQuery()) {
+      boolean exists = false;
+      while (rs.next()) {
+        if (rs.getString("name").equalsIgnoreCase(columnName)) {
+          exists = true;
+          break;
+        }
+      }
+      if (!exists) {
+        database.update(alterSQL);
+      }
+    } catch (SQLException ex) {
+      Database.LOGGER.warning("Error checking column " + columnName + ": " + ex.getMessage());
+    }
+  }
   public Map<String, DataContainer> getDefaultValues() {
     Map<String, DataContainer> defaultValues = new LinkedHashMap<>();
     for (String key : new String[]{"1v1", "2v2", "3v3", "4v4"}) {

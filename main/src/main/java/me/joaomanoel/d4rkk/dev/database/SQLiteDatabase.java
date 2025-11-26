@@ -4,17 +4,18 @@ import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.Manager;
 import me.joaomanoel.d4rkk.dev.booster.NetworkBooster;
 import me.joaomanoel.d4rkk.dev.database.cache.RoleCache;
+import me.joaomanoel.d4rkk.dev.database.conversor.DatabaseConverter;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.database.data.DataTable;
 import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
+import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import org.bukkit.entity.Player;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import javax.sql.rowset.CachedRowSet;
-import javax.sql.rowset.RowSetProvider;
+import java.io.File;
 import java.sql.*;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -23,65 +24,62 @@ import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
-public class MySQLDatabase extends Database {
+public class SQLiteDatabase extends Database {
   
-  private final String host;
-  private final String port;
-  private final String dbname;
-  private final String username;
-  private final String password;
-  private final boolean mariadb;
-
+  private final File databaseFile;
   private Connection connection;
   private final ExecutorService executor;
   
-  public MySQLDatabase(String host, String port, String dbname, String username, String password, boolean mariadb) {
-    this(host, port, dbname, username, password, mariadb, false);
+  public SQLiteDatabase(File databaseFile) {
+    this(databaseFile, false);
   }
   
-  public MySQLDatabase(String host, String port, String dbname, String username, String password, boolean mariadb, boolean skipTables) {
-    this.host = host;
-    this.port = port;
-    this.dbname = dbname;
-    this.username = username;
-    this.password = password;
-    this.mariadb = mariadb;
-
+  public SQLiteDatabase(File databaseFile, boolean skipTables) {
+    this.databaseFile = databaseFile;
+    
+    if (!databaseFile.exists()) {
+      try {
+        databaseFile.getParentFile().mkdirs();
+        databaseFile.createNewFile();
+      } catch (Exception e) {
+        LOGGER.log(Level.SEVERE, "Failed to create SQLite database file: ", e);
+      }
+    }
+    
     this.openConnection();
     this.executor = Executors.newCachedThreadPool();
     
     if (!skipTables) {
       this.update(
-          "CREATE TABLE IF NOT EXISTS `aCoreNetworkBooster` (`id` VARCHAR(32), `booster` TEXT, `multiplier` DOUBLE, `expires` LONG, PRIMARY KEY(`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;");
+          "CREATE TABLE IF NOT EXISTS `aCoreNetworkBooster` (`id` VARCHAR(32) PRIMARY KEY, `booster` TEXT, `multiplier` DOUBLE, `expires` LONG);");
       
       DataTable.listTables().forEach(table -> {
-        this.update(table.getInfo().create());
-        try (
-            PreparedStatement ps = prepareStatement("ALTER TABLE `" + table.getInfo().name() + "` ADD INDEX `namex` (`name` DESC)")
-        ) {
-          ps.executeUpdate();
-        } catch (SQLException ignore) {
-          // Index já existe
-        }
+        String createQuery = table.getInfo().create()
+            .replace("ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin", "")
+            .replace("DEFAULT CHARSET=utf8", "");
+        this.update(createQuery);
         table.init(this);
       });
     }
   }
 
   @Override
-  public void convertDatabase(Player player) {
-    player.sendMessage("§aJá está usando " + this.getClass().getSimpleName().replace("Database", ""));
-    player.sendMessage("§7Para converter FROM SQLite, mude a config para SQLite primeiro, depois altere para MySQL/Hikari e rode /ac convert");
-  }
-
-  @Override
   public void setupBoosters() {
     if (!Manager.BUNGEE) {
       for (String mg : Core.minigames) {
-        if (query("SELECT * FROM `aCoreNetworkBooster` WHERE `id` = ?", mg) == null) {
+        if (!existsBooster(mg)) {
           execute("INSERT INTO `aCoreNetworkBooster` VALUES (?, ?, ?, ?)", mg, "d4rkk", 1.0, 0L);
         }
       }
+    }
+  }
+  
+  private boolean existsBooster(String minigame) {
+    try (PreparedStatement ps = prepareStatement("SELECT * FROM `aCoreNetworkBooster` WHERE `id` = ?", minigame);
+         ResultSet rs = ps.executeQuery()) {
+      return rs.next();
+    } catch (SQLException e) {
+      return false;
     }
   }
   
@@ -92,13 +90,13 @@ public class MySQLDatabase extends Database {
   
   @Override
   public NetworkBooster getBooster(String minigame) {
-    try (CachedRowSet rs = query("SELECT * FROM `aCoreNetworkBooster` WHERE `id` = ?", minigame)) {
-      if (rs != null) {
+    try (PreparedStatement ps = prepareStatement("SELECT * FROM `aCoreNetworkBooster` WHERE `id` = ?", minigame);
+         ResultSet rs = ps.executeQuery()) {
+      if (rs.next()) {
         String booster = rs.getString("booster");
         double multiplier = rs.getDouble("multiplier");
         long expires = rs.getLong("expires");
         if (expires > System.currentTimeMillis()) {
-          rs.close();
           return new NetworkBooster(booster, multiplier, expires);
         }
       }
@@ -110,8 +108,9 @@ public class MySQLDatabase extends Database {
   
   @Override
   public String getRankAndName(String player) {
-    try (CachedRowSet rs = query("SELECT `name`, `role` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase())) {
-      if (rs != null) {
+    try (PreparedStatement ps = prepareStatement("SELECT `name`, `role` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase());
+         ResultSet rs = ps.executeQuery()) {
+      if (rs.next()) {
         String result = rs.getString("role") + " : " + rs.getString("name");
         RoleCache.setCache(player, rs.getString("role"), rs.getString("name"));
         return result;
@@ -123,9 +122,10 @@ public class MySQLDatabase extends Database {
   
   @Override
   public boolean getPreference(String player, String id, boolean def) {
-    boolean preference = true;
-    try (CachedRowSet rs = query("SELECT `preferences` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase())) {
-      if (rs != null) {
+    boolean preference = def;
+    try (PreparedStatement ps = prepareStatement("SELECT `preferences` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase());
+         ResultSet rs = ps.executeQuery()) {
+      if (rs.next()) {
         preference = ((JSONObject) new JSONParser().parse(rs.getString("preferences"))).get(id).equals(0L);
       }
     } catch (Exception ex) {
@@ -151,42 +151,40 @@ public class MySQLDatabase extends Database {
     String sql = "SELECT " + select + "`name` FROM `" + table +
             "` ORDER BY " + add + " 0 DESC LIMIT 100";
 
-    try (CachedRowSet rs = query(sql)) {
-      if (rs != null) {
-        rs.beforeFirst();
-        while (rs.next()) {
-          long count   = 0;
-          String raw   = rs.getString("name");
-          for (String col : columns) {
-            count += rs.getLong(col);
-          }
-
-          String displayName;
-          if (showRole) {
-            displayName = Role.getPrefixed(raw);
-          } else {
-            Role roleObj = Role.getRoleByName(
-                    Database.getInstance()
-                            .getRankAndName(raw)
-                            .split(" : ")[0]
-            );
-            String colorOnly = roleObj != null
-                    ? StringUtils.getLastColor(roleObj.getPrefix())
-                    : "";
-            displayName = colorOnly + raw;
-          }
-
-          result.add(new String[]{
-                  displayName,
-                  StringUtils.formatNumber(count)
-          });
+    try (PreparedStatement ps = prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+      while (rs.next()) {
+        long count = 0;
+        String raw = rs.getString("name");
+        for (String col : columns) {
+          count += rs.getLong(col);
         }
+
+        String displayName;
+        if (showRole) {
+          displayName = Role.getPrefixed(raw);
+        } else {
+          Role roleObj = Role.getRoleByName(
+                  Database.getInstance()
+                          .getRankAndName(raw)
+                          .split(" : ")[0]
+          );
+          String colorOnly = roleObj != null
+                  ? StringUtils.getLastColor(roleObj.getPrefix())
+                  : "";
+          displayName = colorOnly + raw;
+        }
+
+        result.add(new String[]{
+                displayName,
+                StringUtils.formatNumber(count)
+        });
       }
-    } catch (SQLException ignore) {}
+    } catch (SQLException ignore) {
+    }
 
     return result;
   }
-
   
   @Override
   public void close() {
@@ -201,8 +199,9 @@ public class MySQLDatabase extends Database {
       Map<String, DataContainer> containerMap = new LinkedHashMap<>();
       tableMap.put(table.getInfo().name(), containerMap);
       
-      try (CachedRowSet rs = this.query(table.getInfo().select(), name.toLowerCase())) {
-        if (rs != null) {
+      try (PreparedStatement ps = prepareStatement(table.getInfo().select(), name.toLowerCase());
+           ResultSet rs = ps.executeQuery()) {
+        if (rs.next()) {
           for (int collumn = 2; collumn <= rs.getMetaData().getColumnCount(); collumn++) {
             containerMap.put(rs.getMetaData().getColumnName(collumn), new DataContainer(rs.getObject(collumn)));
           }
@@ -223,7 +222,55 @@ public class MySQLDatabase extends Database {
     
     return tableMap;
   }
-  
+
+  @Override
+  public void convertDatabase(Player player) {
+
+    // Obter as configs
+    KConfig config = KConfig.getConfig(Core.getInstance(), Core.getInstance().getDataFolder().getPath(), "config");
+    String type = config.getString("database.type");
+
+    Database targetDb;
+
+    if (type.equalsIgnoreCase("mysql")) {
+      boolean hikari = config.getBoolean("database.mysql.hikari");
+      boolean mariadb = config.getBoolean("database.mysql.mariadb");
+
+      if (hikari) {
+        targetDb = new HikariDatabase(
+                config.getString("database.mysql.host"),
+                config.getString("database.mysql.port"),
+                config.getString("database.mysql.database"),
+                config.getString("database.mysql.username"),
+                config.getString("database.mysql.password"),
+                mariadb
+        );
+      } else {
+        targetDb = new MySQLDatabase(
+                config.getString("database.mysql.host"),
+                config.getString("database.mysql.port"),
+                config.getString("database.mysql.database"),
+                config.getString("database.mysql.username"),
+                config.getString("database.mysql.password"),
+                mariadb
+        );
+      }
+
+    } else if (type.equalsIgnoreCase("mongodb")) {
+      targetDb = new MongoDBDatabase(config.getString("database.mongodb.url"));
+
+    } else {
+      player.sendMessage("§cBanco alvo inválido ou igual ao SQLite!");
+      return;
+    }
+
+    player.sendMessage("§6§l[aCore] §rCriando backup do SQLite...");
+    DatabaseConverter.backupSQLiteDatabase("backups");
+
+    player.sendMessage("§6§l[aCore] §rIniciando conversão...");
+    DatabaseConverter.convertFromSQLite(player, this, targetDb);
+  }
+
   @Override
   public void save(String name, Map<String, Map<String, DataContainer>> tableMap) {
     this.save0(name, tableMap, true);
@@ -264,28 +311,30 @@ public class MySQLDatabase extends Database {
   
   @Override
   public String exists(String name) {
-    try {
-      return this.query("SELECT `name` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", name.toLowerCase()).getString("name");
+    try (PreparedStatement ps = prepareStatement("SELECT `name` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", name.toLowerCase());
+         ResultSet rs = ps.executeQuery()) {
+      if (rs.next()) {
+        return rs.getString("name");
+      }
     } catch (Exception ex) {
       return null;
     }
+    return null;
   }
   
   public void openConnection() {
     try {
       boolean reconnected = this.connection != null;
-      Class.forName(this.mariadb ? "org.mariadb.jdbc.Driver" : "com.mysql.jdbc.Driver");
-      this.connection = DriverManager.getConnection((this.mariadb ?
-          "jdbc:mariadb://" :
-          "jdbc:mysql://") + host + ":" + port + "/" + dbname + "?verifyServerCertificate=false&useSSL=false&useUnicode=yes&characterEncoding=UTF-8", username, password);
+      Class.forName("org.sqlite.JDBC");
+      this.connection = DriverManager.getConnection("jdbc:sqlite:" + databaseFile.getAbsolutePath());
       if (reconnected) {
-        LOGGER.info("Reconected to MySQL!");
+        LOGGER.info("Reconected to SQLite!");
         return;
       }
       
-      LOGGER.info("Conected to MySQL!");
+      LOGGER.info("Connected to SQLite!");
     } catch (Exception ex) {
-      LOGGER.log(Level.SEVERE, "Failed to connect to MySQL: ", ex);
+      LOGGER.log(Level.SEVERE, "Failed to connect to SQLite: ", ex);
       System.exit(0);
     }
   }
@@ -295,7 +344,7 @@ public class MySQLDatabase extends Database {
       try {
         connection.close();
       } catch (SQLException e) {
-        LOGGER.log(Level.WARNING, "Failed to close MySQL connection: ", e);
+        LOGGER.log(Level.WARNING, "Failed to close SQLite connection: ", e);
       }
     }
   }
@@ -310,9 +359,9 @@ public class MySQLDatabase extends Database {
   
   public boolean isConnected() {
     try {
-      return !(connection == null || connection.isClosed() || !connection.isValid(5));
+      return !(connection == null || connection.isClosed());
     } catch (SQLException ex) {
-      LOGGER.log(Level.SEVERE, "Failed to verify MySQL connection: ", ex);
+      LOGGER.log(Level.SEVERE, "Failed to verify SQLite connection: ", ex);
       return false;
     }
   }
@@ -331,32 +380,6 @@ public class MySQLDatabase extends Database {
     });
   }
   
-  public int updateWithInsertId(String sql, Object... vars) {
-    int id = -1;
-    ResultSet rs = null;
-    try (PreparedStatement ps = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-      for (int i = 0; i < vars.length; i++) {
-        ps.setObject(i + 1, vars[i]);
-      }
-      ps.execute();
-      rs = ps.getGeneratedKeys();
-      if (rs.next()) {
-        id = rs.getInt(1);
-      }
-    } catch (SQLException ex) {
-      LOGGER.log(Level.WARNING, "Failed to execute an SQL query: ", ex);
-    } finally {
-      try {
-        if (rs != null && !rs.isClosed())
-          rs.close();
-      } catch (SQLException e) {
-        e.printStackTrace();
-      }
-    }
-    
-    return id;
-  }
-  
   public PreparedStatement prepareStatement(String query, Object... vars) {
     try {
       PreparedStatement ps = getConnection().prepareStatement(query);
@@ -371,33 +394,25 @@ public class MySQLDatabase extends Database {
     return null;
   }
   
-  public CachedRowSet query(String query, Object... vars) {
-    CachedRowSet rowSet = null;
+  public String query(String query, Object... vars) {
     try {
-      Future<CachedRowSet> future = executor.submit(() -> {
-        CachedRowSet crs = null;
-        try (PreparedStatement ps = prepareStatement(query, vars); ResultSet rs = ps.executeQuery()) {
-          
-          CachedRowSet rs2 = RowSetProvider.newFactory().createCachedRowSet();
-          rs2.populate(rs);
-          
-          if (rs2.next()) {
-            crs = rs2;
+      Future<String> future = executor.submit(() -> {
+        try (PreparedStatement ps = prepareStatement(query, vars);
+             ResultSet rs = ps.executeQuery()) {
+          if (rs.next()) {
+            return rs.getString(1);
           }
         } catch (SQLException ex) {
           LOGGER.log(Level.WARNING, "Failed to execute a Request: ", ex);
         }
-        
-        return crs;
+        return null;
       });
       
-      if (future.get() != null) {
-        rowSet = future.get();
-      }
+      return future.get();
     } catch (Exception ex) {
       LOGGER.log(Level.WARNING, "Failed to schedule a Future Task: ", ex);
     }
     
-    return rowSet;
+    return null;
   }
 }

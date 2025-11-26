@@ -20,6 +20,7 @@ import me.joaomanoel.d4rkk.dev.reflection.Accessors;
 import me.joaomanoel.d4rkk.dev.reflection.acessors.MethodAccessor;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import org.bson.Document;
+import org.bukkit.entity.Player;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -77,7 +78,14 @@ public class MongoDBDatabase extends Database {
       ((org.bukkit.entity.Player) player).sendMessage("§cVocê pode cancelar essa Operação ao digitar 'cancelar' (sem aspas).");
     }
   }
-  
+
+  @Override
+  public void convertDatabase(Player player) {
+    player.sendMessage("§aJá está usando " + this.getClass().getSimpleName().replace("Database", ""));
+    player.sendMessage("§7Para converter FROM SQLite, mude a config para SQLite primeiro, depois altere para MySQL/Hikari e rode /ac convert");
+  }
+
+
   @Override
   public void setupBoosters() {
     if (!Manager.BUNGEE) {

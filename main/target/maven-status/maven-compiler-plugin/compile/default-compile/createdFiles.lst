@@ -266,6 +266,7 @@ me\joaomanoel\d4rkk\dev\titles\TitleVisibilityHandler.class
 me\joaomanoel\d4rkk\dev\achievements\types\BedWarsAchievement.class
 me\joaomanoel\d4rkk\dev\bungee\party\BungeePartyManager.class
 me\joaomanoel\d4rkk\dev\bungee\PluginMessageListenerExample.class
+me\joaomanoel\d4rkk\dev\database\conversor\DatabaseConverter.class
 me\joaomanoel\d4rkk\dev\cosmetic\types\ColoredTag.class
 me\joaomanoel\d4rkk\dev\titles\Title.class
 me\joaomanoel\d4rkk\dev\player\enums\PrivateMessages.class
@@ -293,6 +294,7 @@ org\json\simple\parser\ContentHandler.class
 me\joaomanoel\d4rkk\dev\replay\RecordingListener.class
 me\joaomanoel\d4rkk\dev\replay\SkinInfo.class
 me\joaomanoel\d4rkk\dev\replay\Recorder.class
+me\joaomanoel\d4rkk\dev\database\SQLiteDatabase.class
 me\joaomanoel\d4rkk\dev\replay\Replayer$1.class
 me\joaomanoel\d4rkk\dev\libraries\menu\UpdatableMenu$1.class
 me\joaomanoel\d4rkk\dev\database\data\container\TitlesContainer.class

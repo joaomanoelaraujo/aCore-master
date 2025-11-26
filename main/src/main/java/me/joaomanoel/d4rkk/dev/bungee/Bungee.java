@@ -161,17 +161,20 @@ public class Bungee extends Plugin {
   @Override
   public void onEnable() {
     saveDefaultConfig();
-    
+
+    File sqliteFile = new File(getDataFolder(), getConfig().getString("database.sqlite.file", "database.db"));
+
     Database.setupDatabase(
-        config.getString("database.type"),
-        config.getString("database.mysql.host"),
-        config.getString("database.mysql.port"),
-        config.getString("database.mysql.name"),
-        config.getString("database.mysql.user"),
-        config.getString("database.mysql.pass"),
-        config.getBoolean("database.mysql.hikari", false),
-        config.getBoolean("database.mysql.mariadb", false),
-        config.getString("database.mongodb.url", "")
+            getConfig().getString("database.type"),
+            getConfig().getString("database.mysql.host"),
+            getConfig().getString("database.mysql.port"),
+            getConfig().getString("database.mysql.database"),
+            getConfig().getString("database.mysql.user"),
+            getConfig().getString("database.mysql.pass"),
+            getConfig().getBoolean("database.mysql.hikari"),
+            getConfig().getBoolean("database.mysql.mariadb"),
+            getConfig().getString("database.mongodb.url"),
+            sqliteFile
     );
     
     setupRoles();

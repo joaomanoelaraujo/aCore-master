@@ -12,6 +12,7 @@ import me.joaomanoel.d4rkk.dev.database.data.DataTable;
 import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
+import org.bukkit.entity.Player;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -73,7 +74,14 @@ public class HikariDatabase extends Database {
       }
     }
   }
-  
+
+  @Override
+  public void convertDatabase(Player player) {
+    player.sendMessage("§aJá está usando " + this.getClass().getSimpleName().replace("Database", ""));
+    player.sendMessage("§7Para converter FROM SQLite, mude a config para SQLite primeiro, depois altere para MySQL/Hikari e rode /ac convert");
+  }
+
+
   @Override
   public void setBooster(String minigame, String booster, double multiplier, long expires) {
     execute("UPDATE `aCoreNetworkBooster` SET `booster` = ?, `multiplier` = ?, `expires` = ? WHERE `id` = ?", booster, multiplier, expires, minigame);

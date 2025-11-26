@@ -111,6 +111,7 @@ C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\MvpColor.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\cosmetic\types\PunchMessage.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\cache\RoleCache.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\conversor\DatabaseConverter.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\conversor\MongoDBConversor.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\AchievementsContainer.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\data\container\BoostersContainer.java
@@ -129,6 +130,7 @@ C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\KitPvPTable.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\MongoDBDatabase.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\MySQLDatabase.java
+C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\SQLiteDatabase.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\BatteryDashTable.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\BedWarsTable.java
 C:\Aether\Sources\Java 11 - 1.11.1\aCore-master\main\src\main\java\me\joaomanoel\d4rkk\dev\database\tables\BlockSumoTable.java

@@ -4,8 +4,10 @@ leaderboard:
  show-role: true
 
 database:
- # Currently available database types: MongoDB, MySQL
- type: 'MySQL'
+ # Currently available database types: MongoDB, MySQL, SQLite
+ type: 'SQLite'
+ sqlite:
+  file: database.db
  mysql:
   # Use Hikari
   hikari: false

@@ -196,6 +196,7 @@ public class Core extends KPlugin {
     Language.setupLanguage();
     GameState.loadLanguage(getConfig());
     aFriends = Bukkit.getPluginManager().getPlugin("aFriends") != null;
+    File sqliteFile = new File(getDataFolder(), getConfig().getString("database.sqlite.file", "database.db"));
     Database.setupDatabase(
             getConfig().getString("database.type"),
             getConfig().getString("database.mysql.host"),
@@ -205,7 +206,8 @@ public class Core extends KPlugin {
             getConfig().getString("database.mysql.pass"),
             getConfig().getBoolean("database.mysql.hikari", false),
             getConfig().getBoolean("database.mysql.mariadb", false),
-            getConfig().getString("database.mongodb.url", "")
+            getConfig().getString("database.mongodb.url", ""),
+            sqliteFile
     );
 
 
@@ -225,12 +227,15 @@ public class Core extends KPlugin {
     Commands.setupCommands();
     Listeners.setupListeners();
     LanguageIcons.load(this);
-    ReplayManager.register();
-    ReplaySaver.register(new DatabaseReplaySaver());
-    metrics = new Metrics(this, 2188);
-    if (ConfigManager.CLEANUP_REPLAYS > 0) {
-      ReplayCleanup.cleanupReplays();
+    if (MinecraftVersion.getCurrentVersion().getVersion().equals("1.8.8")) {
+      ReplayManager.register();
+      ReplaySaver.register(new DatabaseReplaySaver());
+      metrics = new Metrics(this, 2188);
+      if (ConfigManager.CLEANUP_REPLAYS > 0) {
+        ReplayCleanup.cleanupReplays();
+      }
     }
+
     FakeAdapter.setup();
     ProtocolLibrary.getProtocolManager().addPacketListener(new NPCAdapter());
     ProtocolLibrary.getProtocolManager().addPacketListener(new EntityAdapter());
@@ -238,7 +243,6 @@ public class Core extends KPlugin {
     getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessageListener());
     getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", new PluginMessageListenerExample());
-// Adicionado o incoming para BungeeCord
     getServer().getMessenger().registerOutgoingPluginChannel(this, "acore:main");
     getServer().getMessenger().registerIncomingPluginChannel(this, "acore:main", new PluginMessageListener());
 

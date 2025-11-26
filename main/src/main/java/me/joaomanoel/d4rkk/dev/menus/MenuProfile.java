@@ -42,7 +42,7 @@ public class MenuProfile extends PlayerMenu {
             .replace("{created}", dateFormat.format(profile.getDataContainer("aCoreProfile", "created").getAsLong()))
             .replace("{last}", dateFormat.format(profile.getDataContainer("aCoreProfile", "lastlogin").getAsLong()));
 
-    this.setItem(0, BukkitUtils.deserializeItemStack("PAPER : 1 : name>§aReplays"));
+    this.setItem(41, BukkitUtils.deserializeItemStack("340 : 1 : name>§aReplays"));
 
     this.setItem(LanguageAPI.getConfig(profile).getInt("profile.slot"), BukkitUtils.putProfileOnSkull(this.player, BukkitUtils.deserializeItemStack(profileInfo)));
 
@@ -105,7 +105,7 @@ public class MenuProfile extends PlayerMenu {
           ItemStack item = evt.getCurrentItem();
           
           if (item != null && item.getType() != Material.AIR) {
-            if (evt.getSlot() == 0) {
+            if (evt.getSlot() == 41) {
               EnumSound.ITEM_PICKUP.play(this.player, 0.5F, 2.0F);
                 new MenuReplays(profile);
             } else if (evt.getSlot() == LanguageAPI.getConfig(profile).getInt("profile.statistics.slot1")) {
