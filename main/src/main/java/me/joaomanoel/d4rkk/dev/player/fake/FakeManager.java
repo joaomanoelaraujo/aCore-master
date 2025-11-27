@@ -120,7 +120,14 @@ public class FakeManager {
       player.kickPlayer(StringUtils.formatColors(CONFIG.getString("fake.kick-remove")).replace("\\n", "\n"));
     }
   }
-  
+  public static List<String> getFakeRoles() {
+    KConfig cfg = Core.getInstance().getConfig("utils");
+    List<String> list = cfg.getStringList("fake.role");
+    if (list == null || list.isEmpty()) {
+      list = Arrays.asList("Membro", "VIP", "MVP", "MVP+");
+    }
+    return list;
+  }
   public static String getCurrent(String playerName) {
     return isFake(playerName) ? getFake(playerName) : playerName;
   }

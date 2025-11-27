@@ -55,7 +55,7 @@ public class TagCommand extends Commands {
                     TextComponent component = new TextComponent("§aYour tags: \n");
 
                     if (roles.isEmpty()) {
-                        Role memberTag = Role.getRoleByName("Member");
+                        Role memberTag = Role.getRoleByName("Membro");
                         if (memberTag != null) {
                             roles.add(memberTag);
                         }

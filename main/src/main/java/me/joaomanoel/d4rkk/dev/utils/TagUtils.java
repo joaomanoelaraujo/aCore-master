@@ -43,6 +43,10 @@ public class TagUtils {
         Profile profile = Profile.getProfile(player.getName());
         if (profile == null) return null;
 
+        if (ProfileUtils.isInMatch(profile)) {
+            return null;
+        }
+
         SelectedContainer selected = profile.getAbstractContainer("aCoreProfile", "cselected", SelectedContainer.class);
         ColoredTag coloredTag = selected.getSelected(CosmeticType.COLORED_TAG, ColoredTag.class);
 
@@ -51,6 +55,7 @@ public class TagUtils {
         }
         return null;
     }
+
 
 
     public static void setTag(Player viewer, Player target, String prefix, String suffix, int sortPriority) {

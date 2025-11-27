@@ -28,7 +28,18 @@ public class Language {
   public static String discord$toopen = " §eto open the server's discord.\n ";
   public static String discord$open = "§7Click here to open the server's discord.";
   public static String discord$here = "HERO";
-  
+  public static String party$invite = "§a%leader% §7convidou você para a Party dele!\n§rVocê pode ";
+  public static String party$accept = "§aClique para aceitar o convite de Party de %leader%§r";
+  public static String party$reject = "§cClique para negar o convite de Party de %leader%§r";
+  public static String party$join = "§a%member% entrou na Party!§r";
+  public static String party$leave = "§c%member% saiu da Party!§r";
+  public static String party$transfer = "§a%member% se tornou o novo Líder da Party!§r";
+  public static String party$kick = "§c%leader% te expulsou da Party!§r";
+  public static String party$invite_buttons$accept = "§a§lACEITAR§7";
+  public static String party$invite_buttons$reject = "§c§lNEGAR§7";
+  public static String party$hover_accept = "§7Clique para aceitar o convite de Party de %leader%§r";
+  public static String party$hover_reject = "§7Clique para negar o convite de Party de %leader%§r";
+  public static String party$or = " §7ou§r ";
   public static void setupLanguage() {
     boolean save = false;
     KWriter writer = Core.getInstance().getWriter(CONFIG.getFile(),

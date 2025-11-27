@@ -134,19 +134,48 @@ public class Profile {
     player.setExhaustion(0.0f);
     player.setExp(0.0f);
     player.setLevel(0);
-    player.setAllowFlight(false);
     player.closeInventory();
     for (PotionEffect pe : player.getActivePotionEffects()) {
       player.removePotionEffect(pe.getType());
     }
 
     if (!playingGame()) {
+      // --- LOBBY ---
       player.setGameMode(GameMode.ADVENTURE);
-      player.teleport(Core.getLobby());
 
-      player.setAllowFlight(player.hasPermission("aCore.fly"));
+      Role playerRole = Role.getPlayerRole(player);
+      org.bukkit.Location spawnLocation = Core.getLobby().clone();
+
+      if (playerRole.canFly()) {
+        spawnLocation.add(0, 6, 0);
+        player.teleport(spawnLocation);
+      } else {
+        player.teleport(spawnLocation);
+        player.setAllowFlight(false);
+        player.setFlying(false);
+      }
+
+      Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
+        if (player.isOnline()) {
+          Role role = Role.getPlayerRole(player);
+
+          if (role.canFly()) {
+            player.setAllowFlight(true);
+            player.setFlying(true);
+          }
+        }
+      }, 0L);
+
       this.getDataContainer("aCoreProfile", "role").set(StringUtils.stripColors(Role.getPlayerRole(player, true).getName()));
+
+    } else {
+
+      // --- JOGO --- (DESATIVA FLY SEM EXCEÇÃO)
+      player.setAllowFlight(false);
+      player.setFlying(false);
+      player.setGameMode(GameMode.SURVIVAL);
     }
+
 
     if (this.hotbar != null) {
       this.hotbar.apply(this);
@@ -154,6 +183,7 @@ public class Profile {
 
     this.refreshPlayers();
   }
+
 
   public void refreshpit() {
     Player player = this.getPlayer();
@@ -302,6 +332,18 @@ public class Profile {
 
   public void setGame(Game<? extends GameTeam> game) {
     this.game = game;
+    if (this.game == null) {
+      Player p = this.getPlayer();
+      if (p != null) {
+        Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
+          Role role = Role.getPlayerRole(p);
+          if (role.canFly()) {
+            p.setAllowFlight(true);
+            p.setFlying(true);
+          }
+        }, 0); // 2 ticks -> evita o "cair"
+      }
+    }
     this.lastHit.clear();
     if (this.game != null) {
       TitleManager.leaveLobby(this);

@@ -116,6 +116,7 @@ public class Core extends KPlugin {
       }
     }
   }
+  private boolean bungeeEnabled;
 
   @Override
   public void start() {
@@ -161,7 +162,8 @@ public class Core extends KPlugin {
       System.exit(0);
       return;
     }
-
+    KConfig utils = KConfig.getConfig(this, this.getDataFolder().getPath(), "utils");
+    this.bungeeEnabled = utils.getBoolean("bungeecord", false);
 
     if (MinecraftVersion.getCurrentVersion().getVersion().equals("1.8.8")) {
       try {
@@ -250,10 +252,9 @@ public class Core extends KPlugin {
     this.getLogger().info("The plugin has been activated.");
   }
 
-
-  public Map<String, Long> ultimoLoginMap = new HashMap<>();
-  private final File dataFile = new File(Core.getInstance().getDataFolder(), "last_logins.json");
-
+  public boolean isBungeeEnabled() {
+    return bungeeEnabled;
+  }
   @Override
   public void disable() {
     if (validInit) {
@@ -294,12 +295,14 @@ public class Core extends KPlugin {
       String permission = config.getString("roles." + key + ".permission");
       boolean broadcast = config.getBoolean("roles." + key + ".broadcast", true);
       boolean alwaysVisible = config.getBoolean("roles." + key + ".alwaysvisible", false);
-      
-      Role.listRoles().add(new Role(name, prefix, permission, alwaysVisible, broadcast));
+      boolean fly = config.getBoolean("roles." + key + ".fly", false);
+
+
+      Role.listRoles().add(new Role(name, prefix, permission, alwaysVisible, broadcast, fly));
     }
     
     if (Role.listRoles().isEmpty()) {
-      Role.listRoles().add(new Role("&7Member", "&7", "", false, false));
+      Role.listRoles().add(new Role("&7Membro", "&7", "", false, false, false));
     }
   }
 

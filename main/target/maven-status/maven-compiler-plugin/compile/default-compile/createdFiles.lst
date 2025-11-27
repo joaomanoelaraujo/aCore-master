@@ -284,6 +284,7 @@ me\joaomanoel\d4rkk\dev\replay\ReplayPlayCommand$1.class
 me\joaomanoel\d4rkk\dev\achievements\types\ThePitAchievement$ThePitReward.class
 me\joaomanoel\d4rkk\dev\replay\MessageFormat.class
 me\joaomanoel\d4rkk\dev\replay\ReplayListCommand.class
+me\joaomanoel\d4rkk\dev\utils\SkinFetcher.class
 me\joaomanoel\d4rkk\dev\achievements\Achievement.class
 me\joaomanoel\d4rkk\dev\replay\MetadataBuilder.class
 com\comphenix\packetwrapper\WrapperPlayServerCamera.class
@@ -351,6 +352,7 @@ me\joaomanoel\d4rkk\dev\party\PartyPlayer.class
 com\comphenix\packetwrapper\WrapperPlayServerBlockBreakAnimation.class
 me\joaomanoel\d4rkk\dev\replay\MessageBuilder.class
 me\joaomanoel\d4rkk\dev\replay\Metrics$DrilldownPie.class
+me\joaomanoel\d4rkk\dev\utils\ProfileUtils.class
 me\joaomanoel\d4rkk\dev\cmd\FakeCommand.class
 me\joaomanoel\d4rkk\dev\plugin\config\KConfig.class
 me\joaomanoel\d4rkk\dev\database\tables\BatteryDashTable.class
@@ -454,6 +456,7 @@ me\joaomanoel\d4rkk\dev\plugin\config\FileUtils.class
 com\comphenix\packetwrapper\WrapperPlayClientArmAnimation.class
 me\joaomanoel\d4rkk\dev\replay\InvData.class
 me\joaomanoel\d4rkk\dev\servers\balancer\elements\NumberConnection.class
+me\joaomanoel\d4rkk\dev\utils\LanguageUtils.class
 me\joaomanoel\d4rkk\dev\database\MongoDBDatabase.class
 me\joaomanoel\d4rkk\dev\menus\profile\boosters\MenuBoostersList.class
 me\joaomanoel\d4rkk\dev\bungee\party\BungeePartySizer.class

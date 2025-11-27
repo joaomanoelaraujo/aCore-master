@@ -234,12 +234,13 @@ public class Bungee extends Plugin {
       String permission = roles.getString("roles." + key + ".permission");
       boolean broadcast = roles.getBoolean("roles." + key + ".broadcast", true);
       boolean alwaysVisible = roles.getBoolean("roles." + key + ".alwaysvisible", false);
-      
-      Role.listRoles().add(new Role(name, prefix, permission, alwaysVisible, broadcast));
+      boolean fly = roles.getBoolean("roles." + key + ".fly", false);
+
+      Role.listRoles().add(new Role(name, prefix, permission, alwaysVisible, broadcast, fly));
     }
     
     if (Role.listRoles().isEmpty()) {
-      Role.listRoles().add(new Role("&7Member", "&7", "", false, false));
+      Role.listRoles().add(new Role("&7Member", "&7", "", false, false, false));
     }
   }
 }

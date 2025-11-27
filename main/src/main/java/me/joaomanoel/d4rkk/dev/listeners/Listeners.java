@@ -83,12 +83,12 @@ public class Listeners implements Listener {
       if (profile == null) {
         Profile.createOrLoadProfile(playerName);
         firstTimePlayers.add(playerId);
-        LOGGER.log(Level.INFO, "Created new profile for: " + playerName);
+//        LOGGER.log(Level.INFO, "Created new profile for: " + playerName);
       } else {
-        LOGGER.log(Level.INFO, "Loaded profile for: " + playerName);
+//        LOGGER.log(Level.INFO, "Loaded profile for: " + playerName);
       }
     } catch (ProfileLoadException ex) {
-      LOGGER.log(Level.SEVERE, "Failed to load profile for: " + evt.getName(), ex);
+//      LOGGER.log(Level.SEVERE, "Failed to load profile for: " + evt.getName(), ex);
       evt.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER,
               "§cFailed to load your profile. Please try again later.");
     }
@@ -101,6 +101,7 @@ public class Listeners implements Listener {
     if (player.isOp()) {
       sendUpdateNotification(player);
     }
+//    Bukkit.getScheduler().runTaskLaterAsynchronously(Core.getInstance(), () -> TagUtils.setTag(evt.getPlayer()), 5);
 
 //      GlowCosmetic.onPlayerJoin(player);
 //      Profile newProfile = Profile.getProfile(player.getName());
@@ -124,15 +125,6 @@ public class Listeners implements Listener {
       vector.setY(2.15F);
       player.setVelocity(vector);
     }
-  }
-
-  //todo: fazer futuramente quando tiver diversidade de linguagens feitas.
-  private void handleFirstTimePlayer(Player player) {
-    EnumSound.LEVEL_UP.play(player, 1.0F, 2.0F);
-    String country = PlayerIPUtils.getPlayerCountry(player);
-    //String message = LanguageMessage.getLanguageMessage(player, country);
-    // player.sendMessage(message);
-
   }
 
   @EventHandler(priority = EventPriority.MONITOR)

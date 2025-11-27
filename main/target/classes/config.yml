@@ -5,7 +5,7 @@ leaderboard:
 
 database:
  # Currently available database types: MongoDB, MySQL, SQLite
- type: 'MySQL'
+ type: 'SQLite'
  sqlite:
   file: database.db
  mysql:

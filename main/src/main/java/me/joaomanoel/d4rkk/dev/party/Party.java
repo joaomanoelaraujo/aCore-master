@@ -2,8 +2,8 @@ package me.joaomanoel.d4rkk.dev.party;
 
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.Manager;
-import me.joaomanoel.d4rkk.dev.bungee.LanguageBungee;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
+import me.joaomanoel.d4rkk.dev.utils.LanguageUtils;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -22,9 +22,7 @@ public abstract class Party {
    * O tempo em minutos que demora até deletar uma Party caso todos os jogadores dela estejam offline.
    */
   private static final long MINUTES_UNTIL_DELETE = 5L;
-  /**
-   * O tempo em minutos que demora até deletar uma Party caso todos os jogadores dela estejam offline.
-   */
+
   private static final long MINUTES_UNTIL_EXPIRE_INVITE = 1L;
   protected PartyPlayer leader;
   protected List<PartyPlayer> members;
@@ -49,8 +47,8 @@ public abstract class Party {
     String leader = Role.getPrefixed(this.getLeader());
     this.invitesMap.put(Manager.getName(target).toLowerCase(), System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(MINUTES_UNTIL_EXPIRE_INVITE));
 
-    // Usando o sistema LanguageBungee
-    String message = LanguageBungee.party$invite.replace("%leader%", leader);
+    // Usando o sistema LanguageUtils
+    String message = LanguageUtils.get("party$invite").replace("%leader%", leader);
     message = ChatColor.translateAlternateColorCodes('&', message);
 
     BaseComponent component = new TextComponent("");
@@ -59,28 +57,28 @@ public abstract class Party {
     }
 
     // Botão de Aceitar
-    String acceptMessage = LanguageBungee.party$invite_buttons$accept;
+    String acceptMessage = LanguageUtils.get("party$invite_buttons$accept");
     acceptMessage = ChatColor.translateAlternateColorCodes('&', acceptMessage);
     BaseComponent accept = new TextComponent(acceptMessage);
     accept.setColor(ChatColor.GREEN);
     accept.setBold(true);
     accept.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party accept " + this.getLeader()));
-    accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', LanguageBungee.party$hover_accept.replace("%leader%", leader)))));
+    accept.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', LanguageUtils.get("party$hover_accept").replace("%leader%", leader)))));
     component.addExtra(accept);
 
     // Adicionando o "ou" entre os botões
-    String orMessage = LanguageBungee.party$or;
+    String orMessage = LanguageUtils.get("party$or");
     orMessage = ChatColor.translateAlternateColorCodes('&', orMessage);
     component.addExtra(new TextComponent(orMessage));
 
     // Botão de Negar
-    String rejectMessage = LanguageBungee.party$invite_buttons$reject;
+    String rejectMessage = LanguageUtils.get("party$invite_buttons$reject");
     rejectMessage = ChatColor.translateAlternateColorCodes('&', rejectMessage);
     BaseComponent reject = new TextComponent(rejectMessage);
     reject.setColor(ChatColor.RED);
     reject.setBold(true);
     reject.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/party deny " + this.getLeader()));
-    reject.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', LanguageBungee.party$hover_reject.replace("%leader%", leader)))));
+    reject.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', LanguageUtils.get("party$hover_reject").replace("%leader%", leader)))));
     component.addExtra(reject);
 
     // Finaliza o convite
@@ -98,15 +96,15 @@ public abstract class Party {
   public void reject(String member) {
     this.invitesMap.remove(member.toLowerCase());
 
-    // Mensagem de negação usando LanguageBungee
-    String message = LanguageBungee.party$reject.replace("%member%", Role.getPrefixed(member));
+    // Mensagem de negação usando LanguageUtils
+    String message = LanguageUtils.get("party$reject").replace("%member%", Role.getPrefixed(member));
     message = ChatColor.translateAlternateColorCodes('&', message);
     this.leader.sendMessage(message);
   }
 
   public void join(String member) {
-    // Usando LanguageBungee
-    String message = LanguageBungee.party$join.replace("%member%", Role.getPrefixed(member));
+    // Usando LanguageUtils
+    String message = LanguageUtils.get("party$join").replace("%member%", Role.getPrefixed(member));
     message = ChatColor.translateAlternateColorCodes('&', message);
     this.broadcast(message);
 
@@ -128,22 +126,22 @@ public abstract class Party {
       this.leader = this.members.get(0);
       this.leader.setRole(PartyRole.LEADER);
 
-      // Mensagem de mudança de líder usando LanguageBungee
-      String message = LanguageBungee.party$transfer.replace("%member%", prefixed);
+      // Mensagem de mudança de líder usando LanguageUtils
+      String message = LanguageUtils.get("party$transfer").replace("%member%", prefixed);
       message = ChatColor.translateAlternateColorCodes('&', message);
       this.broadcast(message);
     }
 
-    // Mensagem de saída usando LanguageBungee
-    String message = LanguageBungee.party$leave.replace("%member%", prefixed);
+    // Mensagem de saída usando LanguageUtils
+    String message = LanguageUtils.get("party$leave").replace("%member%", prefixed);
     message = ChatColor.translateAlternateColorCodes('&', message);
     this.broadcast(message);
   }
 
   public void kick(String member) {
     this.members.stream().filter(pp -> pp.getName().equalsIgnoreCase(member)).findFirst().ifPresent(pp -> {
-      // Mensagem de expulsão usando LanguageBungee
-      String message = LanguageBungee.party$kick.replace("%leader%", Role.getPrefixed(this.getLeader()));
+      // Mensagem de expulsão usando LanguageUtils
+      String message = LanguageUtils.get("party$kick").replace("%leader%", Role.getPrefixed(this.getLeader()));
       message = ChatColor.translateAlternateColorCodes('&', message);
       pp.sendMessage(message);
 

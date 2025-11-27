@@ -21,16 +21,20 @@ public class Role {
   private final boolean alwaysVisible;
   private final boolean broadcast;
   private ChatColor tagColor;
+  private final boolean fly;
 
-  public Role(String name, String prefix, String permission, boolean alwaysVisible, boolean broadcast) {
+  public Role(String name, String prefix, String permission, boolean alwaysVisible, boolean broadcast, boolean fly) {
     this.id = ROLES.size();
     this.name = StringUtils.formatColors(name);
     this.prefix = StringUtils.formatColors(prefix);
     this.permission = permission;
     this.alwaysVisible = alwaysVisible;
     this.broadcast = broadcast;
+    this.fly = fly;
   }
-
+  public boolean canFly() {
+    return this.fly;
+  }
   public static String getPrefixed(String name) {
     return getPrefixed(name, null, false);
   }
