@@ -32,9 +32,11 @@ public class Role {
     this.broadcast = broadcast;
     this.fly = fly;
   }
+
   public boolean canFly() {
     return this.fly;
   }
+
   public static String getPrefixed(String name) {
     return getPrefixed(name, null, false);
   }
@@ -46,6 +48,7 @@ public class Role {
   public static String getPrefixed(String name, boolean removeFake) {
     return getPrefixed(name, null, removeFake);
   }
+
   public static String getColored(String name) {
     return getColored(name, false);
   }
@@ -55,7 +58,7 @@ public class Role {
   }
 
   public static String getPrefixed(String name, String colorCode, boolean removeFake) {
-    String prefix = "&7"; // Default color if none is found
+    String prefix = "&7";
     if (!removeFake && Manager.isFake(name)) {
       prefix = Manager.getFakeRole(name).getPrefix();
     } else {
@@ -74,15 +77,12 @@ public class Role {
       }
     }
 
-    // Apply the colored tag if provided
     if (colorCode != null && !colorCode.isEmpty()) {
       prefix = colorCode + prefix.replaceFirst("§[0-9a-fk-or]", "");
     }
 
     return prefix + name;
   }
-
-
 
   public static String getColored(String name, boolean removeFake) {
     return getTaggedName(name, true, removeFake);
@@ -128,12 +128,16 @@ public class Role {
   }
 
   public static Role getRoleByName(String name) {
+    if (name == null || name.isEmpty()) {
+      return getLastRole();
+    }
+
     Iterator<Role> var1 = ROLES.iterator();
 
     Role role;
     do {
       if (!var1.hasNext()) {
-        return ROLES.get(ROLES.size() - 1);
+        return getLastRole();
       }
 
       role = var1.next();
@@ -161,25 +165,11 @@ public class Role {
     return getPlayerRole(player, false);
   }
 
-  public static String getPlayerTag(String playerName) {
-    Object target = Manager.getPlayer(playerName);
-    if (target != null) {
-      Profile profile = Profile.getProfile(target.toString());
-      if (profile != null) {
-        DataContainer dataContainer = profile.getDataContainer("aCoreProfile", "tag");
-        if (dataContainer != null) {
-          Role tagRole = getRoleByName(dataContainer.getAsString());
-          String prefix = tagRole.getPrefix();
-          System.out.println("Tag do jogador: " + prefix + playerName);
-          return prefix + playerName;
-        }
-      }
+  public static Role getPlayerRole(Object player, boolean removeFake) {
+    if (player == null) {
+      return getLastRole();
     }
 
-    return "&7" + playerName;
-  }
-
-  public static Role getPlayerRole(Object player, boolean removeFake) {
     if (!removeFake && Manager.isFake(Manager.getName(player))) {
       return Manager.getFakeRole(Manager.getName(player));
     } else {
@@ -199,6 +189,9 @@ public class Role {
   }
 
   public static Role getLastRole() {
+    if (ROLES.isEmpty()) {
+      return null;
+    }
     return ROLES.get(ROLES.size() - 1);
   }
 
@@ -211,12 +204,31 @@ public class Role {
   }
 
   public static Role getPlayerTagRole(Object player, boolean removeFake) {
-    if (!removeFake && Manager.isFake(Manager.getName(player))) {
-      DataContainer dataContainer = Profile.getProfile(Manager.getName(player)).getDataContainer("aCoreCoreProfile", "tag");
-      return Manager.getFakeRole(dataContainer.toString());
-    } else {
-      return getPlayerTagRole(player);
+    if (player == null) {
+      return getLastRole();
     }
+
+    String playerName = Manager.getName(player);
+    Profile profile = Profile.getProfile(playerName);
+
+    if (profile == null) {
+      return getPlayerRole(player, removeFake);
+    }
+
+    DataContainer dataContainer = profile.getDataContainer("aCoreProfile", "tag");
+
+    if (dataContainer != null && dataContainer.getAsString() != null && !dataContainer.getAsString().isEmpty()) {
+      Role tagRole = getRoleByName(dataContainer.getAsString());
+      if (tagRole != null) {
+        return tagRole;
+      }
+    }
+
+    if (!removeFake && Manager.isFake(playerName)) {
+      return Manager.getFakeRole(playerName);
+    }
+
+    return getPlayerRole(player, removeFake);
   }
 
   public int getId() {
@@ -230,7 +242,6 @@ public class Role {
   public String getPrefix() {
     return this.prefix;
   }
-
 
   public String getPermission() {
     return this.permission;

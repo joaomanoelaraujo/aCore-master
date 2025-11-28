@@ -136,6 +136,7 @@ com\comphenix\packetwrapper\WrapperPlayServerEntityEquipment.class
 org\json\simple\parser\Yylex.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\VanishCommand.class
 me\joaomanoel\d4rkk\dev\player\enums\PlayerVisibility.class
+me\joaomanoel\d4rkk\dev\cmd\newcommands\TagSelectCommand.class
 me\joaomanoel\d4rkk\dev\Core.class
 me\joaomanoel\d4rkk\dev\replay\NPCManager.class
 me\joaomanoel\d4rkk\dev\cmd\TesteCmd.class

@@ -4,7 +4,6 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.Manager;
-import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
 import me.joaomanoel.d4rkk.dev.cosmetic.CosmeticType;
 import me.joaomanoel.d4rkk.dev.cosmetic.container.SelectedContainer;
 import me.joaomanoel.d4rkk.dev.cosmetic.types.ColoredTag;
@@ -24,19 +23,32 @@ import java.lang.reflect.Method;
 public class TagUtils {
 
     public static void setTag(Player player) {
+        Profile profile = Profile.getProfile(player.getName());
+        if (profile == null) return;
+
+        Role tagRole = Role.getPlayerTagRole(player);
+        if (tagRole == null) {
+            tagRole = Role.getPlayerRole(player);
+        }
+
+        if (tagRole == null) return;
+
         for (Player online : Bukkit.getOnlinePlayers()) {
-            Role otherRole = Role.getPlayerRole(player);
-            setTag(online, player, otherRole.getPrefix(), getPlayerSuffix(player), otherRole.getId());
+            setTag(online, player, tagRole.getPrefix(), getPlayerSuffix(player), tagRole.getId());
         }
 
         Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
             for (Player online : Bukkit.getOnlinePlayers()) {
-                Role otherRole = Role.getPlayerRole(online);
-                setTag(player, online, otherRole.getPrefix(), getPlayerSuffix(online), otherRole.getId());
+                Role onlineTagRole = Role.getPlayerTagRole(online);
+                if (onlineTagRole == null) {
+                    onlineTagRole = Role.getPlayerRole(online);
+                }
+
+                if (onlineTagRole == null) continue;
+
+                setTag(player, online, onlineTagRole.getPrefix(), getPlayerSuffix(online), onlineTagRole.getId());
             }
         }, 3L);
-
-
     }
 
     private static String getSelectedTagColor(Player player) {
@@ -48,6 +60,8 @@ public class TagUtils {
         }
 
         SelectedContainer selected = profile.getAbstractContainer("aCoreProfile", "cselected", SelectedContainer.class);
+        if (selected == null) return null;
+
         ColoredTag coloredTag = selected.getSelected(CosmeticType.COLORED_TAG, ColoredTag.class);
 
         if (coloredTag != null && coloredTag.getId() != 0) {
@@ -56,18 +70,28 @@ public class TagUtils {
         return null;
     }
 
-
-
     public static void setTag(Player viewer, Player target, String prefix, String suffix, int sortPriority) {
+        if (prefix == null || prefix.isEmpty()) {
+            prefix = "§7";
+        }
+
+        if (suffix == null) {
+            suffix = "";
+        }
+
         Scoreboard scoreboard = viewer.getScoreboard();
+        String finalName = getFinalName(target.getName());
+
         for (Team team : scoreboard.getTeams()) {
-            if (team.hasEntry(getFinalName(target.getName()))) {
-                team.removeEntry(getFinalName(target.getName()));
+            if (team.hasEntry(finalName)) {
+                team.removeEntry(finalName);
             }
         }
 
-        String teamName = formatTeamName(sortPriority, getFinalName(target.getName()));
-        if (teamName.length() > 16) teamName = teamName.substring(0, 16);
+        String teamName = formatTeamName(sortPriority, finalName);
+        if (teamName.length() > 16) {
+            teamName = teamName.substring(0, 16);
+        }
 
         Team team = scoreboard.getTeam(teamName);
         if (team == null) {
@@ -77,30 +101,38 @@ public class TagUtils {
         String tagColor = getSelectedTagColor(target);
         String finalPrefix;
 
-        if (tagColor != null) {
+        if (tagColor != null && !tagColor.isEmpty()) {
             finalPrefix = tagColor + ChatColor.stripColor(prefix);
-            applyTeamColorIfSupported(team, ChatColor.getByChar(tagColor.replace("§", "").charAt(0)));
+            ChatColor colorCode = ChatColor.getByChar(tagColor.replace("§", "").charAt(0));
+            if (colorCode != null) {
+                applyTeamColorIfSupported(team, colorCode);
+            }
         } else {
             finalPrefix = prefix;
-            applyTeamColorIfSupported(team, extractColorFromPrefix(prefix));
+            ChatColor extractedColor = extractColorFromPrefix(prefix);
+            if (extractedColor != null) {
+                applyTeamColorIfSupported(team, extractedColor);
+            }
         }
 
         team.setPrefix(finalPrefix);
         team.setSuffix(suffix);
-        team.addEntry(getFinalName(target.getName()));
-        applyTeamColorIfSupported(team, extractColorFromPrefix(finalPrefix));
+        team.addEntry(finalName);
     }
 
     public static void destroy(Player player) {
         Scoreboard scoreboard = player.getScoreboard();
+        String finalName = getFinalName(player.getName());
+
         for (Team team : scoreboard.getTeams()) {
-            if (team.hasEntry(getFinalName(player.getName()))) {
-                team.removeEntry(getFinalName(player.getName()));
+            if (team.hasEntry(finalName)) {
+                team.removeEntry(finalName);
             }
         }
     }
 
     private static void applyTeamColorIfSupported(Team team, ChatColor color) {
+        if (color == null) return;
         if (!isMinecraftVersionAtLeast(1, 13)) return;
         try {
             Method setColorMethod = team.getClass().getMethod("setColor", ChatColor.class);
@@ -139,6 +171,10 @@ public class TagUtils {
     }
 
     private static ChatColor extractColorFromPrefix(String prefix) {
+        if (prefix == null || prefix.isEmpty()) {
+            return ChatColor.WHITE;
+        }
+
         for (int i = 0; i < prefix.length() - 1; i++) {
             if (prefix.charAt(i) == '§') {
                 char code = prefix.charAt(i + 1);

@@ -101,6 +101,9 @@ public class Listeners implements Listener {
     if (player.isOp()) {
       sendUpdateNotification(player);
     }
+
+    Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> TagUtils.setTag(player), 10L);
+
 //    Bukkit.getScheduler().runTaskLaterAsynchronously(Core.getInstance(), () -> TagUtils.setTag(evt.getPlayer()), 5);
 
 //      GlowCosmetic.onPlayerJoin(player);
