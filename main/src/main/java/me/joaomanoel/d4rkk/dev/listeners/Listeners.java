@@ -17,7 +17,6 @@ import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.enums.ChatMention;
 import me.joaomanoel.d4rkk.dev.player.enums.PrivateMessages;
 import me.joaomanoel.d4rkk.dev.player.enums.ProtectionLobby;
-import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import me.joaomanoel.d4rkk.dev.player.hotbar.HotbarButton;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.plugin.logger.KLogger;
@@ -84,8 +83,12 @@ public class Listeners implements Listener {
       if (profile == null) {
         Profile.createOrLoadProfile(playerName);
         firstTimePlayers.add(playerId);
+//        LOGGER.log(Level.INFO, "Created new profile for: " + playerName);
+      } else {
+//        LOGGER.log(Level.INFO, "Loaded profile for: " + playerName);
       }
     } catch (ProfileLoadException ex) {
+//      LOGGER.log(Level.SEVERE, "Failed to load profile for: " + evt.getName(), ex);
       evt.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER,
               "§cFailed to load your profile. Please try again later.");
     }
@@ -100,8 +103,21 @@ public class Listeners implements Listener {
     }
 
     Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> TagUtils.setTag(player), 10L);
-  }
 
+//    Bukkit.getScheduler().runTaskLaterAsynchronously(Core.getInstance(), () -> TagUtils.setTag(evt.getPlayer()), 5);
+
+//      GlowCosmetic.onPlayerJoin(player);
+//      Profile newProfile = Profile.getProfile(player.getName());
+//      if (newProfile != null && GlowCosmetic.hasGlowSelected(newProfile)) {
+//        GlowCosmetic.applyGlowForAllViewers(newProfile);
+//      }
+
+
+//    if (firstTimePlayers.remove(playerId)) {
+//      handleFirstTimePlayer(player);
+//    }
+
+  }
   @EventHandler(priority = EventPriority.MONITOR)
   public void onPlayerMove(PlayerMoveEvent evt) {
     Player player = evt.getPlayer();
@@ -137,6 +153,10 @@ public class Listeners implements Listener {
     Cosmetic.listByType(MvpColor.class).stream()
             .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))
             .forEach(cosmetic -> cosmetic.give(profile));
+
+//    Cosmetic.listByType(GlowCosmetic.class).stream()
+//            .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))
+//            .forEach(cosmetic -> cosmetic.give(profile));
 
     Cosmetic.listByType(PunchMessage.class).stream()
             .filter(cosmetic -> !profile.getAbstractContainer("aCoreProfile", "cosmetics", CosmeticsContainer.class).hasCosmetic(cosmetic))
@@ -252,15 +272,14 @@ public class Listeners implements Listener {
   }
 
   private void cleanupPlayerData(UUID playerId, String playerName) {
-    // Não remover fake no quit - manter persistente
+/*    FakeManager.fakeNames.remove(playerName);
+    FakeManager.fakeRoles.remove(playerName);
+    FakeManager.fakeSkins.remove(playerName);*/
     DELAY_PLAYERS.remove(playerId);
     PROTECTION_LOBBY.remove(playerId);
     MESSAGE_COOLDOWNS.remove(playerId);
   }
 
-  // ============================================
-  // ✅ CHAT COM SUPORTE A FAKE - CORRIGIDO
-  // ============================================
   @EventHandler(priority = EventPriority.MONITOR)
   public void onAsyncPlayerChat(AsyncPlayerChatEvent evt) {
     if (evt.isCancelled()) {
@@ -273,39 +292,35 @@ public class Listeners implements Listener {
       return;
     }
 
-    // ✅ CORREÇÃO: Usar nome fake
-    String currentName = Manager.getCurrent(player.getName());
-
-    String format = String.format(evt.getFormat(), currentName, evt.getMessage());
-    TextComponent component = createChatComponent(player, format, profile, currentName);
+    String format = String.format(evt.getFormat(), player.getName(), evt.getMessage());
+    TextComponent component = createChatComponent(player, format, profile);
 
     evt.setCancelled(true);
-    evt.getRecipients().forEach(recipient -> handleChatRecipient(recipient, player, format, component, profile, currentName));
+    evt.getRecipients().forEach(recipient -> handleChatRecipient(recipient, player, format, component, profile));
   }
 
-  private TextComponent createChatComponent(Player player, String format, Profile profile, String displayName) {
-    Role role = FakeManager.isFake(player.getName())
-            ? FakeManager.getRole(player.getName())
-            : Role.getPlayerRole(player);
+  private TextComponent createChatComponent(Player player, String format, Profile profile) {
+    String currentName = Manager.getCurrent(player.getName());
+    Role role = Role.getPlayerRole(player);
 
     TextComponent component = new TextComponent("");
     for (BaseComponent baseComponent : TextComponent.fromLegacyText(format)) {
-      component.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/tell " + displayName + " "));
+      component.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/tell " + currentName + " "));
       component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-              TextComponent.fromLegacyText(StringUtils.getLastColor(role.getPrefix()) + displayName +
+              TextComponent.fromLegacyText(StringUtils.getLastColor(role.getPrefix()) + currentName +
                       "\n§fGroup: " + role.getName() + "\n \n§eClick to send a private message.")));
       component.addExtra(baseComponent);
     }
     return component;
   }
 
-  private void handleChatRecipient(Player recipient, Player sender, String format, TextComponent component, Profile senderProfile, String displayName) {
+  private void handleChatRecipient(Player recipient, Player sender, String format, TextComponent component, Profile senderProfile) {
     if (recipient == null) {
       return;
     }
 
     if (format.contains(recipient.getName()) && isMentionEnabled(recipient, sender)) {
-      handleMention(recipient, sender, format, component, senderProfile, displayName);
+      handleMention(recipient, sender, format, component, senderProfile);
     } else {
       recipient.spigot().sendMessage(component);
     }
@@ -318,18 +333,15 @@ public class Listeners implements Listener {
             recipientProfile.getPreferencesContainer().getChatMention() == ChatMention.ATIVADO;
   }
 
-  private void handleMention(Player recipient, Player sender, String format, TextComponent component, Profile senderProfile, String displayName) {
+  private void handleMention(Player recipient, Player sender, String format, TextComponent component, Profile senderProfile) {
     NMSManager.sendActionBar(Role.getColored(sender.getName()) + " §ementioned you in chat!", recipient);
     EnumSound.ORB_PICKUP.play(recipient, 1.0F, 1.0F);
-
-    Role role = FakeManager.isFake(sender.getName())
-            ? FakeManager.getRole(sender.getName())
-            : Role.getPlayerRole(senderProfile.getPlayer());
+    Role role = Role.getPlayerRole(senderProfile.getPlayer());
 
     String mentionedFormat = format.replace(recipient.getName(),
             "§e@" + recipient.getName() + (role.isDefault() ? "§7" : "§f"));
 
-    TextComponent mentionedComponent = createChatComponent(sender, mentionedFormat, senderProfile, displayName);
+    TextComponent mentionedComponent = createChatComponent(sender, mentionedFormat, senderProfile);
     recipient.spigot().sendMessage(mentionedComponent);
   }
 

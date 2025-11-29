@@ -55,17 +55,22 @@ public class Role {
   }
 
   public static String getColor(String color) {
-    return color;
+    return getColor(color);
   }
 
+  /**
+   * MÉTODO PRINCIPAL - CORRIGIDO PARA FUNCIONAR COM FAKE
+   */
   public static String getPrefixed(String name, String colorCode, boolean removeFake) {
     String originalName = name;
-    String prefix = "§7";
+    String prefix = "&7"; // Default color if none is found
 
+    // ✅ PRIORIDADE 1: Verificar se é um nome fake
     if (!removeFake && FakeManager.isFake(originalName)) {
       prefix = FakeManager.getRole(originalName).getPrefix();
       name = FakeManager.getFake(originalName);
 
+      // Apply the colored tag if provided
       if (colorCode != null && !colorCode.isEmpty()) {
         prefix = colorCode + prefix.replaceFirst("§[0-9a-fk-or]", "");
       }
@@ -73,10 +78,12 @@ public class Role {
       return prefix + name;
     }
 
+    // ✅ PRIORIDADE 2: Verificar se o jogador está online
     Object target = Manager.getPlayer(originalName);
     if (target != null) {
       prefix = getPlayerTagRole(target, true).getPrefix();
 
+      // Apply the colored tag if provided
       if (colorCode != null && !colorCode.isEmpty()) {
         prefix = colorCode + prefix.replaceFirst("§[0-9a-fk-or]", "");
       }
@@ -84,6 +91,7 @@ public class Role {
       return prefix + originalName;
     }
 
+    // ✅ PRIORIDADE 3: Buscar no banco de dados/cache
     String rs = RoleCache.isPresent(originalName)
             ? RoleCache.get(originalName)
             : Database.getInstance().getRankAndName(originalName);
@@ -92,12 +100,14 @@ public class Role {
       prefix = getRoleByName(rs.split(" : ")[0]).getPrefix();
       name = rs.split(" : ")[1];
 
+      // Verificar novamente se o nome real tem fake
       if (!removeFake && FakeManager.isFake(name)) {
         prefix = FakeManager.getRole(name).getPrefix();
         name = FakeManager.getFake(name);
       }
     }
 
+    // Apply the colored tag if provided
     if (colorCode != null && !colorCode.isEmpty()) {
       prefix = colorCode + prefix.replaceFirst("§[0-9a-fk-or]", "");
     }
@@ -109,10 +119,13 @@ public class Role {
     return getTaggedName(name, true, removeFake);
   }
 
-
+  /**
+   * MÉTODO AUXILIAR - CORRIGIDO PARA FUNCIONAR COM FAKE
+   */
   private static String getTaggedName(String name, boolean onlyColor, boolean removeFake) {
-    String prefix = "§7";
+    String prefix = "&7";
 
+    // ✅ Verificar fake primeiro
     if (!removeFake && FakeManager.isFake(name)) {
       prefix = FakeManager.getRole(name).getPrefix();
       if (onlyColor) {
@@ -121,6 +134,7 @@ public class Role {
       return prefix + FakeManager.getFake(name);
     }
 
+    // Verificar se está online
     Object target = Manager.getPlayer(name);
     if (target != null) {
       prefix = getPlayerRole(target, true).getPrefix();
@@ -130,6 +144,7 @@ public class Role {
       return prefix + name;
     }
 
+    // Buscar no banco de dados
     String rs = RoleCache.isPresent(name)
             ? RoleCache.get(name)
             : Database.getInstance().getRankAndName(name);
@@ -152,21 +167,33 @@ public class Role {
   }
 
   public static Role getRoleByName(String name) {
-    for (Role role : ROLES) {
-      if (StringUtils.stripColors(role.getName()).equalsIgnoreCase(name)) {
-        return role;
+    Iterator<Role> var1 = ROLES.iterator();
+
+    Role role;
+    do {
+      if (!var1.hasNext()) {
+        return ROLES.get(ROLES.size() - 1);
       }
-    }
-    return ROLES.isEmpty() ? null : ROLES.get(ROLES.size() - 1);
+
+      role = var1.next();
+    } while (!StringUtils.stripColors(role.getName()).equalsIgnoreCase(name));
+
+    return role;
   }
 
   public static Role getRoleByPermission(String permission) {
-    for (Role role : ROLES) {
-      if (role.getPermission().equals(permission)) {
-        return role;
+    Iterator<Role> var1 = ROLES.iterator();
+
+    Role role;
+    do {
+      if (!var1.hasNext()) {
+        return null;
       }
-    }
-    return null;
+
+      role = var1.next();
+    } while (!role.getPermission().equals(permission));
+
+    return role;
   }
 
   public static Role getPlayerRole(Object player) {
@@ -181,34 +208,42 @@ public class Role {
         DataContainer dataContainer = profile.getDataContainer("aCoreProfile", "tag");
         if (dataContainer != null) {
           Role tagRole = getRoleByName(dataContainer.getAsString());
-          if (tagRole != null) {
-            return tagRole.getPrefix() + playerName;
-          }
+          String prefix = tagRole.getPrefix();
+          return prefix + playerName;
         }
       }
     }
 
-    return "§7" + playerName;
+    return "&7" + playerName;
   }
 
+  /**
+   * CORRIGIDO: Agora considera fake
+   */
   public static Role getPlayerRole(Object player, boolean removeFake) {
     String playerName = Manager.getName(player);
 
+    // ✅ Verificar fake primeiro
     if (!removeFake && FakeManager.isFake(playerName)) {
       return FakeManager.getRole(playerName);
     }
 
-    for (Role role : ROLES) {
-      if (role.has(player)) {
-        return role;
-      }
-    }
+    Iterator<Role> var2 = ROLES.iterator();
 
-    return getLastRole();
+    Role role;
+    do {
+      if (!var2.hasNext()) {
+        return getLastRole();
+      }
+
+      role = var2.next();
+    } while (!role.has(player));
+
+    return role;
   }
 
   public static Role getLastRole() {
-    return ROLES.isEmpty() ? null : ROLES.get(ROLES.size() - 1);
+    return ROLES.get(ROLES.size() - 1);
   }
 
   public static List<Role> listRoles() {
@@ -219,6 +254,9 @@ public class Role {
     return getPlayerTagRole(player, false);
   }
 
+  /**
+   * CORRIGIDO: Agora considera fake
+   */
   public static Role getPlayerTagRole(Object player, boolean removeFake) {
     if (player == null) {
       return getLastRole();
@@ -226,6 +264,7 @@ public class Role {
 
     String playerName = Manager.getName(player);
 
+    // ✅ Verificar fake primeiro
     if (!removeFake && FakeManager.isFake(playerName)) {
       return FakeManager.getRole(playerName);
     }
