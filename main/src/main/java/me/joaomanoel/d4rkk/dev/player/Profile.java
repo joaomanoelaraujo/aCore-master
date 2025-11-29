@@ -146,23 +146,25 @@ public class Profile {
       Role playerRole = Role.getPlayerRole(player);
       org.bukkit.Location spawnLocation = Core.getLobby().clone();
 
-      if (playerRole.canFly()) {
-        spawnLocation.add(0, 6, 0);
-        player.teleport(spawnLocation);
-      } else {
-        player.teleport(spawnLocation);
-        player.setAllowFlight(false);
-        player.setFlying(false);
-      }
-
+//      if (playerRole.canFly()) {
+//        spawnLocation.add(0, 6, 0);
+//        player.teleport(spawnLocation);
+//      } else {
+//        player.teleport(spawnLocation);
+//        player.setAllowFlight(false);
+//        player.setFlying(false);
+//      }
+      player.teleport(spawnLocation);
+      player.setAllowFlight(false);
+      player.setFlying(false);
       Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
         if (player.isOnline()) {
           Role role = Role.getPlayerRole(player);
 
-          if (role.canFly()) {
-            player.setAllowFlight(true);
-            player.setFlying(true);
-          }
+//          if (role.canFly()) {
+//            player.setAllowFlight(true);
+//            player.setFlying(true);
+//          }
         }
       }, 0L);
 
@@ -337,10 +339,10 @@ public class Profile {
       if (p != null) {
         Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
           Role role = Role.getPlayerRole(p);
-          if (role.canFly()) {
-            p.setAllowFlight(true);
-            p.setFlying(true);
-          }
+//          if (role.canFly()) {
+//            p.setAllowFlight(true);
+//            p.setFlying(true);
+//          }
         }, 0); // 2 ticks -> evita o "cair"
       }
     }

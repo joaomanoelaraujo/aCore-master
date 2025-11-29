@@ -47,9 +47,11 @@ public class VanishCommand extends Commands {
                   }
                });
                Vanish.isVanish.remove(player.getName());
+               Vanish.show(player);
                player.sendMessage("§aVanish mode deactivated.");
             } else {
                Vanish.isVanish.add(player.getName());
+               Vanish.hide(player);
                player.sendMessage("§aVanish mode activated.");
             }
          }

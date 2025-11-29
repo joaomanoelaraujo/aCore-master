@@ -29,6 +29,7 @@ import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.player.Profile;
 import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
+import me.joaomanoel.d4rkk.dev.player.vanish.Vanish;
 import me.joaomanoel.d4rkk.dev.plugin.KPlugin;
 import me.joaomanoel.d4rkk.dev.plugin.config.KConfig;
 import me.joaomanoel.d4rkk.dev.replay.*;
@@ -211,7 +212,6 @@ public class Core extends KPlugin {
             getConfig().getString("database.mongodb.url", ""),
             sqliteFile
     );
-
 
     setupRoles();
     FakeManager.setupFake();

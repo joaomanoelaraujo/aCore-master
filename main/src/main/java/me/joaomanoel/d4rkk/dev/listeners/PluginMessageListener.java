@@ -19,12 +19,12 @@ import org.json.simple.parser.ParseException;
 import static me.joaomanoel.d4rkk.dev.party.PartyRole.MEMBER;
 
 public class PluginMessageListener implements org.bukkit.plugin.messaging.PluginMessageListener {
-  
+
   @Override
   public void onPluginMessageReceived(String channel, Player receiver, byte[] data) {
-    if (channel.equals("acore:main")) {
+    if (channel.equals("aCore")) {
       ByteArrayDataInput in = ByteStreams.newDataInput(data);
-      
+
       String subChannel = in.readUTF();
       switch (subChannel) {
         case "FAKE": {
@@ -87,20 +87,20 @@ public class PluginMessageListener implements org.bukkit.plugin.messaging.Plugin
               }
               party = BukkitPartyManager.createParty(leader, 0);
             }
-            
+
             if (delete) {
               party.delete();
               return;
             }
-            
+
             if (changes.containsKey("newLeader")) {
               party.transfer(changes.get("newLeader").toString());
             }
-            
+
             if (changes.containsKey("remove")) {
               party.listMembers().removeIf(pp -> pp.getName().equalsIgnoreCase(changes.get("remove").toString()));
             }
-            
+
             for (Object object : (JSONArray) changes.get("members")) {
               if (!party.isMember(object.toString())) {
                 party.listMembers().add(new PartyPlayer(object.toString(), MEMBER));

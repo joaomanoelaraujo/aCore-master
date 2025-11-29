@@ -147,6 +147,7 @@ me\joaomanoel\d4rkk\dev\menus\MenuReplays.class
 me\joaomanoel\d4rkk\dev\replay\EntityMovingData.class
 me\joaomanoel\d4rkk\dev\replay\LogUtils.class
 com\comphenix\packetwrapper\WrapperPlayServerRelEntityMoveLook.class
+me\joaomanoel\d4rkk\dev\utils\VanishAPI.class
 me\joaomanoel\d4rkk\dev\replay\INPC.class
 me\joaomanoel\d4rkk\dev\replay\ReplayPacketListener.class
 me\joaomanoel\d4rkk\dev\database\data\container\AchievementsContainer.class

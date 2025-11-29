@@ -4,6 +4,7 @@ import me.joaomanoel.d4rkk.dev.cmd.Commands;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.nms.NMSManager;
 import me.joaomanoel.d4rkk.dev.player.Profile;
+import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import me.joaomanoel.d4rkk.dev.player.role.Role;
 import me.joaomanoel.d4rkk.dev.utils.TagUtils;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -35,8 +36,16 @@ public class TagSelectCommand extends Commands {
         }
 
         Player player = (Player) sender;
+
+        // BLOQUEIO: Verifica se o player está usando fake
+        if (FakeManager.isFake(player.getName())) {
+            player.sendMessage("§cVocê não pode alterar sua tag enquanto estiver usando um nickname falso!");
+            player.sendMessage("§cUse §f/faker §cpara remover o fake antes de alterar sua tag.");
+            return;
+        }
+
         Profile profile = Profile.getProfile(player.getName());
-        
+
         if (profile == null) {
             player.sendMessage("§cErro ao carregar seu perfil.");
             return;
@@ -56,32 +65,33 @@ public class TagSelectCommand extends Commands {
                 }
             }
         }
+
         if (args.length == 0) {
             List<Role> availableTags = getAvailableTags(player);
-            
+
             if (availableTags.isEmpty()) {
                 player.sendMessage("§cVocê não possui nenhuma tag disponível.");
                 return;
             }
 
             TextComponent component = new TextComponent("§aSuas tags disponíveis:\n");
-            
+
             int max = availableTags.size();
             int i = 0;
 
             for (Role role : availableTags) {
                 String cleanName = stripColorCodes(role.getName());
-                
+
                 TextComponent next = new TextComponent(role.getName());
                 next.setClickEvent(new ClickEvent(Action.RUN_COMMAND, "/tag " + cleanName));
                 next.setHoverEvent(new HoverEvent(
-                    HoverEvent.Action.SHOW_TEXT, 
-                    TextComponent.fromLegacyText("§fAlterar para: " + role.getPrefix() + player.getName() + "\n§eClique para selecionar!")
+                        HoverEvent.Action.SHOW_TEXT,
+                        TextComponent.fromLegacyText("§fAlterar para: " + role.getPrefix() + player.getName() + "\n§eClique para selecionar!")
                 ));
-                
+
                 component.addExtra(next);
                 i++;
-                
+
                 if (i < max) {
                     component.addExtra(new TextComponent("§f, "));
                 }
@@ -93,14 +103,14 @@ public class TagSelectCommand extends Commands {
 
         String tagName = args[0];
         Role selectedRole = Role.getRoleByName(tagName);
-        
+
         if (selectedRole == null) {
             player.sendMessage("§cTag não encontrada.");
             return;
         }
 
         List<Role> availableTags = getAvailableTags(player);
-        
+
         if (!availableTags.contains(selectedRole)) {
             player.sendMessage("§cVocê não possui permissão para usar esta tag.");
             return;
@@ -109,50 +119,50 @@ public class TagSelectCommand extends Commands {
         DataContainer tagContainer = profile.getDataContainer("aCoreProfile", "tag");
         String cleanTagName = stripColorCodes(selectedRole.getName());
         tagContainer.set(cleanTagName);
-        
+
         TagUtils.setTag(player);
-        
+
         NMSManager.sendActionBar("§aSua tag foi alterada para: " + selectedRole.getName(), player);
-        
+
         flood.put(player.getName(), System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(3L));
     }
 
     private List<Role> getAvailableTags(Player player) {
         List<Role> availableTags = new ArrayList<>();
-        
+
         for (Role role : Role.listRoles()) {
             if (player.hasPermission(role.getPermission()) || role.isDefault()) {
                 availableTags.add(role);
             }
         }
-        
+
         return availableTags;
     }
 
     private String stripColorCodes(String text) {
         if (text == null) return "";
-        
+
         return text.replace("§0", "")
-                   .replace("§1", "")
-                   .replace("§2", "")
-                   .replace("§3", "")
-                   .replace("§4", "")
-                   .replace("§5", "")
-                   .replace("§6", "")
-                   .replace("§7", "")
-                   .replace("§8", "")
-                   .replace("§9", "")
-                   .replace("§a", "")
-                   .replace("§b", "")
-                   .replace("§c", "")
-                   .replace("§d", "")
-                   .replace("§e", "")
-                   .replace("§f", "")
-                   .replace("§l", "")
-                   .replace("§m", "")
-                   .replace("§n", "")
-                   .replace("§o", "")
-                   .replace("§r", "")
-                   .replace("§k", "");
+                .replace("§1", "")
+                .replace("§2", "")
+                .replace("§3", "")
+                .replace("§4", "")
+                .replace("§5", "")
+                .replace("§6", "")
+                .replace("§7", "")
+                .replace("§8", "")
+                .replace("§9", "")
+                .replace("§a", "")
+                .replace("§b", "")
+                .replace("§c", "")
+                .replace("§d", "")
+                .replace("§e", "")
+                .replace("§f", "")
+                .replace("§l", "")
+                .replace("§m", "")
+                .replace("§n", "")
+                .replace("§o", "")
+                .replace("§r", "")
+                .replace("§k", "");
     }
 }

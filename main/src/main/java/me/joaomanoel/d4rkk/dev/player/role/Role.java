@@ -5,6 +5,7 @@ import me.joaomanoel.d4rkk.dev.database.Database;
 import me.joaomanoel.d4rkk.dev.database.cache.RoleCache;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.player.Profile;
+import me.joaomanoel.d4rkk.dev.player.fake.FakeManager;
 import me.joaomanoel.d4rkk.dev.utils.StringUtils;
 import net.md_5.bungee.api.ChatColor;
 
@@ -53,27 +54,47 @@ public class Role {
     return getColored(name, false);
   }
 
-  public static String getColor(String color){
-    return getColor(color);
+  public static String getColor(String color) {
+    return color;
   }
 
   public static String getPrefixed(String name, String colorCode, boolean removeFake) {
-    String prefix = "&7";
-    if (!removeFake && Manager.isFake(name)) {
-      prefix = Manager.getFakeRole(name).getPrefix();
-    } else {
-      Object target = Manager.getPlayer(name);
-      if (target != null) {
-        prefix = getPlayerRole(target, true).getPrefix();
-      } else {
-        String rs = RoleCache.isPresent(name) ? RoleCache.get(name) : Database.getInstance().getRankAndName(name);
-        if (rs != null) {
-          prefix = getRoleByName(rs.split(" : ")[0]).getPrefix();
-          name = rs.split(" : ")[1];
-          if (!removeFake && Manager.isFake(name)) {
-            name = Manager.getFake(name);
-          }
-        }
+    String originalName = name;
+    String prefix = "§7";
+
+    if (!removeFake && FakeManager.isFake(originalName)) {
+      prefix = FakeManager.getRole(originalName).getPrefix();
+      name = FakeManager.getFake(originalName);
+
+      if (colorCode != null && !colorCode.isEmpty()) {
+        prefix = colorCode + prefix.replaceFirst("§[0-9a-fk-or]", "");
+      }
+
+      return prefix + name;
+    }
+
+    Object target = Manager.getPlayer(originalName);
+    if (target != null) {
+      prefix = getPlayerTagRole(target, true).getPrefix();
+
+      if (colorCode != null && !colorCode.isEmpty()) {
+        prefix = colorCode + prefix.replaceFirst("§[0-9a-fk-or]", "");
+      }
+
+      return prefix + originalName;
+    }
+
+    String rs = RoleCache.isPresent(originalName)
+            ? RoleCache.get(originalName)
+            : Database.getInstance().getRankAndName(originalName);
+
+    if (rs != null) {
+      prefix = getRoleByName(rs.split(" : ")[0]).getPrefix();
+      name = rs.split(" : ")[1];
+
+      if (!removeFake && FakeManager.isFake(name)) {
+        prefix = FakeManager.getRole(name).getPrefix();
+        name = FakeManager.getFake(name);
       }
     }
 
@@ -88,111 +109,106 @@ public class Role {
     return getTaggedName(name, true, removeFake);
   }
 
+
   private static String getTaggedName(String name, boolean onlyColor, boolean removeFake) {
-    String prefix = "&7";
-    if (!removeFake && Manager.isFake(name)) {
-      prefix = Manager.getFakeRole(name).getPrefix();
+    String prefix = "§7";
+
+    if (!removeFake && FakeManager.isFake(name)) {
+      prefix = FakeManager.getRole(name).getPrefix();
+      if (onlyColor) {
+        prefix = StringUtils.getLastColor(prefix);
+      }
+      return prefix + FakeManager.getFake(name);
+    }
+
+    Object target = Manager.getPlayer(name);
+    if (target != null) {
+      prefix = getPlayerRole(target, true).getPrefix();
+      if (onlyColor) {
+        prefix = StringUtils.getLastColor(prefix);
+      }
+      return prefix + name;
+    }
+
+    String rs = RoleCache.isPresent(name)
+            ? RoleCache.get(name)
+            : Database.getInstance().getRankAndName(name);
+
+    if (rs != null) {
+      prefix = getRoleByName(rs.split(" : ")[0]).getPrefix();
       if (onlyColor) {
         prefix = StringUtils.getLastColor(prefix);
       }
 
-      return prefix + Manager.getFake(name);
-    } else {
-      Object target = Manager.getPlayer(name);
-      if (target != null) {
-        prefix = getPlayerRole(target, true).getPrefix();
-        if (onlyColor) {
-          prefix = StringUtils.getLastColor(prefix);
-        }
-
-        return prefix + name;
-      } else {
-        String rs = RoleCache.isPresent(name) ? RoleCache.get(name) : Database.getInstance().getRankAndName(name);
-        if (rs != null) {
-          prefix = getRoleByName(rs.split(" : ")[0]).getPrefix();
-          if (onlyColor) {
-            prefix = StringUtils.getLastColor(prefix);
-          }
-
-          name = rs.split(" : ")[1];
-          if (!removeFake && Manager.isFake(name)) {
-            name = Manager.getFake(name);
-          }
-
-          return prefix + name;
-        } else {
-          return prefix + name;
-        }
+      name = rs.split(" : ")[1];
+      if (!removeFake && FakeManager.isFake(name)) {
+        name = FakeManager.getFake(name);
       }
+
+      return prefix + name;
     }
+
+    return prefix + name;
   }
 
   public static Role getRoleByName(String name) {
-    if (name == null || name.isEmpty()) {
-      return getLastRole();
-    }
-
-    Iterator<Role> var1 = ROLES.iterator();
-
-    Role role;
-    do {
-      if (!var1.hasNext()) {
-        return getLastRole();
+    for (Role role : ROLES) {
+      if (StringUtils.stripColors(role.getName()).equalsIgnoreCase(name)) {
+        return role;
       }
-
-      role = var1.next();
-    } while(!StringUtils.stripColors(role.getName()).equalsIgnoreCase(name));
-
-    return role;
+    }
+    return ROLES.isEmpty() ? null : ROLES.get(ROLES.size() - 1);
   }
 
   public static Role getRoleByPermission(String permission) {
-    Iterator<Role> var1 = ROLES.iterator();
-
-    Role role;
-    do {
-      if (!var1.hasNext()) {
-        return null;
+    for (Role role : ROLES) {
+      if (role.getPermission().equals(permission)) {
+        return role;
       }
-
-      role = var1.next();
-    } while(!role.getPermission().equals(permission));
-
-    return role;
+    }
+    return null;
   }
 
   public static Role getPlayerRole(Object player) {
     return getPlayerRole(player, false);
   }
 
-  public static Role getPlayerRole(Object player, boolean removeFake) {
-    if (player == null) {
-      return getLastRole();
-    }
-
-    if (!removeFake && Manager.isFake(Manager.getName(player))) {
-      return Manager.getFakeRole(Manager.getName(player));
-    } else {
-      Iterator<Role> var2 = ROLES.iterator();
-
-      Role role;
-      do {
-        if (!var2.hasNext()) {
-          return getLastRole();
+  public static String getPlayerTag(String playerName) {
+    Object target = Manager.getPlayer(playerName);
+    if (target != null) {
+      Profile profile = Profile.getProfile(target.toString());
+      if (profile != null) {
+        DataContainer dataContainer = profile.getDataContainer("aCoreProfile", "tag");
+        if (dataContainer != null) {
+          Role tagRole = getRoleByName(dataContainer.getAsString());
+          if (tagRole != null) {
+            return tagRole.getPrefix() + playerName;
+          }
         }
-
-        role = var2.next();
-      } while(!role.has(player));
-
-      return role;
+      }
     }
+
+    return "§7" + playerName;
+  }
+
+  public static Role getPlayerRole(Object player, boolean removeFake) {
+    String playerName = Manager.getName(player);
+
+    if (!removeFake && FakeManager.isFake(playerName)) {
+      return FakeManager.getRole(playerName);
+    }
+
+    for (Role role : ROLES) {
+      if (role.has(player)) {
+        return role;
+      }
+    }
+
+    return getLastRole();
   }
 
   public static Role getLastRole() {
-    if (ROLES.isEmpty()) {
-      return null;
-    }
-    return ROLES.get(ROLES.size() - 1);
+    return ROLES.isEmpty() ? null : ROLES.get(ROLES.size() - 1);
   }
 
   public static List<Role> listRoles() {
@@ -209,6 +225,11 @@ public class Role {
     }
 
     String playerName = Manager.getName(player);
+
+    if (!removeFake && FakeManager.isFake(playerName)) {
+      return FakeManager.getRole(playerName);
+    }
+
     Profile profile = Profile.getProfile(playerName);
 
     if (profile == null) {
@@ -222,10 +243,6 @@ public class Role {
       if (tagRole != null) {
         return tagRole;
       }
-    }
-
-    if (!removeFake && Manager.isFake(playerName)) {
-      return Manager.getFakeRole(playerName);
     }
 
     return getPlayerRole(player, removeFake);
