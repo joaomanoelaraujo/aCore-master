@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Back to Role.java &amp; back to Listeners.java versions">
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Fixed bug on FAKE (CHAT)&#10;- Fixed bug on MYSQL-DRIVER (BUNGEE &amp; SPIGOT)&#10;- Fixed bug on MYSQLDatabase connector&#10;- Updated MYSQLDatabase Driver">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/bungee/Bungee.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/bungee/Bungee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/MySQLDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/MySQLDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/hook/protocollib/fake/FakeAdapter_1_8_R3.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/hook/protocollib/fake/FakeAdapter_1_8_R3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/bungee/Bungee.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/bungee/Bungee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/MySQLDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/MySQLDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/hook/protocollib/fake/FakeAdapter_1_8_R3.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/hook/protocollib/fake/FakeAdapter_1_8_R3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/bungee.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/bungee.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/plugin.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/original-aCore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/original-aCore.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nms/target/nms-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/nms/target/nms-2.1.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/target/utils-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/utils-2.1.jar" afterDir="false" />
@@ -215,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764442893655</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="- Fixed bug on FAKE (CHAT)&#10;- Fixed bug on MYSQL-DRIVER (BUNGEE &amp; SPIGOT)&#10;- Fixed bug on MYSQLDatabase connector&#10;- Updated MYSQLDatabase Driver">
+      <option name="closed" value="true" />
+      <created>1764549873480</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1764549873480</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -233,6 +236,7 @@
     <MESSAGE value="- Added /tag command, Fixed bug on TagUtils." />
     <MESSAGE value="- Fixed bug on /vanish &amp; fixed bug on Fake (TAG)&#10;- Added /tag" />
     <MESSAGE value="- Back to Role.java &amp; back to Listeners.java versions" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Back to Role.java &amp; back to Listeners.java versions" />
+    <MESSAGE value="- Fixed bug on FAKE (CHAT)&#10;- Fixed bug on MYSQL-DRIVER (BUNGEE &amp; SPIGOT)&#10;- Fixed bug on MYSQLDatabase connector&#10;- Updated MYSQLDatabase Driver" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fixed bug on FAKE (CHAT)&#10;- Fixed bug on MYSQL-DRIVER (BUNGEE &amp; SPIGOT)&#10;- Fixed bug on MYSQLDatabase connector&#10;- Updated MYSQLDatabase Driver" />
   </component>
 </project>
