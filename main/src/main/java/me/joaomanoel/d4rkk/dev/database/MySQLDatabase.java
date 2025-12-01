@@ -24,7 +24,7 @@ import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 public class MySQLDatabase extends Database {
-  
+
   private final String host;
   private final String port;
   private final String dbname;
@@ -34,11 +34,11 @@ public class MySQLDatabase extends Database {
 
   private Connection connection;
   private final ExecutorService executor;
-  
+
   public MySQLDatabase(String host, String port, String dbname, String username, String password, boolean mariadb) {
     this(host, port, dbname, username, password, mariadb, false);
   }
-  
+
   public MySQLDatabase(String host, String port, String dbname, String username, String password, boolean mariadb, boolean skipTables) {
     this.host = host;
     this.port = port;
@@ -49,15 +49,15 @@ public class MySQLDatabase extends Database {
 
     this.openConnection();
     this.executor = Executors.newCachedThreadPool();
-    
+
     if (!skipTables) {
       this.update(
-          "CREATE TABLE IF NOT EXISTS `aCoreNetworkBooster` (`id` VARCHAR(32), `booster` TEXT, `multiplier` DOUBLE, `expires` LONG, PRIMARY KEY(`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;");
-      
+              "CREATE TABLE IF NOT EXISTS `aCoreNetworkBooster` (`id` VARCHAR(32), `booster` TEXT, `multiplier` DOUBLE, `expires` LONG, PRIMARY KEY(`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;");
+
       DataTable.listTables().forEach(table -> {
         this.update(table.getInfo().create());
         try (
-            PreparedStatement ps = prepareStatement("ALTER TABLE `" + table.getInfo().name() + "` ADD INDEX `namex` (`name` DESC)")
+                PreparedStatement ps = prepareStatement("ALTER TABLE `" + table.getInfo().name() + "` ADD INDEX `namex` (`name` DESC)")
         ) {
           ps.executeUpdate();
         } catch (SQLException ignore) {
@@ -84,12 +84,12 @@ public class MySQLDatabase extends Database {
       }
     }
   }
-  
+
   @Override
   public void setBooster(String minigame, String booster, double multiplier, long expires) {
     execute("UPDATE `aCoreNetworkBooster` SET `booster` = ?, `multiplier` = ?, `expires` = ? WHERE `id` = ?", booster, multiplier, expires, minigame);
   }
-  
+
   @Override
   public NetworkBooster getBooster(String minigame) {
     try (CachedRowSet rs = query("SELECT * FROM `aCoreNetworkBooster` WHERE `id` = ?", minigame)) {
@@ -104,10 +104,10 @@ public class MySQLDatabase extends Database {
       }
     } catch (SQLException ignored) {
     }
-    
+
     return null;
   }
-  
+
   @Override
   public String getRankAndName(String player) {
     try (CachedRowSet rs = query("SELECT `name`, `role` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase())) {
@@ -120,7 +120,7 @@ public class MySQLDatabase extends Database {
     }
     return null;
   }
-  
+
   @Override
   public boolean getPreference(String player, String id, boolean def) {
     boolean preference = true;
@@ -131,7 +131,7 @@ public class MySQLDatabase extends Database {
     } catch (Exception ex) {
       ex.printStackTrace();
     }
-    
+
     return preference;
   }
 
@@ -187,20 +187,20 @@ public class MySQLDatabase extends Database {
     return result;
   }
 
-  
+
   @Override
   public void close() {
     this.executor.shutdownNow().forEach(Runnable::run);
     this.closeConnection();
   }
-  
+
   @Override
   public Map<String, Map<String, DataContainer>> load(String name) throws ProfileLoadException {
     Map<String, Map<String, DataContainer>> tableMap = new HashMap<>();
     for (DataTable table : DataTable.listTables()) {
       Map<String, DataContainer> containerMap = new LinkedHashMap<>();
       tableMap.put(table.getInfo().name(), containerMap);
-      
+
       try (CachedRowSet rs = this.query(table.getInfo().select(), name.toLowerCase())) {
         if (rs != null) {
           for (int collumn = 2; collumn <= rs.getMetaData().getColumnCount(); collumn++) {
@@ -211,7 +211,7 @@ public class MySQLDatabase extends Database {
       } catch (SQLException ex) {
         throw new ProfileLoadException(ex.getMessage());
       }
-      
+
       containerMap = table.getDefaultValues();
       tableMap.put(table.getInfo().name(), containerMap);
       List<Object> list = new ArrayList<>();
@@ -220,27 +220,27 @@ public class MySQLDatabase extends Database {
       this.execute(table.getInfo().insert(), list.toArray());
       list.clear();
     }
-    
+
     return tableMap;
   }
-  
+
   @Override
   public void save(String name, Map<String, Map<String, DataContainer>> tableMap) {
     this.save0(name, tableMap, true);
   }
-  
+
   @Override
   public void saveSync(String name, Map<String, Map<String, DataContainer>> tableMap) {
     this.save0(name, tableMap, false);
   }
-  
+
   private void save0(String name, Map<String, Map<String, DataContainer>> tableMap, boolean async) {
     for (DataTable table : DataTable.listTables()) {
       Map<String, DataContainer> rows = tableMap.get(table.getInfo().name());
       if (rows.values().stream().noneMatch(DataContainer::isUpdated)) {
         continue;
       }
-      
+
       List<Object> values = rows.values().stream().filter(DataContainer::isUpdated).map(DataContainer::get).collect(Collectors.toList());
       StringBuilder query = new StringBuilder("UPDATE `" + table.getInfo().name() + "` SET ");
       for (Map.Entry<String, DataContainer> collumn : rows.entrySet()) {
@@ -261,7 +261,7 @@ public class MySQLDatabase extends Database {
       values.clear();
     }
   }
-  
+
   @Override
   public String exists(String name) {
     try {
@@ -270,26 +270,37 @@ public class MySQLDatabase extends Database {
       return null;
     }
   }
-  
+
   public void openConnection() {
     try {
       boolean reconnected = this.connection != null;
-      Class.forName(this.mariadb ? "org.mariadb.jdbc.Driver" : "com.mysql.jdbc.Driver");
-      this.connection = DriverManager.getConnection((this.mariadb ?
-          "jdbc:mariadb://" :
-          "jdbc:mysql://") + host + ":" + port + "/" + dbname + "?verifyServerCertificate=false&useSSL=false&useUnicode=yes&characterEncoding=UTF-8", username, password);
+      Class.forName(this.mariadb ? "org.mariadb.jdbc.Driver" : "com.mysql.cj.jdbc.Driver");
+
+      this.connection = DriverManager.getConnection(
+              (this.mariadb ? "jdbc:mariadb://" : "jdbc:mysql://") +
+                      host + ":" + port + "/" + dbname +
+                      "?verifyServerCertificate=false" +
+                      "&useSSL=false" +
+                      "&useUnicode=yes" +
+                      "&characterEncoding=UTF-8" +
+                      "&serverTimezone=UTC" +
+                      "&allowPublicKeyRetrieval=true",
+              username,
+              password
+      );
+
       if (reconnected) {
         LOGGER.info("Reconected to MySQL!");
         return;
       }
-      
+
       LOGGER.info("Conected to MySQL!");
     } catch (Exception ex) {
       LOGGER.log(Level.SEVERE, "Failed to connect to MySQL: ", ex);
       System.exit(0);
     }
   }
-  
+
   public void closeConnection() {
     if (isConnected()) {
       try {
@@ -299,15 +310,15 @@ public class MySQLDatabase extends Database {
       }
     }
   }
-  
+
   public Connection getConnection() throws SQLException {
     if (!isConnected()) {
       this.openConnection();
     }
-    
+
     return this.connection;
   }
-  
+
   public boolean isConnected() {
     try {
       return !(connection == null || connection.isClosed() || !connection.isValid(5));
@@ -316,7 +327,7 @@ public class MySQLDatabase extends Database {
       return false;
     }
   }
-  
+
   public void update(String sql, Object... vars) {
     try (PreparedStatement ps = prepareStatement(sql, vars)) {
       ps.executeUpdate();
@@ -324,13 +335,13 @@ public class MySQLDatabase extends Database {
       LOGGER.log(Level.WARNING, "Failed to execute an SQL query: ", ex);
     }
   }
-  
+
   public void execute(String sql, Object... vars) {
     executor.execute(() -> {
       update(sql, vars);
     });
   }
-  
+
   public int updateWithInsertId(String sql, Object... vars) {
     int id = -1;
     ResultSet rs = null;
@@ -353,10 +364,10 @@ public class MySQLDatabase extends Database {
         e.printStackTrace();
       }
     }
-    
+
     return id;
   }
-  
+
   public PreparedStatement prepareStatement(String query, Object... vars) {
     try {
       PreparedStatement ps = getConnection().prepareStatement(query);
@@ -367,37 +378,37 @@ public class MySQLDatabase extends Database {
     } catch (SQLException ex) {
       LOGGER.log(Level.WARNING, "Failed to prepare an SQL statement: ", ex);
     }
-    
+
     return null;
   }
-  
+
   public CachedRowSet query(String query, Object... vars) {
     CachedRowSet rowSet = null;
     try {
       Future<CachedRowSet> future = executor.submit(() -> {
         CachedRowSet crs = null;
         try (PreparedStatement ps = prepareStatement(query, vars); ResultSet rs = ps.executeQuery()) {
-          
+
           CachedRowSet rs2 = RowSetProvider.newFactory().createCachedRowSet();
           rs2.populate(rs);
-          
+
           if (rs2.next()) {
             crs = rs2;
           }
         } catch (SQLException ex) {
           LOGGER.log(Level.WARNING, "Failed to execute a Request: ", ex);
         }
-        
+
         return crs;
       });
-      
+
       if (future.get() != null) {
         rowSet = future.get();
       }
     } catch (Exception ex) {
       LOGGER.log(Level.WARNING, "Failed to schedule a Future Task: ", ex);
     }
-    
+
     return rowSet;
   }
 }
