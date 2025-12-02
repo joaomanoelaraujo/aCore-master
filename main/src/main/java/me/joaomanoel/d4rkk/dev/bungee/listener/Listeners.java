@@ -54,6 +54,20 @@ public class Listeners implements Listener {
 
         ByteArrayDataInput in = ByteStreams.newDataInput(evt.getData());
         String subChannel = in.readUTF();
+        if (subChannel.equalsIgnoreCase("PARTY_LEADER_JOIN_GAME")) {
+          BungeeParty party = BungeePartyManager.getLeaderParty(player.getName());
+          if (party != null) {
+            String serverName = player.getServer().getInfo().getName();
+            party.onLeaderJoinGame(serverName);
+          }
+        }
+        // ✅ NOVO: Detecta quando o líder sai de um jogo
+        else if (subChannel.equalsIgnoreCase("PARTY_LEADER_LEAVE_GAME")) {
+          BungeeParty party = BungeePartyManager.getLeaderParty(player.getName());
+          if (party != null) {
+            party.onLeaderLeaveGame();
+          }
+        }
         if (subChannel.equalsIgnoreCase("FAKE_SKIN")) {
           LoginResult profile = ((InitialHandler) player.getPendingConnection()).getLoginProfile();
           if (profile != null) {
@@ -77,9 +91,11 @@ public class Listeners implements Listener {
   public void onServerConnected(ServerConnectedEvent evt) {
     ProxiedPlayer player = evt.getPlayer();
 
+    // ✅ NOVO: Notifica a party sobre mudança de servidor do líder
     BungeeParty party = BungeePartyManager.getLeaderParty(player.getName());
     if (party != null) {
       party.sendData(evt.getServer().getInfo());
+      party.onLeaderServerChange(evt.getServer().getInfo().getName());
     }
 
     if (Bungee.isFake(player.getName())) {

@@ -16,12 +16,21 @@ import org.json.simple.JSONObject;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static me.joaomanoel.d4rkk.dev.party.PartyRole.LEADER;
 
 @SuppressWarnings("unchecked")
 public class BungeeParty extends Party {
+
+  // ✅ NOVO: Rastreia em qual servidor cada membro está
+  private final Map<String, String> memberServers = new HashMap<>();
+
+  // ✅ NOVO: Rastreia se o líder está em jogo
+  private boolean leaderInGame = false;
+  private String leaderGameServer = null;
 
   public BungeeParty(String leader, int slots) {
     super(leader, slots);
@@ -51,6 +60,20 @@ public class BungeeParty extends Party {
   public void join(String member) {
     super.join(member);
     this.sendData();
+
+    // ✅ NOVO: Se o líder já está em jogo, puxa o novo membro também
+    if (leaderInGame && leaderGameServer != null) {
+      ProxiedPlayer player = (ProxiedPlayer) Manager.getPlayer(member);
+      if (player != null) {
+        ServerInfo targetServer = ProxyServer.getInstance().getServerInfo(leaderGameServer);
+        if (targetServer != null) {
+          player.connect(targetServer);
+          player.sendMessage(TextComponent.fromLegacyText(
+                  "§aVocê foi puxado para o jogo do líder da party!"
+          ));
+        }
+      }
+    }
   }
 
   @Override
@@ -62,7 +85,9 @@ public class BungeeParty extends Party {
     }
 
     this.members.removeIf(pp -> pp.getName().equalsIgnoreCase(member));
+    this.memberServers.remove(member); // ✅ Remove do rastreamento
     this.sendData("remove", member);
+
     if (leader.equals(member)) {
       this.sendData("newLeader", this.members.get(0).getName());
       this.leader = this.members.get(0);
@@ -79,10 +104,52 @@ public class BungeeParty extends Party {
   @Override
   public void kick(String member) {
     super.kick(member);
+    this.memberServers.remove(member); // ✅ Remove do rastreamento
     this.sendData("remove", member);
 
     this.broadcast(LanguageBungee.party$member_kicked
             .replace("{player}", Role.getPrefixed(member)));
+  }
+
+  // ✅ NOVO: Método chamado quando o líder entra em um servidor
+  public void onLeaderServerChange(String serverName) {
+    memberServers.put(this.getLeader(), serverName);
+  }
+
+  // ✅ NOVO: Método chamado quando o líder entra em um jogo
+  public void onLeaderJoinGame(String serverName) {
+    this.leaderInGame = true;
+    this.leaderGameServer = serverName;
+
+    // Puxa todos os membros para o servidor do jogo
+    ServerInfo targetServer = ProxyServer.getInstance().getServerInfo(serverName);
+    if (targetServer != null) {
+      for (PartyPlayer member : this.members) {
+        if (!member.equals(this.leader)) {
+          ProxiedPlayer player = (ProxiedPlayer) Manager.getPlayer(member.getName());
+          if (player != null) {
+            // Só puxa se não estiver no mesmo servidor
+            if (player.getServer() == null || !player.getServer().getInfo().getName().equals(serverName)) {
+              player.connect(targetServer);
+              player.sendMessage(TextComponent.fromLegacyText(
+                      "§a" + Role.getPrefixed(this.getLeader()) + " §aentrou em um jogo! Você foi puxado automaticamente."
+              ));
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // ✅ NOVO: Método chamado quando o líder sai de um jogo
+  public void onLeaderLeaveGame() {
+    this.leaderInGame = false;
+    this.leaderGameServer = null;
+  }
+
+  // ✅ NOVO: Verifica se o líder está em jogo
+  public boolean isLeaderInGame() {
+    return this.leaderInGame;
   }
 
   public void sendData(ServerInfo serverInfo) {

@@ -1,5 +1,7 @@
 package me.joaomanoel.d4rkk.dev.listeners;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.Manager;
 import me.joaomanoel.d4rkk.dev.cosmetic.Cosmetic;
@@ -97,12 +99,18 @@ public class Listeners implements Listener {
   @EventHandler(priority = EventPriority.MONITOR)
   public void onPlayerJoin(PlayerJoinEvent evt) {
     Player player = evt.getPlayer();
+    Profile profile = Profile.getProfile(player.getName());
     UUID playerId = player.getUniqueId();
     if (player.isOp()) {
       sendUpdateNotification(player);
     }
 
     Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> TagUtils.setTag(player), 10L);
+    Core.getInstance().getServer().getScheduler().runTaskLater(Core.getInstance(), () -> {
+      if (profile.playingGame()) {
+        sendPartyLeaderJoinGame(player);
+      }
+    }, 20L);
 
 //    Bukkit.getScheduler().runTaskLaterAsynchronously(Core.getInstance(), () -> TagUtils.setTag(evt.getPlayer()), 5);
 
@@ -485,5 +493,34 @@ public class Listeners implements Listener {
         player.spigot().sendMessage(component);
       }
     }.runTaskLater(Core.getInstance(), 20L);
+  }
+
+  // ✅ Este evento detecta quando um jogador entra no servidor
+
+
+  // ✅ Método para notificar o BungeeCord
+  private void sendPartyLeaderJoinGame(Player player) {
+    try {
+      ByteArrayDataOutput out = ByteStreams.newDataOutput();
+      out.writeUTF("PARTY_LEADER_JOIN_GAME");
+      out.writeUTF(player.getName());
+
+      player.sendPluginMessage(Core.getInstance(), "acore:main", out.toByteArray());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  // ✅ Método para notificar quando o jogador sai do jogo
+  private void sendPartyLeaderLeaveGame(Player player) {
+    try {
+      ByteArrayDataOutput out = ByteStreams.newDataOutput();
+      out.writeUTF("PARTY_LEADER_LEAVE_GAME");
+      out.writeUTF(player.getName());
+
+      player.sendPluginMessage(Core.getInstance(), "acore:main", out.toByteArray());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }

@@ -62,48 +62,22 @@ public class Role {
    * MÉTODO PRINCIPAL - CORRIGIDO PARA FUNCIONAR COM FAKE
    */
   public static String getPrefixed(String name, String colorCode, boolean removeFake) {
-    String originalName = name;
     String prefix = "&7"; // Default color if none is found
-
-    // ✅ PRIORIDADE 1: Verificar se é um nome fake
-    if (!removeFake && FakeManager.isFake(originalName)) {
-      prefix = FakeManager.getRole(originalName).getPrefix();
-      name = FakeManager.getFake(originalName);
-
-      // Apply the colored tag if provided
-      if (colorCode != null && !colorCode.isEmpty()) {
-        prefix = colorCode + prefix.replaceFirst("§[0-9a-fk-or]", "");
-      }
-
-      return prefix + name;
-    }
-
-    // ✅ PRIORIDADE 2: Verificar se o jogador está online
-    Object target = Manager.getPlayer(originalName);
-    if (target != null) {
-      prefix = getPlayerTagRole(target, true).getPrefix();
-
-      // Apply the colored tag if provided
-      if (colorCode != null && !colorCode.isEmpty()) {
-        prefix = colorCode + prefix.replaceFirst("§[0-9a-fk-or]", "");
-      }
-
-      return prefix + originalName;
-    }
-
-    // ✅ PRIORIDADE 3: Buscar no banco de dados/cache
-    String rs = RoleCache.isPresent(originalName)
-            ? RoleCache.get(originalName)
-            : Database.getInstance().getRankAndName(originalName);
-
-    if (rs != null) {
-      prefix = getRoleByName(rs.split(" : ")[0]).getPrefix();
-      name = rs.split(" : ")[1];
-
-      // Verificar novamente se o nome real tem fake
-      if (!removeFake && FakeManager.isFake(name)) {
-        prefix = FakeManager.getRole(name).getPrefix();
-        name = FakeManager.getFake(name);
+    if (!removeFake && Manager.isFake(name)) {
+      prefix = Manager.getFakeRole(name).getPrefix();
+    } else {
+      Object target = Manager.getPlayer(name);
+      if (target != null) {
+        prefix = getPlayerRole(target, true).getPrefix();
+      } else {
+        String rs = RoleCache.isPresent(name) ? RoleCache.get(name) : Database.getInstance().getRankAndName(name);
+        if (rs != null) {
+          prefix = getRoleByName(rs.split(" : ")[0]).getPrefix();
+          name = rs.split(" : ")[1];
+          if (!removeFake && Manager.isFake(name)) {
+            name = Manager.getFake(name);
+          }
+        }
       }
     }
 

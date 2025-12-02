@@ -311,6 +311,7 @@ me\joaomanoel\d4rkk\dev\bungee\methods\BungeeWriter.class
 me\joaomanoel\d4rkk\dev\game\GameTeam.class
 me\joaomanoel\d4rkk\dev\cmd\CashCommand.class
 com\comphenix\packetwrapper\WrapperPlayClientVehicleMove.class
+me\joaomanoel\d4rkk\dev\utils\LanguageUtilsBungee.class
 com\comphenix\packetwrapper\v15\WrapperPlayServerRelEntityMove.class
 com\comphenix\packetwrapper\WrapperPlayServerPlayerInfo.class
 me\joaomanoel\d4rkk\dev\replay\EntityAnimationData.class
