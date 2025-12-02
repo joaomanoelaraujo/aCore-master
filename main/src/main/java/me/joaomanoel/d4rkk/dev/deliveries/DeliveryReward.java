@@ -49,11 +49,12 @@ public class DeliveryReward {
   private enum RewardType {
     COMANDO(1),
     CASH(1),
-    BlockSumo_COINS(1),
-    BedWars_Coins(1),
-    SkyWars_COINS(1),
-    TheBridge_COINS(1),
-    Murder_COINS(1),
+    BEDWARS_COINS(1),
+    BLOCKSUMO_COINS(1),
+    SKYWARS_COINS(1),
+    THEBRIDGE_COINS(1),
+    MURDER_COINS(1),
+
     PRIVATE_BOOSTER(3),
     NETWORK_BOOSTER(3);
     
@@ -76,7 +77,7 @@ public class DeliveryReward {
     public int getParameters() {
       return this.parameters;
     }
-    
+
     public Object[] parseValues(String value) throws Exception {
       if (this == COMANDO) {
         return new Object[]{value};
@@ -86,9 +87,13 @@ public class DeliveryReward {
         return new Object[]{Double.parseDouble(value)};
       } else if (this.name().contains("_BOOSTER")) {
         String[] values = value.split(":");
-        return new Object[]{Integer.parseInt(values[0]), Double.parseDouble(values[1]), Long.parseLong(values[2])};
+        return new Object[]{
+                Integer.parseInt(values[0]), // quantia
+                Double.parseDouble(values[1]), // multiplicador
+                Long.parseLong(values[2]) // horas
+        };
       }
-      
+
       throw new Exception();
     }
   }
