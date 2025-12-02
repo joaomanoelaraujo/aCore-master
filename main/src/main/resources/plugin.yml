@@ -1,6 +1,6 @@
 author: D4RKK
 name: aCore
-version: 2.8.2
+version: 2.8.3
 api-version: 1.14
 depend: [ProtocolLib, PlaceholderAPI]
 commands:
