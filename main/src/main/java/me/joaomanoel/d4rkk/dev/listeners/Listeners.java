@@ -309,7 +309,7 @@ public class Listeners implements Listener {
 
   private TextComponent createChatComponent(Player player, String format, Profile profile) {
     String currentName = Manager.getCurrent(player.getName());
-    Role role = Role.getPlayerRole(player);
+    Role role = Role.getPlayerTagRole(player);
 
     TextComponent component = new TextComponent("");
     for (BaseComponent baseComponent : TextComponent.fromLegacyText(format)) {
@@ -344,7 +344,7 @@ public class Listeners implements Listener {
   private void handleMention(Player recipient, Player sender, String format, TextComponent component, Profile senderProfile) {
     NMSManager.sendActionBar(Role.getColored(sender.getName()) + " §ementioned you in chat!", recipient);
     EnumSound.ORB_PICKUP.play(recipient, 1.0F, 1.0F);
-    Role role = Role.getPlayerRole(senderProfile.getPlayer());
+    Role role = Role.getPlayerTagRole(senderProfile.getPlayer());
 
     String mentionedFormat = format.replace(recipient.getName(),
             "§e@" + recipient.getName() + (role.isDefault() ? "§7" : "§f"));

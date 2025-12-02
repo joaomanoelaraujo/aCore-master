@@ -68,7 +68,7 @@ public class Role {
     } else {
       Object target = Manager.getPlayer(name);
       if (target != null) {
-        prefix = getPlayerRole(target, true).getPrefix();
+        prefix = getPlayerTagRole(target, true).getPrefix();
       } else {
         String rs = RoleCache.isPresent(name) ? RoleCache.get(name) : Database.getInstance().getRankAndName(name);
         if (rs != null) {
@@ -111,7 +111,7 @@ public class Role {
     // Verificar se está online
     Object target = Manager.getPlayer(name);
     if (target != null) {
-      prefix = getPlayerRole(target, true).getPrefix();
+      prefix = getPlayerTagRole(target, true).getPrefix();
       if (onlyColor) {
         prefix = StringUtils.getLastColor(prefix);
       }

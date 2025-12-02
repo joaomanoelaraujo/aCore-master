@@ -8,13 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/deliveries/DeliveryReward.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/deliveries/DeliveryReward.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/listeners/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/listeners/Listeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/player/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/player/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/player/role/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/player/role/Role.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/resources/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/bungee.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/bungee.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/deliveries/DeliveryReward$RewardType.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/deliveries/DeliveryReward$RewardType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/deliveries/DeliveryReward.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/deliveries/DeliveryReward.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/listeners/Listeners.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/player/Profile.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/player/Profile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/player/role/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/player/role/Role.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/original-aCore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/original-aCore.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nms/target/nms-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/nms/target/nms-2.1.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/target/utils-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/utils-2.1.jar" afterDir="false" />
@@ -261,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764646246639</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="- Corrigido bug no DeliveryReward">
+      <option name="closed" value="true" />
+      <created>1764701120101</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1764701120101</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
