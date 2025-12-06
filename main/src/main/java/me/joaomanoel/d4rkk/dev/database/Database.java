@@ -1,9 +1,6 @@
 package me.joaomanoel.d4rkk.dev.database;
 
-import me.joaomanoel.d4rkk.dev.Core;
-import me.joaomanoel.d4rkk.dev.Manager;
 import me.joaomanoel.d4rkk.dev.booster.NetworkBooster;
-import me.joaomanoel.d4rkk.dev.bungee.Bungee;
 import me.joaomanoel.d4rkk.dev.database.cache.RoleCache;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.database.exception.ProfileLoadException;
@@ -20,10 +17,20 @@ public abstract class Database {
 
   public static Logger LOGGER;
   private static Database instance;
+  private static boolean IS_VELOCITY = false;
 
-  public static void setupDatabase(String type, String mysqlHost, String mysqlPort, String mysqlDbname, String mysqlUsername, String mysqlPassword, boolean hikari, boolean mariadb,
+  public static void setupDatabase(String type, String mysqlHost, String mysqlPort, String mysqlDbname,
+                                   String mysqlUsername, String mysqlPassword, boolean hikari, boolean mariadb,
                                    String mongoURL, File sqliteFile) {
-    LOGGER = Manager.BUNGEE ? Bungee.getInstance().getLogger() : Core.getInstance().getLogger();
+    try {
+      Class.forName("com.velocitypowered.api.proxy.ProxyServer");
+      IS_VELOCITY = true;
+      LOGGER = getVelocityLogger();
+    } catch (ClassNotFoundException e) {
+      IS_VELOCITY = false;
+      LOGGER = getBukkitLogger();
+    }
+
     if (type.equalsIgnoreCase("mongodb")) {
       instance = new MongoDBDatabase(mongoURL);
     } else if (type.equalsIgnoreCase("sqlite")) {
@@ -39,18 +46,49 @@ public abstract class Database {
     new Timer().scheduleAtFixedRate(RoleCache.clearCache(), TimeUnit.SECONDS.toMillis(60), TimeUnit.SECONDS.toMillis(60));
   }
 
+  private static Logger getVelocityLogger() {
+    try {
+      Class<?> velocityPlugin = Class.forName("me.joaomanoel.d4rkk.dev.velocity.VelocityPlugin");
+      Object instance = velocityPlugin.getMethod("getInstance").invoke(null);
+      Object slf4jLogger = velocityPlugin.getMethod("getLogger").invoke(instance);
+
+      return new VelocityLoggerWrapper((org.slf4j.Logger) slf4jLogger);
+    } catch (Exception e) {
+      throw new RuntimeException("Failed to get Velocity logger", e);
+    }
+  }
+
+  private static Logger getBukkitLogger() {
+    try {
+      try {
+        Class<?> bungee = Class.forName("me.joaomanoel.d4rkk.dev.bungee.Bungee");
+        Object instance = bungee.getMethod("getInstance").invoke(null);
+        return (Logger) bungee.getMethod("getLogger").invoke(instance);
+      } catch (ClassNotFoundException e) {
+        Class<?> core = Class.forName("me.joaomanoel.d4rkk.dev.Core");
+        Object instance = core.getMethod("getInstance").invoke(null);
+        return (Logger) core.getMethod("getLogger").invoke(instance);
+      }
+    } catch (Exception e) {
+      throw new RuntimeException("Failed to get Bukkit/Bungee logger", e);
+    }
+  }
+
   public static Database getInstance() {
     return instance;
+  }
+
+  public static boolean isVelocity() {
+    return IS_VELOCITY;
   }
 
   public void setupBoosters() {
   }
 
   public void convertDatabase(Object player) {
-    if (!Manager.BUNGEE) {
-      ((org.bukkit.entity.Player) player).sendMessage("§cResource not supported for your Database type.");
-    }
+    // Implementação vazia - cada subclasse implementa se necessário
   }
+
   public abstract void convertDatabase(Player player);
 
   public abstract void setBooster(String minigame, String booster, double multiplier, long expires);
@@ -72,4 +110,53 @@ public abstract class Database {
   public abstract void saveSync(String name, Map<String, Map<String, DataContainer>> tableMap);
 
   public abstract String exists(String name);
+
+  /**
+   * Wrapper para converter SLF4J Logger (Velocity) para java.util.logging.Logger
+   */
+  private static class VelocityLoggerWrapper extends Logger {
+    private final org.slf4j.Logger slf4jLogger;
+
+    public VelocityLoggerWrapper(org.slf4j.Logger slf4jLogger) {
+      super("VelocityLogger", null);
+      this.slf4jLogger = slf4jLogger;
+    }
+
+    @Override
+    public void info(String msg) {
+      slf4jLogger.info(msg);
+    }
+
+    @Override
+    public void warning(String msg) {
+      slf4jLogger.warn(msg);
+    }
+
+    @Override
+    public void severe(String msg) {
+      slf4jLogger.error(msg);
+    }
+
+    @Override
+    public void log(java.util.logging.Level level, String msg) {
+      if (level == java.util.logging.Level.SEVERE) {
+        slf4jLogger.error(msg);
+      } else if (level == java.util.logging.Level.WARNING) {
+        slf4jLogger.warn(msg);
+      } else {
+        slf4jLogger.info(msg);
+      }
+    }
+
+    @Override
+    public void log(java.util.logging.Level level, String msg, Throwable thrown) {
+      if (level == java.util.logging.Level.SEVERE) {
+        slf4jLogger.error(msg, thrown);
+      } else if (level == java.util.logging.Level.WARNING) {
+        slf4jLogger.warn(msg, thrown);
+      } else {
+        slf4jLogger.info(msg, thrown);
+      }
+    }
+  }
 }

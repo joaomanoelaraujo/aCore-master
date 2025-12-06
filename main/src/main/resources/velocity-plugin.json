@@ -1,0 +1,12 @@
+{
+  "id": "acore",
+  "name": "aCore",
+  "version": "1.0.0",
+  "description": "Core plugin for server network",
+  "authors": [
+    "D4rkk",
+    "joaomanoel"
+  ],
+  "dependencies": [],
+  "main": "me.joaomanoel.d4rkk.dev.velocity.VelocityPlugin"
+}

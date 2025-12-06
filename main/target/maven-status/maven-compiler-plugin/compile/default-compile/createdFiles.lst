@@ -8,14 +8,17 @@ me\joaomanoel\d4rkk\dev\menus\buy\MenuBuyCashCosmetic.class
 com\comphenix\packetwrapper\WrapperPlayClientBlockPlace.class
 me\joaomanoel\d4rkk\dev\replay\ItemUtils.class
 me\joaomanoel\d4rkk\dev\replay\WorldChangeData.class
+me\joaomanoel\d4rkk\dev\velocity\party\VelocityParty.class
 org\json\simple\JSONAware.class
 me\joaomanoel\d4rkk\dev\menus\profile\MenuBoosters.class
 me\joaomanoel\d4rkk\dev\database\tables\TheBridgeTable.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\FakeResetCommand.class
 me\joaomanoel\d4rkk\dev\replay\BlockChangeData.class
 me\joaomanoel\d4rkk\dev\database\data\DataTable.class
+me\joaomanoel\d4rkk\dev\velocity\cmd\velocity\StaffChatCommand.class
 me\joaomanoel\d4rkk\dev\database\tables\BedWarsTable.class
 me\joaomanoel\d4rkk\dev\menus\apparence\select\MenuSelect.class
+me\joaomanoel\d4rkk\dev\velocity\VelocityPlugin.class
 me\joaomanoel\d4rkk\dev\player\enums\BloodAndGore.class
 me\joaomanoel\d4rkk\dev\replay\SpawnData.class
 com\comphenix\packetwrapper\WrapperPlayClientSteerVehicle.class
@@ -39,6 +42,7 @@ com\comphenix\packetwrapper\WrapperPlayClientBlockDig.class
 me\joaomanoel\d4rkk\dev\database\HikariDatabase.class
 me\joaomanoel\d4rkk\dev\replay\MySQLService$1.class
 me\joaomanoel\d4rkk\dev\replay\ReflectionHelper.class
+me\joaomanoel\d4rkk\dev\velocity\cmd\velocity\FakeCommand.class
 me\joaomanoel\d4rkk\dev\cash\CashManager.class
 me\joaomanoel\d4rkk\dev\replay\FishingData.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\newcommands\StaffChatCommand.class
@@ -70,6 +74,7 @@ me\joaomanoel\d4rkk\dev\cosmetic\CosmeticType.class
 me\joaomanoel\d4rkk\dev\database\cache\RoleCache.class
 me\joaomanoel\d4rkk\dev\replay\ReplayQuality.class
 me\joaomanoel\d4rkk\dev\utils\enums\EnumSound.class
+me\joaomanoel\d4rkk\dev\velocity\cmd\velocity\FakeListCommand.class
 me\joaomanoel\d4rkk\dev\database\tables\ThePitTable.class
 me\joaomanoel\d4rkk\dev\achievements\types\TheBridgeAchievement$TheBridgeReward.class
 org\json\simple\JSONArray.class
@@ -96,6 +101,7 @@ me\joaomanoel\d4rkk\dev\replay\ReplayingUtils$3.class
 com\comphenix\packetwrapper\WrapperPlayClientPositionLook.class
 me\joaomanoel\d4rkk\dev\achievements\types\BedWarsAchievement$BedWarsReward.class
 me\joaomanoel\d4rkk\dev\replay\ReplayStats.class
+me\joaomanoel\d4rkk\dev\velocity\cmd\Commands.class
 me\joaomanoel\d4rkk\dev\bukkit\BukkitPartyManager$1.class
 me\joaomanoel\d4rkk\dev\cosmetic\types\PunchMessage.class
 me\joaomanoel\d4rkk\dev\menus\language\MenuLanguages.class
@@ -108,6 +114,7 @@ me\joaomanoel\d4rkk\dev\languages\LanguageAPI.class
 me\joaomanoel\d4rkk\dev\replay\EntityMappings.class
 me\joaomanoel\d4rkk\dev\achievements\types\ThePitAchievement$CoinsReward.class
 me\joaomanoel\d4rkk\dev\menus\others\MenuOtherProfile.class
+me\joaomanoel\d4rkk\dev\velocity\cmd\velocity\FakeResetCommand.class
 com\comphenix\packetwrapper\old\WrapperPlayServerNamedEntitySpawn.class
 me\joaomanoel\d4rkk\dev\utils\PlayerIPUtils.class
 me\joaomanoel\d4rkk\dev\replay\Metrics$MetricsBase.class
@@ -139,6 +146,8 @@ me\joaomanoel\d4rkk\dev\player\enums\PlayerVisibility.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\TagSelectCommand.class
 me\joaomanoel\d4rkk\dev\Core.class
 me\joaomanoel\d4rkk\dev\replay\NPCManager.class
+me\joaomanoel\d4rkk\dev\velocity\manager\VelocityManager.class
+me\joaomanoel\d4rkk\dev\velocity\cmd\velocity\PartyCommand.class
 me\joaomanoel\d4rkk\dev\cmd\TesteCmd.class
 me\joaomanoel\d4rkk\dev\utils\aUpdater.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\InventorySeeCommand.class
@@ -173,6 +182,7 @@ me\joaomanoel\d4rkk\dev\utils\PluginDependencyChecker.class
 me\joaomanoel\d4rkk\dev\api\StatsAPI.class
 com\comphenix\packetwrapper\WrapperPlayServerGameStateChange.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\PartyChatCommand.class
+me\joaomanoel\d4rkk\dev\velocity\LanguageVelocity.class
 me\joaomanoel\d4rkk\dev\utils\particles\UniversalParticle.class
 me\joaomanoel\d4rkk\dev\libraries\profile\Mojang.class
 me\joaomanoel\d4rkk\dev\database\tables\CoreTable.class
@@ -229,6 +239,7 @@ com\comphenix\packetwrapper\WrapperPlayServerBed.class
 me\joaomanoel\d4rkk\dev\replay\ReplayHelper.class
 me\joaomanoel\d4rkk\dev\replay\Metrics$1.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\FakeCommand.class
+me\joaomanoel\d4rkk\dev\velocity\cmd\velocity\TellCommand.class
 me\joaomanoel\d4rkk\dev\player\hotbar\HotbarButton.class
 me\joaomanoel\d4rkk\dev\replay\DatabaseReplaySaver.class
 me\joaomanoel\d4rkk\dev\cmd\CoreCommand.class
@@ -244,6 +255,7 @@ me\joaomanoel\d4rkk\dev\libraries\menu\PlayerMenu.class
 me\joaomanoel\d4rkk\dev\replay\PlayerInfo.class
 me\joaomanoel\d4rkk\dev\replay\ReplayJumpCommand.class
 me\joaomanoel\d4rkk\dev\menus\MenuProfile.class
+me\joaomanoel\d4rkk\dev\velocity\party\VelocityPartySizer.class
 me\joaomanoel\d4rkk\dev\bukkit\BukkitPartySizer.class
 org\json\simple\JSONStreamAware.class
 me\joaomanoel\d4rkk\dev\languages\LanguageAPI$ColorTranslatingConfig.class
@@ -255,6 +267,7 @@ me\joaomanoel\d4rkk\dev\replay\PacketRecorder.class
 me\joaomanoel\d4rkk\dev\libraries\menu\UpdatableMenu.class
 org\json\simple\JSONValue.class
 me\joaomanoel\d4rkk\dev\utils\queue\Queue.class
+me\joaomanoel\d4rkk\dev\velocity\cmd\velocity\ReplyCommand.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityMetadata.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityVelocity.class
 me\joaomanoel\d4rkk\dev\utils\langs\Language.class
@@ -304,6 +317,7 @@ me\joaomanoel\d4rkk\dev\database\data\container\TitlesContainer.class
 me\joaomanoel\d4rkk\dev\player\hotbar\HotbarActionType$1.class
 me\joaomanoel\d4rkk\dev\servers\balancer\type\MostConnection.class
 me\joaomanoel\d4rkk\dev\cmd\CoinsCommand.class
+me\joaomanoel\d4rkk\dev\velocity\listeners\VelocityListeners.class
 me\joaomanoel\d4rkk\dev\replay\EntityActionData.class
 me\joaomanoel\d4rkk\dev\servers\balancer\elements\LoadBalancerObject.class
 com\comphenix\packetwrapper\WrapperPlayServerTitle.class
@@ -358,6 +372,7 @@ me\joaomanoel\d4rkk\dev\replay\Metrics$DrilldownPie.class
 me\joaomanoel\d4rkk\dev\utils\ProfileUtils.class
 me\joaomanoel\d4rkk\dev\cmd\FakeCommand.class
 me\joaomanoel\d4rkk\dev\plugin\config\KConfig.class
+me\joaomanoel\d4rkk\dev\database\Database$VelocityLoggerWrapper.class
 me\joaomanoel\d4rkk\dev\database\tables\BatteryDashTable.class
 me\joaomanoel\d4rkk\dev\database\cache\RoleCache$1.class
 com\comphenix\packetwrapper\WrapperPlayClientLook.class
@@ -408,6 +423,7 @@ me\joaomanoel\d4rkk\dev\player\role\Role.class
 me\joaomanoel\d4rkk\dev\replay\WebsiteFetcher.class
 me\joaomanoel\d4rkk\dev\replay\Replay.class
 me\joaomanoel\d4rkk\dev\replay\Recorder$2.class
+me\joaomanoel\d4rkk\dev\velocity\channels\VelocityChannels.class
 me\joaomanoel\d4rkk\dev\menus\party\MenuParty$1.class
 me\joaomanoel\d4rkk\dev\bungee\party\BungeeParty.class
 me\joaomanoel\d4rkk\dev\utils\MaterialBridge.class
@@ -433,10 +449,12 @@ org\json\simple\ItemList.class
 me\joaomanoel\d4rkk\dev\bungee\cmd\Commands.class
 me\joaomanoel\d4rkk\dev\replay\Metrics.class
 me\joaomanoel\d4rkk\dev\replay\ReplaySaver.class
+me\joaomanoel\d4rkk\dev\velocity\cmd\velocity\PartyChatCommand.class
 com\comphenix\packetwrapper\WrapperPlayServerEntityDestroy.class
 me\joaomanoel\d4rkk\dev\replay\PacketEntity.class
 com\comphenix\packetwrapper\old\WrapperPlayServerEntityLook.class
 me\joaomanoel\d4rkk\dev\utils\particles\ReflectionUtils$DataType.class
+me\joaomanoel\d4rkk\dev\velocity\party\VelocityPartyManager.class
 me\joaomanoel\d4rkk\dev\Achievements.class
 me\joaomanoel\d4rkk\dev\libraries\menu\UpdatablePlayerPagedMenu.class
 me\joaomanoel\d4rkk\dev\replay\AutoReconnector.class
