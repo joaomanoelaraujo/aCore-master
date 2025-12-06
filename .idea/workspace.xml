@@ -4,41 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Corrigido bug no tag em chat">
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/LanguageVelocity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/VelocityPlugin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/channels/VelocityChannels.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/cmd/Commands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/cmd/velocity/FakeCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/cmd/velocity/FakeListCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/cmd/velocity/FakeResetCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/cmd/velocity/PartyChatCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/cmd/velocity/PartyCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/cmd/velocity/ReplyCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/cmd/velocity/StaffChatCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/cmd/velocity/TellCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/listeners/VelocityListeners.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/manager/VelocityManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/party/VelocityParty.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/party/VelocityPartyManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/party/VelocityPartySizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/resources/velocity-plugin.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/src/main/resources/velocity.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/dependency-reduced-pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/bungee.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/original-aCore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/original-aCore.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nms/target/nms-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/nms/target/nms-2.1.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/target/utils-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/utils-2.1.jar" afterDir="false" />
+    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Added Velocity Support (BETA)">
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/VelocityPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/VelocityPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/bungee.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,18 +38,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.aCore-master [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.36551723&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.aCore-master [clean,install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.36551723",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="aCore-master [clean,install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
@@ -298,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764707401572</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="- Added Velocity Support (BETA)">
+      <option name="closed" value="true" />
+      <created>1764981230854</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1764981230854</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -322,6 +300,7 @@
     <MESSAGE value="- Changed version plugin" />
     <MESSAGE value="- Corrigido bug no DeliveryReward" />
     <MESSAGE value="- Corrigido bug no tag em chat" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Corrigido bug no tag em chat" />
+    <MESSAGE value="- Added Velocity Support (BETA)" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added Velocity Support (BETA)" />
   </component>
 </project>
