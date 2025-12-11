@@ -41,7 +41,6 @@ public class CoreCommand extends Commands {
         long usedMemory = maxMemory - freeMemory;
         long usedMemoryMB = usedMemory / (1024 * 1024);
 
-        // Obtém os valores de TPS
         double[] tps = TPSUtil.getRecentTPS();
         String tpsFormatted = String.format("%s, %s, %s",
                 TPSUtil.formatTPS(tps[0]),
@@ -57,7 +56,8 @@ public class CoreCommand extends Commands {
                 " \n  §bAvailable sub-commands:" +
                 " \n{s} §8▪ §a/ac update §f- §7Update aCore.".replace("{s}", " ") +
                 " \n{s} §8▪ §a/ac convert §f- §7Convert MYSQL.".replace("{s}", " ") +
-                " \n{s} §8▪ §a/ac gb <player> <private/network> <multiplier> <hours> §f- §7Give booster.\n {s}".replace("{s}", " "));
+                " \n{s} §8▪ §a/ac gb <player> <private/network> <multiplier> <hours> §f- §7Give booster.".replace("{s}", " ") +
+                " \n{s} §8▪ §a/ac give <player> <experience/coins> <table> <amount> §f- §7Give XP or coins.\n {s}".replace("{s}", " "));
         return;
       }
 
@@ -102,8 +102,73 @@ public class CoreCommand extends Commands {
         } catch (Exception ex) {
           player.sendMessage("§cPlease use valid values. Example: /ac gb [player] private 2.5 3");
         }
+      } else if (action.equalsIgnoreCase("give")) {
+        if (args.length < 5) {
+          player.sendMessage("§cUsage: /ac give <player> <experience/coins> <table> <amount>");
+          player.sendMessage("§cTables: aCoreBedWars, aCoreDuels, aCoreSkyWars");
+          return;
+        }
+
+        Profile target = Profile.getProfile(args[1]);
+        if (target == null) {
+          player.sendMessage("§cUser not found.");
+          return;
+        }
+
+        String type = args[2].toLowerCase();
+        String table = args[3];
+
+        // Valida a tabela
+        if (!table.equalsIgnoreCase("aCoreBedWars") &&
+                !table.equalsIgnoreCase("aCoreDuels") &&
+                !table.equalsIgnoreCase("aCoreSkyWars")) {
+          player.sendMessage("§cInvalid table! Use: aCoreBedWars, aCoreDuels or aCoreSkyWars");
+          return;
+        }
+
+        try {
+          long amount = Long.parseLong(args[4]);
+
+          if (amount <= 0) {
+            player.sendMessage("§cThe amount must be greater than 0!");
+            return;
+          }
+
+          if (type.equals("experience") || type.equals("xp") || type.equals("exp")) {
+            // Adiciona experiência usando addStats
+            target.addStats(table, amount, "experience");
+            player.sendMessage("§aSuccessfully gave §f" + amount + " XP §ato " + args[1] + " §ain table §f" + table + "§a!");
+
+            // Se o jogador estiver online, notifica
+            Player targetPlayer = target.getPlayer();
+            if (targetPlayer != null && targetPlayer.isOnline()) {
+              targetPlayer.sendMessage("§aYou received §f" + amount + " XP §ain §f" + table.replace("aCore", "") + "§a!");
+            }
+
+          } else if (type.equals("coins") || type.equals("coin")) {
+            // Adiciona coins usando addCoins
+            target.addCoins(table, amount);
+            player.sendMessage("§aSuccessfully gave §f" + amount + " coins §ato " + args[1] + " §ain table §f" + table + "§a!");
+
+            // Se o jogador estiver online, notifica
+            Player targetPlayer = target.getPlayer();
+            if (targetPlayer != null && targetPlayer.isOnline()) {
+              targetPlayer.sendMessage("§aYou received §f" + amount + " coins §ain §f" + table.replace("aCore", "") + "§a!");
+            }
+
+          } else {
+            player.sendMessage("§cInvalid type! Use: experience or coins");
+            return;
+          }
+
+        } catch (NumberFormatException ex) {
+          player.sendMessage("§cPlease use a valid number for the amount!");
+        } catch (Exception ex) {
+          player.sendMessage("§cAn error occurred while processing the command!");
+          ex.printStackTrace();
+        }
       } else {
-        player.sendMessage(" \n§6/ac update §f- §7Update aCore.\n§6/ac convert §f- §7Convert your Database.\n§6/ac gb <player> <private/network> <multiplier> <hours> §f- §7Give a booster.\n ");
+        player.sendMessage(" \n§6/ac update §f- §7Update aCore.\n§6/ac convert §f- §7Convert your Database.\n§6/ac gb <player> <private/network> <multiplier> <hours> §f- §7Give a booster.\n§6/ac give <player> <experience/coins> <table> <amount> §f- §7Give XP or coins.\n ");
       }
     }
   }
@@ -111,7 +176,7 @@ public class CoreCommand extends Commands {
   public double getCpuLoad() {
     try {
       double cpuLoad = osBean.getProcessCpuLoad() * 100;
-      return Math.round(cpuLoad * 10.0) / 10.0; // Arredonda para uma casa decimal
+      return Math.round(cpuLoad * 10.0) / 10.0;
     } catch (Exception e) {
       e.printStackTrace();
       return 0.0;

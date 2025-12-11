@@ -125,6 +125,7 @@ me\joaomanoel\d4rkk\dev\booster\Booster.class
 me\joaomanoel\d4rkk\dev\replay\BedEnterData.class
 me\joaomanoel\d4rkk\dev\replay\ItemConfigType.class
 me\joaomanoel\d4rkk\dev\cosmetic\Cosmetic.class
+me\joaomanoel\d4rkk\dev\database\HikariDatabase$1.class
 me\joaomanoel\d4rkk\dev\database\tables\BlockSumoTable.class
 me\joaomanoel\d4rkk\dev\hook\FriendsHook.class
 me\joaomanoel\d4rkk\dev\utils\particles\ReflectionUtils$PackageType.class
@@ -301,6 +302,7 @@ me\joaomanoel\d4rkk\dev\replay\MessageFormat.class
 me\joaomanoel\d4rkk\dev\replay\ReplayListCommand.class
 me\joaomanoel\d4rkk\dev\utils\SkinFetcher.class
 me\joaomanoel\d4rkk\dev\achievements\Achievement.class
+me\joaomanoel\d4rkk\dev\database\MySQLDatabase$1.class
 me\joaomanoel\d4rkk\dev\replay\MetadataBuilder.class
 com\comphenix\packetwrapper\WrapperPlayServerCamera.class
 me\joaomanoel\d4rkk\dev\database\Database.class
@@ -311,6 +313,7 @@ me\joaomanoel\d4rkk\dev\replay\RecordingListener.class
 me\joaomanoel\d4rkk\dev\replay\SkinInfo.class
 me\joaomanoel\d4rkk\dev\replay\Recorder.class
 me\joaomanoel\d4rkk\dev\database\SQLiteDatabase.class
+me\joaomanoel\d4rkk\dev\database\SQLiteDatabase$1.class
 me\joaomanoel\d4rkk\dev\replay\Replayer$1.class
 me\joaomanoel\d4rkk\dev\libraries\menu\UpdatableMenu$1.class
 me\joaomanoel\d4rkk\dev\database\data\container\TitlesContainer.class
@@ -360,7 +363,9 @@ me\joaomanoel\d4rkk\dev\replay\VelocityData.class
 me\joaomanoel\d4rkk\dev\replay\Metrics$SimpleBarChart.class
 me\joaomanoel\d4rkk\dev\game\Game.class
 me\joaomanoel\d4rkk\dev\cmd\newcommands\GameModeCommand.class
+me\joaomanoel\d4rkk\dev\database\cache\DatabaseCache.class
 me\joaomanoel\d4rkk\dev\libraries\hologram\Hologram.class
+me\joaomanoel\d4rkk\dev\database\cache\DatabaseCache$CacheEntry.class
 me\joaomanoel\d4rkk\dev\achievements\types\SkyWarsAchievement$SkyWarsReward.class
 me\joaomanoel\d4rkk\dev\replay\ReplaySessionFinishEvent.class
 me\joaomanoel\d4rkk\dev\replay\Metrics$JsonObjectBuilder$JsonObject.class

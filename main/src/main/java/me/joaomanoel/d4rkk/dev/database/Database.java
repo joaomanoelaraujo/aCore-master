@@ -61,13 +61,13 @@ public abstract class Database {
   private static Logger getBukkitLogger() {
     try {
       try {
-        Class<?> bungee = Class.forName("me.joaomanoel.d4rkk.dev.bungee.Bungee");
-        Object instance = bungee.getMethod("getInstance").invoke(null);
-        return (Logger) bungee.getMethod("getLogger").invoke(instance);
-      } catch (ClassNotFoundException e) {
         Class<?> core = Class.forName("me.joaomanoel.d4rkk.dev.Core");
         Object instance = core.getMethod("getInstance").invoke(null);
         return (Logger) core.getMethod("getLogger").invoke(instance);
+      } catch (ClassNotFoundException e) {
+        Class<?> bungee = Class.forName("me.joaomanoel.d4rkk.dev.bungee.Bungee");
+        Object instance = bungee.getMethod("getInstance").invoke(null);
+        return (Logger) bungee.getMethod("getLogger").invoke(instance);
       }
     } catch (Exception e) {
       throw new RuntimeException("Failed to get Bukkit/Bungee logger", e);

@@ -27,7 +27,7 @@ import java.util.*;
 @Plugin(
         id = "acore",
         name = "aCore",
-        version = "2.9.0",
+        version = "3.0.0",
         authors = {"D4rkk"}
 )
 public class VelocityPlugin {
@@ -63,7 +63,6 @@ public class VelocityPlugin {
     public void onProxyInitialization(ProxyInitializeEvent event) {
         loadConfigs();
 
-        // Configuração do database usando velocity.yml
         File sqliteFile = new File(dataDirectory.toFile(),
                 config.node("database", "sqlite", "file").getString("database.db"));
 
@@ -99,10 +98,8 @@ public class VelocityPlugin {
         try {
             dataDirectory.toFile().mkdirs();
 
-            // Carrega APENAS velocity.yml (não gera config.yml)
             config = loadConfig("velocity.yml", true);
 
-            // Carrega configs compartilhados opcionais
             utils = loadConfig("utils.yml", false);
             roles = loadConfig("roles.yml", true);
 
@@ -114,9 +111,7 @@ public class VelocityPlugin {
     private CommentedConfigurationNode loadConfig(String fileName, boolean createDefault) throws IOException {
         File file = new File(dataDirectory.toFile(), fileName);
 
-        // Cria o arquivo padrão se não existir
         if (!file.exists() && createDefault) {
-            // Tenta copiar do resource, se existir
             try (InputStream in = getClass().getResourceAsStream("/" + fileName)) {
                 if (in != null) {
                     try (OutputStream out = new FileOutputStream(file)) {
@@ -128,7 +123,6 @@ public class VelocityPlugin {
                     }
                     logger.info("Arquivo " + fileName + " criado com valores padrão");
                 } else {
-                    // Cria arquivo com valores padrão para velocity.yml
                     if (fileName.equals("velocity.yml")) {
                         createDefaultVelocityConfig(file);
                     } else if (fileName.equals("roles.yml")) {
@@ -206,7 +200,6 @@ public class VelocityPlugin {
             CommentedConfigurationNode rolesSection = roles.node("roles");
 
             if (rolesSection.virtual() || rolesSection.childrenMap().isEmpty()) {
-                // Cria role padrão se não existir nenhuma
                 Role.listRoles().add(new Role("§7Member", "§7", "", false, false, false));
                 logger.warn("Nenhuma role configurada em roles.yml. Usando role padrão.");
                 return;

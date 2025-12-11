@@ -34,6 +34,7 @@ public class Profile {
   private static final Map<String, UUID> UUID_CACHE = new HashMap<>();
   private static final Map<String, Profile> PROFILES = new ConcurrentHashMap<>();
   private static final SimpleDateFormat COMPARE_SDF = new SimpleDateFormat("yyyy/MM/dd");
+
   private String name;
   private Game<? extends GameTeam> game;
   private Hotbar hotbar;
@@ -41,34 +42,62 @@ public class Profile {
   private Map<String, Long> lastHit = new HashMap<>();
   private Map<String, Map<String, DataContainer>> tableMap;
   private Player player;
-
   private Object value;
 
   public Profile(String name) throws ProfileLoadException {
     this.name = name;
     this.tableMap = Database.getInstance().load(name);
     this.getDataContainer("aCoreProfile", "lastlogin").set(System.currentTimeMillis());
+
+    // ✅ NOVO: Setar tag automaticamente na primeira vez
+    this.initializeDefaultTag();
+  }
+
+  /**
+   * ✅ NOVO: Inicializa a tag com a role do player se estiver vazia
+   */
+  private void initializeDefaultTag() {
+    try {
+      DataContainer tagContainer = this.getDataContainer("aCoreProfile", "tag");
+      String currentTag = tagContainer.getAsString();
+
+      // Se a tag estiver vazia ou for "Membro", setar a role real do player
+      if (currentTag == null || currentTag.isEmpty() || currentTag.equals("Membro")) {
+        Player p = this.getPlayer();
+        if (p != null) {
+          Role playerRole = Role.getPlayerRole(p, true); // true = ignora fake
+          String roleName = StringUtils.stripColors(playerRole.getName());
+          tagContainer.set(roleName);
+
+          // Log para debug
+          Core.getInstance().getLogger().info("Tag automática setada para " + this.name + ": " + roleName);
+        }
+      }
+    } catch (Exception e) {
+      // Silencioso - não quebrar o load se der erro
+      Core.getInstance().getLogger().warning("Erro ao inicializar tag para " + this.name + ": " + e.getMessage());
+    }
   }
 
   public static Profile createOrLoadProfile(String playerName) throws ProfileLoadException {
-    Profile profile = PROFILES.getOrDefault(playerName.toLowerCase(), null);
-    if (profile == null) {
-      profile = new Profile(playerName);
-      PROFILES.put(playerName.toLowerCase(), profile);
-    }
-
-    return profile;
+    // Otimização: Usar computeIfAbsent para evitar verificação dupla
+    return PROFILES.computeIfAbsent(playerName.toLowerCase(), k -> {
+      try {
+        return new Profile(playerName);
+      } catch (ProfileLoadException e) {
+        throw new RuntimeException(e);
+      }
+    });
   }
 
   public static Profile loadIfExists(String playerName) throws ProfileLoadException {
-    Profile profile = PROFILES.getOrDefault(playerName.toLowerCase(), null);
+    Profile profile = PROFILES.get(playerName.toLowerCase());
     if (profile == null) {
       playerName = Database.getInstance().exists(playerName);
       if (playerName != null) {
         profile = new Profile(playerName);
       }
     }
-
     return profile;
   }
 
@@ -104,7 +133,6 @@ public class Profile {
     return null;
   }
 
-
   public void setHit(String name) {
     this.lastHit.put(name, System.currentTimeMillis() + 8000);
   }
@@ -113,11 +141,9 @@ public class Profile {
     try {
       if (this.scoreboard != null) {
         this.scoreboard.update();
-      } else {
-        System.out.println("Scoreboard não inicializado para o jogador: " + this.name);
       }
     } catch (Exception e) {
-      System.err.println("Erro ao atualizar o scoreboard para o jogador: " + this.name);
+      System.err.println("Erro ao atualizar scoreboard: " + this.name);
       e.printStackTrace();
     }
   }
@@ -128,6 +154,7 @@ public class Profile {
       return;
     }
 
+    // Reset básico
     player.setMaxHealth(20.0);
     player.setHealth(20.0);
     player.setFoodLevel(20);
@@ -135,49 +162,39 @@ public class Profile {
     player.setExp(0.0f);
     player.setLevel(0);
     player.closeInventory();
+
+    // Remover efeitos
     for (PotionEffect pe : player.getActivePotionEffects()) {
       player.removePotionEffect(pe.getType());
     }
 
     if (!playingGame()) {
-      // --- LOBBY ---
       player.setGameMode(GameMode.ADVENTURE);
-
       Role playerRole = Role.getPlayerRole(player);
       org.bukkit.Location spawnLocation = Core.getLobby().clone();
 
       if (playerRole.canFly()) {
         spawnLocation.add(0, 6, 0);
-        player.teleport(spawnLocation);
-      } else {
-        player.teleport(spawnLocation);
-        player.setAllowFlight(false);
-        player.setFlying(false);
       }
+
       player.teleport(spawnLocation);
       player.setAllowFlight(false);
       player.setFlying(false);
-      Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
-        if (player.isOnline()) {
-          Role role = Role.getPlayerRole(player);
 
-          if (role.canFly()) {
-            player.setAllowFlight(true);
-            player.setFlying(true);
-          }
+      // Delay para ativar fly se tiver permissão
+      Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
+        if (player.isOnline() && playerRole.canFly()) {
+          player.setAllowFlight(true);
+          player.setFlying(true);
         }
-      }, 0L);
+      }, 1L);
 
       this.getDataContainer("aCoreProfile", "role").set(StringUtils.stripColors(Role.getPlayerRole(player, true).getName()));
-
     } else {
-
-      // --- JOGO --- (DESATIVA FLY SEM EXCEÇÃO)
       player.setAllowFlight(false);
       player.setFlying(false);
       player.setGameMode(GameMode.SURVIVAL);
     }
-
 
     if (this.hotbar != null) {
       this.hotbar.apply(this);
@@ -185,7 +202,6 @@ public class Profile {
 
     this.refreshPlayers();
   }
-
 
   public void refreshpit() {
     Player player = this.getPlayer();
@@ -199,11 +215,10 @@ public class Profile {
     player.setExhaustion(0.0f);
     player.setExp(0.0f);
     player.setLevel(0);
-    player.setAllowFlight(false); // Desativa o voo
-    player.setFlying(false); // Garante que o jogador não esteja voando
+    player.setAllowFlight(false);
+    player.setFlying(false);
     player.closeInventory();
 
-    // Remove os efeitos de poção ativos
     for (PotionEffect pe : player.getActivePotionEffects()) {
       player.removePotionEffect(pe.getType());
     }
@@ -211,7 +226,6 @@ public class Profile {
     if (!playingGame()) {
       player.setGameMode(GameMode.ADVENTURE);
       player.teleport(Core.getLobby());
-
       this.getDataContainer("aCoreProfile", "role").set(StringUtils.stripColors(Role.getPlayerRole(player, true).getName()));
     }
 
@@ -221,56 +235,58 @@ public class Profile {
     this.refreshPlayers();
   }
 
-
   public void refreshPlayers() {
     Player player = this.getPlayer();
     if (player == null) {
       return;
     }
 
+    // Otimização: Atualizar hotbar apenas se necessário
     if (this.hotbar != null) {
-      this.hotbar.getButtons().forEach(button -> {
-        if (button.getAction().getValue().equalsIgnoreCase("jogadores")) {
-          player.getInventory().setItem(button.getSlot(), BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(player, button.getIcon())));
-        }
-      });
+      this.hotbar.getButtons().stream()
+              .filter(button -> button.getAction().getValue().equalsIgnoreCase("jogadores"))
+              .forEach(button -> player.getInventory().setItem(
+                      button.getSlot(),
+                      BukkitUtils.deserializeItemStack(PlaceholderAPI.setPlaceholders(player, button.getIcon()))
+              ));
     }
 
     if (!this.playingGame()) {
       for (Player players : Bukkit.getOnlinePlayers()) {
         Profile profile = Profile.getProfile(players.getName());
-        if (profile != null) {
-          if (!profile.playingGame()) {
-            boolean friend = FriendsHook.isFriend(player.getName(), players.getName());
-            if ((this.getPreferencesContainer().getPlayerVisibility() == PlayerVisibility.TODOS || Role.getPlayerRole(players).isAlwaysVisible() || friend) && !FriendsHook
-                    .isBlacklisted(player.getName(), players.getName())) {
-              if (!player.canSee(players)) {
-                TitleManager.show(this, profile);
-              }
-              player.showPlayer(players);
-            } else {
-              if (player.canSee(players)) {
-                TitleManager.hide(this, profile);
-              }
-              player.hidePlayer(players);
-            }
+        if (profile != null && !profile.playingGame()) {
+          boolean friend = FriendsHook.isFriend(player.getName(), players.getName());
+          boolean blacklisted = FriendsHook.isBlacklisted(player.getName(), players.getName());
 
-            if ((profile.getPreferencesContainer().getPlayerVisibility() == PlayerVisibility.TODOS || Role.getPlayerRole(player).isAlwaysVisible() || friend) && !FriendsHook
-                    .isBlacklisted(players.getName(), player.getName())) {
-              if (!players.canSee(player)) {
-                TitleManager.show(profile, this);
-              }
-              players.showPlayer(player);
-            } else {
-              if (players.canSee(player)) {
-                TitleManager.hide(profile, this);
-              }
-              players.hidePlayer(player);
+          if ((this.getPreferencesContainer().getPlayerVisibility() == PlayerVisibility.TODOS ||
+                  Role.getPlayerRole(players).isAlwaysVisible() || friend) && !blacklisted) {
+            if (!player.canSee(players)) {
+              TitleManager.show(this, profile);
             }
+            player.showPlayer(players);
           } else {
+            if (player.canSee(players)) {
+              TitleManager.hide(this, profile);
+            }
             player.hidePlayer(players);
+          }
+
+          boolean blacklistedReverse = FriendsHook.isBlacklisted(players.getName(), player.getName());
+          if ((profile.getPreferencesContainer().getPlayerVisibility() == PlayerVisibility.TODOS ||
+                  Role.getPlayerRole(player).isAlwaysVisible() || friend) && !blacklistedReverse) {
+            if (!players.canSee(player)) {
+              TitleManager.show(profile, this);
+            }
+            players.showPlayer(player);
+          } else {
+            if (players.canSee(player)) {
+              TitleManager.hide(profile, this);
+            }
             players.hidePlayer(player);
           }
+        } else if (profile != null) {
+          player.hidePlayer(players);
+          players.hidePlayer(player);
         }
       }
     }
@@ -280,7 +296,6 @@ public class Profile {
     if (this.name == null || this.tableMap == null) {
       return;
     }
-
     Database.getInstance().save(this.name, this.tableMap);
   }
 
@@ -288,7 +303,6 @@ public class Profile {
     if (this.name == null || this.tableMap == null) {
       return;
     }
-
     Database.getInstance().saveSync(this.name, this.tableMap);
   }
 
@@ -297,14 +311,20 @@ public class Profile {
     this.game = null;
     this.hotbar = null;
     this.scoreboard = null;
-    this.lastHit.clear();
-    this.lastHit = null;
-    this.tableMap.values().forEach(containerMap -> {
-      containerMap.values().forEach(DataContainer::gc);
-      containerMap.clear();
-    });
-    this.tableMap.clear();
-    this.tableMap = null;
+
+    if (this.lastHit != null) {
+      this.lastHit.clear();
+      this.lastHit = null;
+    }
+
+    if (this.tableMap != null) {
+      this.tableMap.values().forEach(containerMap -> {
+        containerMap.values().forEach(DataContainer::gc);
+        containerMap.clear();
+      });
+      this.tableMap.clear();
+      this.tableMap = null;
+    }
   }
 
   public String getName() {
@@ -319,7 +339,6 @@ public class Profile {
     if (this.player == null) {
       this.player = this.name == null ? null : Bukkit.getPlayerExact(this.name);
     }
-
     return this.player;
   }
 
@@ -334,19 +353,8 @@ public class Profile {
 
   public void setGame(Game<? extends GameTeam> game) {
     this.game = game;
-    if (this.game == null) {
-      Player p = this.getPlayer();
-      if (p != null) {
-        Bukkit.getScheduler().runTaskLater(Core.getInstance(), () -> {
-          Role role = Role.getPlayerRole(p);
-//          if (role.canFly()) {
-//            p.setAllowFlight(true);
-//            p.setFlying(true);
-//          }
-        }, 0); // 2 ticks -> evita o "cair"
-      }
-    }
     this.lastHit.clear();
+
     if (this.game != null) {
       TitleManager.leaveLobby(this);
     } else {
@@ -381,7 +389,6 @@ public class Profile {
             .sorted((e1, e2) -> Long.compare(e2.getValue(), e1.getValue()))
             .map(entry -> getProfile(entry.getKey()))
             .collect(Collectors.toList());
-    // limpar após uso
     this.lastHit.clear();
     return hitters;
   }
@@ -403,22 +410,17 @@ public class Profile {
 
   public void addStats(String table, long amount, String... keys) {
     for (String key : keys) {
-      if (!table.toLowerCase().contains("murder")) {
-        if (key.startsWith("monthly")) {
-          String month = this.getDataContainer(table, "month").getAsString();
-          String current = (Calendar.getInstance().get(Calendar.MONTH) + 1) + "/" + Calendar.getInstance().get(Calendar.YEAR);
-          if (!month.equals(current)) {
-            Map<String, DataContainer> containerMap = this.tableMap.get(table);
-            containerMap.keySet().forEach(k -> {
-              if (k.startsWith("monthly")) {
-                containerMap.get(k).set(0L);
-              }
-            });
-            containerMap.get("month").set(current);
-          }
+      if (!table.toLowerCase().contains("murder") && key.startsWith("monthly")) {
+        String month = this.getDataContainer(table, "month").getAsString();
+        String current = (Calendar.getInstance().get(Calendar.MONTH) + 1) + "/" + Calendar.getInstance().get(Calendar.YEAR);
+        if (!month.equals(current)) {
+          Map<String, DataContainer> containerMap = this.tableMap.get(table);
+          containerMap.keySet().stream()
+                  .filter(k -> k.startsWith("monthly"))
+                  .forEach(k -> containerMap.get(k).set(0L));
+          containerMap.get("month").set(current);
         }
       }
-
       this.getDataContainer(table, key).addLong(amount);
     }
   }
@@ -436,29 +438,28 @@ public class Profile {
       this.setStats(table, 0, key);
       return;
     }
-
     this.addStats(table, amount, key);
   }
 
   public void addCoins(String table, double amount) {
-    if (Core.minigame.equals("The Pit") || Core.minigame.equals("The Bridge") || Core.minigame.equals("Bed Wars") || Core.minigame.equals("Block Sumo") || Core.minigame.equals("Duels")) {
+    if (Core.minigame.equals("The Pit") || Core.minigame.equals("The Bridge") ||
+            Core.minigame.equals("Bed Wars") || Core.minigame.equals("Block Sumo") ||
+            Core.minigame.equals("Duels")) {
       this.getDataContainer(table, "coins").addDouble(amount);
       return;
     }
+
     double limit = this.getLimitedCoins(table);
     double currentCoins = this.getCoins(table);
     double newTotal = currentCoins + amount;
 
     if (newTotal > limit) {
-      amount = limit - currentCoins;
-      if (amount < 0) amount = 0;
+      amount = Math.max(0, limit - currentCoins);
     }
 
-    // Atualiza a quantidade de moedas
     this.getDataContainer(table, "coins").addDouble(amount);
   }
 
-  // Com multiplicador
   public int addCoinsWM(String table, double amount) {
     amount = this.calculateWM(amount);
     this.addCoins(table, amount);
@@ -489,13 +490,13 @@ public class Profile {
     for (String key : keys) {
       stat += this.getDataContainer(table, key).getAsLong();
     }
-
     return stat;
   }
 
   public void set(Object value) {
     this.value = value;
   }
+
   public void addString(String newValue) {
     if (this.value == null || this.value.toString().isEmpty()) {
       this.value = newValue;
@@ -516,13 +517,11 @@ public class Profile {
     return value != null ? Double.parseDouble(value.toString()) : 0.0;
   }
 
-  // Resetar diariamente baseado em um Timemillis.
   public long getDailyStats(String table, String date, String key) {
     long currentExpire = this.getStats(table, date);
     if (!COMPARE_SDF.format(System.currentTimeMillis()).equals(COMPARE_SDF.format(currentExpire))) {
       this.setStats(table, 0, key);
     }
-
     this.setStats(table, System.currentTimeMillis(), date);
     return this.getStats(table, key);
   }
@@ -530,6 +529,7 @@ public class Profile {
   public double getCoins(String table) {
     return this.getDataContainer(table, "coins").getAsDouble();
   }
+
   public double getLimitedCoins(String table) {
     return this.getDataContainer(table, "limitedcoins").getAsDouble();
   }

@@ -3,6 +3,7 @@ package me.joaomanoel.d4rkk.dev.database;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.Manager;
 import me.joaomanoel.d4rkk.dev.booster.NetworkBooster;
+import me.joaomanoel.d4rkk.dev.database.cache.DatabaseCache;
 import me.joaomanoel.d4rkk.dev.database.cache.RoleCache;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
 import me.joaomanoel.d4rkk.dev.database.data.DataTable;
@@ -17,9 +18,8 @@ import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.RowSetProvider;
 import java.sql.*;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
@@ -48,7 +48,7 @@ public class MySQLDatabase extends Database {
     this.mariadb = mariadb;
 
     this.openConnection();
-    this.executor = Executors.newCachedThreadPool();
+    this.executor = createOptimizedExecutor();
 
     if (!skipTables) {
       this.update(
@@ -56,16 +56,53 @@ public class MySQLDatabase extends Database {
 
       DataTable.listTables().forEach(table -> {
         this.update(table.getInfo().create());
-        try (
-                PreparedStatement ps = prepareStatement("ALTER TABLE `" + table.getInfo().name() + "` ADD INDEX `namex` (`name` DESC)")
-        ) {
+        try (PreparedStatement ps = prepareStatement("ALTER TABLE `" + table.getInfo().name() + "` ADD INDEX `namex` (`name` DESC)")) {
           ps.executeUpdate();
         } catch (SQLException ignore) {
-          // Index já existe
         }
         table.init(this);
       });
     }
+
+    scheduleCleanupTask();
+  }
+
+  private ExecutorService createOptimizedExecutor() {
+    ThreadFactory threadFactory = new ThreadFactory() {
+      private final AtomicInteger counter = new AtomicInteger(0);
+
+      @Override
+      public Thread newThread(Runnable r) {
+        Thread thread = new Thread(r);
+        thread.setName("aCore-MySQL-Worker-" + counter.incrementAndGet());
+        thread.setDaemon(true);
+        thread.setPriority(Thread.NORM_PRIORITY);
+        return thread;
+      }
+    };
+
+    int threadPoolSize = Math.max(4, Runtime.getRuntime().availableProcessors() * 2);
+
+    return new ThreadPoolExecutor(
+            threadPoolSize / 2,
+            threadPoolSize,
+            60L, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<>(1000),
+            threadFactory,
+            new ThreadPoolExecutor.CallerRunsPolicy()
+    );
+  }
+
+  private void scheduleCleanupTask() {
+    Executors.newSingleThreadScheduledExecutor(r -> {
+      Thread t = new Thread(r);
+      t.setName("aCore-Cache-Cleaner");
+      t.setDaemon(true);
+      return t;
+    }).scheduleAtFixedRate(() -> {
+      DatabaseCache.cleanExpired();
+      LOGGER.info("Cache cleaned. Current size: " + DatabaseCache.size());
+    }, 5, 5, TimeUnit.MINUTES);
   }
 
   @Override
@@ -88,10 +125,16 @@ public class MySQLDatabase extends Database {
   @Override
   public void setBooster(String minigame, String booster, double multiplier, long expires) {
     execute("UPDATE `aCoreNetworkBooster` SET `booster` = ?, `multiplier` = ?, `expires` = ? WHERE `id` = ?", booster, multiplier, expires, minigame);
+    DatabaseCache.invalidate("booster:" + minigame);
   }
 
   @Override
   public NetworkBooster getBooster(String minigame) {
+    NetworkBooster cached = DatabaseCache.get("booster:" + minigame);
+    if (cached != null) {
+      return cached;
+    }
+
     try (CachedRowSet rs = query("SELECT * FROM `aCoreNetworkBooster` WHERE `id` = ?", minigame)) {
       if (rs != null) {
         String booster = rs.getString("booster");
@@ -99,7 +142,9 @@ public class MySQLDatabase extends Database {
         long expires = rs.getLong("expires");
         if (expires > System.currentTimeMillis()) {
           rs.close();
-          return new NetworkBooster(booster, multiplier, expires);
+          NetworkBooster nb = new NetworkBooster(booster, multiplier, expires);
+          DatabaseCache.put("booster:" + minigame, nb, TimeUnit.MINUTES.toMillis(10));
+          return nb;
         }
       }
     } catch (SQLException ignored) {
@@ -110,10 +155,16 @@ public class MySQLDatabase extends Database {
 
   @Override
   public String getRankAndName(String player) {
+    String cached = DatabaseCache.get("rank:" + player.toLowerCase());
+    if (cached != null) {
+      return cached;
+    }
+
     try (CachedRowSet rs = query("SELECT `name`, `role` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase())) {
       if (rs != null) {
         String result = rs.getString("role") + " : " + rs.getString("name");
         RoleCache.setCache(player, rs.getString("role"), rs.getString("name"));
+        DatabaseCache.put("rank:" + player.toLowerCase(), result, TimeUnit.MINUTES.toMillis(10));
         return result;
       }
     } catch (SQLException ignored) {
@@ -123,10 +174,17 @@ public class MySQLDatabase extends Database {
 
   @Override
   public boolean getPreference(String player, String id, boolean def) {
+    String cacheKey = "pref:" + player.toLowerCase() + ":" + id;
+    Boolean cached = DatabaseCache.get(cacheKey);
+    if (cached != null) {
+      return cached;
+    }
+
     boolean preference = true;
     try (CachedRowSet rs = query("SELECT `preferences` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase())) {
       if (rs != null) {
         preference = ((JSONObject) new JSONParser().parse(rs.getString("preferences"))).get(id).equals(0L);
+        DatabaseCache.put(cacheKey, preference, TimeUnit.MINUTES.toMillis(15));
       }
     } catch (Exception ex) {
       ex.printStackTrace();
@@ -137,6 +195,12 @@ public class MySQLDatabase extends Database {
 
   @Override
   public List<String[]> getLeaderBoard(String table, String... columns) {
+    String cacheKey = "leaderboard:" + table + ":" + String.join(",", columns);
+    List<String[]> cached = DatabaseCache.get(cacheKey);
+    if (cached != null) {
+      return cached;
+    }
+
     List<String[]> result = new ArrayList<>();
     StringBuilder add = new StringBuilder(), select = new StringBuilder();
     for (String column : columns) {
@@ -184,13 +248,14 @@ public class MySQLDatabase extends Database {
       }
     } catch (SQLException ignore) {}
 
+    DatabaseCache.put(cacheKey, result, TimeUnit.SECONDS.toMillis(30));
     return result;
   }
-
 
   @Override
   public void close() {
     this.executor.shutdownNow().forEach(Runnable::run);
+    DatabaseCache.clear();
     this.closeConnection();
   }
 
@@ -226,11 +291,15 @@ public class MySQLDatabase extends Database {
 
   @Override
   public void save(String name, Map<String, Map<String, DataContainer>> tableMap) {
+    DatabaseCache.invalidatePattern("rank:" + name.toLowerCase());
+    DatabaseCache.invalidatePattern("pref:" + name.toLowerCase());
     this.save0(name, tableMap, true);
   }
 
   @Override
   public void saveSync(String name, Map<String, Map<String, DataContainer>> tableMap) {
+    DatabaseCache.invalidatePattern("rank:" + name.toLowerCase());
+    DatabaseCache.invalidatePattern("pref:" + name.toLowerCase());
     this.save0(name, tableMap, false);
   }
 
@@ -284,17 +353,21 @@ public class MySQLDatabase extends Database {
                       "&useUnicode=yes" +
                       "&characterEncoding=UTF-8" +
                       "&serverTimezone=UTC" +
-                      "&allowPublicKeyRetrieval=true",
+                      "&allowPublicKeyRetrieval=true" +
+                      "&cachePrepStmts=true" +
+                      "&prepStmtCacheSize=250" +
+                      "&prepStmtCacheSqlLimit=2048" +
+                      "&useServerPrepStmts=true",
               username,
               password
       );
 
       if (reconnected) {
-        LOGGER.info("Reconected to MySQL!");
+        LOGGER.info("Reconnected to MySQL!");
         return;
       }
 
-      LOGGER.info("Conected to MySQL!");
+      LOGGER.info("Connected to MySQL with optimizations!");
     } catch (Exception ex) {
       LOGGER.log(Level.SEVERE, "Failed to connect to MySQL: ", ex);
       System.exit(0);
@@ -337,9 +410,7 @@ public class MySQLDatabase extends Database {
   }
 
   public void execute(String sql, Object... vars) {
-    executor.execute(() -> {
-      update(sql, vars);
-    });
+    executor.execute(() -> update(sql, vars));
   }
 
   public int updateWithInsertId(String sql, Object... vars) {

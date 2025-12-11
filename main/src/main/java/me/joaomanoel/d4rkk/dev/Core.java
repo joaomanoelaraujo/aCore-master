@@ -4,8 +4,6 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.utility.MinecraftVersion;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.PlaceholderAPIPlugin;
 import me.joaomanoel.d4rkk.dev.achievements.Achievement;
@@ -135,12 +133,10 @@ public class Core extends KPlugin {
     //new aUpdater(this, 1).run();
     lobby = Bukkit.getWorlds().get(0).getSpawnLocation();
 
-    // Remover o spawn-protection-size
     if (Bukkit.getSpawnRadius() != 0) {
       Bukkit.setSpawnRadius(0);
     }
 
-    // Plugins que causaram incompatibilidades
     try (BufferedReader reader = new BufferedReader(new InputStreamReader(this.getResource("blacklist.txt"), StandardCharsets.UTF_8))) {
       String plugin;
       while ((plugin = reader.readLine()) != null) {

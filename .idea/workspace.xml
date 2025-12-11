@@ -4,10 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Added Velocity Support (BETA)">
+    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Changed plugin version to 2.9.0">
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/cache/DatabaseCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/replay/ConfigManagerAdditions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/replay/DeathData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/replay/DespawnData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/replay/ReplayingUtilsDeathHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_20_R4/1_20_R4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/1_20_R4.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/aCore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/main/aCore.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/dependency-reduced-pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/Core.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/Core.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/cmd/CoreCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/cmd/CoreCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/HikariDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/HikariDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/MySQLDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/MySQLDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/SQLiteDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/SQLiteDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/data/DataTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/data/DataTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/tables/CoreTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/database/tables/CoreTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/player/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/player/Profile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/VelocityPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/velocity/VelocityPlugin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/resources/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/bungee.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/velocity-plugin.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/velocity-plugin.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/bungee.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/bungee.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Core.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/cmd/CoreCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/cmd/CoreCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/Database.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/HikariDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/HikariDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/MySQLDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/MySQLDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/data/DataTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/data/DataTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/tables/CoreTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/database/tables/CoreTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/player/Profile.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/player/Profile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/original-aCore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/original-aCore.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nms/target/nms-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/nms/target/nms-2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/utils-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/utils-2.1.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,12 +63,12 @@
     &quot;assignee&quot;: &quot;joaomanoelaraujo&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/joaomanoelaraujo/aCore-master.git&quot;,
-    &quot;accountId&quot;: &quot;10504737-d9e2-4ec1-aa71-55797d852ce1&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/joaomanoelaraujo/aCore-master.git",
+    "accountId": "e594aab3-3165-460f-b443-e105d2267d7e"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
@@ -42,8 +82,12 @@
   "keyToString": {
     "Maven.aCore-master [clean,install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Aether/Sources/Java 11 - 1.11.1/aCore-master",
     "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
@@ -83,6 +127,13 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-cffe25b9f5b3-intellij.indexing.shared.core-IU-253.28294.334" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -276,7 +327,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764981230854</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="- Changed plugin version to 2.9.0">
+      <option name="closed" value="true" />
+      <created>1764981478852</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1764981478852</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -301,6 +360,7 @@
     <MESSAGE value="- Corrigido bug no DeliveryReward" />
     <MESSAGE value="- Corrigido bug no tag em chat" />
     <MESSAGE value="- Added Velocity Support (BETA)" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added Velocity Support (BETA)" />
+    <MESSAGE value="- Changed plugin version to 2.9.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Changed plugin version to 2.9.0" />
   </component>
 </project>

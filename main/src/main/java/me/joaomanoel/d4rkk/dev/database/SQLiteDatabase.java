@@ -3,6 +3,7 @@ package me.joaomanoel.d4rkk.dev.database;
 import me.joaomanoel.d4rkk.dev.Core;
 import me.joaomanoel.d4rkk.dev.Manager;
 import me.joaomanoel.d4rkk.dev.booster.NetworkBooster;
+import me.joaomanoel.d4rkk.dev.database.cache.DatabaseCache;
 import me.joaomanoel.d4rkk.dev.database.cache.RoleCache;
 import me.joaomanoel.d4rkk.dev.database.conversor.DatabaseConverter;
 import me.joaomanoel.d4rkk.dev.database.data.DataContainer;
@@ -18,25 +19,24 @@ import org.json.simple.parser.JSONParser;
 import java.io.File;
 import java.sql.*;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 public class SQLiteDatabase extends Database {
-  
+
   private final File databaseFile;
   private Connection connection;
   private final ExecutorService executor;
-  
+
   public SQLiteDatabase(File databaseFile) {
     this(databaseFile, false);
   }
-  
+
   public SQLiteDatabase(File databaseFile, boolean skipTables) {
     this.databaseFile = databaseFile;
-    
+
     if (!databaseFile.exists()) {
       try {
         databaseFile.getParentFile().mkdirs();
@@ -45,22 +45,69 @@ public class SQLiteDatabase extends Database {
         LOGGER.log(Level.SEVERE, "Failed to create SQLite database file: ", e);
       }
     }
-    
+
     this.openConnection();
-    this.executor = Executors.newCachedThreadPool();
-    
+    this.executor = createOptimizedExecutor();
+
     if (!skipTables) {
       this.update(
-          "CREATE TABLE IF NOT EXISTS `aCoreNetworkBooster` (`id` VARCHAR(32) PRIMARY KEY, `booster` TEXT, `multiplier` DOUBLE, `expires` LONG);");
-      
+              "CREATE TABLE IF NOT EXISTS `aCoreNetworkBooster` (`id` VARCHAR(32) PRIMARY KEY, `booster` TEXT, `multiplier` DOUBLE, `expires` LONG);");
+
       DataTable.listTables().forEach(table -> {
         String createQuery = table.getInfo().create()
-            .replace("ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin", "")
-            .replace("DEFAULT CHARSET=utf8", "");
+                .replace("ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin", "")
+                .replace("DEFAULT CHARSET=utf8", "");
         this.update(createQuery);
         table.init(this);
       });
+
+      // Otimizações do SQLite
+      this.update("PRAGMA journal_mode=WAL;"); // Write-Ahead Logging
+      this.update("PRAGMA synchronous=NORMAL;"); // Menos seguro, mas mais rápido
+      this.update("PRAGMA cache_size=10000;"); // Cache maior
+      this.update("PRAGMA temp_store=MEMORY;"); // Temp tables em memória
+      this.update("PRAGMA mmap_size=30000000000;"); // Memory-mapped I/O
     }
+
+    scheduleCleanupTask();
+  }
+
+  private ExecutorService createOptimizedExecutor() {
+    ThreadFactory threadFactory = new ThreadFactory() {
+      private final AtomicInteger counter = new AtomicInteger(0);
+
+      @Override
+      public Thread newThread(Runnable r) {
+        Thread thread = new Thread(r);
+        thread.setName("aCore-SQLite-Worker-" + counter.incrementAndGet());
+        thread.setDaemon(true);
+        thread.setPriority(Thread.NORM_PRIORITY);
+        return thread;
+      }
+    };
+
+    int threadPoolSize = Math.max(4, Runtime.getRuntime().availableProcessors() * 2);
+
+    return new ThreadPoolExecutor(
+            threadPoolSize / 2,
+            threadPoolSize,
+            60L, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<>(1000),
+            threadFactory,
+            new ThreadPoolExecutor.CallerRunsPolicy()
+    );
+  }
+
+  private void scheduleCleanupTask() {
+    Executors.newSingleThreadScheduledExecutor(r -> {
+      Thread t = new Thread(r);
+      t.setName("aCore-Cache-Cleaner");
+      t.setDaemon(true);
+      return t;
+    }).scheduleAtFixedRate(() -> {
+      DatabaseCache.cleanExpired();
+      LOGGER.info("Cache cleaned. Current size: " + DatabaseCache.size());
+    }, 5, 5, TimeUnit.MINUTES);
   }
 
   @Override
@@ -73,7 +120,7 @@ public class SQLiteDatabase extends Database {
       }
     }
   }
-  
+
   private boolean existsBooster(String minigame) {
     try (PreparedStatement ps = prepareStatement("SELECT * FROM `aCoreNetworkBooster` WHERE `id` = ?", minigame);
          ResultSet rs = ps.executeQuery()) {
@@ -82,14 +129,20 @@ public class SQLiteDatabase extends Database {
       return false;
     }
   }
-  
+
   @Override
   public void setBooster(String minigame, String booster, double multiplier, long expires) {
     execute("UPDATE `aCoreNetworkBooster` SET `booster` = ?, `multiplier` = ?, `expires` = ? WHERE `id` = ?", booster, multiplier, expires, minigame);
+    DatabaseCache.invalidate("booster:" + minigame);
   }
-  
+
   @Override
   public NetworkBooster getBooster(String minigame) {
+    NetworkBooster cached = DatabaseCache.get("booster:" + minigame);
+    if (cached != null) {
+      return cached;
+    }
+
     try (PreparedStatement ps = prepareStatement("SELECT * FROM `aCoreNetworkBooster` WHERE `id` = ?", minigame);
          ResultSet rs = ps.executeQuery()) {
       if (rs.next()) {
@@ -97,46 +150,67 @@ public class SQLiteDatabase extends Database {
         double multiplier = rs.getDouble("multiplier");
         long expires = rs.getLong("expires");
         if (expires > System.currentTimeMillis()) {
-          return new NetworkBooster(booster, multiplier, expires);
+          NetworkBooster nb = new NetworkBooster(booster, multiplier, expires);
+          DatabaseCache.put("booster:" + minigame, nb, TimeUnit.MINUTES.toMillis(10));
+          return nb;
         }
       }
     } catch (SQLException ignored) {
     }
-    
+
     return null;
   }
-  
+
   @Override
   public String getRankAndName(String player) {
+    String cached = DatabaseCache.get("rank:" + player.toLowerCase());
+    if (cached != null) {
+      return cached;
+    }
+
     try (PreparedStatement ps = prepareStatement("SELECT `name`, `role` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase());
          ResultSet rs = ps.executeQuery()) {
       if (rs.next()) {
         String result = rs.getString("role") + " : " + rs.getString("name");
         RoleCache.setCache(player, rs.getString("role"), rs.getString("name"));
+        DatabaseCache.put("rank:" + player.toLowerCase(), result, TimeUnit.MINUTES.toMillis(10));
         return result;
       }
     } catch (SQLException ignored) {
     }
     return null;
   }
-  
+
   @Override
   public boolean getPreference(String player, String id, boolean def) {
+    String cacheKey = "pref:" + player.toLowerCase() + ":" + id;
+    Boolean cached = DatabaseCache.get(cacheKey);
+    if (cached != null) {
+      return cached;
+    }
+
     boolean preference = def;
     try (PreparedStatement ps = prepareStatement("SELECT `preferences` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", player.toLowerCase());
          ResultSet rs = ps.executeQuery()) {
       if (rs.next()) {
         preference = ((JSONObject) new JSONParser().parse(rs.getString("preferences"))).get(id).equals(0L);
+        DatabaseCache.put(cacheKey, preference, TimeUnit.MINUTES.toMillis(15));
       }
     } catch (Exception ex) {
       ex.printStackTrace();
     }
-    
+
     return preference;
   }
 
   @Override
   public List<String[]> getLeaderBoard(String table, String... columns) {
+    String cacheKey = "leaderboard:" + table + ":" + String.join(",", columns);
+    List<String[]> cached = DatabaseCache.get(cacheKey);
+    if (cached != null) {
+      return cached;
+    }
+
     List<String[]> result = new ArrayList<>();
     StringBuilder add = new StringBuilder(), select = new StringBuilder();
     for (String column : columns) {
@@ -183,22 +257,24 @@ public class SQLiteDatabase extends Database {
     } catch (SQLException ignore) {
     }
 
+    DatabaseCache.put(cacheKey, result, TimeUnit.SECONDS.toMillis(30));
     return result;
   }
-  
+
   @Override
   public void close() {
     this.executor.shutdownNow().forEach(Runnable::run);
+    DatabaseCache.clear();
     this.closeConnection();
   }
-  
+
   @Override
   public Map<String, Map<String, DataContainer>> load(String name) throws ProfileLoadException {
     Map<String, Map<String, DataContainer>> tableMap = new HashMap<>();
     for (DataTable table : DataTable.listTables()) {
       Map<String, DataContainer> containerMap = new LinkedHashMap<>();
       tableMap.put(table.getInfo().name(), containerMap);
-      
+
       try (PreparedStatement ps = prepareStatement(table.getInfo().select(), name.toLowerCase());
            ResultSet rs = ps.executeQuery()) {
         if (rs.next()) {
@@ -210,7 +286,7 @@ public class SQLiteDatabase extends Database {
       } catch (SQLException ex) {
         throw new ProfileLoadException(ex.getMessage());
       }
-      
+
       containerMap = table.getDefaultValues();
       tableMap.put(table.getInfo().name(), containerMap);
       List<Object> list = new ArrayList<>();
@@ -219,14 +295,12 @@ public class SQLiteDatabase extends Database {
       this.execute(table.getInfo().insert(), list.toArray());
       list.clear();
     }
-    
+
     return tableMap;
   }
 
   @Override
   public void convertDatabase(Player player) {
-
-    // Obter as configs
     KConfig config = KConfig.getConfig(Core.getInstance(), Core.getInstance().getDataFolder().getPath(), "config");
     String type = config.getString("database.type");
 
@@ -273,21 +347,25 @@ public class SQLiteDatabase extends Database {
 
   @Override
   public void save(String name, Map<String, Map<String, DataContainer>> tableMap) {
+    DatabaseCache.invalidatePattern("rank:" + name.toLowerCase());
+    DatabaseCache.invalidatePattern("pref:" + name.toLowerCase());
     this.save0(name, tableMap, true);
   }
-  
+
   @Override
   public void saveSync(String name, Map<String, Map<String, DataContainer>> tableMap) {
+    DatabaseCache.invalidatePattern("rank:" + name.toLowerCase());
+    DatabaseCache.invalidatePattern("pref:" + name.toLowerCase());
     this.save0(name, tableMap, false);
   }
-  
+
   private void save0(String name, Map<String, Map<String, DataContainer>> tableMap, boolean async) {
     for (DataTable table : DataTable.listTables()) {
       Map<String, DataContainer> rows = tableMap.get(table.getInfo().name());
       if (rows.values().stream().noneMatch(DataContainer::isUpdated)) {
         continue;
       }
-      
+
       List<Object> values = rows.values().stream().filter(DataContainer::isUpdated).map(DataContainer::get).collect(Collectors.toList());
       StringBuilder query = new StringBuilder("UPDATE `" + table.getInfo().name() + "` SET ");
       for (Map.Entry<String, DataContainer> collumn : rows.entrySet()) {
@@ -308,7 +386,7 @@ public class SQLiteDatabase extends Database {
       values.clear();
     }
   }
-  
+
   @Override
   public String exists(String name) {
     try (PreparedStatement ps = prepareStatement("SELECT `name` FROM `aCoreProfile` WHERE LOWER(`name`) = ?", name.toLowerCase());
@@ -321,24 +399,24 @@ public class SQLiteDatabase extends Database {
     }
     return null;
   }
-  
+
   public void openConnection() {
     try {
       boolean reconnected = this.connection != null;
       Class.forName("org.sqlite.JDBC");
       this.connection = DriverManager.getConnection("jdbc:sqlite:" + databaseFile.getAbsolutePath());
       if (reconnected) {
-        LOGGER.info("Reconected to SQLite!");
+        LOGGER.info("Reconnected to SQLite!");
         return;
       }
-      
-      LOGGER.info("Connected to SQLite!");
+
+      LOGGER.info("Connected to SQLite with optimizations!");
     } catch (Exception ex) {
       LOGGER.log(Level.SEVERE, "Failed to connect to SQLite: ", ex);
       System.exit(0);
     }
   }
-  
+
   public void closeConnection() {
     if (isConnected()) {
       try {
@@ -348,15 +426,15 @@ public class SQLiteDatabase extends Database {
       }
     }
   }
-  
+
   public Connection getConnection() throws SQLException {
     if (!isConnected()) {
       this.openConnection();
     }
-    
+
     return this.connection;
   }
-  
+
   public boolean isConnected() {
     try {
       return !(connection == null || connection.isClosed());
@@ -365,7 +443,7 @@ public class SQLiteDatabase extends Database {
       return false;
     }
   }
-  
+
   public void update(String sql, Object... vars) {
     try (PreparedStatement ps = prepareStatement(sql, vars)) {
       ps.executeUpdate();
@@ -373,13 +451,11 @@ public class SQLiteDatabase extends Database {
       LOGGER.log(Level.WARNING, "Failed to execute an SQL query: ", ex);
     }
   }
-  
+
   public void execute(String sql, Object... vars) {
-    executor.execute(() -> {
-      update(sql, vars);
-    });
+    executor.execute(() -> update(sql, vars));
   }
-  
+
   public PreparedStatement prepareStatement(String query, Object... vars) {
     try {
       PreparedStatement ps = getConnection().prepareStatement(query);
@@ -390,10 +466,10 @@ public class SQLiteDatabase extends Database {
     } catch (SQLException ex) {
       LOGGER.log(Level.WARNING, "Failed to prepare an SQL statement: ", ex);
     }
-    
+
     return null;
   }
-  
+
   public String query(String query, Object... vars) {
     try {
       Future<String> future = executor.submit(() -> {
@@ -407,12 +483,12 @@ public class SQLiteDatabase extends Database {
         }
         return null;
       });
-      
+
       return future.get();
     } catch (Exception ex) {
       LOGGER.log(Level.WARNING, "Failed to schedule a Future Task: ", ex);
     }
-    
+
     return null;
   }
 }

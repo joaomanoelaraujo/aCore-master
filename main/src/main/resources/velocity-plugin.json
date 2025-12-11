@@ -1,7 +1,7 @@
 {
   "id": "acore",
   "name": "aCore",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Core plugin for server network",
   "authors": [
     "D4rkk",

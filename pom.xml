@@ -32,7 +32,7 @@
         </repository>
         <repository>
             <id>dmulloy2-repo</id>
-            <url>https://repo.dmulloy2.net/nexus/repository/public/</url>
+            <url>https://repo.dmulloy2.net/repository/public/</url>
         </repository>
         <repository>
             <id>codemc-repo</id>
@@ -43,7 +43,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.comphenix.protocol</groupId>
+            <groupId>net.dmulloy2</groupId>
             <artifactId>ProtocolLib</artifactId>
             <version>5.3.0</version>
             <scope>provided</scope>

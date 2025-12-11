@@ -48,28 +48,22 @@ public abstract class DataTable {
     DataTableInfo info = getInfo();
     String tableName = info.name();
 
-    // Extrai as colunas definidas no CREATE TABLE
     Map<String, ColumnDefinition> expectedColumns = parseCreateStatement(info.create());
 
-    // Obtém as colunas atuais do banco
     Map<String, ColumnDefinition> currentColumns = getCurrentColumns(database, tableName);
 
-    // Detecta colunas novas que precisam ser adicionadas
     for (Map.Entry<String, ColumnDefinition> entry : expectedColumns.entrySet()) {
       String columnName = entry.getKey();
       ColumnDefinition expectedDef = entry.getValue();
 
       if (!currentColumns.containsKey(columnName)) {
-        // Coluna não existe, adicionar
         String alterSQL = String.format("ALTER TABLE `%s` ADD COLUMN `%s` %s",
                 tableName, columnName, expectedDef.definition);
         database.execute(alterSQL);
         Database.LOGGER.info(String.format("Added column '%s' to table '%s'", columnName, tableName));
       } else {
-        // Coluna existe, verificar se o tipo mudou
         ColumnDefinition currentDef = currentColumns.get(columnName);
         if (!currentDef.type.equalsIgnoreCase(expectedDef.type)) {
-          // Tipo mudou, fazer ALTER para modificar
           String alterSQL = String.format("ALTER TABLE `%s` MODIFY COLUMN `%s` %s",
                   tableName, columnName, expectedDef.definition);
           database.execute(alterSQL);
@@ -98,7 +92,6 @@ public abstract class DataTable {
   private Map<String, ColumnDefinition> parseCreateStatement(String createSQL) {
     Map<String, ColumnDefinition> columns = new LinkedHashMap<>();
 
-    // Pattern para extrair colunas: `nome` TIPO
     Pattern pattern = Pattern.compile("`(\\w+)`\\s+([^,)]+?)(?:,|\\)|\\s+PRIMARY|\\s+ENGINE)");
     Matcher matcher = pattern.matcher(createSQL);
 
@@ -106,7 +99,6 @@ public abstract class DataTable {
       String columnName = matcher.group(1);
       String definition = matcher.group(2).trim();
 
-      // Ignora PRIMARY KEY e outras constraints
       if (columnName.equalsIgnoreCase("PRIMARY") || columnName.equalsIgnoreCase("INDEX")) {
         continue;
       }
