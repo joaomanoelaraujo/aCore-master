@@ -1,0 +1,27 @@
+# Configuração de Database do aCore para Velocity
+# Configurações de fake e party estão em utils.yml
+# Configurações de roles estão em roles.yml
+
+database:
+  # Tipo: sqlite, mysql, mongodb
+  type: "mysql"
+
+  # Configurações SQLite
+  sqlite:
+    file: "database.db"
+
+  # Configurações MySQL
+  mysql:
+    host: "localhost"
+    port: "3306"
+    name: "acore"
+    user: "root"
+    pass: "senha123"
+    # Usar HikariCP para pool de conexões (recomendado)
+    hikari: true
+    # Usar driver MariaDB ao invés de MySQL
+    mariadb: false
+
+  # Configurações MongoDB
+  mongodb:
+    url: "mongodb://localhost:27017"

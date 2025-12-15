@@ -35,6 +35,11 @@ public class Profile {
   private static final Map<String, Profile> PROFILES = new ConcurrentHashMap<>();
   private static final SimpleDateFormat COMPARE_SDF = new SimpleDateFormat("yyyy/MM/dd");
 
+  private transient int leaderboardPage = 0;
+  private transient boolean leaderboardMonthly = false;
+  private transient String currentLeaderboardId = null;
+
+
   private String name;
   private Game<? extends GameTeam> game;
   private Hotbar hotbar;
@@ -381,6 +386,38 @@ public class Profile {
 
   public boolean playingGame() {
     return this.game != null;
+  }
+
+  public int getLeaderboardPage(String leaderboardId) {
+    if (!leaderboardId.equals(currentLeaderboardId)) {
+      this.currentLeaderboardId = leaderboardId;
+      this.leaderboardPage = 0;
+      this.leaderboardMonthly = false;
+    }
+    return this.leaderboardPage;
+  }
+
+
+  public void setLeaderboardPage(String leaderboardId, int page) {
+    this.currentLeaderboardId = leaderboardId;
+    this.leaderboardPage = page;
+  }
+
+
+  public boolean isLeaderboardMonthly(String leaderboardId) {
+    if (!leaderboardId.equals(currentLeaderboardId)) {
+      // Mudou de leaderboard, reseta
+      this.currentLeaderboardId = leaderboardId;
+      this.leaderboardPage = 0;
+      this.leaderboardMonthly = false;
+    }
+    return this.leaderboardMonthly;
+  }
+
+
+  public void setLeaderboardMonthly(String leaderboardId, boolean monthly) {
+    this.currentLeaderboardId = leaderboardId;
+    this.leaderboardMonthly = monthly;
   }
 
   public List<Profile> getLastHitters() {
