@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Fixes and Changes">
+    <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Replay and Velocity Added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/player/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/player/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/player/Profile.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/player/Profile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/original-aCore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/original-aCore.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,23 +36,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.aCore-master [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Aether/Sources/Java 11 - 1.11.1/aCore-master&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.36551723&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.aCore-master [clean,install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Aether/Sources/Java 11 - 1.11.1/aCore-master",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.36551723",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="aCore-master [clean,install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
@@ -304,8 +303,19 @@
       <option name="project" value="LOCAL" />
       <updated>1765414636760</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="- Replay and Velocity Added">
+      <option name="closed" value="true" />
+      <created>1765838114356</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1765838114356</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="- Added glowing effect on MenuApparence&#10;- Added translates on Glowing&#10;- Fixed bug on glass item register" />
@@ -331,6 +341,7 @@
     <MESSAGE value="- Added Velocity Support (BETA)" />
     <MESSAGE value="- Changed plugin version to 2.9.0" />
     <MESSAGE value="- Fixes and Changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fixes and Changes" />
+    <MESSAGE value="- Replay and Velocity Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Replay and Velocity Added" />
   </component>
 </project>
