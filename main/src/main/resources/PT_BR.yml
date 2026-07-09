@@ -5,6 +5,10 @@ visibleon: '&aVisibilidade dos jogadores ativada.'
 already: '§cVocê já está conectado a esse servidor.'
 languages:
  title: 'Selecionar Idioma'
+open:
+ here: 'clique aqui'
+ open: 'ABRIR'
+ toopen: 'para abrir'
 discord:
  link: 'https://discord.gg/aaa'
 loja:

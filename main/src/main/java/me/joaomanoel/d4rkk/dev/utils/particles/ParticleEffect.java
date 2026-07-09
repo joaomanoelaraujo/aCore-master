@@ -1,13 +1,11 @@
 package me.joaomanoel.d4rkk.dev.utils.particles;
 
+import java.util.Arrays;
 import me.joaomanoel.d4rkk.dev.nms.BukkitUtils;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.Arrays;
-
 public enum ParticleEffect {
-
   EXPLOSION_NORMAL("explode"),
   EXPLOSION_LARGE("largeexplode"),
   FIREWORKS_SPARK("fireworksSpark"),
@@ -52,57 +50,38 @@ public enum ParticleEffect {
 
   private final String name;
 
-  ParticleEffect(String name) {
+  private ParticleEffect(String name) {
     this.name = name;
   }
 
-  /**
-   * Exibe a partícula na localização especificada,
-   * usando valores padrão: isFar=false, count=1, offsets=0, speed=0
-   */
   public void display(Player player, Location loc) {
-    display(
-            player,
-            false,
-            (float) loc.getX(),
-            (float) loc.getY(),
-            (float) loc.getZ(),
-            0.0f,   // offsetX
-            0.0f,   // offsetY
-            0.0f,   // offsetZ
-            0.0f,   // speed (extra)
-            1       // count
-    );
+    this.display(player, false, (float) loc.getX(), (float) loc.getY(), (float) loc.getZ(), 0.0F, 0.0F, 0.0F, 0.0F, 1);
   }
 
   /**
-   * Método original que envia o pacote via BukkitUtils (NMS/reflection)
+   * Exibe a partícula em uma Location para um único jogador ("viewer").
    */
-  public void display(Player viewer,
-                      boolean isFar,
-                      float x, float y, float z,
-                      float offsetX, float offsetY, float offsetZ,
-                      float speed,
-                      int count) {
-    BukkitUtils.displayParticle(
-            viewer,
-            this.name,
-            isFar,
-            x, y, z,
-            offsetX, offsetY, offsetZ,
-            speed,
-            count
-    );
+  public void display(float offsetX, float offsetY, float offsetZ, float speed, int count, Location loc, Player viewer) {
+    this.display(viewer, false, (float) loc.getX(), (float) loc.getY(), (float) loc.getZ(), offsetX, offsetY, offsetZ, speed, count);
   }
 
   /**
-   * Recupera a enum a partir do nome configurado no YAML
+   * Exibe a partícula em uma Location para todos os jogadores dentro do raio informado (em blocos).
    */
+  public void display(float offsetX, float offsetY, float offsetZ, float speed, int count, Location loc, double radius) {
+    double radiusSquared = radius * radius;
+    for (Player viewer : loc.getWorld().getPlayers()) {
+      if (viewer.getLocation().distanceSquared(loc) <= radiusSquared) {
+        this.display(viewer, false, (float) loc.getX(), (float) loc.getY(), (float) loc.getZ(), offsetX, offsetY, offsetZ, speed, count);
+      }
+    }
+  }
+
+  public void display(Player viewer, boolean isFar, float x, float y, float z, float offsetX, float offsetY, float offsetZ, float speed, int count) {
+    BukkitUtils.displayParticle(viewer, this.name, isFar, x, y, z, offsetX, offsetY, offsetZ, speed, count);
+  }
+
   public static ParticleEffect fromName(String name) {
-    return Arrays.stream(values())
-            .filter(e -> e.name.equals(name))
-            .findFirst()
-            .orElse(null);
+    return Arrays.stream(values()).filter((e) -> e.name.equals(name)).findFirst().orElse(null);
   }
-
 }

@@ -3,6 +3,10 @@
 already: '§c您已经连接到此服务器。'
 languages:
   title: '选择语言'
+open:
+  here: '点击这里'
+  open: '打开'
+  toopen: '由此打开'
 discord:
   link: 'https://discord.gg/aaa'
 loja:

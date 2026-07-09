@@ -1,9 +1,13 @@
-me\joaomanoel\d4rkk\dev\nms\NMSManager.class
-me\joaomanoel\d4rkk\dev\nms\BukkitUtilsItf.class
 me\joaomanoel\d4rkk\dev\nms\BukkitUtils.class
-me\joaomanoel\d4rkk\dev\nms\npc\PlayerInteractAtNpcEvent.class
 me\joaomanoel\d4rkk\dev\nms\npc\NpcEntity.class
 me\joaomanoel\d4rkk\dev\nms\hologram\HologramEntity.class
+me\joaomanoel\d4rkk\dev\nms\particle\ParticleOptionsItem.class
+me\joaomanoel\d4rkk\dev\nms\ArmorStandFlags.class
+me\joaomanoel\d4rkk\dev\nms\NMSManager.class
+me\joaomanoel\d4rkk\dev\nms\BukkitUtilsItf.class
+me\joaomanoel\d4rkk\dev\nms\LegacyEntityMetadata.class
+me\joaomanoel\d4rkk\dev\nms\npc\PlayerInteractAtNpcEvent.class
+me\joaomanoel\d4rkk\dev\nms\IArmorStand.class
+me\joaomanoel\d4rkk\dev\nms\PacketArmorStand.class
 me\joaomanoel\d4rkk\dev\nms\NMS_Interface.class
 me\joaomanoel\d4rkk\dev\nms\particle\ParticleOptions.class
-me\joaomanoel\d4rkk\dev\nms\particle\ParticleOptionsItem.class

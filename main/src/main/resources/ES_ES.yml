@@ -3,6 +3,10 @@
 already: '§cYa estás conectado a este servidor.'
 languages:
   title: 'Seleccionar Idioma'
+open:
+  here: 'haga clic aquí'
+  open: 'ABRIR'
+  toopen: 'para abrir'
 discord:
   link: 'https://discord.gg/aaa'
 loja:

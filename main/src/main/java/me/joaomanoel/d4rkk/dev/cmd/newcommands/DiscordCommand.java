@@ -23,9 +23,10 @@ public class DiscordCommand extends Commands {
          sender.sendMessage("§cOnly players can use this command.");
       } else {
          Player player = (Player)sender;
+         Profile profile = Profile.getProfile(player.getName());
          player.closeInventory();
          TextComponent component = new TextComponent("");
-         BaseComponent[] var6 = TextComponent.fromLegacyText(Language.discord$click);
+         BaseComponent[] var6 = TextComponent.fromLegacyText(LanguageAPI.getConfig(profile).getString("discord.link"));
          int var7 = var6.length;
 
          int var8;
@@ -34,13 +35,13 @@ public class DiscordCommand extends Commands {
             component.addExtra(components);
          }
 
-         TextComponent click = new TextComponent(Language.discord$here);
+         TextComponent click = new TextComponent(LanguageAPI.getConfig(profile).getString("open.here"));
          click.setColor(ChatColor.YELLOW);
          click.setBold(true);
          click.setClickEvent(new ClickEvent(Action.OPEN_URL, LanguageAPI.getConfig(Profile.getProfile(player.getName())).getString("discord.link")));
-         click.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(Language.discord$open)));
+         click.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, TextComponent.fromLegacyText(LanguageAPI.getConfig(profile).getString("open.open"))));
          component.addExtra(click);
-         BaseComponent[] var12 = TextComponent.fromLegacyText(Language.discord$toopen);
+         BaseComponent[] var12 = TextComponent.fromLegacyText(LanguageAPI.getConfig(profile).getString("open.toopen"));
          var8 = var12.length;
 
          for(int var13 = 0; var13 < var8; ++var13) {

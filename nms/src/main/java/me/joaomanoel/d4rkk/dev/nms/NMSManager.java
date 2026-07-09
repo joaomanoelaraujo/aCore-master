@@ -2,6 +2,7 @@ package me.joaomanoel.d4rkk.dev.nms;
 
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.utility.MinecraftVersion;
 import me.joaomanoel.d4rkk.dev.nms.hologram.HologramEntity;
 import me.joaomanoel.d4rkk.dev.nms.npc.NpcEntity;
@@ -13,10 +14,22 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.reflect.Constructor;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class NMSManager {
 
     public static NMS_Interface instance;
+
+    // ---- suporte ao armor stand fake (IArmorStand/PacketArmorStand/ArmorStandFlags) ----
+    // Diferente do resto da classe, isso NÃO passa pelo NMS_Interface por versão:
+    // o ArmorStand fake é implementado só com pacotes do ProtocolLib, que já abstrai
+    // a diferença entre versões, então não precisa de uma classe NMS1_x_Rx dedicada.
+    static final MinecraftVersion VERSION = getProtocolManager().getMinecraftVersion();
+    static final boolean LEGACY = VERSION.compareTo(new MinecraftVersion("1.9")) < 0;
+    static final boolean BATCH_EQUIPMENT = VERSION.compareTo(new MinecraftVersion("1.16")) >= 0;
+    static final boolean MERGED_SPAWN = VERSION.compareTo(new MinecraftVersion("1.19")) >= 0;
+
+    private static final AtomicInteger ARMORSTAND_ID_COUNTER = new AtomicInteger(2_000_000_000);
 
     public static void setupNMS(JavaPlugin plugin) {
         MinecraftVersion version = getProtocolManager().getMinecraftVersion();
@@ -129,6 +142,15 @@ public class NMSManager {
 
     public static NpcEntity createNPC(Location location, String name, String value, String signature) {
         return instance.createNPC(location, name, value, signature);
+    }
+    
+
+    static void sendPacket(Player player, PacketContainer packet) {
+        try {
+            getProtocolManager().sendServerPacket(player, packet);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     public static void resendSkin(Player viewer, Player npc, NpcEntity entity) {

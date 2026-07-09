@@ -5,7 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aff744fe-ccbc-44d5-9545-e321e139a88f" name="Changes" comment="- Replay and Velocity Added">
+      <change afterPath="$PROJECT_DIR$/nms/src/main/java/me/joaomanoel/d4rkk/dev/nms/IArmorStand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/target/1_20_R4-2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_20_R4/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_20_R4/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/1_20_R4/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/1_8_R3/target/1_8_R3-2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_8_R3/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/1_8_R3/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_8_R3/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/1_8_R3/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/Language.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/Language.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/cmd/newcommands/DiscordCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/cmd/newcommands/DiscordCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/cmd/newcommands/ShopCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/cmd/newcommands/ShopCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/utils/particles/ParticleEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/me/joaomanoel/d4rkk/dev/utils/particles/ParticleEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/EN_US.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/EN_US.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/ES_ES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/ES_ES.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/JA_JP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/JA_JP.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/KO_KR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/KO_KR.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/PT_BR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/PT_BR.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/resources/ZH_CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/ZH_CN.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/aCore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/aCore.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/EN_US.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/EN_US.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/ES_ES.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/ES_ES.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/JA_JP.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/JA_JP.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/KO_KR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/KO_KR.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/PT_BR.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/PT_BR.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/ZH_CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/ZH_CN.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Language.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/Language.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/cmd/newcommands/DiscordCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/cmd/newcommands/DiscordCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/cmd/newcommands/ShopCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/cmd/newcommands/ShopCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/utils/particles/ParticleEffect.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/me/joaomanoel/d4rkk/dev/utils/particles/ParticleEffect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/original-aCore.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/original-aCore.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nms/src/main/java/me/joaomanoel/d4rkk/dev/nms/NMSManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/nms/src/main/java/me/joaomanoel/d4rkk/dev/nms/NMSManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nms/target/classes/me/joaomanoel/d4rkk/dev/nms/NMSManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/nms/target/classes/me/joaomanoel/d4rkk/dev/nms/NMSManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nms/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/nms/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nms/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/nms/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nms/target/nms-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/nms/target/nms-2.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/target/utils-2.1.jar" beforeDir="false" afterPath="$PROJECT_DIR$/utils/target/utils-2.1.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +63,68 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/joaomanoelaraujo/aCore-master.git&quot;,
-    &quot;accountId&quot;: &quot;e594aab3-3165-460f-b443-e105d2267d7e&quot;
+    &quot;accountId&quot;: &quot;8ceb7652-2918-4696-8f7c-46ad98a381f3&quot;
   }
 }</component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.1711809477248861E-84" />
+      <entry key="S2" value="1.0896062491236976E-21" />
+      <entry key="S5" value="6.008036210764522E-9" />
+      <entry key="S10" value="1.510294113737584E-4" />
+      <entry key="S30" value="0.18737847416858697" />
+      <entry key="S60" value="1.4968962600554259" />
+      <entry key="M2" value="5.752741956408075" />
+      <entry key="M5" value="16.280257235866724" />
+      <entry key="M10" value="24.426454299901504" />
+      <entry key="M15" value="28.184187247245518" />
+      <entry key="M30" value="32.6558445430315" />
+      <entry key="H1" value="35.207524456185226" />
+      <entry key="H2" value="36.57210440740383" />
+      <entry key="H4" value="37.27793331255851" />
+      <entry key="D1" value="37.87851010737664" />
+      <entry key="W1" value="37.98261601373244" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.0000958945392349" />
+      <entry key="MS500" value="1.2124194261139811" />
+      <entry key="S2" value="2.6523035212122092" />
+      <entry key="S5" value="3.769137880072781" />
+      <entry key="S10" value="4.320348018449552" />
+      <entry key="S30" value="4.75730370262466" />
+      <entry key="S60" value="4.880602961131635" />
+      <entry key="M2" value="5.149064852736929" />
+      <entry key="M5" value="7.236267125882781" />
+      <entry key="M10" value="9.97398154106193" />
+      <entry key="M15" value="11.482642267547558" />
+      <entry key="M30" value="13.445563429315682" />
+      <entry key="H1" value="14.638773704462247" />
+      <entry key="H2" value="15.296976059641663" />
+      <entry key="H4" value="15.642698888261641" />
+      <entry key="D1" value="15.939629436500134" />
+      <entry key="W1" value="15.991355326444852" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="2.8481212622721207E-4" />
+      <entry key="MS500" value="0.32211862080061626" />
+      <entry key="S2" value="2.0957186728401958" />
+      <entry key="S5" value="3.4596246398710804" />
+      <entry key="S10" value="4.144605840071517" />
+      <entry key="S30" value="4.880440716482253" />
+      <entry key="S60" value="6.3444437158344575" />
+      <entry key="M2" value="10.883438247977574" />
+      <entry key="M5" value="23.50307205380548" />
+      <entry key="M10" value="34.389691545834836" />
+      <entry key="M15" value="39.65818799889857" />
+      <entry key="M30" value="46.096124254007066" />
+      <entry key="H1" value="49.84336337808527" />
+      <entry key="H2" value="51.867532248615134" />
+      <entry key="H4" value="52.91983685946473" />
+      <entry key="D1" value="53.818003947288574" />
+      <entry key="W1" value="53.97395189358459" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 8
@@ -36,25 +134,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.aCore-master [clean,install].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Aether/Sources/Java 11 - 1.11.1/aCore-master",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.36551723",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.aCore-master [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Aether/Sources/Java 11 - 1.11.1/aCore-master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.36551723&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="aCore-master [clean,install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
@@ -91,7 +196,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-cffe25b9f5b3-intellij.indexing.shared.core-IU-253.28294.334" />
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.24374.151" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.24374.151" />
       </set>
     </attachedChunks>
   </component>
@@ -102,6 +208,27 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757891180591</updated>
+      <workItem from="1782267498921" duration="18000" />
+      <workItem from="1782267615443" duration="1826000" />
+      <workItem from="1782269649617" duration="6000" />
+      <workItem from="1782338622681" duration="1501000" />
+      <workItem from="1782348620798" duration="1577000" />
+      <workItem from="1782356042000" duration="2545000" />
+      <workItem from="1782444093451" duration="988000" />
+      <workItem from="1782445310875" duration="2282000" />
+      <workItem from="1782589669894" duration="480000" />
+      <workItem from="1782597933515" duration="637000" />
+      <workItem from="1782616116029" duration="2481000" />
+      <workItem from="1782619837027" duration="598000" />
+      <workItem from="1782671788541" duration="186000" />
+      <workItem from="1782672822521" duration="1136000" />
+      <workItem from="1782692746138" duration="457000" />
+      <workItem from="1783042396829" duration="274000" />
+      <workItem from="1783042909263" duration="143000" />
+      <workItem from="1783043222653" duration="40000" />
+      <workItem from="1783044429791" duration="99000" />
+      <workItem from="1783044541660" duration="955000" />
+      <workItem from="1783195466113" duration="7000" />
     </task>
     <task id="LOCAL-00001" summary="- Added glowing effect on MenuApparence&#10;- Added translates on Glowing&#10;- Fixed bug on glass item register">
       <option name="closed" value="true" />

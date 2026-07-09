@@ -3,6 +3,10 @@
 already: '§c이미 이 서버에 연결되어 있습니다.'
 languages:
   title: '언어 선택'
+open:
+  here: '여기를 클릭하세요'
+  open: '열려 있는'
+  toopen: '여는 법'
 discord:
   link: 'https://discord.gg/aaa'
 loja:
